@@ -1,9 +1,8 @@
 
 export const ASSETS = {
   whoWeAre: {
-    // This is the hero image for the Who We Are section.
-    // Replaced Google Drive link with Unsplash to ensure reliable loading.
-    hero: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=1600&auto=format&fit=crop", 
+    // Replaced with a green-lit event crowd photo matching the reference vibe
+    hero: "https://images.unsplash.com/photo-1563050252-d816810594b5?q=80&w=1600&auto=format&fit=crop", 
     
     grid: [
       'https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=800&auto=format&fit=crop', // Mingle

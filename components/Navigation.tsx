@@ -48,7 +48,7 @@ const Navigation: React.FC = () => {
             href="https://luma.com/ctrlshift?k=c" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="hidden lg:flex items-center gap-1 text-emerald-400 hover:text-white transition-colors"
+            className="hidden lg:flex items-center gap-1 text-purple-400 hover:text-white transition-colors"
           >
             Upcoming Events <ArrowUpRight size={14} />
           </a>

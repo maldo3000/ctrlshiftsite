@@ -1,6 +1,7 @@
+
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence, useDragControls } from 'framer-motion';
-import { X, Minus, Maximize2, Youtube, Twitter, Instagram, Terminal, Folder, ExternalLink } from 'lucide-react';
+import { X, Minus, Maximize2, Youtube, Twitter, Instagram, Terminal, Folder, ExternalLink, Palette, Eraser, Trash2, MousePointer2 } from 'lucide-react';
 
 interface RetroDesktopProps {
   onLaunch: () => void;
@@ -11,10 +12,33 @@ const RetroDesktop: React.FC<RetroDesktopProps> = ({ onLaunch }) => {
   const [time, setTime] = useState('');
   const constraintsRef = useRef(null);
   const dragControls = useDragControls();
+  const paintDragControls = useDragControls();
   
-  // Window state
+  // Window State
+  const [activeWindow, setActiveWindow] = useState<'main' | 'paint'>('main');
+  const [zIndices, setZIndices] = useState({ main: 20, paint: 10 });
+
+  // Main App Window State
   const [windowSize, setWindowSize] = useState({ width: 400, height: 200 });
   const [isMaximized, setIsMaximized] = useState(false);
+
+  // Paint App Window State
+  const [isPaintOpen, setIsPaintOpen] = useState(false);
+  const [paintWindowSize, setPaintWindowSize] = useState({ width: 600, height: 450 });
+  const [isPaintMaximized, setIsPaintMaximized] = useState(false);
+
+  // Paint Logic
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const contextRef = useRef<CanvasRenderingContext2D | null>(null);
+  const [isDrawing, setIsDrawing] = useState(false);
+  const [currentColor, setCurrentColor] = useState('#000000');
+  const [currentTool, setCurrentTool] = useState<'brush' | 'eraser'>('brush');
+
+  // Constants
+  const COLORS = [
+    '#000000', '#808080', '#800000', '#808000', '#008000', '#008080', '#000080', '#800080',
+    '#ffffff', '#c0c0c0', '#ff0000', '#ffff00', '#00ff00', '#00ffff', '#0000ff', '#ff00ff'
+  ];
 
   useEffect(() => {
     const updateTime = () => {
@@ -26,16 +50,99 @@ const RetroDesktop: React.FC<RetroDesktopProps> = ({ onLaunch }) => {
     return () => clearInterval(interval);
   }, []);
 
+  // Initialize Paint Canvas
+  useEffect(() => {
+    if (isPaintOpen && canvasRef.current) {
+      const canvas = canvasRef.current;
+      // Set actual canvas size (internal resolution)
+      canvas.width = 800;
+      canvas.height = 600;
+      
+      const ctx = canvas.getContext('2d');
+      if (ctx) {
+        ctx.lineCap = 'round';
+        ctx.lineJoin = 'round';
+        ctx.fillStyle = "#ffffff";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        
+        // Initialize context settings immediately
+        ctx.strokeStyle = currentTool === 'eraser' ? '#ffffff' : currentColor;
+        ctx.lineWidth = currentTool === 'eraser' ? 20 : 3;
+        
+        contextRef.current = ctx;
+      }
+    } else if (!isPaintOpen) {
+      // Reset context ref when closed so it re-initializes correctly on next open
+      contextRef.current = null;
+      setIsDrawing(false);
+    }
+  }, [isPaintOpen]);
+
+  // Update Paint Context settings
+  useEffect(() => {
+    if(contextRef.current) {
+       contextRef.current.strokeStyle = currentTool === 'eraser' ? '#ffffff' : currentColor;
+       contextRef.current.lineWidth = currentTool === 'eraser' ? 20 : 3;
+    }
+  }, [currentColor, currentTool, isPaintOpen]);
+
+  const handleWindowClick = (window: 'main' | 'paint') => {
+    setActiveWindow(window);
+    setZIndices({
+        main: window === 'main' ? 30 : 20,
+        paint: window === 'paint' ? 30 : 20
+    });
+  };
+
   const handleNavClick = (id: string) => {
     setIsStartOpen(false);
     onLaunch();
-    // Increased delay to match the new longer portal animation in App.tsx
     setTimeout(() => {
       const element = document.getElementById(id);
       if (element) {
         element.scrollIntoView({ behavior: 'smooth' });
       }
     }, 1500);
+  };
+
+  // Drawing Handlers with scaling support
+  const getCoordinates = (e: React.MouseEvent<HTMLCanvasElement>) => {
+     if (!canvasRef.current) return { x: 0, y: 0 };
+     const canvas = canvasRef.current;
+     const rect = canvas.getBoundingClientRect();
+     // Calculate scale in case canvas is resized via CSS/Flexbox
+     const scaleX = canvas.width / rect.width;
+     const scaleY = canvas.height / rect.height;
+     return {
+         x: (e.clientX - rect.left) * scaleX,
+         y: (e.clientY - rect.top) * scaleY
+     };
+  };
+
+  const startDrawing = (e: React.MouseEvent<HTMLCanvasElement>) => {
+    const { x, y } = getCoordinates(e);
+    contextRef.current?.beginPath();
+    contextRef.current?.moveTo(x, y);
+    setIsDrawing(true);
+  };
+
+  const draw = (e: React.MouseEvent<HTMLCanvasElement>) => {
+    if (!isDrawing) return;
+    const { x, y } = getCoordinates(e);
+    contextRef.current?.lineTo(x, y);
+    contextRef.current?.stroke();
+  };
+
+  const stopDrawing = () => {
+    contextRef.current?.closePath();
+    setIsDrawing(false);
+  };
+
+  const clearCanvas = () => {
+      if(canvasRef.current && contextRef.current) {
+          contextRef.current.fillStyle = "#ffffff";
+          contextRef.current.fillRect(0, 0, canvasRef.current.width, canvasRef.current.height);
+      }
   };
 
   const DesktopIcon = ({ icon: Icon, label, color = "text-blue-600", onClick }: any) => (
@@ -50,6 +157,7 @@ const RetroDesktop: React.FC<RetroDesktopProps> = ({ onLaunch }) => {
         left: Math.random() * 100 + 20 
       }}
       onDoubleClick={onClick}
+      onTouchStart={onClick} // For mobile friendliness
     >
       <div className="w-10 h-10 bg-white border-2 border-black shadow-[2px_2px_0px_rgba(0,0,0,0.3)] flex items-center justify-center group-hover:bg-blue-800 transition-colors relative">
         <Icon className={`w-6 h-6 ${color} group-hover:text-white`} />
@@ -66,7 +174,8 @@ const RetroDesktop: React.FC<RetroDesktopProps> = ({ onLaunch }) => {
   const windowBorder = "border-t-2 border-l-2 border-b-2 border-r-2 border-t-[#dfdfdf] border-l-[#dfdfdf] border-r-[#000000] border-b-[#000000]";
   const buttonBorder = "border-t-2 border-l-2 border-b-2 border-r-2 border-t-[#ffffff] border-l-[#ffffff] border-r-[#000000] border-b-[#000000]";
   const insetBorder = "border-t-2 border-l-2 border-b-2 border-r-2 border-t-[#808080] border-l-[#808080] border-r-[#ffffff] border-b-[#ffffff]";
-  
+  const pressedButtonBorder = "border-t-2 border-l-2 border-b-2 border-r-2 border-t-[#000000] border-l-[#000000] border-r-[#ffffff] border-b-[#ffffff]";
+
   return (
     <div className="fixed inset-0 z-50 bg-[#008080] overflow-hidden font-sans select-none" ref={constraintsRef}>
       
@@ -76,21 +185,31 @@ const RetroDesktop: React.FC<RetroDesktopProps> = ({ onLaunch }) => {
             icon={Youtube} 
             label="YouTube.exe" 
             color="text-red-600" 
-            onClick={() => window.open('#', '_blank')} 
+            onClick={() => window.open('https://www.youtube.com/@CTRLSHIFT-COMMUNITY', '_blank')} 
          />
          <DesktopIcon 
             icon={Twitter} 
             label="X_Client.lnk" 
             color="text-black" 
-            onClick={() => window.open('#', '_blank')} 
+            onClick={() => window.open('https://x.com/ctrlshift_ai', '_blank')} 
          />
          <DesktopIcon 
             icon={Instagram} 
             label="Insta_Bot.bat" 
             color="text-pink-600" 
-            onClick={() => window.open('#', '_blank')} 
+            onClick={() => window.open('https://www.instagram.com/ctrlshift_ai/', '_blank')} 
          />
          
+         <DesktopIcon 
+            icon={Palette} 
+            label="Paint.exe" 
+            color="text-orange-600" 
+            onClick={() => {
+                setIsPaintOpen(true);
+                handleWindowClick('paint');
+            }} 
+         />
+
          <motion.div
             drag
             dragConstraints={constraintsRef}
@@ -103,9 +222,163 @@ const RetroDesktop: React.FC<RetroDesktopProps> = ({ onLaunch }) => {
          </motion.div>
       </div>
 
-      {/* Main Center Window (Draggable & Resizable) */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-20">
-        <motion.div 
+      {/* === PAINT WINDOW === */}
+      {isPaintOpen && (
+          <motion.div 
+            drag
+            dragListener={false}
+            dragControls={paintDragControls}
+            dragMomentum={false}
+            dragConstraints={constraintsRef}
+            initial={{ scale: 0.9, opacity: 0, y: 20 }}
+            animate={{ scale: 1, opacity: 1, y: 0 }}
+            style={{ 
+                width: paintWindowSize.width, 
+                height: paintWindowSize.height,
+                zIndex: zIndices.paint
+            }}
+            onPointerDown={() => handleWindowClick('paint')}
+            className={`absolute top-10 left-10 pointer-events-auto bg-[#c0c0c0] ${windowBorder} shadow-[8px_8px_0px_rgba(0,0,0,0.3)] flex flex-col`}
+        >
+            {/* Paint Title Bar */}
+            <div 
+                onPointerDown={(e) => paintDragControls.start(e)}
+                className={`bg-gradient-to-r ${activeWindow === 'paint' ? 'from-[#000080] to-[#1084d0]' : 'from-[#808080] to-[#b0b0b0]'} px-1 py-0.5 flex items-center justify-between cursor-default select-none h-8 flex-shrink-0`}
+            >
+                <div className="flex items-center gap-2 text-white font-bold text-sm tracking-wide px-1">
+                    <Palette size={14} />
+                    <span>untitled - Paint</span>
+                </div>
+                <div className="flex items-center gap-1">
+                    <button className={`w-5 h-5 bg-[#c0c0c0] ${buttonBorder} flex items-center justify-center active:border-t-black active:border-l-black active:border-b-white active:border-r-white focus:outline-none`}>
+                        <Minus size={10} strokeWidth={3} className="text-black"/>
+                    </button>
+                    <button 
+                        onClick={() => {
+                            if(isPaintMaximized) {
+                                setPaintWindowSize({ width: 600, height: 450 });
+                                setIsPaintMaximized(false);
+                            } else {
+                                setPaintWindowSize({ width: Math.min(1000, window.innerWidth * 0.9), height: Math.min(800, window.innerHeight * 0.8) });
+                                setIsPaintMaximized(true);
+                            }
+                        }}
+                        className={`w-5 h-5 bg-[#c0c0c0] ${buttonBorder} flex items-center justify-center active:border-t-black active:border-l-black active:border-b-white active:border-r-white focus:outline-none`}
+                    >
+                        <Maximize2 size={10} strokeWidth={3} className="text-black"/>
+                    </button>
+                    <button 
+                        onClick={() => setIsPaintOpen(false)}
+                        className={`w-5 h-5 bg-[#c0c0c0] ${buttonBorder} flex items-center justify-center active:border-t-black active:border-l-black active:border-b-white active:border-r-white ml-1 focus:outline-none`}
+                    >
+                        <X size={12} strokeWidth={3} className="text-black"/>
+                    </button>
+                </div>
+            </div>
+
+            {/* Menu Bar - Fixed layout */}
+            <div className="flex gap-4 px-2 py-1 text-sm text-black border-b border-[#808080] mb-1 select-none cursor-default">
+                <div><span className="underline">F</span>ile</div>
+                <div><span className="underline">E</span>dit</div>
+                <div><span className="underline">V</span>iew</div>
+                <div><span className="underline">I</span>mage</div>
+                <div><span className="underline">O</span>ptions</div>
+                <div><span className="underline">H</span>elp</div>
+            </div>
+
+            {/* Paint Content */}
+            <div className="flex flex-1 relative overflow-hidden p-1 gap-1">
+                {/* Tool Box */}
+                <div className="flex flex-col gap-1">
+                    <div className={`w-12 bg-[#c0c0c0] flex flex-col items-center py-1 gap-1 ${buttonBorder}`}>
+                        <button 
+                            onClick={() => setCurrentTool('brush')}
+                            className={`w-8 h-8 flex items-center justify-center ${currentTool === 'brush' ? pressedButtonBorder + ' bg-[#e0e0e0]' : buttonBorder}`}
+                        >
+                            <MousePointer2 size={16} className="text-black rotate-[-45deg]" />
+                        </button>
+                        <button 
+                            onClick={() => setCurrentTool('eraser')}
+                            className={`w-8 h-8 flex items-center justify-center ${currentTool === 'eraser' ? pressedButtonBorder + ' bg-[#e0e0e0]' : buttonBorder}`}
+                        >
+                            <Eraser size={16} className="text-black" />
+                        </button>
+                         <button 
+                            onClick={clearCanvas}
+                            className={`w-8 h-8 flex items-center justify-center ${buttonBorder}`}
+                            title="Clear Canvas"
+                        >
+                            <Trash2 size={16} className="text-red-600" />
+                        </button>
+                    </div>
+                    
+                    {/* Current Tool Options (Placeholder style) */}
+                     <div className={`w-12 h-16 bg-[#c0c0c0] ${insetBorder} mt-1 flex flex-col items-center justify-center gap-2`}>
+                        <div className="w-2 h-2 bg-black rounded-full"></div>
+                        <div className="w-4 h-4 bg-black rounded-full"></div>
+                     </div>
+                </div>
+
+                {/* Canvas Container */}
+                <div className={`flex-1 bg-[#808080] p-1 overflow-auto relative ${insetBorder} flex items-start justify-start`}>
+                    <canvas
+                        ref={canvasRef}
+                        onMouseDown={startDrawing}
+                        onMouseMove={draw}
+                        onMouseUp={stopDrawing}
+                        onMouseLeave={stopDrawing}
+                        className="bg-white cursor-crosshair shadow-md block"
+                        style={{ imageRendering: 'pixelated' }}
+                    />
+                </div>
+            </div>
+
+            {/* Footer / Palette */}
+            <div className="h-12 bg-[#c0c0c0] p-1 flex items-center gap-2 border-t border-[#ffffff]">
+                <div className={`w-8 h-8 bg-white ${insetBorder} flex items-center justify-center`}>
+                     <div className="w-5 h-5 border border-black" style={{ backgroundColor: currentColor }}></div>
+                </div>
+                <div className="flex-1 flex flex-wrap gap-0.5">
+                    {COLORS.map((c) => (
+                        <button
+                            key={c}
+                            onClick={() => {
+                                setCurrentColor(c);
+                                if (currentTool === 'eraser') setCurrentTool('brush');
+                            }}
+                            className={`w-5 h-5 border border-gray-600 ${currentColor === c ? 'ring-1 ring-black ring-offset-1' : ''}`}
+                            style={{ backgroundColor: c }}
+                        />
+                    ))}
+                </div>
+            </div>
+             
+            {/* Resize Handle */}
+            <motion.div 
+                drag
+                dragMomentum={false}
+                onDrag={(e, info) => {
+                    setPaintWindowSize(prev => ({
+                        width: Math.max(400, prev.width + info.delta.x),
+                        height: Math.max(300, prev.height + info.delta.y)
+                    }));
+                }}
+                className="absolute bottom-0.5 right-0.5 w-4 h-4 cursor-se-resize flex items-end justify-end z-50"
+            >
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                        <path d="M12 12H8L12 8V12Z" fill="#808080"/>
+                        <path d="M12 8H11L12 7V8Z" fill="#ffffff"/>
+                        <path d="M12 7H7L12 2V7Z" fill="#808080"/>
+                        <path d="M12 3H11L12 2V3Z" fill="#ffffff"/>
+                        <path d="M8 12H7L8 11V12Z" fill="#ffffff"/>
+                    </svg>
+            </motion.div>
+        </motion.div>
+      )}
+
+
+      {/* === MAIN CTRL+SHIFT WINDOW === */}
+      <motion.div 
             drag
             dragListener={false} // Only drag from the header
             dragControls={dragControls}
@@ -113,13 +386,18 @@ const RetroDesktop: React.FC<RetroDesktopProps> = ({ onLaunch }) => {
             dragConstraints={constraintsRef}
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            style={{ width: windowSize.width, height: windowSize.height }}
-            className={`pointer-events-auto bg-[#c0c0c0] ${windowBorder} shadow-[8px_8px_0px_rgba(0,0,0,0.3)] flex flex-col relative`}
+            onPointerDown={() => handleWindowClick('main')}
+            style={{ 
+                width: windowSize.width, 
+                height: windowSize.height,
+                zIndex: zIndices.main 
+            }}
+            className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-auto bg-[#c0c0c0] ${windowBorder} shadow-[8px_8px_0px_rgba(0,0,0,0.3)] flex flex-col relative`}
         >
             {/* Title Bar */}
             <div 
                 onPointerDown={(e) => dragControls.start(e)}
-                className="bg-[#000080] px-1 py-0.5 flex items-center justify-between cursor-default select-none h-8 flex-shrink-0"
+                className={`bg-gradient-to-r ${activeWindow === 'main' ? 'from-[#000080] to-[#1084d0]' : 'from-[#808080] to-[#b0b0b0]'} px-1 py-0.5 flex items-center justify-between cursor-default select-none h-8 flex-shrink-0`}
             >
                 <div className="flex items-center gap-2 text-white font-bold text-sm tracking-wide px-1">
                     <Terminal size={14} />
@@ -207,10 +485,9 @@ const RetroDesktop: React.FC<RetroDesktopProps> = ({ onLaunch }) => {
                      </svg>
                 </motion.div>
             </div>
-        </motion.div>
-      </div>
+      </motion.div>
 
-      {/* Taskbar (Top as requested) */}
+      {/* Taskbar */}
       <div className={`absolute top-0 left-0 right-0 h-10 bg-[#c0c0c0] border-b-2 border-white shadow-md z-50 flex items-center px-1 justify-between ${windowBorder} border-b-black border-r-black pointer-events-auto`}>
         
         <div className="flex items-center gap-2 h-full py-1">
@@ -224,6 +501,31 @@ const RetroDesktop: React.FC<RetroDesktopProps> = ({ onLaunch }) => {
             
             <div className="h-full w-px bg-gray-500 mx-1"></div>
             <div className="h-full w-px bg-white mx-1"></div>
+
+            {/* Taskbar Items */}
+            {isPaintOpen && (
+                <div 
+                    onClick={() => {
+                        if (activeWindow === 'paint') {
+                             // Minimize logic could go here, for now just focus
+                             handleWindowClick('paint');
+                        } else {
+                             handleWindowClick('paint');
+                        }
+                    }}
+                    className={`h-full px-2 flex items-center gap-1 text-sm cursor-pointer ${activeWindow === 'paint' ? insetBorder + ' bg-[#eeeeee]' : windowBorder} w-32 truncate`}
+                >
+                    <Palette size={14} className="text-black"/>
+                    <span className="text-black truncate">untitled - Paint</span>
+                </div>
+            )}
+            <div 
+                    onClick={() => handleWindowClick('main')}
+                    className={`h-full px-2 flex items-center gap-1 text-sm cursor-pointer ${activeWindow === 'main' ? insetBorder + ' bg-[#eeeeee]' : windowBorder} w-32 truncate ml-1`}
+                >
+                    <Terminal size={14} className="text-black"/>
+                    <span className="text-black truncate">CTRL+SHIFT.exe</span>
+            </div>
         </div>
 
         {/* Clock */}
@@ -261,6 +563,19 @@ const RetroDesktop: React.FC<RetroDesktopProps> = ({ onLaunch }) => {
                                 <span className="font-bold text-black group-hover:text-white">{item.label}</span>
                             </button>
                         ))}
+                        
+                        <button
+                            onClick={() => {
+                                setIsStartOpen(false);
+                                setIsPaintOpen(true);
+                                handleWindowClick('paint');
+                            }}
+                            className="w-full text-left px-4 py-3 hover:bg-[#000080] hover:text-white flex items-center gap-3 text-sm group focus:outline-none"
+                        >
+                             <span className="text-black group-hover:text-white"><Palette size={16} /></span>
+                             <span className="font-bold text-black group-hover:text-white">Paint</span>
+                        </button>
+
                         <div className="border-t border-gray-500 border-b border-white my-1"></div>
                         <button onClick={onLaunch} className="w-full text-left px-4 py-3 hover:bg-[#000080] hover:text-white flex items-center gap-3 text-sm group focus:outline-none">
                              <span className="font-bold ml-7 text-black group-hover:text-white">Shut Down...</span>

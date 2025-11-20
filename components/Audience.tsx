@@ -1,11 +1,12 @@
+
 import React from 'react';
 import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
 const data = [
-  { name: 'Creative Professional', value: 60, color: '#34D399' }, // Emerald-400
-  { name: 'Developers', value: 40, color: '#38BDF8' }, // Sky-400
+  { name: 'Creative Professional', value: 60, color: '#c084fc' }, // Purple-400
+  { name: 'Developers', value: 40, color: '#e879f9' }, // Fuchsia-400
 ];
 
 const tableData = [
@@ -40,11 +41,11 @@ const Audience: React.FC = () => {
                 {/* Legend */}
                 <div className="flex items-center gap-6 mb-10">
                     <div className="flex items-center gap-2">
-                    <div className="w-3 h-3 rounded-full bg-emerald-400"></div>
+                    <div className="w-3 h-3 rounded-full bg-purple-400"></div>
                     <span className="text-zinc-300 text-sm">Creative Professional</span>
                     </div>
                     <div className="flex items-center gap-2">
-                    <div className="w-3 h-3 rounded-full bg-sky-400"></div>
+                    <div className="w-3 h-3 rounded-full bg-fuchsia-400"></div>
                     <span className="text-zinc-300 text-sm">Developers</span>
                     </div>
                 </div>
@@ -58,7 +59,7 @@ const Audience: React.FC = () => {
                             transition={{ delay: 0.2, duration: 0.6 }}
                         >
                             <div className="flex items-baseline gap-4 mb-2">
-                                <span className="text-6xl font-bold text-emerald-400 font-sans">60%</span>
+                                <span className="text-6xl font-bold text-purple-400 font-sans">60%</span>
                             </div>
                             <p className="text-zinc-400 text-sm leading-relaxed max-w-xs">
                                 Creative professionals (designers, filmmakers, artists, producers) experimenting with or curious about next gen creative tools.
@@ -71,7 +72,7 @@ const Audience: React.FC = () => {
                             transition={{ delay: 0.3, duration: 0.6 }}
                         >
                              <div className="flex items-baseline gap-4 mb-2">
-                                <span className="text-6xl font-bold text-sky-400 font-sans">40%</span>
+                                <span className="text-6xl font-bold text-fuchsia-400 font-sans">40%</span>
                             </div>
                             <p className="text-zinc-400 text-sm leading-relaxed max-w-xs">
                                 Developers, creative technologists and technical folks, using AI tools to create new experiences.
@@ -131,11 +132,11 @@ const Audience: React.FC = () => {
                         <div key={idx} className="grid grid-cols-2 hover:bg-white/5 transition-colors group">
                             <div className="p-5 flex items-center justify-between gap-4">
                                 <span className="text-zinc-300 font-medium group-hover:text-white transition-colors text-sm sm:text-base">{row.role}</span>
-                                <span className="text-emerald-400 font-mono font-bold text-sm">{row.pct}</span>
+                                <span className="text-purple-400 font-mono font-bold text-sm">{row.pct}</span>
                             </div>
                             <div className="p-5 border-l border-zinc-800 flex items-center justify-between gap-4">
                                 <span className="text-zinc-300 font-medium group-hover:text-white transition-colors text-sm sm:text-base">{row.company}</span>
-                                <span className="text-sky-400 font-mono font-bold text-sm">{row.compPct}</span>
+                                <span className="text-fuchsia-400 font-mono font-bold text-sm">{row.compPct}</span>
                             </div>
                         </div>
                     ))}
