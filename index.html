@@ -14,13 +14,15 @@
     <link rel="preload" as="image" href="/assets/images/hero-image.jpg" />
     <link rel="preload" as="image" href="/assets/images/hero-image.webp" type="image/webp" />
     
-    <style>
-      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
-      @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&display=swap');
-      @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
-      @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
-      @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
-    </style>
+    <!-- Preload CDN script for TubesBackground -->
+    <link rel="preload" as="script" href="https://cdn.jsdelivr.net/npm/threejs-components@0.0.19/build/cursors/tubes1.min.js" />
+    
+    <!-- Optimized font loading: Using <link> instead of @import for non-blocking loading -->
+    <!-- Only loading fonts and weights actually used in the site -->
+    <!-- Inter: light(300), regular(400), medium(500), semibold(600), bold(700) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <!-- Syne: regular(400), semibold(600), bold(700), extrabold(800) - Critical for hero -->
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet" />
   </head>
   <body>
     <div id="root"></div>

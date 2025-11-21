@@ -34,7 +34,7 @@ const Growth: React.FC = () => {
         <motion.h2 
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            className="text-7xl font-syne font-semibold mb-20"
+            className="text-7xl font-syne font-semibold mb-20 text-center md:text-left"
         >
             Growth
         </motion.h2>
@@ -46,9 +46,9 @@ const Growth: React.FC = () => {
                     initial={{ opacity: 0, y: 40 }}
                     animate={inView ? { opacity: 1, y: 0 } : {}}
                     transition={{ delay: idx * 0.1, duration: 0.6 }}
-                    className="relative hover:bg-zinc-900/30 p-4 -m-4 rounded-lg transition-colors duration-500"
+                    className="relative hover:bg-zinc-900/30 p-4 -m-4 rounded-lg transition-colors duration-500 text-center md:text-left"
                 >
-                    <div className="flex items-baseline gap-2 mb-6">
+                    <div className="flex items-baseline gap-2 mb-6 justify-center md:justify-start">
                         <span className="text-6xl font-light tracking-tighter text-white">{stat.val}</span>
                     </div>
                     <div className="inline-block px-4 py-1 rounded-full border border-white/30 text-sm mb-6 font-medium">

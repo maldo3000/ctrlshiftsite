@@ -39,12 +39,12 @@ const ContentPillars: React.FC = () => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.8 }}
-                className="lg:col-span-1"
+                className="lg:col-span-1 text-center lg:text-left"
             >
                 <h2 className="text-6xl md:text-7xl font-syne font-semibold tracking-tighter leading-none mb-8">
                     Content<br/>Pillars
                 </h2>
-                <div className="h-px w-24 bg-white mb-8"></div>
+                <div className="h-px w-24 bg-white mb-8 mx-auto lg:mx-0"></div>
                 <p className="text-zinc-300 text-lg">
                     <span className="text-white font-bold">CTRL+SHIFT</span> talks and demos cover a range of subjects that usually fall within the scope of the following categories.
                 </p>
@@ -59,9 +59,9 @@ const ContentPillars: React.FC = () => {
                         animate={inView ? { opacity: 1, scale: 1 } : {}}
                         whileHover={{ y: -5, backgroundColor: "rgba(24, 24, 27, 1)" }}
                         transition={{ duration: 0.3 }}
-                        className="bg-zinc-950/90 p-10 transition-all duration-500 group backdrop-blur-sm cursor-pointer border border-transparent hover:border-white/5 relative z-10"
+                        className="bg-zinc-950/90 p-10 transition-all duration-500 group backdrop-blur-sm cursor-pointer border border-transparent hover:border-white/5 relative z-10 text-center md:text-left"
                     >
-                        <div className="mb-6 text-white group-hover:text-purple-400 transition-colors duration-300 group-hover:scale-110 origin-left transform">
+                        <div className="mb-6 text-white group-hover:text-purple-400 transition-colors duration-300 group-hover:scale-110 origin-left md:origin-left transform flex justify-center md:justify-start">
                             {pillar.icon}
                         </div>
                         <h3 className="text-2xl font-bold mb-4">{pillar.title}</h3>

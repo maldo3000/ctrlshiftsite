@@ -25,21 +25,21 @@ const Audience: React.FC = () => {
         <div ref={ref} className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
           
           {/* Left Column: Stats & Chart */}
-          <div className="space-y-12">
+          <div className="space-y-6">
             <motion.h2 
                 initial={{ opacity: 0, y: 20 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6 }}
-                className="text-7xl font-syne font-semibold tracking-tighter"
+                className="text-6xl lg:text-7xl font-syne font-semibold tracking-tighter mb-2"
             >
                 Audience
             </motion.h2>
             
             <div>
-                <h3 className="text-3xl font-medium mb-8">Who Shows Up?</h3>
+                <h3 className="text-2xl lg:text-3xl font-medium mb-6 lg:mb-8">Who Shows Up?</h3>
                 
                 {/* Legend */}
-                <div className="flex items-center gap-6 mb-10">
+                <div className="flex flex-wrap items-center gap-4 lg:gap-6 mb-6 lg:mb-8">
                     <div className="flex items-center gap-2">
                     <div className="w-3 h-3 rounded-full bg-purple-400"></div>
                     <span className="text-zinc-300 text-sm">Creative Professional</span>
@@ -50,18 +50,18 @@ const Audience: React.FC = () => {
                     </div>
                 </div>
 
-                <div className="flex flex-col xl:flex-row gap-8 items-center">
+                <div className="flex flex-col xl:flex-row gap-6 lg:gap-8 items-center">
                     {/* Stats List */}
-                    <div className="flex-1 space-y-10">
+                    <div className="flex-1 space-y-6 lg:space-y-8">
                         <motion.div 
                             initial={{ opacity: 0, x: -20 }}
                             animate={inView ? { opacity: 1, x: 0 } : {}}
                             transition={{ delay: 0.2, duration: 0.6 }}
                         >
                             <div className="flex items-baseline gap-4 mb-2">
-                                <span className="text-6xl font-bold text-purple-400 font-sans">60%</span>
+                                <span className="text-5xl lg:text-6xl font-bold text-purple-400 font-sans">60%</span>
                             </div>
-                            <p className="text-zinc-400 text-sm leading-relaxed max-w-xs">
+                            <p className="text-zinc-400 text-sm lg:text-base leading-relaxed max-w-xs">
                                 Creative professionals (designers, filmmakers, artists, producers) experimenting with or curious about next gen creative tools.
                             </p>
                         </motion.div>
@@ -72,9 +72,9 @@ const Audience: React.FC = () => {
                             transition={{ delay: 0.3, duration: 0.6 }}
                         >
                              <div className="flex items-baseline gap-4 mb-2">
-                                <span className="text-6xl font-bold text-fuchsia-400 font-sans">40%</span>
+                                <span className="text-5xl lg:text-6xl font-bold text-fuchsia-400 font-sans">40%</span>
                             </div>
-                            <p className="text-zinc-400 text-sm leading-relaxed max-w-xs">
+                            <p className="text-zinc-400 text-sm lg:text-base leading-relaxed max-w-xs">
                                 Developers, creative technologists and technical folks, using AI tools to create new experiences.
                             </p>
                         </motion.div>
@@ -85,7 +85,7 @@ const Audience: React.FC = () => {
                         initial={{ opacity: 0, scale: 0.8 }}
                         animate={inView ? { opacity: 1, scale: 1 } : {}}
                         transition={{ delay: 0.4, duration: 0.8 }}
-                        className="w-64 h-64 flex-shrink-0 hidden xl:block relative"
+                        className="w-48 h-48 lg:w-56 lg:h-56 xl:w-64 xl:h-64 flex-shrink-0 relative"
                     >
                         <ResponsiveContainer width="100%" height="100%">
                             <PieChart>
