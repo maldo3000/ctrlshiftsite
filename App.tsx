@@ -1,19 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, Suspense, lazy } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import Navigation from './components/Navigation';
 import Hero from './components/Hero';
-import WhoWeAre from './components/WhoWeAre';
-import Audience from './components/Audience';
-import EventFormat from './components/EventFormat';
-import ContentPillars from './components/ContentPillars';
-import PreviousTalks from './components/PreviousTalks';
-import Growth from './components/Growth';
-import Offering from './components/Offering';
-import ExpansionPlan from './components/ExpansionPlan';
-import CtrlshiftCon from './components/CtrlshiftCon';
-import Footer from './components/Footer';
 import FluidBackground from './components/FluidBackground';
-import RetroDesktop from './components/RetroDesktop';
+
+// Lazy load below-the-fold components for code splitting
+const RetroDesktop = lazy(() => import('./components/RetroDesktop'));
+const WhoWeAre = lazy(() => import('./components/WhoWeAre'));
+const Audience = lazy(() => import('./components/Audience'));
+const EventFormat = lazy(() => import('./components/EventFormat'));
+const ContentPillars = lazy(() => import('./components/ContentPillars'));
+const PreviousTalks = lazy(() => import('./components/PreviousTalks'));
+const Growth = lazy(() => import('./components/Growth'));
+const Offering = lazy(() => import('./components/Offering'));
+const ExpansionPlan = lazy(() => import('./components/ExpansionPlan'));
+const CtrlshiftCon = lazy(() => import('./components/CtrlshiftCon'));
+const Footer = lazy(() => import('./components/Footer'));
 
 function App() {
   const [isLaunched, setIsLaunched] = useState(false);
@@ -33,7 +35,9 @@ function App() {
             }}
             className="fixed inset-0 z-[100] origin-center"
           >
-            <RetroDesktop onLaunch={() => setIsLaunched(true)} />
+            <Suspense fallback={<div className="w-full h-full bg-[#008080]" />}>
+              <RetroDesktop onLaunch={() => setIsLaunched(true)} />
+            </Suspense>
           </motion.div>
         )}
       </AnimatePresence>
@@ -44,18 +48,22 @@ function App() {
       
       <main className="relative z-10">
         <Hero />
-        <WhoWeAre />
-        <Audience />
-        <EventFormat />
-        <ContentPillars />
-        <PreviousTalks />
-        <Growth />
-        <Offering />
-        <ExpansionPlan />
-        <CtrlshiftCon />
+        <Suspense fallback={null}>
+          <WhoWeAre />
+          <Audience />
+          <EventFormat />
+          <ContentPillars />
+          <PreviousTalks />
+          <Growth />
+          <Offering />
+          <ExpansionPlan />
+          <CtrlshiftCon />
+        </Suspense>
       </main>
       
-      <Footer />
+      <Suspense fallback={null}>
+        <Footer />
+      </Suspense>
     </div>
   );
 }

@@ -49,11 +49,16 @@ const Offering: React.FC = () => {
                 className="relative h-[600px] rounded-2xl overflow-hidden"
             >
                 <div className="absolute inset-0 bg-gradient-to-t from-blue-900/30 to-transparent mix-blend-overlay z-10"></div>
-                <img 
-                    src="/assets/images/offering.jpg" 
-                    alt="CTRL+SHIFT event presentation" 
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-1000"
-                />
+                <picture>
+                  <source srcSet="/assets/images/offering.webp" type="image/webp" />
+                  <img 
+                      src="/assets/images/offering.jpg" 
+                      alt="CTRL+SHIFT event presentation"
+                      loading="lazy"
+                      decoding="async"
+                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-1000"
+                  />
+                </picture>
             </motion.div>
 
         </div>

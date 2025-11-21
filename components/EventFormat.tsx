@@ -48,11 +48,16 @@ const EventFormat: React.FC = () => {
             
             <div className="mt-12 rounded-2xl overflow-hidden relative aspect-video group cursor-pointer">
                  <div className="absolute inset-0 bg-purple-900/20 mix-blend-overlay z-10 transition-opacity group-hover:opacity-0"></div>
-                 <img 
-                   src="/assets/images/event-format.jpg" 
-                   alt="Speaker presentation at CTRL+SHIFT" 
-                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                 />
+                 <picture>
+                   <source srcSet="/assets/images/event-format.webp" type="image/webp" />
+                   <img 
+                     src="/assets/images/event-format.jpg" 
+                     alt="Speaker presentation at CTRL+SHIFT"
+                     loading="lazy"
+                     decoding="async"
+                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                   />
+                 </picture>
             </div>
             
             <p className="mt-8 text-xl text-zinc-300 leading-relaxed">

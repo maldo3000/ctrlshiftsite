@@ -8,11 +8,34 @@ interface RevealImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   alt: string;
   className?: string;
   aspectRatio?: string; // e.g. "aspect-video", "aspect-[4/3]"
+  priority?: boolean; // For above-the-fold images (eager loading, no lazy)
+  width?: number; // Explicit width to prevent layout shift
+  height?: number; // Explicit height to prevent layout shift
 }
 
-const RevealImage: React.FC<RevealImageProps> = ({ src, alt, className = "", aspectRatio, ...props }) => {
+const RevealImage: React.FC<RevealImageProps> = ({ 
+  src, 
+  alt, 
+  className = "", 
+  aspectRatio, 
+  priority = false,
+  width,
+  height,
+  ...props 
+}) => {
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
+
+  // Generate WebP version path (fallback to original if WebP doesn't exist)
+  const getWebPSrc = (originalSrc: string) => {
+    // Only convert if it's a local image (starts with /)
+    if (originalSrc.startsWith('/')) {
+      return originalSrc.replace(/\.(jpg|jpeg|png)$/i, '.webp');
+    }
+    return null;
+  };
+
+  const webpSrc = getWebPSrc(src);
 
   return (
     <div className={`relative overflow-hidden bg-zinc-900 ${className} ${aspectRatio || ''}`}>
@@ -38,24 +61,39 @@ const RevealImage: React.FC<RevealImageProps> = ({ src, alt, className = "", asp
         </div>
       )}
 
-      {/* The Image */}
-      <motion.img
-        src={src}
-        alt={alt}
-        onLoad={() => setIsLoading(false)}
-        onError={() => {
+      {/* Optimized Image with WebP support */}
+      <picture>
+        {webpSrc && (
+          <source 
+            srcSet={webpSrc} 
+            type="image/webp"
+            onError={() => {
+              // If WebP fails, fallback to original will load
+            }}
+          />
+        )}
+        <motion.img
+          src={src}
+          alt={alt}
+          width={width}
+          height={height}
+          loading={priority ? "eager" : "lazy"}
+          decoding="async"
+          onLoad={() => setIsLoading(false)}
+          onError={() => {
             setIsLoading(false);
             setHasError(true);
-        }}
-        initial={{ opacity: 0, scale: 1.05 }}
-        animate={{ 
+          }}
+          initial={{ opacity: 0, scale: 1.05 }}
+          animate={{ 
             opacity: isLoading ? 0 : 1, 
             scale: isLoading ? 1.05 : 1 
-        }}
-        transition={{ duration: 0.7, ease: "easeOut" }}
-        className={`w-full h-full object-cover ${hasError ? 'hidden' : 'block'}`}
-        {...props}
-      />
+          }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+          className={`w-full h-full object-cover ${hasError ? 'hidden' : 'block'}`}
+          {...props}
+        />
+      </picture>
       
       {/* Scanline Overlay (Optional Aesthetic) */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/20 pointer-events-none mix-blend-overlay"></div>

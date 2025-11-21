@@ -81,11 +81,16 @@ const Hero: React.FC = () => {
           className="relative hidden lg:block h-full w-full pointer-events-auto"
         >
            <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-20"></div>
-           <img 
-              src="/assets/images/hero-image.jpg" 
-              alt="Speaker at CTRL+SHIFT"
-              className="w-full h-full object-cover rounded-2xl opacity-80 hover:opacity-100 transition-all duration-700"
-           />
+           <picture>
+             <source srcSet="/assets/images/hero-image.webp" type="image/webp" />
+             <img 
+                src="/assets/images/hero-image.jpg" 
+                alt="Speaker at CTRL+SHIFT"
+                loading="eager"
+                decoding="async"
+                className="w-full h-full object-cover rounded-2xl opacity-80 hover:opacity-100 transition-all duration-700"
+             />
+           </picture>
         </motion.div>
       </div>
 
