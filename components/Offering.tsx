@@ -50,8 +50,8 @@ const Offering: React.FC = () => {
             >
                 <div className="absolute inset-0 bg-gradient-to-t from-blue-900/30 to-transparent mix-blend-overlay z-10"></div>
                 <img 
-                    src="https://images.unsplash.com/photo-1558655146-d09347e0b7a9?q=80&w=1600&auto=format&fit=crop" 
-                    alt="AI Fashion Photography Presentation" 
+                    src="/assets/images/offering.jpg" 
+                    alt="CTRL+SHIFT event presentation" 
                     className="w-full h-full object-cover hover:scale-105 transition-transform duration-1000"
                 />
             </motion.div>

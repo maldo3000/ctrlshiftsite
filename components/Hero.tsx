@@ -16,7 +16,7 @@ const Hero: React.FC = () => {
         <TubesBackground />
       </div>
 
-      <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10 pointer-events-none">
+      <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 xl:gap-20 items-center relative z-10 pointer-events-none">
         
         <div className="pointer-events-auto">
           <motion.div
@@ -82,7 +82,7 @@ const Hero: React.FC = () => {
         >
            <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-20"></div>
            <img 
-              src="https://images.unsplash.com/photo-1544531586-fde5298cdd40?q=80&w=1200&auto=format&fit=crop" 
+              src="/assets/images/hero-image.jpg" 
               alt="Speaker at CTRL+SHIFT"
               className="w-full h-full object-cover rounded-2xl opacity-80 hover:opacity-100 transition-all duration-700"
            />

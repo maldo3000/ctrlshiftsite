@@ -6,28 +6,28 @@ const talks = [
     {
         name: "Nick St. Pierre",
         desc: "Spoke to us about the mindset behind creative output in a world of generative abundance.",
-        img: "https://picsum.photos/seed/nick/600/400",
+        img: "/assets/images/talk-1.jpg",
         color: "from-green-500/20 to-transparent"
     },
     {
         name: "Jay Allamar",
         role: "Director of Engineering @ Cohere",
-        desc: "Spoke about the concept of LLM’s as a thought partner.",
-        img: "https://picsum.photos/seed/jay/600/400",
+        desc: "Spoke about the concept of LLM's as a thought partner.",
+        img: "/assets/images/talk-2.jpg",
         color: "from-purple-500/20 to-transparent"
     },
     {
         name: "Wilfred Lee",
         role: "@theartistjourney",
         desc: "Known as @theartistjourney on instagram, Wilfred introduced the next frontier of filmmaking.",
-        img: "https://picsum.photos/seed/wilfred/600/400",
+        img: "/assets/images/talk-3.jpg",
         color: "from-blue-500/20 to-transparent"
     },
     {
         name: "Amir Mot",
         role: "Founder & Educator",
         desc: "Founder and online AI educator spoke about using AI tools like cursor as the full stack for idea execution.",
-        img: "https://picsum.photos/seed/amir/600/400",
+        img: "/assets/images/talk-4.jpg",
         color: "from-yellow-500/20 to-transparent"
     }
 ];

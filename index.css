@@ -1,0 +1,55 @@
+@import "tailwindcss";
+@config "./tailwind.config.js";
+
+/* Match Google AI Studio base font-size for consistent scaling */
+html {
+  font-size: 14px;
+}
+
+/* Wider container for better horizontal spacing */
+@layer utilities {
+  .container {
+    max-width: 100%;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+  
+  @media (min-width: 1024px) {
+    .container {
+      max-width: 1400px;
+      padding-left: 3rem;
+      padding-right: 3rem;
+    }
+  }
+  
+  @media (min-width: 1280px) {
+    .container {
+      max-width: 1600px;
+      padding-left: 4rem;
+      padding-right: 4rem;
+    }
+  }
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #050505;
+  color: #ffffff;
+  overflow-x: hidden;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #000;
+}
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+

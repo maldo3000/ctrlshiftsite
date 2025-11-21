@@ -34,6 +34,15 @@ const RetroDesktop: React.FC<RetroDesktopProps> = ({ onLaunch }) => {
   const [currentColor, setCurrentColor] = useState('#000000');
   const [currentTool, setCurrentTool] = useState<'brush' | 'eraser'>('brush');
 
+  // Icon positions - initialized once to prevent rearrangement on re-renders
+  const [iconPositions] = useState(() => ({
+    youtube: { top: Math.random() * 200 + 60, left: Math.random() * 100 + 20 },
+    twitter: { top: Math.random() * 200 + 60, left: Math.random() * 100 + 20 },
+    instagram: { top: Math.random() * 200 + 60, left: Math.random() * 100 + 20 },
+    paint: { top: Math.random() * 200 + 60, left: Math.random() * 100 + 20 },
+    documents: { top: window.innerHeight / 2, left: window.innerWidth - 120 }
+  }));
+
   // Constants
   const COLORS = [
     '#000000', '#808080', '#800000', '#808000', '#008000', '#008080', '#000080', '#800080',
@@ -145,7 +154,7 @@ const RetroDesktop: React.FC<RetroDesktopProps> = ({ onLaunch }) => {
       }
   };
 
-  const DesktopIcon = ({ icon: Icon, label, color = "text-blue-600", onClick }: any) => (
+  const DesktopIcon = ({ icon: Icon, label, color = "text-blue-600", onClick, position }: any) => (
     <motion.div
       drag
       dragConstraints={constraintsRef}
@@ -153,8 +162,8 @@ const RetroDesktop: React.FC<RetroDesktopProps> = ({ onLaunch }) => {
       whileDrag={{ scale: 1.1, zIndex: 50 }}
       className="flex flex-col items-center gap-1 w-24 p-2 cursor-pointer group absolute text-center"
       style={{ 
-        top: Math.random() * 200 + 60, 
-        left: Math.random() * 100 + 20 
+        top: position?.top || 60, 
+        left: position?.left || 20 
       }}
       onDoubleClick={onClick}
       onTouchStart={onClick} // For mobile friendliness
@@ -185,18 +194,21 @@ const RetroDesktop: React.FC<RetroDesktopProps> = ({ onLaunch }) => {
             icon={Youtube} 
             label="YouTube.exe" 
             color="text-red-600" 
+            position={iconPositions.youtube}
             onClick={() => window.open('https://www.youtube.com/@CTRLSHIFT-COMMUNITY', '_blank')} 
          />
          <DesktopIcon 
             icon={Twitter} 
             label="X_Client.lnk" 
             color="text-black" 
+            position={iconPositions.twitter}
             onClick={() => window.open('https://x.com/ctrlshift_ai', '_blank')} 
          />
          <DesktopIcon 
             icon={Instagram} 
             label="Insta_Bot.bat" 
             color="text-pink-600" 
+            position={iconPositions.instagram}
             onClick={() => window.open('https://www.instagram.com/ctrlshift_ai/', '_blank')} 
          />
          
@@ -204,6 +216,7 @@ const RetroDesktop: React.FC<RetroDesktopProps> = ({ onLaunch }) => {
             icon={Palette} 
             label="Paint.exe" 
             color="text-orange-600" 
+            position={iconPositions.paint}
             onClick={() => {
                 setIsPaintOpen(true);
                 handleWindowClick('paint');
@@ -213,7 +226,13 @@ const RetroDesktop: React.FC<RetroDesktopProps> = ({ onLaunch }) => {
          <motion.div
             drag
             dragConstraints={constraintsRef}
-            className="absolute top-1/2 right-20 flex flex-col items-center gap-1 w-24 cursor-pointer group"
+            dragMomentum={false}
+            whileDrag={{ scale: 1.1, zIndex: 50 }}
+            className="absolute flex flex-col items-center gap-1 w-24 cursor-pointer group"
+            style={{ 
+              top: iconPositions.documents.top, 
+              left: iconPositions.documents.left 
+            }}
          >
              <div className="w-10 h-10 flex items-center justify-center">
                  <Folder className="w-10 h-10 text-yellow-500 fill-yellow-500 drop-shadow-md" />
@@ -493,10 +512,15 @@ const RetroDesktop: React.FC<RetroDesktopProps> = ({ onLaunch }) => {
         <div className="flex items-center gap-2 h-full py-1">
             <button 
                 onClick={() => setIsStartOpen(!isStartOpen)}
-                className={`h-full px-2 flex items-center gap-1 font-bold ${isStartOpen ? insetBorder + ' bg-[#b0b0b0]' : windowBorder} active:bg-[#b0b0b0] focus:outline-none`}
+                className={`h-full px-2 flex items-center gap-1 font-bold ${isStartOpen ? pressedButtonBorder + ' bg-[#b0b0b0]' : buttonBorder} active:bg-[#b0b0b0] focus:outline-none`}
             >
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Windows_logo_and_wordmark_-_1995-2001.svg/512px-Windows_logo_and_wordmark_-_1995-2001.svg.png" alt="Win" className="w-5 h-auto opacity-80" />
-                <span className="ml-1 text-sm text-black">Start</span>
+                <div className="w-4 h-4 grid grid-cols-2 gap-0.5 flex-shrink-0">
+                    <div className="bg-[#000080]"></div>
+                    <div className="bg-[#008000]"></div>
+                    <div className="bg-[#ff0000]"></div>
+                    <div className="bg-[#ffff00]"></div>
+                </div>
+                <span className="text-sm text-black">Start</span>
             </button>
             
             <div className="h-full w-px bg-gray-500 mx-1"></div>

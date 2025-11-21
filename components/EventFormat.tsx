@@ -49,8 +49,8 @@ const EventFormat: React.FC = () => {
             <div className="mt-12 rounded-2xl overflow-hidden relative aspect-video group cursor-pointer">
                  <div className="absolute inset-0 bg-purple-900/20 mix-blend-overlay z-10 transition-opacity group-hover:opacity-0"></div>
                  <img 
-                   src="https://images.unsplash.com/photo-1551818255-e6e10975bc17?q=80&w=1600&auto=format&fit=crop" 
-                   alt="Speaker presentation on Agents" 
+                   src="/assets/images/event-format.jpg" 
+                   alt="Speaker presentation at CTRL+SHIFT" 
                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                  />
             </div>
