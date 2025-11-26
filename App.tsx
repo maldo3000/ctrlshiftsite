@@ -12,7 +12,7 @@ const EventFormat = lazy(() => import('./components/EventFormat'));
 const ContentPillars = lazy(() => import('./components/ContentPillars'));
 const PreviousTalks = lazy(() => import('./components/PreviousTalks'));
 const Growth = lazy(() => import('./components/Growth'));
-const Offering = lazy(() => import('./components/Offering'));
+const Collaboration = lazy(() => import('./components/Collaboration'));
 const ExpansionPlan = lazy(() => import('./components/ExpansionPlan'));
 const CtrlshiftCon = lazy(() => import('./components/CtrlshiftCon'));
 const Footer = lazy(() => import('./components/Footer'));
@@ -55,7 +55,7 @@ function App() {
           <ContentPillars />
           <PreviousTalks />
           <Growth />
-          <Offering />
+          <Collaboration />
           <ExpansionPlan />
           <CtrlshiftCon />
         </Suspense>

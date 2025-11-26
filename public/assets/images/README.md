@@ -12,3 +12,5 @@ After adding your image:
 
 The image will then be available at the URL above and will display in the "Who We Are" section.
 
+
+

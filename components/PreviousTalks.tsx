@@ -13,7 +13,7 @@ const talks = [
     },
     {
         name: "Jay Allamar",
-        role: "Director of Engineering @ Cohere",
+        role: "Author + Director, Engineering @ Cohere",
         social: "@JAYALAMMAR",
         desc: "Spoke about the concept of LLM's as a thought partner.",
         img: "/assets/images/talk-2.jpg",
