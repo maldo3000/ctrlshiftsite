@@ -209,7 +209,7 @@ const RetroDesktop: React.FC<RetroDesktopProps> = ({ onLaunch }) => {
             label="Insta_Bot.bat" 
             color="text-pink-600" 
             position={iconPositions.instagram}
-            onClick={() => window.open('https://www.instagram.com/ctrlshift_ai/', '_blank')} 
+            onClick={() => window.open('https://www.instagram.com/ctrlshift.to/', '_blank')} 
          />
          
          <DesktopIcon 

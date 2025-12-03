@@ -95,7 +95,7 @@ const Hero: React.FC = () => {
       </div>
 
       <motion.a
-         href="https://www.instagram.com/ctrlshift_ai/"
+         href="https://www.instagram.com/ctrlshift.to/"
          target="_blank"
          rel="noopener noreferrer"
          style={{ y: y2 }}
@@ -104,7 +104,7 @@ const Hero: React.FC = () => {
          transition={{ delay: 2, duration: 1 }}
          className="absolute bottom-10 right-10 hidden md:flex items-center gap-2 text-white pointer-events-auto z-50 hover:text-zinc-300 transition-colors cursor-pointer"
       >
-        <span>@ctrlshift_ai</span>
+        <span>@ctrlshift.to</span>
         <ArrowRight className="w-4 h-4" />
       </motion.a>
     </section>

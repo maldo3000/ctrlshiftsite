@@ -67,7 +67,7 @@ const Footer: React.FC = () => {
                     <div className="space-y-4">
                         <div className="flex items-center justify-between border-b border-white/20 pb-2 gap-4">
                             <span className="text-zinc-400 text-sm md:text-base whitespace-nowrap">Instagram</span>
-                            <a href="https://www.instagram.com/ctrlshift_ai/" target="_blank" rel="noopener noreferrer" className="font-bold hover:text-pink-500 transition-colors flex items-center gap-2 text-sm md:text-base whitespace-nowrap"><Instagram size={16}/> @ctrlshift_ai</a>
+                            <a href="https://www.instagram.com/ctrlshift.to/" target="_blank" rel="noopener noreferrer" className="font-bold hover:text-pink-500 transition-colors flex items-center gap-2 text-sm md:text-base whitespace-nowrap"><Instagram size={16}/> @ctrlshift.to</a>
                         </div>
                         <div className="flex items-center justify-between border-b border-white/20 pb-2 gap-4">
                             <span className="text-zinc-400 text-sm md:text-base whitespace-nowrap">X</span>
@@ -80,8 +80,8 @@ const Footer: React.FC = () => {
 
         <div className="mt-16 lg:mt-24 flex flex-col md:flex-row justify-between items-center text-sm text-zinc-600 pt-8 border-t border-white/10">
             <a href="https://www.ctrlshift.community" target="_blank" rel="noopener noreferrer" className="hover:text-zinc-400 transition-colors">www.ctrlshift.community</a>
-            <a href="https://www.instagram.com/ctrlshift_ai/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 mt-4 md:mt-0 hover:text-zinc-400 transition-colors">
-                <span>@ctrlshift_ai</span>
+            <a href="https://www.instagram.com/ctrlshift.to/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 mt-4 md:mt-0 hover:text-zinc-400 transition-colors">
+                <span>@ctrlshift.to</span>
                 <ArrowRight size={14} />
             </a>
         </div>
