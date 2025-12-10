@@ -20,7 +20,7 @@ const Collaboration: React.FC = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8 }}
             >
-                <h2 className="text-7xl font-syne font-semibold mb-4">Collaboration</h2>
+                <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-syne font-semibold mb-4">Partners</h2>
                 <h3 className="text-3xl font-light text-zinc-300 mb-12">Why brands partner with CTRL + SHIFT</h3>
                 
                 <div className="space-y-10">

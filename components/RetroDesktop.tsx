@@ -18,8 +18,14 @@ const RetroDesktop: React.FC<RetroDesktopProps> = ({ onLaunch }) => {
   const [activeWindow, setActiveWindow] = useState<'main' | 'paint'>('main');
   const [zIndices, setZIndices] = useState({ main: 20, paint: 10 });
 
-  // Main App Window State
-  const [windowSize, setWindowSize] = useState({ width: 400, height: 200 });
+  // Main App Window State - responsive initial size
+  const [windowSize, setWindowSize] = useState(() => {
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+    return { 
+      width: isMobile ? Math.min(320, window.innerWidth * 0.9) : 400, 
+      height: isMobile ? 180 : 200 
+    };
+  });
   const [isMaximized, setIsMaximized] = useState(false);
 
   // Paint App Window State
@@ -411,7 +417,7 @@ const RetroDesktop: React.FC<RetroDesktopProps> = ({ onLaunch }) => {
                 height: windowSize.height,
                 zIndex: zIndices.main 
             }}
-            className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-auto bg-[#c0c0c0] ${windowBorder} shadow-[8px_8px_0px_rgba(0,0,0,0.3)] flex flex-col relative`}
+            className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-auto bg-[#c0c0c0] ${windowBorder} shadow-[8px_8px_0px_rgba(0,0,0,0.3)] flex flex-col relative max-w-[90vw]`}
         >
             {/* Title Bar */}
             <div 
@@ -429,10 +435,18 @@ const RetroDesktop: React.FC<RetroDesktopProps> = ({ onLaunch }) => {
                     <button 
                         onClick={() => {
                             if(isMaximized) {
-                                setWindowSize({ width: 400, height: 200 });
+                                const isMobile = window.innerWidth < 768;
+                                setWindowSize({ 
+                                    width: isMobile ? Math.min(320, window.innerWidth * 0.9) : 400, 
+                                    height: isMobile ? 180 : 200 
+                                });
                                 setIsMaximized(false);
                             } else {
-                                setWindowSize({ width: Math.min(800, window.innerWidth * 0.8), height: Math.min(600, window.innerHeight * 0.8) });
+                                const isMobile = window.innerWidth < 768;
+                                setWindowSize({ 
+                                    width: isMobile ? Math.min(350, window.innerWidth * 0.95) : Math.min(800, window.innerWidth * 0.8), 
+                                    height: isMobile ? Math.min(250, window.innerHeight * 0.6) : Math.min(600, window.innerHeight * 0.8) 
+                                });
                                 setIsMaximized(true);
                             }
                         }}
@@ -488,9 +502,12 @@ const RetroDesktop: React.FC<RetroDesktopProps> = ({ onLaunch }) => {
                     drag
                     dragMomentum={false}
                     onDrag={(e, info) => {
+                        const isMobile = window.innerWidth < 768;
+                        const minWidth = isMobile ? 280 : 350;
+                        const minHeight = isMobile ? 160 : 180;
                         setWindowSize(prev => ({
-                            width: Math.max(350, prev.width + info.delta.x),
-                            height: Math.max(180, prev.height + info.delta.y)
+                            width: Math.max(minWidth, Math.min(prev.width + info.delta.x, isMobile ? window.innerWidth * 0.95 : 800)),
+                            height: Math.max(minHeight, Math.min(prev.height + info.delta.y, isMobile ? window.innerHeight * 0.7 : 600))
                         }));
                     }}
                     className="absolute bottom-0.5 right-0.5 w-4 h-4 cursor-se-resize flex items-end justify-end z-50"
