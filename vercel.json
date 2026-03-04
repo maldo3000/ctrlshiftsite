@@ -1,0 +1,28 @@
+{
+  "rewrites": [
+    {
+      "source": "/sponsors",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/sponsors/",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/sponsors/login",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/sponsors/login/",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/sponsors/vol-9",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/sponsors/vol-9/",
+      "destination": "/index.html"
+    }
+  ]
+}
