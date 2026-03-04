@@ -45,7 +45,7 @@ export default function SponsorsLandingPage() {
 
           <div className="mt-5 grid grid-cols-2 gap-3 text-sm">
             <div className="rounded-xl border border-white/10 bg-white/[0.03] p-3">
-              <p className="text-zinc-400">Approved</p>
+              <p className="text-zinc-400">Guest Count</p>
               <p className="mt-1 text-lg font-semibold text-white">{data?.audience.approvedCount ?? '...'}</p>
             </div>
             <div className="rounded-xl border border-white/10 bg-white/[0.03] p-3">

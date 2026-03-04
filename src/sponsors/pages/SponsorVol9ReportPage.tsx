@@ -520,7 +520,7 @@ export default function SponsorVol9ReportPage() {
             </p>
 
             <div className="mt-5 grid gap-3 sm:grid-cols-3">
-              <KpiCard label="Approved" value={String(data.audience.approvedCount)} />
+              <KpiCard label="Guest Count" value={String(data.audience.approvedCount)} />
               <KpiCard label="Checked In" value={String(data.audience.checkedInCount)} />
               <KpiCard label="Show Rate" value={formatPercent(data.audience.showRate)} />
             </div>
@@ -668,7 +668,7 @@ export default function SponsorVol9ReportPage() {
 
             <div className="mt-5 grid gap-3 sm:grid-cols-4">
               <KpiCard label="Total Records" value={String(data.audience.totalRecords)} />
-              <KpiCard label="Approved" value={String(data.audience.approvedCount)} />
+              <KpiCard label="Guest Count" value={String(data.audience.approvedCount)} />
               <KpiCard label="Checked In" value={String(data.audience.checkedInCount)} />
               <KpiCard label="Show Rate" value={formatPercent(data.audience.showRate)} />
             </div>
