@@ -1,0 +1,147 @@
+{
+  "kpis": {
+    "totalRevenue": 1778,
+    "totalExpenses": 3330.33,
+    "netPnL": -1552.33
+  },
+  "expensesByCategory": [
+    {
+      "name": "Venue",
+      "value": 678
+    },
+    {
+      "name": "Content",
+      "value": 500
+    },
+    {
+      "name": "Experience",
+      "value": 500
+    },
+    {
+      "name": "Marketing",
+      "value": 372.6
+    },
+    {
+      "name": "Bar",
+      "value": 313
+    },
+    {
+      "name": "Drinks",
+      "value": 256.9
+    },
+    {
+      "name": "Production",
+      "value": 156.46
+    },
+    {
+      "name": "Admin",
+      "value": 150
+    },
+    {
+      "name": "Food",
+      "value": 110
+    },
+    {
+      "name": "Luma Plus",
+      "value": 107.97
+    },
+    {
+      "name": "Ops + Misc",
+      "value": 97.4
+    },
+    {
+      "name": "Raffle Prizes",
+      "value": 88
+    }
+  ],
+  "lineItems": [
+    {
+      "id": "expense-1",
+      "category": "Venue",
+      "description": "New Stadium Fee - New Stadium",
+      "amount": 678
+    },
+    {
+      "id": "expense-2",
+      "category": "Admin",
+      "description": "SOP fee - Fee",
+      "amount": 150
+    },
+    {
+      "id": "expense-3",
+      "category": "Bar",
+      "description": "Bartender - Beer only, minimal setup",
+      "amount": 313
+    },
+    {
+      "id": "expense-4",
+      "category": "Production",
+      "description": "Lights rental - Long & McQuade",
+      "amount": 156.46
+    },
+    {
+      "id": "expense-5",
+      "category": "Content",
+      "description": "Camera shooter - Video - Shoot/Edit",
+      "amount": 500
+    },
+    {
+      "id": "expense-6",
+      "category": "Experience",
+      "description": "Installation - Interactive install",
+      "amount": 500
+    },
+    {
+      "id": "expense-7",
+      "category": "Marketing",
+      "description": "Social media ads - Facebook/IG ads",
+      "amount": 72.6
+    },
+    {
+      "id": "expense-8",
+      "category": "Marketing",
+      "description": "Poster creation - notagraphics page",
+      "amount": 300
+    },
+    {
+      "id": "expense-9",
+      "category": "Ops + Misc",
+      "description": "Ice + cups + misc supplies - Ice, cups, napkins, garbage bags, tape, cords",
+      "amount": 97.4
+    },
+    {
+      "id": "expense-10",
+      "category": "Luma Plus",
+      "description": "Luma Plus",
+      "amount": 107.97
+    },
+    {
+      "id": "expense-11",
+      "category": "Drinks",
+      "description": "Beer - Miller Lite 30 Pack",
+      "amount": 256.9
+    },
+    {
+      "id": "expense-12",
+      "category": "Food",
+      "description": "Popcorn Machine - FB marketplce",
+      "amount": 110
+    },
+    {
+      "id": "expense-13",
+      "category": "Raffle Prizes",
+      "description": "Raffle Prizes",
+      "amount": 88
+    }
+  ],
+  "revenueLineItems": [
+    {
+      "label": "Luma Revenue",
+      "amount": 940
+    },
+    {
+      "label": "Bar Sales",
+      "amount": 838
+    }
+  ]
+}

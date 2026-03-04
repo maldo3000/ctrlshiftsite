@@ -4,17 +4,27 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "generate:sponsor-data": "node scripts/generate-sponsor-data.mjs",
+    "predev": "npm run generate:sponsor-data",
+    "dev": "node server/server.mjs",
+    "prebuild": "npm run generate:sponsor-data",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "start": "NODE_ENV=production node server/server.mjs"
   },
   "dependencies": {
+    "@tanstack/react-table": "^8.21.3",
+    "cookie-parser": "^1.4.7",
+    "csv-parse": "^6.1.0",
+    "express": "^5.2.1",
     "framer-motion": "^12.23.24",
     "lucide-react": "^0.554.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-intersection-observer": "^10.0.0",
-    "recharts": "^3.4.1"
+    "react-router-dom": "^7.13.1",
+    "recharts": "^3.4.1",
+    "xlsx": "^0.18.5"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.1.17",

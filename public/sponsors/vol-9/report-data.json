@@ -1,0 +1,2935 @@
+{
+  "generatedAt": "2026-03-04T22:30:59.930Z",
+  "volume": 9,
+  "downloads": {
+    "guestsCsv": "/sponsors/vol-9/guests.csv",
+    "budgetXlsx": "/sponsors/vol-9/budget.xlsx",
+    "agendaPdf": "/sponsors/vol-9/agenda.pdf"
+  },
+  "audience": {
+    "totalRecords": 132,
+    "approvedCount": 104,
+    "checkedInCount": 89,
+    "showRate": 85.58,
+    "roleDistribution": [
+      {
+        "name": "Founder",
+        "value": 39
+      },
+      {
+        "name": "Creator",
+        "value": 28
+      },
+      {
+        "name": "Developer",
+        "value": 26
+      },
+      {
+        "name": "Artist",
+        "value": 23
+      },
+      {
+        "name": "Designer",
+        "value": 21
+      },
+      {
+        "name": "Curious",
+        "value": 18
+      },
+      {
+        "name": "Other",
+        "value": 11
+      },
+      {
+        "name": "Producer",
+        "value": 10
+      },
+      {
+        "name": "Student",
+        "value": 3
+      }
+    ],
+    "interestDistribution": [
+      {
+        "name": "🧠 AI agents / automation",
+        "value": 57
+      },
+      {
+        "name": "🎥 Video / Motion",
+        "value": 38
+      },
+      {
+        "name": "🧪 Tool builder / open source",
+        "value": 34
+      },
+      {
+        "name": "🪩 Live experiences / events",
+        "value": 30
+      },
+      {
+        "name": "🎭 Story / writing",
+        "value": 27
+      },
+      {
+        "name": "🕹️ Games / Interactive",
+        "value": 21
+      },
+      {
+        "name": "🎛️ TouchDesigner / visuals",
+        "value": 17
+      },
+      {
+        "name": "🧊 3D / CG",
+        "value": 17
+      },
+      {
+        "name": "🎧 Music / sound",
+        "value": 16
+      },
+      {
+        "name": "💼 Looking for work",
+        "value": 16
+      },
+      {
+        "name": "🧑‍🏫 Teaching / mentoring",
+        "value": 11
+      },
+      {
+        "name": "🤝 Hiring / looking for talent",
+        "value": 8
+      }
+    ],
+    "toolsDistribution": [
+      {
+        "name": "Claude",
+        "value": 32
+      },
+      {
+        "name": "Claude Code",
+        "value": 18
+      },
+      {
+        "name": "Gemini",
+        "value": 13
+      },
+      {
+        "name": "ChatGPT",
+        "value": 10
+      },
+      {
+        "name": "Cursor",
+        "value": 10
+      },
+      {
+        "name": "Figma",
+        "value": 8
+      },
+      {
+        "name": "Notion",
+        "value": 7
+      },
+      {
+        "name": "ComfyUI",
+        "value": 5
+      },
+      {
+        "name": "Codex",
+        "value": 5
+      },
+      {
+        "name": "Blender",
+        "value": 5
+      },
+      {
+        "name": "Kling",
+        "value": 5
+      },
+      {
+        "name": "Midjourney",
+        "value": 4
+      }
+    ],
+    "attendees": [
+      {
+        "id": "gst-CGpn26eeMD6wGMj",
+        "name": "Severin Wille",
+        "approvalStatus": "approved",
+        "checkedIn": true,
+        "role": "Creator",
+        "roles": [
+          "Creator"
+        ],
+        "interests": [
+          "🕹️ Games / Interactive",
+          "🧠 AI agents / automation",
+          "🧪 Tool builder / open source"
+        ],
+        "tools": [
+          "ComfyUI",
+          "Unreal Engine"
+        ],
+        "hotTake": "",
+        "workingOn": "https://prismagicxr.com"
+      },
+      {
+        "id": "gst-fdhxzujC9fSIqwu",
+        "name": "James Eberhardt",
+        "approvalStatus": "approved",
+        "checkedIn": true,
+        "role": "Unspecified",
+        "roles": [],
+        "interests": [],
+        "tools": [],
+        "hotTake": "",
+        "workingOn": ""
+      },
+      {
+        "id": "gst-nM70dZZQzZJl2R1",
+        "name": "stephan kozak",
+        "approvalStatus": "approved",
+        "checkedIn": true,
+        "role": "Unspecified",
+        "roles": [],
+        "interests": [],
+        "tools": [],
+        "hotTake": "",
+        "workingOn": ""
+      },
+      {
+        "id": "gst-1DHIopHajx0xS3z",
+        "name": "Alice Ye",
+        "approvalStatus": "approved",
+        "checkedIn": false,
+        "role": "Producer",
+        "roles": [
+          "Producer"
+        ],
+        "interests": [],
+        "tools": [],
+        "hotTake": "",
+        "workingOn": ""
+      },
+      {
+        "id": "gst-vLONOsh3QhHwoRd",
+        "name": "Tam Le",
+        "approvalStatus": "approved",
+        "checkedIn": true,
+        "role": "Developer, Artist, Curious, Student",
+        "roles": [
+          "Developer",
+          "Artist",
+          "Curious",
+          "Student"
+        ],
+        "interests": [
+          "🕹️ Games / Interactive",
+          "🎭 Story / writing",
+          "🎥 Video / Motion"
+        ],
+        "tools": [
+          "Claude Code",
+          "Claude",
+          "Codex"
+        ],
+        "hotTake": "",
+        "workingOn": ""
+      },
+      {
+        "id": "gst-0MOOw6uaQmN0imC",
+        "name": "Patrick Tu",
+        "approvalStatus": "approved",
+        "checkedIn": true,
+        "role": "Other",
+        "roles": [
+          "Other"
+        ],
+        "interests": [
+          "🎭 Story / writing",
+          "🎧 Music / sound",
+          "🪩 Live experiences / events"
+        ],
+        "tools": [
+          "Gemini"
+        ],
+        "hotTake": "There are three r’s in strawberry.",
+        "workingOn": ""
+      },
+      {
+        "id": "gst-rSQr9l8Lleo56eA",
+        "name": "Jonathan Williamson",
+        "approvalStatus": "approved",
+        "checkedIn": false,
+        "role": "Artist",
+        "roles": [
+          "Artist"
+        ],
+        "interests": [
+          "🎥 Video / Motion",
+          "🎛️ TouchDesigner / visuals",
+          "🪩 Live experiences / events"
+        ],
+        "tools": [],
+        "hotTake": "",
+        "workingOn": ""
+      },
+      {
+        "id": "gst-FMt995xoaDvBQGY",
+        "name": "Jonathan T",
+        "approvalStatus": "approved",
+        "checkedIn": true,
+        "role": "Developer, Founder",
+        "roles": [
+          "Developer",
+          "Founder"
+        ],
+        "interests": [
+          "🧪 Tool builder / open source",
+          "🧠 AI agents / automation",
+          "🕹️ Games / Interactive"
+        ],
+        "tools": [
+          "Claude Code",
+          "Claude",
+          "Codex"
+        ],
+        "hotTake": "Taste is king",
+        "workingOn": "not yet"
+      },
+      {
+        "id": "gst-giwkOTHw7gFaZx2",
+        "name": "Alexia Monize",
+        "approvalStatus": "approved",
+        "checkedIn": true,
+        "role": "Artist",
+        "roles": [
+          "Artist"
+        ],
+        "interests": [
+          "🎧 Music / sound",
+          "🎛️ TouchDesigner / visuals",
+          "🪩 Live experiences / events"
+        ],
+        "tools": [
+          "Claude",
+          "ChatGPT"
+        ],
+        "hotTake": "ai is only as smart as the people using it.",
+        "workingOn": "album"
+      },
+      {
+        "id": "gst-UySotOjIEKahJ0n",
+        "name": "Rishi Bhatia",
+        "approvalStatus": "approved",
+        "checkedIn": true,
+        "role": "Founder",
+        "roles": [
+          "Founder"
+        ],
+        "interests": [
+          "🧠 AI agents / automation",
+          "🎭 Story / writing",
+          "🎧 Music / sound"
+        ],
+        "tools": [
+          "Claude Code",
+          "Claude",
+          "ChatGPT"
+        ],
+        "hotTake": "AI/ Gen Media as a tool to get social media curious folks to get their voice out there",
+        "workingOn": "https://ceroh.ai"
+      },
+      {
+        "id": "gst-2MH8nK0uR1nrBio",
+        "name": "Nomico",
+        "approvalStatus": "approved",
+        "checkedIn": true,
+        "role": "Founder",
+        "roles": [
+          "Founder"
+        ],
+        "interests": [],
+        "tools": [],
+        "hotTake": "",
+        "workingOn": ""
+      },
+      {
+        "id": "gst-ewX1ZvBdzcXGCOB",
+        "name": "Geoff Beamish",
+        "approvalStatus": "approved",
+        "checkedIn": true,
+        "role": "Founder",
+        "roles": [
+          "Founder"
+        ],
+        "interests": [
+          "🧪 Tool builder / open source",
+          "🧠 AI agents / automation"
+        ],
+        "tools": [
+          "Claude Code",
+          "Claude"
+        ],
+        "hotTake": "",
+        "workingOn": "https://springus.io"
+      },
+      {
+        "id": "gst-bHDNJcZ9eIy4v4W",
+        "name": "Alessandro Solla",
+        "approvalStatus": "approved",
+        "checkedIn": true,
+        "role": "Creator",
+        "roles": [
+          "Creator"
+        ],
+        "interests": [
+          "🎭 Story / writing",
+          "🧠 AI agents / automation",
+          "🎥 Video / Motion"
+        ],
+        "tools": [
+          "Gemini",
+          "CapCut"
+        ],
+        "hotTake": "It would make life easier for a great deal of people and for another it going to cause stress and is going to force people to grow in their field",
+        "workingOn": ""
+      },
+      {
+        "id": "gst-TwlaMigibt5zcNV",
+        "name": "Bastian Neumann",
+        "approvalStatus": "approved",
+        "checkedIn": true,
+        "role": "Other",
+        "roles": [
+          "Other"
+        ],
+        "interests": [],
+        "tools": [],
+        "hotTake": "",
+        "workingOn": ""
+      },
+      {
+        "id": "gst-oZnthVJTttunVWE",
+        "name": "Miriam Arbus",
+        "approvalStatus": "approved",
+        "checkedIn": true,
+        "role": "Producer",
+        "roles": [
+          "Producer"
+        ],
+        "interests": [
+          "🧊 3D / CG",
+          "🕹️ Games / Interactive",
+          "🪩 Live experiences / events"
+        ],
+        "tools": [
+          "Perplexity"
+        ],
+        "hotTake": "It’s a tool and it still always comes down to how we use it",
+        "workingOn": ""
+      },
+      {
+        "id": "gst-YQS4okiiBvSprS0",
+        "name": "Jaron Andre",
+        "approvalStatus": "approved",
+        "checkedIn": true,
+        "role": "Developer",
+        "roles": [
+          "Developer"
+        ],
+        "interests": [
+          "🎧 Music / sound",
+          "🧊 3D / CG",
+          "🧪 Tool builder / open source"
+        ],
+        "tools": [
+          "Cursor"
+        ],
+        "hotTake": "",
+        "workingOn": ""
+      },
+      {
+        "id": "gst-iUareBC4GNGofn4",
+        "name": "Carlos Ibarra",
+        "approvalStatus": "approved",
+        "checkedIn": true,
+        "role": "Artist, Founder, Producer",
+        "roles": [
+          "Artist",
+          "Founder",
+          "Producer"
+        ],
+        "interests": [
+          "🪩 Live experiences / events",
+          "🎥 Video / Motion",
+          "🧊 3D / CG"
+        ],
+        "tools": [
+          "Blender"
+        ],
+        "hotTake": "",
+        "workingOn": "https://www.ammcollections.com"
+      },
+      {
+        "id": "gst-iaIO8bk4J9IvMIL",
+        "name": "Dafne Hernandez",
+        "approvalStatus": "approved",
+        "checkedIn": true,
+        "role": "Designer, Artist, Creator",
+        "roles": [
+          "Designer",
+          "Artist",
+          "Creator"
+        ],
+        "interests": [
+          "🕹️ Games / Interactive",
+          "🧊 3D / CG",
+          "🎥 Video / Motion"
+        ],
+        "tools": [
+          "Adobe Suite Zbrush"
+        ],
+        "hotTake": "What is the line between use them as a tool and replace or own thoughts",
+        "workingOn": "https://instagram.com/draftne_"
+      },
+      {
+        "id": "gst-dsC55FKeBcVE2rj",
+        "name": "Joel Nwamba",
+        "approvalStatus": "approved",
+        "checkedIn": false,
+        "role": "Other, Developer",
+        "roles": [
+          "Other",
+          "Developer"
+        ],
+        "interests": [
+          "🧠 AI agents / automation",
+          "🧪 Tool builder / open source",
+          "🎭 Story / writing",
+          "🤝 Hiring / looking for talent"
+        ],
+        "tools": [
+          "ChatGPT"
+        ],
+        "hotTake": "",
+        "workingOn": ""
+      },
+      {
+        "id": "gst-1Bm7J2EnFPDGGxB",
+        "name": "Jasminee Persaud",
+        "approvalStatus": "approved",
+        "checkedIn": true,
+        "role": "Curious",
+        "roles": [
+          "Curious"
+        ],
+        "interests": [
+          "🌱 Beginner-friendly",
+          "🧪 Tool builder / open source",
+          "🧠 AI agents / automation"
+        ],
+        "tools": [
+          "Claude",
+          "ChatGPT"
+        ],
+        "hotTake": "What are your top 5 resources (such as newsletters, sites, social media feeds, etc) to keep up to date with the rapid evolution of how the use of AI tools are rapidly changing?",
+        "workingOn": "An app to make elimination diets and tracking the impact of food"
+      },
+      {
+        "id": "gst-xcJ2MoKkPYqDr13",
+        "name": "James Kang",
+        "approvalStatus": "approved",
+        "checkedIn": true,
+        "role": "Founder",
+        "roles": [
+          "Founder"
+        ],
+        "interests": [
+          "🧠 AI agents / automation",
+          "🧪 Tool builder / open source",
+          "🤝 Hiring / looking for talent"
+        ],
+        "tools": [
+          "Claude"
+        ],
+        "hotTake": "",
+        "workingOn": ""
+      },
+      {
+        "id": "gst-RftWpchzqqV0Awt",
+        "name": "Adam Silcox-Vanwyk",
+        "approvalStatus": "approved",
+        "checkedIn": true,
+        "role": "Artist",
+        "roles": [
+          "Artist"
+        ],
+        "interests": [
+          "🎥 Video / Motion"
+        ],
+        "tools": [
+          "Blender",
+          "Midjourney"
+        ],
+        "hotTake": "",
+        "workingOn": ""
+      },
+      {
+        "id": "gst-2ut5tLmFrCnmNpr",
+        "name": "Paul Gadi",
+        "approvalStatus": "approved",
+        "checkedIn": true,
+        "role": "Founder, Developer, Designer, Creator",
+        "roles": [
+          "Founder",
+          "Developer",
+          "Designer",
+          "Creator"
+        ],
+        "interests": [
+          "🕹️ Games / Interactive",
+          "💼 Looking for work"
+        ],
+        "tools": [
+          "Claude Code",
+          "Claude"
+        ],
+        "hotTake": "These AI have souls!",
+        "workingOn": "Games for ai agents"
+      },
+      {
+        "id": "gst-F7UF91RH0iYT9uK",
+        "name": "Anna Chang",
+        "approvalStatus": "approved",
+        "checkedIn": true,
+        "role": "Creator",
+        "roles": [
+          "Creator"
+        ],
+        "interests": [
+          "🎭 Story / writing"
+        ],
+        "tools": [
+          "Claude"
+        ],
+        "hotTake": "How to optimize workflow in content creation",
+        "workingOn": "content strategy service"
+      },
+      {
+        "id": "gst-NW96s9pKjVhvFsN",
+        "name": "Arthur Yeung",
+        "approvalStatus": "approved",
+        "checkedIn": false,
+        "role": "Producer",
+        "roles": [
+          "Producer"
+        ],
+        "interests": [
+          "🎥 Video / Motion",
+          "🕹️ Games / Interactive",
+          "🤝 Hiring / looking for talent"
+        ],
+        "tools": [
+          "ChatGPT",
+          "Gemini"
+        ],
+        "hotTake": "Gotta know how it works & fails, asap",
+        "workingOn": ""
+      },
+      {
+        "id": "gst-p6qZhe0EKYaSt3P",
+        "name": "Thiago Carneiro",
+        "approvalStatus": "approved",
+        "checkedIn": true,
+        "role": "Artist, Designer, Creator",
+        "roles": [
+          "Artist",
+          "Designer",
+          "Creator"
+        ],
+        "interests": [
+          "🧊 3D / CG",
+          "🎥 Video / Motion",
+          "🕹️ Games / Interactive"
+        ],
+        "tools": [
+          "Claude",
+          "Unreal Engine"
+        ],
+        "hotTake": "",
+        "workingOn": ""
+      },
+      {
+        "id": "gst-WQNkHIPzzuILCYH",
+        "name": "Linda",
+        "approvalStatus": "declined",
+        "checkedIn": false,
+        "role": "Curious",
+        "roles": [
+          "Curious"
+        ],
+        "interests": [
+          "🎭 Story / writing",
+          "🎥 Video / Motion",
+          "🧑‍🏫 Teaching / mentoring"
+        ],
+        "tools": [
+          "Claude",
+          "ChatGPT"
+        ],
+        "hotTake": "Question of how to segregate attention away from slop and towards quality",
+        "workingOn": "Partnerships @ Bluesky"
+      },
+      {
+        "id": "gst-p3rE4ujd8CP2pBW",
+        "name": "Chris Bahry",
+        "approvalStatus": "approved",
+        "checkedIn": false,
+        "role": "Founder, Designer",
+        "roles": [
+          "Founder",
+          "Designer"
+        ],
+        "interests": [],
+        "tools": [
+          "Claude",
+          "ComfyUI",
+          "Houdini"
+        ],
+        "hotTake": "Will machine intelligence develop true taste and judgement? What's important for us to protect and cherish as we enter this new era of human-machine co-creation? As digital creators, we stand at a juncture that challenges us to look deep within to establish a new baseline for maintaining purpose, integrity and meaningful creative authorship.",
+        "workingOn": "https://www.thinkforever.com"
+      },
+      {
+        "id": "gst-AyHQaYkVPvuGe8o",
+        "name": "Tyler Sun",
+        "approvalStatus": "approved",
+        "checkedIn": true,
+        "role": "Curious",
+        "roles": [
+          "Curious"
+        ],
+        "interests": [
+          "🧪 Tool builder / open source",
+          "🌱 Beginner-friendly",
+          "🎧 Music / sound"
+        ],
+        "tools": [
+          "Python",
+          "Reaper"
+        ],
+        "hotTake": "I've never seen AI generate anything truly novel and I'm not sure if I ever will",
+        "workingOn": "not at the moment, curious to learn more about experimental forms of art"
+      },
+      {
+        "id": "gst-U0iGBCNDigD526z",
+        "name": "Disha Sareen",
+        "approvalStatus": "approved",
+        "checkedIn": false,
+        "role": "Creator",
+        "roles": [
+          "Creator"
+        ],
+        "interests": [
+          "🧪 Tool builder / open source",
+          "🧠 AI agents / automation",
+          "🎥 Video / Motion",
+          "🪩 Live experiences / events"
+        ],
+        "tools": [],
+        "hotTake": "",
+        "workingOn": ""
+      },
+      {
+        "id": "gst-xWlzFpi94d6pSBs",
+        "name": "Targiv Roham",
+        "approvalStatus": "approved",
+        "checkedIn": true,
+        "role": "Founder, Creator, Curious",
+        "roles": [
+          "Founder",
+          "Creator",
+          "Curious"
+        ],
+        "interests": [
+          "🎥 Video / Motion",
+          "🎭 Story / writing",
+          "💼 Looking for work",
+          "🪩 Live experiences / events"
+        ],
+        "tools": [
+          "ChatGPT",
+          "DaVinci Resolve"
+        ],
+        "hotTake": "AI tools have massive potential in terms of reducing the human input but I'd love to see how AI can develop into a creativity booster and exemplifies art, and creativity instead of challenging it.",
+        "workingOn": "Building a creative collective to explore art trhough cinematography, photgraphy, music but most importantly creating a community of likeminded creatives and folks who appreacite good work."
+      },
+      {
+        "id": "gst-8vVBn9G0YVR9WAi",
+        "name": "Martin Czachor",
+        "approvalStatus": "approved",
+        "checkedIn": true,
+        "role": "Creator",
+        "roles": [
+          "Creator"
+        ],
+        "interests": [
+          "🎥 Video / Motion",
+          "🎛️ TouchDesigner / visuals",
+          "🧠 AI agents / automation"
+        ],
+        "tools": [],
+        "hotTake": "",
+        "workingOn": ""
+      },
+      {
+        "id": "gst-oUzxxJeiaGt3dgc",
+        "name": "Swathi D",
+        "approvalStatus": "declined",
+        "checkedIn": false,
+        "role": "Curious",
+        "roles": [
+          "Curious"
+        ],
+        "interests": [],
+        "tools": [],
+        "hotTake": "",
+        "workingOn": ""
+      },
+      {
+        "id": "gst-Lte19OzhluDMYq1",
+        "name": "Sahil Lulla",
+        "approvalStatus": "approved",
+        "checkedIn": true,
+        "role": "Founder, Developer, Creator",
+        "roles": [
+          "Founder",
+          "Developer",
+          "Creator"
+        ],
+        "interests": [
+          "🎥 Video / Motion",
+          "🧪 Tool builder / open source",
+          "🧠 AI agents / automation"
+        ],
+        "tools": [
+          "Gemini",
+          "Kling",
+          "Seedance",
+          "Loraverse"
+        ],
+        "hotTake": "I'd like to see Adobe shrink into just a PDF company",
+        "workingOn": "Im a co founder of Bitrate Bash, a Gen AI research and post production studio & Loraverse, the continuity engine for AI Storytelling"
+      },
+      {
+        "id": "gst-pBxk2HWAC4LbG9p",
+        "name": "Sonya Moorjani",
+        "approvalStatus": "approved",
+        "checkedIn": true,
+        "role": "Founder, Creator",
+        "roles": [
+          "Founder",
+          "Creator"
+        ],
+        "interests": [
+          "🎥 Video / Motion",
+          "🎭 Story / writing",
+          "🕹️ Games / Interactive"
+        ],
+        "tools": [
+          "Fal AI",
+          "Google Flow",
+          "Kling",
+          "Loraverse"
+        ],
+        "hotTake": "While Gen Ai is evolving fast, the necessary infrastructure required to harness the power of gen ai, for creative pipelines, is still missing.",
+        "workingOn": "Im a co founder of Bitrate Bash, a Gen AI research and post production studio & Loraverse, the continuity engine for AI Storytelling"
+      },
+      {
+        "id": "gst-1s0LHx6wTRmHBk9",
+        "name": "Noah van Hart",
+        "approvalStatus": "approved",
+        "checkedIn": true,
+        "role": "Founder, Designer, Developer",
+        "roles": [
+          "Founder",
+          "Designer",
+          "Developer"
+        ],
+        "interests": [
+          "🧠 AI agents / automation",
+          "💼 Looking for work",
+          "🪩 Live experiences / events",
+          "🧪 Tool builder / open source"
+        ],
+        "tools": [
+          "Claude",
+          "OpenClaw"
+        ],
+        "hotTake": "Ai slop isn’t slop",
+        "workingOn": "airbour"
+      },
+      {
+        "id": "gst-bnXE0C7Gj7tfGJV",
+        "name": "Harinie",
+        "approvalStatus": "approved",
+        "checkedIn": true,
+        "role": "Creator, Artist, Founder, Student, Producer",
+        "roles": [
+          "Creator",
+          "Artist",
+          "Founder",
+          "Student",
+          "Producer"
+        ],
+        "interests": [
+          "🎧 Music / sound",
+          "🪩 Live experiences / events",
+          "🕹️ Games / Interactive"
+        ],
+        "tools": [
+          "Intuition",
+          "Meditation",
+          "Wellness Facilitators",
+          "Social Media",
+          "Rewiring The Mind",
+          "Authentic Storytelling",
+          "Learning",
+          "Teaching",
+          "Music"
+        ],
+        "hotTake": "Security and privacy concerns when building on vibe code platforms",
+        "workingOn": ""
+      },
+      {
+        "id": "gst-CDHEKyLhbhebsja",
+        "name": "Keatan",
+        "approvalStatus": "approved",
+        "checkedIn": true,
+        "role": "Creator",
+        "roles": [
+          "Creator"
+        ],
+        "interests": [
+          "🧠 AI agents / automation",
+          "🎥 Video / Motion",
+          "🎭 Story / writing"
+        ],
+        "tools": [
+          "Notion",
+          "CapCut"
+        ],
+        "hotTake": "I heard human generated media is cooked by 2028… I don’t want to believe it.",
+        "workingOn": "https://youtube.com/@koldkeat?si=CSQU7O8BDS2Ya7Fb"
+      },
+      {
+        "id": "gst-M4c9Ng60MSjG1m2",
+        "name": "Gerald Akenten",
+        "approvalStatus": "approved",
+        "checkedIn": true,
+        "role": "Curious, Other, Developer",
+        "roles": [
+          "Curious",
+          "Other",
+          "Developer"
+        ],
+        "interests": [
+          "🕹️ Games / Interactive",
+          "🎧 Music / sound",
+          "💼 Looking for work"
+        ],
+        "tools": [
+          "Claude Code",
+          "Claude",
+          "Cursor"
+        ],
+        "hotTake": "",
+        "workingOn": "interactive sports app"
+      },
+      {
+        "id": "gst-w9HOeuG6Yj756iL",
+        "name": "Narges Mirheydari",
+        "approvalStatus": "declined",
+        "checkedIn": false,
+        "role": "Student",
+        "roles": [
+          "Student"
+        ],
+        "interests": [
+          "💼 Looking for work"
+        ],
+        "tools": [],
+        "hotTake": "",
+        "workingOn": ""
+      },
+      {
+        "id": "gst-v76bzC2fpxdvdHk",
+        "name": "Adriana Martinez",
+        "approvalStatus": "approved",
+        "checkedIn": true,
+        "role": "Producer",
+        "roles": [
+          "Producer"
+        ],
+        "interests": [
+          "🧠 AI agents / automation",
+          "🤝 Hiring / looking for talent",
+          "🧑‍🏫 Teaching / mentoring"
+        ],
+        "tools": [
+          "Friends"
+        ],
+        "hotTake": "Social media content",
+        "workingOn": "Instragram @adrianatequilamaster"
+      },
+      {
+        "id": "gst-xdCzNadAYDFCfym",
+        "name": "Jude",
+        "approvalStatus": "approved",
+        "checkedIn": true,
+        "role": "Creator, Artist, Founder",
+        "roles": [
+          "Creator",
+          "Artist",
+          "Founder"
+        ],
+        "interests": [
+          "🧠 AI agents / automation",
+          "🎭 Story / writing",
+          "🎛️ TouchDesigner / visuals",
+          "🪩 Live experiences / events"
+        ],
+        "tools": [
+          "Gemini"
+        ],
+        "hotTake": "How can I create consistent brand visuals with AI?",
+        "workingOn": ""
+      },
+      {
+        "id": "gst-uCJwtsLgumTs1Tf",
+        "name": "Ming Iu",
+        "approvalStatus": "approved",
+        "checkedIn": true,
+        "role": "Developer",
+        "roles": [
+          "Developer"
+        ],
+        "interests": [],
+        "tools": [],
+        "hotTake": "",
+        "workingOn": ""
+      },
+      {
+        "id": "gst-E6EkWdGExrNaEpf",
+        "name": "Alex Morales",
+        "approvalStatus": "approved",
+        "checkedIn": true,
+        "role": "Developer",
+        "roles": [
+          "Developer"
+        ],
+        "interests": [
+          "🧠 AI agents / automation",
+          "🧪 Tool builder / open source",
+          "🤝 Hiring / looking for talent"
+        ],
+        "tools": [
+          "Codex"
+        ],
+        "hotTake": "They won't replace humans.",
+        "workingOn": "https://Sure, dois.fr and httpstate.com"
+      },
+      {
+        "id": "gst-ItxlMD21wibekGF",
+        "name": "Mary Li",
+        "approvalStatus": "approved",
+        "checkedIn": true,
+        "role": "Designer",
+        "roles": [
+          "Designer"
+        ],
+        "interests": [
+          "🧠 AI agents / automation",
+          "🧪 Tool builder / open source",
+          "🎥 Video / Motion"
+        ],
+        "tools": [
+          "Figma"
+        ],
+        "hotTake": "How do I use AI to help automate my work process",
+        "workingOn": ""
+      },
+      {
+        "id": "gst-qw9aoOSu8RclGBt",
+        "name": "Violet Wang",
+        "approvalStatus": "approved",
+        "checkedIn": true,
+        "role": "Designer",
+        "roles": [
+          "Designer"
+        ],
+        "interests": [
+          "🎥 Video / Motion",
+          "🧠 AI agents / automation",
+          "🧪 Tool builder / open source",
+          "🎛️ TouchDesigner / visuals",
+          "🪩 Live experiences / events"
+        ],
+        "tools": [
+          "Claude Code",
+          "Claude",
+          "Figma"
+        ],
+        "hotTake": "How to make AI generated content less AI?",
+        "workingOn": ""
+      },
+      {
+        "id": "gst-WkyUcz6GjtGbka1",
+        "name": "Apurva",
+        "approvalStatus": "approved",
+        "checkedIn": true,
+        "role": "Founder",
+        "roles": [
+          "Founder"
+        ],
+        "interests": [
+          "🧠 AI agents / automation",
+          "🎥 Video / Motion"
+        ],
+        "tools": [
+          "Claude",
+          "Notion"
+        ],
+        "hotTake": "AI tools will come with more checks and balances and protocols to prevent misuse",
+        "workingOn": ""
+      },
+      {
+        "id": "gst-bwqdekbNcpvupk0",
+        "name": "Varshitha Venkatesh",
+        "approvalStatus": "approved",
+        "checkedIn": true,
+        "role": "Developer",
+        "roles": [
+          "Developer"
+        ],
+        "interests": [
+          "🧠 AI agents / automation",
+          "🧪 Tool builder / open source",
+          "💼 Looking for work",
+          "🪩 Live experiences / events"
+        ],
+        "tools": [
+          "Claude Code",
+          "Claude",
+          "ChatGPT",
+          "Cursor",
+          "Notion"
+        ],
+        "hotTake": "Generative media needs to chill out, we need more research on ethics and guardrails and actually have people implement those in big tech as more people are using it",
+        "workingOn": ""
+      },
+      {
+        "id": "gst-DvCCRMBJXSHKSbS",
+        "name": "Hugo Voss",
+        "approvalStatus": "approved",
+        "checkedIn": false,
+        "role": "Designer",
+        "roles": [
+          "Designer"
+        ],
+        "interests": [
+          "🧊 3D / CG",
+          "🎛️ TouchDesigner / visuals",
+          "🕹️ Games / Interactive"
+        ],
+        "tools": [],
+        "hotTake": "Curious about world models for training but also for generative content creation.",
+        "workingOn": "Not right now"
+      },
+      {
+        "id": "gst-MBJC1LdZLEWR6g8",
+        "name": "Nye Dafalla",
+        "approvalStatus": "approved",
+        "checkedIn": true,
+        "role": "Founder",
+        "roles": [
+          "Founder"
+        ],
+        "interests": [
+          "🧠 AI agents / automation",
+          "🧪 Tool builder / open source",
+          "🤝 Hiring / looking for talent",
+          "🎛️ TouchDesigner / visuals"
+        ],
+        "tools": [
+          "Claude",
+          "Notion"
+        ],
+        "hotTake": "Integrating vertical ai with marketplaces,",
+        "workingOn": ""
+      },
+      {
+        "id": "gst-VDuC5xIM7MSIT8V",
+        "name": "Meg Button",
+        "approvalStatus": "approved",
+        "checkedIn": true,
+        "role": "Designer, Artist, Founder, Curious",
+        "roles": [
+          "Designer",
+          "Artist",
+          "Founder",
+          "Curious"
+        ],
+        "interests": [
+          "🎥 Video / Motion",
+          "🧠 AI agents / automation",
+          "🎭 Story / writing"
+        ],
+        "tools": [
+          "Runway",
+          "DaVinci Resolve"
+        ],
+        "hotTake": "",
+        "workingOn": "fantastic.day"
+      },
+      {
+        "id": "gst-BQURFDahVSWTfPM",
+        "name": "Sam Chow",
+        "approvalStatus": "approved",
+        "checkedIn": true,
+        "role": "Creator, Artist, Founder",
+        "roles": [
+          "Creator",
+          "Artist",
+          "Founder"
+        ],
+        "interests": [
+          "🧠 AI agents / automation",
+          "🎧 Music / sound",
+          "🪩 Live experiences / events",
+          "🎭 Story / writing",
+          "🧪 Tool builder / open source"
+        ],
+        "tools": [
+          "Claudecode"
+        ],
+        "hotTake": "Live events come back.",
+        "workingOn": ""
+      },
+      {
+        "id": "gst-KSiUK8nYVIE7Bxo",
+        "name": "Affan",
+        "approvalStatus": "approved",
+        "checkedIn": true,
+        "role": "Designer, Developer, Producer, Founder, Curious, Creator",
+        "roles": [
+          "Designer",
+          "Developer",
+          "Producer",
+          "Founder",
+          "Curious",
+          "Creator"
+        ],
+        "interests": [
+          "🧠 AI agents / automation",
+          "🎛️ TouchDesigner / visuals",
+          "🪩 Live experiences / events",
+          "🎥 Video / Motion",
+          "🧪 Tool builder / open source"
+        ],
+        "tools": [
+          "All Of Them!"
+        ],
+        "hotTake": "",
+        "workingOn": ""
+      },
+      {
+        "id": "gst-O952FRkWETEouAP",
+        "name": "Pascal Thibeault",
+        "approvalStatus": "approved",
+        "checkedIn": true,
+        "role": "Unspecified",
+        "roles": [],
+        "interests": [
+          "🧠 AI agents / automation",
+          "🧪 Tool builder / open source",
+          "🧑‍🏫 Teaching / mentoring"
+        ],
+        "tools": [],
+        "hotTake": "",
+        "workingOn": ""
+      },
+      {
+        "id": "gst-GoW0dQpdFA1EyXl",
+        "name": "Hsu-Tien Lee",
+        "approvalStatus": "approved",
+        "checkedIn": true,
+        "role": "Curious",
+        "roles": [
+          "Curious"
+        ],
+        "interests": [
+          "🎥 Video / Motion",
+          "🧊 3D / CG"
+        ],
+        "tools": [
+          "Not Using Yet",
+          "Use Cases"
+        ],
+        "hotTake": "",
+        "workingOn": ""
+      },
+      {
+        "id": "gst-8wz2UtNXK3yuX1E",
+        "name": "Siraj Ajani",
+        "approvalStatus": "approved",
+        "checkedIn": true,
+        "role": "Curious",
+        "roles": [
+          "Curious"
+        ],
+        "interests": [
+          "🧠 AI agents / automation",
+          "🎥 Video / Motion",
+          "🌱 Beginner-friendly"
+        ],
+        "tools": [
+          "Claude Code",
+          "Claude",
+          "Gemini",
+          "Figma"
+        ],
+        "hotTake": "",
+        "workingOn": ""
+      },
+      {
+        "id": "gst-bMJts0ufucPfEI2",
+        "name": "Louna Alouzi",
+        "approvalStatus": "approved",
+        "checkedIn": false,
+        "role": "Other",
+        "roles": [
+          "Other"
+        ],
+        "interests": [
+          "🧠 AI agents / automation",
+          "🧪 Tool builder / open source",
+          "💼 Looking for work",
+          "🤝 Hiring / looking for talent"
+        ],
+        "tools": [
+          "Gemini",
+          "Notion"
+        ],
+        "hotTake": "How to use AI to optimize sales efficiency",
+        "workingOn": ""
+      },
+      {
+        "id": "gst-U3BppyeIonrKgq4",
+        "name": "Leo Tolstikov",
+        "approvalStatus": "approved",
+        "checkedIn": true,
+        "role": "Artist, Designer, Other",
+        "roles": [
+          "Artist",
+          "Designer",
+          "Other"
+        ],
+        "interests": [
+          "🪩 Live experiences / events",
+          "🌱 Beginner-friendly",
+          "🎥 Video / Motion",
+          "🕹️ Games / Interactive",
+          "🎛️ TouchDesigner / visuals"
+        ],
+        "tools": [],
+        "hotTake": "Strengths and weaknesses of tools and when we should use the tools for what purpose.",
+        "workingOn": "I.launched.a.successful.fake.coffeeshop.in.downtown.with.ai.and.got.45.thousand.visitors.lmao.Happy.to.share.inspirational.story.haha"
+      },
+      {
+        "id": "gst-4DOcsduYSYKDnaY",
+        "name": "Olivia McAllister",
+        "approvalStatus": "approved",
+        "checkedIn": true,
+        "role": "Other",
+        "roles": [
+          "Other"
+        ],
+        "interests": [],
+        "tools": [],
+        "hotTake": "",
+        "workingOn": ""
+      },
+      {
+        "id": "gst-8I5NYtGpzpxyU7z",
+        "name": "Pip Swartz",
+        "approvalStatus": "approved",
+        "checkedIn": false,
+        "role": "Founder",
+        "roles": [
+          "Founder"
+        ],
+        "interests": [
+          "🕹️ Games / Interactive",
+          "🧠 AI agents / automation",
+          "🎭 Story / writing"
+        ],
+        "tools": [
+          "Agentic Browsers"
+        ],
+        "hotTake": "What's the best way to leverage AI for marketing and sales?",
+        "workingOn": "Murder mystery board games"
+      },
+      {
+        "id": "gst-5hGxmA3Gr0BSh7u",
+        "name": "Jezebelle Mossong",
+        "approvalStatus": "approved",
+        "checkedIn": true,
+        "role": "Artist",
+        "roles": [
+          "Artist"
+        ],
+        "interests": [],
+        "tools": [],
+        "hotTake": "",
+        "workingOn": ""
+      },
+      {
+        "id": "gst-nkwiiGrlfls02dZ",
+        "name": "Rymn Wadhwa",
+        "approvalStatus": "approved",
+        "checkedIn": false,
+        "role": "Developer, Curious, Producer",
+        "roles": [
+          "Developer",
+          "Curious",
+          "Producer"
+        ],
+        "interests": [],
+        "tools": [],
+        "hotTake": "",
+        "workingOn": ""
+      },
+      {
+        "id": "gst-G50vLXgT7stNQhE",
+        "name": "Shelley",
+        "approvalStatus": "approved",
+        "checkedIn": false,
+        "role": "Designer",
+        "roles": [
+          "Designer"
+        ],
+        "interests": [
+          "🎥 Video / Motion",
+          "🧠 AI agents / automation",
+          "🪩 Live experiences / events"
+        ],
+        "tools": [
+          "Kling"
+        ],
+        "hotTake": "Does long-term dependence on LLMs reduce memory, focus, or problem-solving skills? AKA Am I getting dumber??",
+        "workingOn": ""
+      },
+      {
+        "id": "gst-1XZ8C9yWmGf0UoY",
+        "name": "Andriy Kourinnyi",
+        "approvalStatus": "approved",
+        "checkedIn": true,
+        "role": "Developer",
+        "roles": [
+          "Developer"
+        ],
+        "interests": [
+          "🧠 AI agents / automation"
+        ],
+        "tools": [
+          "Claude",
+          "Kimi"
+        ],
+        "hotTake": "OpenClaw is only sensational because it combined already existing tools.",
+        "workingOn": "rag automations with agents"
+      },
+      {
+        "id": "gst-1Wb3HNMQROBwH17",
+        "name": "Adrienne",
+        "approvalStatus": "approved",
+        "checkedIn": true,
+        "role": "Creator",
+        "roles": [
+          "Creator"
+        ],
+        "interests": [
+          "🎭 Story / writing",
+          "🧑‍🏫 Teaching / mentoring",
+          "🌱 Beginner-friendly"
+        ],
+        "tools": [
+          "Google Workspace",
+          "Substack"
+        ],
+        "hotTake": "How will AI maintain originality?",
+        "workingOn": ""
+      },
+      {
+        "id": "gst-bCi0pdruHZinf1U",
+        "name": "Jonah Issenman",
+        "approvalStatus": "approved",
+        "checkedIn": true,
+        "role": "Creator",
+        "roles": [
+          "Creator"
+        ],
+        "interests": [
+          "🎭 Story / writing",
+          "🧠 AI agents / automation",
+          "🎧 Music / sound"
+        ],
+        "tools": [
+          "Gemini"
+        ],
+        "hotTake": "Long form media",
+        "workingOn": ""
+      },
+      {
+        "id": "gst-Z3AgRNknJ8Xq7HX",
+        "name": "Michael Spina",
+        "approvalStatus": "approved",
+        "checkedIn": true,
+        "role": "Creator, Curious",
+        "roles": [
+          "Creator",
+          "Curious"
+        ],
+        "interests": [
+          "🧠 AI agents / automation",
+          "🧪 Tool builder / open source",
+          "🪩 Live experiences / events"
+        ],
+        "tools": [
+          "Cursor"
+        ],
+        "hotTake": "When does the real disruption happens? It is “happening” but when is it unmistakable for the average person beyond headlines and hype.",
+        "workingOn": ""
+      },
+      {
+        "id": "gst-Tgar2xnwvgOrXxK",
+        "name": "Rudy Pietrolungo",
+        "approvalStatus": "approved",
+        "checkedIn": true,
+        "role": "Designer",
+        "roles": [
+          "Designer"
+        ],
+        "interests": [
+          "🎥 Video / Motion",
+          "🧊 3D / CG",
+          "🕹️ Games / Interactive",
+          "🧠 AI agents / automation",
+          "🎭 Story / writing"
+        ],
+        "tools": [],
+        "hotTake": "Its a tool - no different than any other tool.",
+        "workingOn": "https://www.instagram.com/rodo.ai"
+      },
+      {
+        "id": "gst-kFrkI2xGAe5VUnN",
+        "name": "Robert Mill",
+        "approvalStatus": "approved",
+        "checkedIn": true,
+        "role": "Founder",
+        "roles": [
+          "Founder"
+        ],
+        "interests": [
+          "🧠 AI agents / automation",
+          "🧪 Tool builder / open source",
+          "🎥 Video / Motion"
+        ],
+        "tools": [
+          "Claude"
+        ],
+        "hotTake": "Ai agents will do all knowledge work",
+        "workingOn": "lightenai.ca"
+      },
+      {
+        "id": "gst-qUXvM5jDsKYEPBC",
+        "name": "Shane D'Costa",
+        "approvalStatus": "approved",
+        "checkedIn": true,
+        "role": "Creator, Artist, Other",
+        "roles": [
+          "Creator",
+          "Artist",
+          "Other"
+        ],
+        "interests": [
+          "🌱 Beginner-friendly",
+          "🧠 AI agents / automation",
+          "🧪 Tool builder / open source",
+          "🪩 Live experiences / events",
+          "💼 Looking for work",
+          "🎛️ TouchDesigner / visuals",
+          "🧑‍🏫 Teaching / mentoring"
+        ],
+        "tools": [
+          "Figma"
+        ],
+        "hotTake": "AI influencing and influencers have hit the gay community like a brick thrown at Stonewall (there wasn't a brick thrown) BUT! It's apparent the people behind these gay AI influencer accounts on social media platforms are amassing large followings of REAL gay men. While this is exacerbating & proving the Dead Internet Theory, it is also creating grander, unrealistic standards for gay men. I don't believe this is just applicable to the LGBTQIA2S+, but it begs the question on \"when are social media platforms going to disallow this type of social media farming?\".",
+        "workingOn": ""
+      },
+      {
+        "id": "gst-wGGkESZ8Uc0Zplz",
+        "name": "Hammad Khan",
+        "approvalStatus": "approved",
+        "checkedIn": false,
+        "role": "Developer",
+        "roles": [
+          "Developer"
+        ],
+        "interests": [
+          "🧠 AI agents / automation",
+          "🧑‍🏫 Teaching / mentoring",
+          "🧪 Tool builder / open source"
+        ],
+        "tools": [],
+        "hotTake": "",
+        "workingOn": "Orchestration Application"
+      },
+      {
+        "id": "gst-rvRLdNxuOg2CNg7",
+        "name": "fongkikid",
+        "approvalStatus": "approved",
+        "checkedIn": true,
+        "role": "Artist, Designer, Producer",
+        "roles": [
+          "Artist",
+          "Designer",
+          "Producer"
+        ],
+        "interests": [
+          "💼 Looking for work",
+          "🪩 Live experiences / events",
+          "🎛️ TouchDesigner / visuals"
+        ],
+        "tools": [
+          "TouchDesigner"
+        ],
+        "hotTake": "Artists need to find new ways of integrating AI rather than being fully against it.",
+        "workingOn": "https://www.instagram.com/p/DUI1RYvgAoY/"
+      },
+      {
+        "id": "gst-yxUG5vGtt4iHnBX",
+        "name": "Dan Moseley",
+        "approvalStatus": "declined",
+        "checkedIn": false,
+        "role": "Founder",
+        "roles": [
+          "Founder"
+        ],
+        "interests": [],
+        "tools": [
+          "Claude Code",
+          "Claude"
+        ],
+        "hotTake": "IMPLEMENTATION IS REALLY HARD WORK. biggest barrier to success is not just doing it a few times and being impressed - it's huge effort to make it part of the daily",
+        "workingOn": "superproper.ai - now a 30 person AI forward ad agency and GROWING!"
+      },
+      {
+        "id": "gst-pVGdcaHePTHckQ1",
+        "name": "Miro K",
+        "approvalStatus": "approved",
+        "checkedIn": true,
+        "role": "Founder, Developer",
+        "roles": [
+          "Founder",
+          "Developer"
+        ],
+        "interests": [
+          "🧠 AI agents / automation",
+          "🎛️ TouchDesigner / visuals",
+          "🎧 Music / sound",
+          "🎥 Video / Motion",
+          "🧊 3D / CG",
+          "🪩 Live experiences / events",
+          "🧪 Tool builder / open source"
+        ],
+        "tools": [
+          "Claude Code",
+          "Claude"
+        ],
+        "hotTake": "It’s the future",
+        "workingOn": "orch.so"
+      },
+      {
+        "id": "gst-5RAporYDiSngVXU",
+        "name": "Raneem Zaitoun",
+        "approvalStatus": "approved",
+        "checkedIn": true,
+        "role": "Unspecified",
+        "roles": [],
+        "interests": [],
+        "tools": [],
+        "hotTake": "",
+        "workingOn": ""
+      },
+      {
+        "id": "gst-UxBVS1JT5mmocob",
+        "name": "Anthony Machula",
+        "approvalStatus": "approved",
+        "checkedIn": true,
+        "role": "Founder",
+        "roles": [
+          "Founder"
+        ],
+        "interests": [
+          "🪩 Live experiences / events",
+          "🕹️ Games / Interactive",
+          "🧊 3D / CG"
+        ],
+        "tools": [],
+        "hotTake": "",
+        "workingOn": "MindMender.ca"
+      },
+      {
+        "id": "gst-ZV0mCQChZ6T73JI",
+        "name": "Silvia Stroie",
+        "approvalStatus": "approved",
+        "checkedIn": true,
+        "role": "Designer",
+        "roles": [
+          "Designer"
+        ],
+        "interests": [
+          "🎛️ TouchDesigner / visuals",
+          "🧠 AI agents / automation",
+          "🎥 Video / Motion"
+        ],
+        "tools": [
+          "Claude",
+          "Figma"
+        ],
+        "hotTake": "",
+        "workingOn": ""
+      },
+      {
+        "id": "gst-qJIxWTzSBFbbmzC",
+        "name": "Mare",
+        "approvalStatus": "approved",
+        "checkedIn": false,
+        "role": "Designer",
+        "roles": [
+          "Designer"
+        ],
+        "interests": [
+          "🎭 Story / writing",
+          "🧠 AI agents / automation",
+          "💼 Looking for work"
+        ],
+        "tools": [
+          "Claude Code",
+          "Claude",
+          "Figma"
+        ],
+        "hotTake": "",
+        "workingOn": ""
+      },
+      {
+        "id": "gst-J1HM7MYM096Xob9",
+        "name": "Miguel Twahirwa",
+        "approvalStatus": "approved",
+        "checkedIn": true,
+        "role": "Founder, Developer, Curious",
+        "roles": [
+          "Founder",
+          "Developer",
+          "Curious"
+        ],
+        "interests": [
+          "🧊 3D / CG",
+          "🎧 Music / sound",
+          "🧠 AI agents / automation",
+          "💼 Looking for work"
+        ],
+        "tools": [
+          "Claude Code",
+          "Claude",
+          "Cursor"
+        ],
+        "hotTake": "Openclaw is just on changing how we so work",
+        "workingOn": ""
+      },
+      {
+        "id": "gst-s1UnkLrFwSPvdvx",
+        "name": "Raad Seraj",
+        "approvalStatus": "declined",
+        "checkedIn": false,
+        "role": "Creator",
+        "roles": [
+          "Creator"
+        ],
+        "interests": [
+          "🪩 Live experiences / events",
+          "🎧 Music / sound",
+          "🎭 Story / writing"
+        ],
+        "tools": [
+          "Midjourney"
+        ],
+        "hotTake": "how can we use these tools for belonging and connection between people irl?",
+        "workingOn": ""
+      },
+      {
+        "id": "gst-BNpklqmVLPt3TBV",
+        "name": "Kumsal Obuz",
+        "approvalStatus": "declined",
+        "checkedIn": false,
+        "role": "Founder, Creator",
+        "roles": [
+          "Founder",
+          "Creator"
+        ],
+        "interests": [
+          "🧊 3D / CG",
+          "🕹️ Games / Interactive",
+          "🧠 AI agents / automation",
+          "🎭 Story / writing",
+          "🧑‍🏫 Teaching / mentoring"
+        ],
+        "tools": [
+          "ComfyUI",
+          "Blender",
+          "Notion"
+        ],
+        "hotTake": "",
+        "workingOn": "A version of Hitman GO with narrative elements."
+      },
+      {
+        "id": "gst-AHIw9DyCiqcQll0",
+        "name": "Justin nainabasti",
+        "approvalStatus": "approved",
+        "checkedIn": true,
+        "role": "Curious",
+        "roles": [
+          "Curious"
+        ],
+        "interests": [
+          "🧠 AI agents / automation"
+        ],
+        "tools": [
+          "Analyzing",
+          "Estimates"
+        ],
+        "hotTake": "",
+        "workingOn": ""
+      },
+      {
+        "id": "gst-m3c944mHD2VytvF",
+        "name": "Seema Lakhani",
+        "approvalStatus": "approved",
+        "checkedIn": true,
+        "role": "Founder",
+        "roles": [
+          "Founder"
+        ],
+        "interests": [
+          "🎥 Video / Motion",
+          "🎭 Story / writing"
+        ],
+        "tools": [
+          "CapCut",
+          "Kling"
+        ],
+        "hotTake": "The market has yet to really open up but it will as models improve and regular people can become master storytellers",
+        "workingOn": ""
+      },
+      {
+        "id": "gst-O2qCL8RIqu5zHre",
+        "name": "William McMaster",
+        "approvalStatus": "approved",
+        "checkedIn": true,
+        "role": "Founder",
+        "roles": [
+          "Founder"
+        ],
+        "interests": [
+          "🧊 3D / CG",
+          "🧪 Tool builder / open source",
+          "🎥 Video / Motion"
+        ],
+        "tools": [
+          "3d Scanning Related"
+        ],
+        "hotTake": "Im interested in bridging the gap between a regular film production and ai tools, giving directors and actors what they need while generating everythign around them.",
+        "workingOn": ""
+      },
+      {
+        "id": "gst-xtSI8s3ZFdk6XhH",
+        "name": "Sophie Jiang",
+        "approvalStatus": "approved",
+        "checkedIn": true,
+        "role": "Founder, Designer",
+        "roles": [
+          "Founder",
+          "Designer"
+        ],
+        "interests": [
+          "🧊 3D / CG",
+          "🕹️ Games / Interactive",
+          "🪩 Live experiences / events",
+          "🎛️ TouchDesigner / visuals"
+        ],
+        "tools": [],
+        "hotTake": "",
+        "workingOn": ""
+      },
+      {
+        "id": "gst-rBQisL8ig0kTpFv",
+        "name": "Matthew Chiu",
+        "approvalStatus": "approved",
+        "checkedIn": true,
+        "role": "Founder",
+        "roles": [
+          "Founder"
+        ],
+        "interests": [
+          "🧊 3D / CG",
+          "🧪 Tool builder / open source",
+          "🎥 Video / Motion"
+        ],
+        "tools": [
+          "ComfyUI"
+        ],
+        "hotTake": "",
+        "workingOn": ""
+      },
+      {
+        "id": "gst-K5ywrPgwa82YJPQ",
+        "name": "Minas Adonai",
+        "approvalStatus": "approved",
+        "checkedIn": true,
+        "role": "Founder, Artist",
+        "roles": [
+          "Founder",
+          "Artist"
+        ],
+        "interests": [
+          "🧠 AI agents / automation",
+          "🎭 Story / writing",
+          "🪩 Live experiences / events"
+        ],
+        "tools": [
+          "Codex"
+        ],
+        "hotTake": "creator economy will continue to grow even in the face automation.",
+        "workingOn": "https://www.solra.app"
+      },
+      {
+        "id": "gst-nwv1tJl05De5JYg",
+        "name": "Fatima",
+        "approvalStatus": "approved",
+        "checkedIn": true,
+        "role": "Founder",
+        "roles": [
+          "Founder"
+        ],
+        "interests": [
+          "💼 Looking for work",
+          "🧠 AI agents / automation",
+          "🎥 Video / Motion"
+        ],
+        "tools": [
+          "Gemini",
+          "Notion",
+          "Kimi"
+        ],
+        "hotTake": "AI was developed inherently as a political tool",
+        "workingOn": "https://sparkdstudio.com"
+      },
+      {
+        "id": "gst-dsCCE8UtvGfbcLF",
+        "name": "Ronit Novak",
+        "approvalStatus": "approved",
+        "checkedIn": true,
+        "role": "Founder",
+        "roles": [
+          "Founder"
+        ],
+        "interests": [
+          "🎭 Story / writing",
+          "🪩 Live experiences / events",
+          "🧑‍🏫 Teaching / mentoring"
+        ],
+        "tools": [],
+        "hotTake": "",
+        "workingOn": "THE GRAIN"
+      },
+      {
+        "id": "gst-WZNxRr8L9VZEKG7",
+        "name": "Jordan Dutchak",
+        "approvalStatus": "approved",
+        "checkedIn": true,
+        "role": "Founder",
+        "roles": [
+          "Founder"
+        ],
+        "interests": [
+          "🎥 Video / Motion",
+          "🪩 Live experiences / events",
+          "🎧 Music / sound"
+        ],
+        "tools": [
+          "Claude"
+        ],
+        "hotTake": "OpenClaw is going to end society",
+        "workingOn": ""
+      },
+      {
+        "id": "gst-LMmndG8FYci5xmf",
+        "name": "Dennis Mohr",
+        "approvalStatus": "approved",
+        "checkedIn": false,
+        "role": "Creator, Producer",
+        "roles": [
+          "Creator",
+          "Producer"
+        ],
+        "interests": [
+          "🎭 Story / writing"
+        ],
+        "tools": [
+          "Freekpik Veo"
+        ],
+        "hotTake": "Awaiting Seedance 2.O",
+        "workingOn": "https://youtu.be/946S8KWR1B8?si=rVLAqgPa4jQaIC-V"
+      },
+      {
+        "id": "gst-bFAodTJIwH00uO6",
+        "name": "Luc Palombo",
+        "approvalStatus": "approved",
+        "checkedIn": true,
+        "role": "Artist, Designer, Developer",
+        "roles": [
+          "Artist",
+          "Designer",
+          "Developer"
+        ],
+        "interests": [
+          "🎛️ TouchDesigner / visuals",
+          "🪩 Live experiences / events",
+          "🧑‍🏫 Teaching / mentoring"
+        ],
+        "tools": [
+          "Claude Code",
+          "Claude",
+          "Cursor",
+          "TouchDesigner",
+          "Blender",
+          "Three.js",
+          "P5"
+        ],
+        "hotTake": "stay curious, stay conscious of the impact on people's lives this tech will have, build a healthy moral framework so you won't go insane",
+        "workingOn": "VJing in virtual reality https://swiftp.cc/posts/summer-2025-update/"
+      },
+      {
+        "id": "gst-cYHEaeRlAVBxSIG",
+        "name": "Evan Simpson",
+        "approvalStatus": "approved",
+        "checkedIn": true,
+        "role": "Developer",
+        "roles": [
+          "Developer"
+        ],
+        "interests": [],
+        "tools": [],
+        "hotTake": "",
+        "workingOn": ""
+      },
+      {
+        "id": "gst-N7sic0gwOIYNKv3",
+        "name": "Marcelo",
+        "approvalStatus": "approved",
+        "checkedIn": true,
+        "role": "Founder, Creator, Developer",
+        "roles": [
+          "Founder",
+          "Creator",
+          "Developer"
+        ],
+        "interests": [
+          "🧠 AI agents / automation",
+          "🎭 Story / writing",
+          "🧑‍🏫 Teaching / mentoring"
+        ],
+        "tools": [
+          "Claude Code",
+          "Claude",
+          "Obsidian",
+          "Descript",
+          "Excalidraw"
+        ],
+        "hotTake": "I think people are over engineering the agentic workflows. What did you ship",
+        "workingOn": "https://maxed.vip"
+      },
+      {
+        "id": "gst-DpyR7jn40z3H1RI",
+        "name": "Tomi",
+        "approvalStatus": "approved",
+        "checkedIn": true,
+        "role": "Developer, Creator, Founder, Curious",
+        "roles": [
+          "Developer",
+          "Creator",
+          "Founder",
+          "Curious"
+        ],
+        "interests": [
+          "🧠 AI agents / automation",
+          "🧪 Tool builder / open source",
+          "🧊 3D / CG"
+        ],
+        "tools": [
+          "Claude Code",
+          "Claude",
+          "Cursor"
+        ],
+        "hotTake": "Where do the tools plateau and is the current pricing and usage sustainable",
+        "workingOn": ""
+      },
+      {
+        "id": "gst-qKit3FGEZdguYMC",
+        "name": "Radi Huq",
+        "approvalStatus": "approved",
+        "checkedIn": true,
+        "role": "Artist, Developer",
+        "roles": [
+          "Artist",
+          "Developer"
+        ],
+        "interests": [
+          "🕹️ Games / Interactive",
+          "🪩 Live experiences / events",
+          "🎧 Music / sound",
+          "🧠 AI agents / automation"
+        ],
+        "tools": [
+          "Cursor",
+          "Figma"
+        ],
+        "hotTake": "",
+        "workingOn": "https://www.staticads.ai/"
+      },
+      {
+        "id": "gst-gkdLLCLLaIMuChV",
+        "name": "Nick Fox-Gieg",
+        "approvalStatus": "approved",
+        "checkedIn": true,
+        "role": "Artist, Developer",
+        "roles": [
+          "Artist",
+          "Developer"
+        ],
+        "interests": [
+          "💼 Looking for work",
+          "🧊 3D / CG",
+          "🧪 Tool builder / open source"
+        ],
+        "tools": [
+          "ComfyUI",
+          "Blender",
+          "Houdini"
+        ],
+        "hotTake": "What are best practices for scalable headless ComfyUI rendering?",
+        "workingOn": "https://fox-gieg.com/latk.html"
+      },
+      {
+        "id": "gst-cBj6FmXa1s45EkE",
+        "name": "Jesse Hallett",
+        "approvalStatus": "approved",
+        "checkedIn": true,
+        "role": "Unspecified",
+        "roles": [],
+        "interests": [],
+        "tools": [],
+        "hotTake": "",
+        "workingOn": ""
+      },
+      {
+        "id": "gst-M1mNvgIPMeGQgho",
+        "name": "Seunga Lee",
+        "approvalStatus": "approved",
+        "checkedIn": true,
+        "role": "Creator",
+        "roles": [
+          "Creator"
+        ],
+        "interests": [
+          "🧠 AI agents / automation"
+        ],
+        "tools": [
+          "Claude Code",
+          "Claude",
+          "ChatGPT",
+          "Gemini"
+        ],
+        "hotTake": "Automation of Contents creation by using AI tool, build platform for followers",
+        "workingOn": ""
+      },
+      {
+        "id": "gst-RYbzeBU2Nsokiz8",
+        "name": "Bria Cole",
+        "approvalStatus": "declined",
+        "checkedIn": false,
+        "role": "Artist",
+        "roles": [
+          "Artist"
+        ],
+        "interests": [],
+        "tools": [],
+        "hotTake": "",
+        "workingOn": ""
+      },
+      {
+        "id": "gst-GauHqvtrabs1KCy",
+        "name": "Winston Chow",
+        "approvalStatus": "declined",
+        "checkedIn": false,
+        "role": "Developer, Designer, Artist, Curious",
+        "roles": [
+          "Developer",
+          "Designer",
+          "Artist",
+          "Curious"
+        ],
+        "interests": [
+          "🧪 Tool builder / open source",
+          "🧠 AI agents / automation",
+          "🕹️ Games / Interactive",
+          "💼 Looking for work"
+        ],
+        "tools": [
+          "Figma",
+          "Obsidian"
+        ],
+        "hotTake": "I believe that, in order to create a meaningful piece of art, significant human intervention and thought is required; ergo, AI cannot be used to produce final works, despite what enthusiasts and hard-liners insist.",
+        "workingOn": ""
+      },
+      {
+        "id": "gst-4NM03IODKaYWu4j",
+        "name": "Charlotte Townsend-Rahman",
+        "approvalStatus": "approved",
+        "checkedIn": true,
+        "role": "Other",
+        "roles": [
+          "Other"
+        ],
+        "interests": [],
+        "tools": [],
+        "hotTake": "",
+        "workingOn": ""
+      },
+      {
+        "id": "gst-ABBAWlPmtALA54L",
+        "name": "Yura Savchenko",
+        "approvalStatus": "approved",
+        "checkedIn": true,
+        "role": "Developer",
+        "roles": [
+          "Developer"
+        ],
+        "interests": [
+          "🎥 Video / Motion",
+          "🕹️ Games / Interactive",
+          "🧠 AI agents / automation",
+          "🧪 Tool builder / open source"
+        ],
+        "tools": [
+          "Gemini",
+          "Cursor"
+        ],
+        "hotTake": "I don’t have a hot take. I’ll give you this. AI can give you 80%. You need a tech knowledge to close another 20",
+        "workingOn": ""
+      },
+      {
+        "id": "gst-hU5qZDF4xgD0fBr",
+        "name": "JP",
+        "approvalStatus": "approved",
+        "checkedIn": true,
+        "role": "Creator",
+        "roles": [
+          "Creator"
+        ],
+        "interests": [
+          "🧠 AI agents / automation",
+          "💼 Looking for work",
+          "🎥 Video / Motion"
+        ],
+        "tools": [
+          "Cursor"
+        ],
+        "hotTake": "",
+        "workingOn": "https://nounspot.com"
+      },
+      {
+        "id": "gst-RqNh1YMSAld3ZFc",
+        "name": "Anouar Mansour",
+        "approvalStatus": "approved",
+        "checkedIn": true,
+        "role": "Founder",
+        "roles": [
+          "Founder"
+        ],
+        "interests": [
+          "🧠 AI agents / automation",
+          "🧪 Tool builder / open source",
+          "🪩 Live experiences / events",
+          "🎛️ TouchDesigner / visuals"
+        ],
+        "tools": [
+          "Claude Code",
+          "Claude",
+          "Codex"
+        ],
+        "hotTake": "Everything will end up open source",
+        "workingOn": "deadsimplerss.com"
+      },
+      {
+        "id": "gst-aF2glcenI2mkDot",
+        "name": "Moe Bozo",
+        "approvalStatus": "approved",
+        "checkedIn": true,
+        "role": "Creator",
+        "roles": [
+          "Creator"
+        ],
+        "interests": [
+          "🎭 Story / writing",
+          "🎧 Music / sound",
+          "🧠 AI agents / automation"
+        ],
+        "tools": [
+          "Gemini"
+        ],
+        "hotTake": "",
+        "workingOn": ""
+      },
+      {
+        "id": "gst-d8dzXnFz6Clnt1a",
+        "name": "Fayeque Townsend-Rahman",
+        "approvalStatus": "approved",
+        "checkedIn": true,
+        "role": "Other",
+        "roles": [
+          "Other"
+        ],
+        "interests": [
+          "🎥 Video / Motion",
+          "🧠 AI agents / automation",
+          "🤝 Hiring / looking for talent",
+          "🧑‍🏫 Teaching / mentoring"
+        ],
+        "tools": [
+          "Midjourney",
+          "Kling",
+          "Seedance"
+        ],
+        "hotTake": "",
+        "workingOn": ""
+      },
+      {
+        "id": "gst-GJDm2t5D2JPFqXL",
+        "name": "Indranil Datta",
+        "approvalStatus": "approved",
+        "checkedIn": true,
+        "role": "Artist, Designer, Curious",
+        "roles": [
+          "Artist",
+          "Designer",
+          "Curious"
+        ],
+        "interests": [
+          "💼 Looking for work",
+          "🎥 Video / Motion",
+          "🎛️ TouchDesigner / visuals",
+          "🧠 AI agents / automation"
+        ],
+        "tools": [
+          "ChatGPT",
+          "Gemini",
+          "Midjourney"
+        ],
+        "hotTake": "I'm trying to figure out how to invorporate it in my workflow.",
+        "workingOn": "Hopefully in the future runs."
+      },
+      {
+        "id": "gst-1Z0kYajdqBh3D0V",
+        "name": "Asar Qadir",
+        "approvalStatus": "approved",
+        "checkedIn": true,
+        "role": "Founder",
+        "roles": [
+          "Founder"
+        ],
+        "interests": [
+          "🎧 Music / sound",
+          "🎥 Video / Motion"
+        ],
+        "tools": [
+          "Harmix Search"
+        ],
+        "hotTake": "",
+        "workingOn": "www.harmix.ai"
+      },
+      {
+        "id": "gst-zSkQeiECvO8IxFq",
+        "name": "Ashwin Kamath",
+        "approvalStatus": "approved",
+        "checkedIn": false,
+        "role": "Developer, Other",
+        "roles": [
+          "Developer",
+          "Other"
+        ],
+        "interests": [
+          "🧪 Tool builder / open source",
+          "🧠 AI agents / automation"
+        ],
+        "tools": [
+          "Ollama + Code"
+        ],
+        "hotTake": "How can we extract information about a person's personality, intent, nature from their AI usage habits?",
+        "workingOn": "It's all a secret (for now)"
+      },
+      {
+        "id": "gst-RXryGlBZBwc9DTS",
+        "name": "Nimalan Thavandiran",
+        "approvalStatus": "approved",
+        "checkedIn": true,
+        "role": "Artist, Designer, Founder",
+        "roles": [
+          "Artist",
+          "Designer",
+          "Founder"
+        ],
+        "interests": [
+          "🧠 AI agents / automation",
+          "🧪 Tool builder / open source",
+          "🎭 Story / writing",
+          "🪩 Live experiences / events"
+        ],
+        "tools": [],
+        "hotTake": "",
+        "workingOn": ""
+      },
+      {
+        "id": "gst-9x32hWpJ73opQTw",
+        "name": "Zak Harov",
+        "approvalStatus": "invited",
+        "checkedIn": false,
+        "role": "Unspecified",
+        "roles": [],
+        "interests": [],
+        "tools": [],
+        "hotTake": "",
+        "workingOn": ""
+      },
+      {
+        "id": "gst-Y1dGuAGg2aE3939",
+        "name": "Jeff Lawy",
+        "approvalStatus": "invited",
+        "checkedIn": false,
+        "role": "Unspecified",
+        "roles": [],
+        "interests": [],
+        "tools": [],
+        "hotTake": "",
+        "workingOn": ""
+      },
+      {
+        "id": "gst-B3ehqVp8dyToFmD",
+        "name": "Yash Mody",
+        "approvalStatus": "invited",
+        "checkedIn": false,
+        "role": "Unspecified",
+        "roles": [],
+        "interests": [],
+        "tools": [],
+        "hotTake": "",
+        "workingOn": ""
+      },
+      {
+        "id": "gst-Ay7sD3jm3EUvfgl",
+        "name": "Sia Karpenko",
+        "approvalStatus": "approved",
+        "checkedIn": true,
+        "role": "Unspecified",
+        "roles": [],
+        "interests": [],
+        "tools": [],
+        "hotTake": "",
+        "workingOn": ""
+      },
+      {
+        "id": "gst-U8EXyljB112rW34",
+        "name": "David Choi",
+        "approvalStatus": "invited",
+        "checkedIn": false,
+        "role": "Unspecified",
+        "roles": [],
+        "interests": [],
+        "tools": [],
+        "hotTake": "",
+        "workingOn": ""
+      },
+      {
+        "id": "gst-zLBcsDRbbyO0Fop",
+        "name": "Kale Hofstetter",
+        "approvalStatus": "invited",
+        "checkedIn": false,
+        "role": "Unspecified",
+        "roles": [],
+        "interests": [],
+        "tools": [],
+        "hotTake": "",
+        "workingOn": ""
+      },
+      {
+        "id": "gst-bwbHn1BZSxmY6Pk",
+        "name": "Liz",
+        "approvalStatus": "invited",
+        "checkedIn": false,
+        "role": "Unspecified",
+        "roles": [],
+        "interests": [],
+        "tools": [],
+        "hotTake": "",
+        "workingOn": ""
+      },
+      {
+        "id": "gst-TbgDCv0E6LsVvan",
+        "name": "Allen Lin",
+        "approvalStatus": "invited",
+        "checkedIn": false,
+        "role": "Unspecified",
+        "roles": [],
+        "interests": [],
+        "tools": [],
+        "hotTake": "",
+        "workingOn": ""
+      },
+      {
+        "id": "gst-VW8k1UN4RyFW9Ar",
+        "name": "Ruza Licina",
+        "approvalStatus": "invited",
+        "checkedIn": false,
+        "role": "Unspecified",
+        "roles": [],
+        "interests": [],
+        "tools": [],
+        "hotTake": "",
+        "workingOn": ""
+      },
+      {
+        "id": "gst-IjZeSIipZhonqYn",
+        "name": "Shake",
+        "approvalStatus": "invited",
+        "checkedIn": false,
+        "role": "Unspecified",
+        "roles": [],
+        "interests": [],
+        "tools": [],
+        "hotTake": "",
+        "workingOn": ""
+      },
+      {
+        "id": "gst-tnvcJRfJ7bKLf2b",
+        "name": "Rachel Rainbow",
+        "approvalStatus": "invited",
+        "checkedIn": false,
+        "role": "Unspecified",
+        "roles": [],
+        "interests": [],
+        "tools": [],
+        "hotTake": "",
+        "workingOn": ""
+      },
+      {
+        "id": "gst-jdRfpyOW3tLwWtr",
+        "name": "Carlos Aguilar",
+        "approvalStatus": "invited",
+        "checkedIn": false,
+        "role": "Unspecified",
+        "roles": [],
+        "interests": [],
+        "tools": [],
+        "hotTake": "",
+        "workingOn": ""
+      },
+      {
+        "id": "gst-p2xfkmKxINfFRCQ",
+        "name": "Adrian Layne",
+        "approvalStatus": "invited",
+        "checkedIn": false,
+        "role": "Unspecified",
+        "roles": [],
+        "interests": [],
+        "tools": [],
+        "hotTake": "",
+        "workingOn": ""
+      },
+      {
+        "id": "gst-qCsS8ttNh9Xq3Ss",
+        "name": "Sarah McCullough",
+        "approvalStatus": "invited",
+        "checkedIn": false,
+        "role": "Unspecified",
+        "roles": [],
+        "interests": [],
+        "tools": [],
+        "hotTake": "",
+        "workingOn": ""
+      },
+      {
+        "id": "gst-jH96eLnGxHPReGw",
+        "name": "Ren Ozen",
+        "approvalStatus": "invited",
+        "checkedIn": false,
+        "role": "Unspecified",
+        "roles": [],
+        "interests": [],
+        "tools": [],
+        "hotTake": "",
+        "workingOn": ""
+      },
+      {
+        "id": "gst-qMi35F5r3u1DXuj",
+        "name": "Umair Khalid",
+        "approvalStatus": "invited",
+        "checkedIn": false,
+        "role": "Unspecified",
+        "roles": [],
+        "interests": [],
+        "tools": [],
+        "hotTake": "",
+        "workingOn": ""
+      },
+      {
+        "id": "gst-zM6unlmBPZwjVu6",
+        "name": "Julie Rubanets",
+        "approvalStatus": "invited",
+        "checkedIn": false,
+        "role": "Unspecified",
+        "roles": [],
+        "interests": [],
+        "tools": [],
+        "hotTake": "",
+        "workingOn": ""
+      },
+      {
+        "id": "gst-SVCIYwdaMtFS7LD",
+        "name": "Allen James",
+        "approvalStatus": "invited",
+        "checkedIn": false,
+        "role": "Unspecified",
+        "roles": [],
+        "interests": [],
+        "tools": [],
+        "hotTake": "",
+        "workingOn": ""
+      },
+      {
+        "id": "gst-yfQ5DadETDCNNE9",
+        "name": "Jia Ming Huang",
+        "approvalStatus": "declined",
+        "checkedIn": false,
+        "role": "Unspecified",
+        "roles": [],
+        "interests": [],
+        "tools": [],
+        "hotTake": "",
+        "workingOn": ""
+      },
+      {
+        "id": "gst-CVH3Eo2PNHtUFd5",
+        "name": "Cee D",
+        "approvalStatus": "invited",
+        "checkedIn": false,
+        "role": "Unspecified",
+        "roles": [],
+        "interests": [],
+        "tools": [],
+        "hotTake": "",
+        "workingOn": ""
+      },
+      {
+        "id": "gst-Gt2c8V2qlvoKXoe",
+        "name": "Ahmed",
+        "approvalStatus": "invited",
+        "checkedIn": false,
+        "role": "Unspecified",
+        "roles": [],
+        "interests": [],
+        "tools": [],
+        "hotTake": "",
+        "workingOn": ""
+      }
+    ]
+  },
+  "financials": {
+    "kpis": {
+      "totalRevenue": 1778,
+      "totalExpenses": 3330.33,
+      "netPnL": -1552.33
+    },
+    "expensesByCategory": [
+      {
+        "name": "Venue",
+        "value": 678
+      },
+      {
+        "name": "Content",
+        "value": 500
+      },
+      {
+        "name": "Experience",
+        "value": 500
+      },
+      {
+        "name": "Marketing",
+        "value": 372.6
+      },
+      {
+        "name": "Bar",
+        "value": 313
+      },
+      {
+        "name": "Drinks",
+        "value": 256.9
+      },
+      {
+        "name": "Production",
+        "value": 156.46
+      },
+      {
+        "name": "Admin",
+        "value": 150
+      },
+      {
+        "name": "Food",
+        "value": 110
+      },
+      {
+        "name": "Luma Plus",
+        "value": 107.97
+      },
+      {
+        "name": "Ops + Misc",
+        "value": 97.4
+      },
+      {
+        "name": "Raffle Prizes",
+        "value": 88
+      }
+    ],
+    "lineItems": [
+      {
+        "id": "expense-1",
+        "category": "Venue",
+        "description": "New Stadium Fee - New Stadium",
+        "amount": 678
+      },
+      {
+        "id": "expense-2",
+        "category": "Admin",
+        "description": "SOP fee - Fee",
+        "amount": 150
+      },
+      {
+        "id": "expense-3",
+        "category": "Bar",
+        "description": "Bartender - Beer only, minimal setup",
+        "amount": 313
+      },
+      {
+        "id": "expense-4",
+        "category": "Production",
+        "description": "Lights rental - Long & McQuade",
+        "amount": 156.46
+      },
+      {
+        "id": "expense-5",
+        "category": "Content",
+        "description": "Camera shooter - Video - Shoot/Edit",
+        "amount": 500
+      },
+      {
+        "id": "expense-6",
+        "category": "Experience",
+        "description": "Installation - Interactive install",
+        "amount": 500
+      },
+      {
+        "id": "expense-7",
+        "category": "Marketing",
+        "description": "Social media ads - Facebook/IG ads",
+        "amount": 72.6
+      },
+      {
+        "id": "expense-8",
+        "category": "Marketing",
+        "description": "Poster creation - notagraphics page",
+        "amount": 300
+      },
+      {
+        "id": "expense-9",
+        "category": "Ops + Misc",
+        "description": "Ice + cups + misc supplies - Ice, cups, napkins, garbage bags, tape, cords",
+        "amount": 97.4
+      },
+      {
+        "id": "expense-10",
+        "category": "Luma Plus",
+        "description": "Luma Plus",
+        "amount": 107.97
+      },
+      {
+        "id": "expense-11",
+        "category": "Drinks",
+        "description": "Beer - Miller Lite 30 Pack",
+        "amount": 256.9
+      },
+      {
+        "id": "expense-12",
+        "category": "Food",
+        "description": "Popcorn Machine - FB marketplce",
+        "amount": 110
+      },
+      {
+        "id": "expense-13",
+        "category": "Raffle Prizes",
+        "description": "Raffle Prizes",
+        "amount": 88
+      }
+    ],
+    "revenueLineItems": [
+      {
+        "label": "Luma Revenue",
+        "amount": 940
+      },
+      {
+        "label": "Bar Sales",
+        "amount": 838
+      }
+    ]
+  },
+  "crmHighlights": [
+    {
+      "name": "Jonathan T",
+      "role": "Developer, Founder",
+      "tags": [
+        "Developer",
+        "Founder",
+        "🧪 Tool builder / open source",
+        "Claude Code"
+      ],
+      "whyRelevant": "Technical builder active in creative technology workflows",
+      "note": "not yet",
+      "linkUrl": null,
+      "linkLabel": null
+    },
+    {
+      "name": "Paul Gadi",
+      "role": "Founder, Developer, Designer, Creator",
+      "tags": [
+        "Founder",
+        "Developer",
+        "🕹️ Games / Interactive",
+        "Claude Code"
+      ],
+      "whyRelevant": "Technical builder active in creative technology workflows",
+      "note": "Games for ai agents",
+      "linkUrl": null,
+      "linkLabel": null
+    },
+    {
+      "name": "Sahil Lulla",
+      "role": "Founder, Developer, Creator",
+      "tags": [
+        "Founder",
+        "Developer",
+        "🎥 Video / Motion",
+        "Gemini"
+      ],
+      "whyRelevant": "Technical builder active in creative technology workflows",
+      "note": "Im a co founder of Bitrate Bash, a Gen AI research and post production studio & Loraverse, the continuity engine for AI Storytelling",
+      "linkUrl": null,
+      "linkLabel": null
+    },
+    {
+      "name": "Noah van Hart",
+      "role": "Founder, Designer, Developer",
+      "tags": [
+        "Founder",
+        "Designer",
+        "🧠 AI agents / automation",
+        "Claude"
+      ],
+      "whyRelevant": "Technical builder active in creative technology workflows",
+      "note": "airbour",
+      "linkUrl": "https://noahvanhart.com/",
+      "linkLabel": "noahvanhart.com"
+    },
+    {
+      "name": "Alex Morales",
+      "role": "Developer",
+      "tags": [
+        "Developer",
+        "🧠 AI agents / automation",
+        "Codex"
+      ],
+      "whyRelevant": "Technical builder active in creative technology workflows",
+      "note": "https://Sure, dois.fr and httpstate.com",
+      "linkUrl": "https://dois.fr/",
+      "linkLabel": "dois.fr"
+    },
+    {
+      "name": "Andriy Kourinnyi",
+      "role": "Developer",
+      "tags": [
+        "Developer",
+        "🧠 AI agents / automation",
+        "Claude",
+        "Kimi"
+      ],
+      "whyRelevant": "Technical builder active in creative technology workflows",
+      "note": "rag automations with agents",
+      "linkUrl": null,
+      "linkLabel": null
+    },
+    {
+      "name": "Miro K",
+      "role": "Founder, Developer",
+      "tags": [
+        "Founder",
+        "Developer",
+        "🧠 AI agents / automation",
+        "Claude Code"
+      ],
+      "whyRelevant": "Technical builder active in creative technology workflows",
+      "note": "orch.so",
+      "linkUrl": "https://orch.so/",
+      "linkLabel": "orch.so"
+    },
+    {
+      "name": "Marcelo",
+      "role": "Founder, Creator, Developer",
+      "tags": [
+        "Founder",
+        "Creator",
+        "🧠 AI agents / automation",
+        "Claude Code"
+      ],
+      "whyRelevant": "Technical builder active in creative technology workflows",
+      "note": "https://maxed.vip",
+      "linkUrl": "https://maxed.vip/",
+      "linkLabel": "maxed.vip"
+    }
+  ]
+}
