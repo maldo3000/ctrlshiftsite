@@ -562,12 +562,25 @@ export default function SponsorVol9ReportPage() {
 
           <section id="activations" className={SECTION_CARD_CLASS}>
             <p className="text-xs uppercase tracking-[0.15em] text-zinc-500">Activations</p>
-            <h2 className="mt-2 font-syne text-2xl tracking-tight text-white">Find a Friend Matchmaking</h2>
-            <p className="mt-3 text-sm leading-relaxed text-zinc-300">
-              The Find a friend activation combined onboarding inputs with Claude Code pairing and became one of the strongest engagement moments of the
-              event. It worked especially well for technical attendees and first-time guests. Next iteration should improve wayfinding, onboarding visibility
-              and queue flow.
-            </p>
+            <h2 className="mt-2 font-syne text-2xl tracking-tight text-white">Interactive Activation Recap</h2>
+            <div className="mt-4 grid gap-3 md:grid-cols-2">
+              <article className="rounded-2xl border border-white/10 bg-white/[0.02] p-4">
+                <h3 className="font-medium text-zinc-100">Find a Friend Matchmaking</h3>
+                <p className="mt-2 text-sm leading-relaxed text-zinc-300">
+                  The Find a friend activation combined onboarding inputs with Claude Code pairing and became one of the strongest engagement moments of the
+                  event. It worked especially well for technical attendees and first-time guests. Next iteration should improve wayfinding, onboarding
+                  visibility and queue flow.
+                </p>
+              </article>
+
+              <article className="rounded-2xl border border-white/10 bg-white/[0.02] p-4">
+                <h3 className="font-medium text-zinc-100">Places of Historical Significance by LTS Collective</h3>
+                <p className="mt-2 text-sm leading-relaxed text-zinc-300">
+                  A canvas with topology sculpted on and fictional locations guests could point to with a tracking cursor to see terrain renders and read lore
+                  about the history and significance of each location.
+                </p>
+              </article>
+            </div>
           </section>
 
           <section id="financials" className={SECTION_CARD_CLASS}>
