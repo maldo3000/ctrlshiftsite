@@ -250,26 +250,51 @@ function useActiveSection() {
       return;
     }
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visibleEntries = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+    let rafId = 0;
+    const updateActiveFromScroll = () => {
+      const threshold = 170;
+      let current = sections[0]?.id ?? 'overview';
 
-        if (visibleEntries[0]?.target?.id) {
-          setActiveSection(visibleEntries[0].target.id as SectionId);
+      for (const section of sections) {
+        const top = section.getBoundingClientRect().top;
+        if (top <= threshold) {
+          current = section.id;
+        } else {
+          break;
         }
-      },
-      {
-        rootMargin: '-20% 0px -55% 0px',
-        threshold: [0.15, 0.3, 0.6]
       }
-    );
+      setActiveSection(current as SectionId);
+    };
 
-    sections.forEach((section) => observer.observe(section));
+    const onScroll = () => {
+      if (rafId) {
+        return;
+      }
+      rafId = window.requestAnimationFrame(() => {
+        updateActiveFromScroll();
+        rafId = 0;
+      });
+    };
+
+    const onHashChange = () => {
+      const hash = window.location.hash.replace('#', '');
+      if (NAV_ITEMS.some((item) => item.id === hash)) {
+        setActiveSection(hash as SectionId);
+      }
+    };
+
+    updateActiveFromScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    window.addEventListener('hashchange', onHashChange);
 
     return () => {
-      observer.disconnect();
+      if (rafId) {
+        window.cancelAnimationFrame(rafId);
+      }
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+      window.removeEventListener('hashchange', onHashChange);
     };
   }, []);
 
@@ -551,12 +576,27 @@ export default function SponsorVol9ReportPage() {
             <p className="text-xs uppercase tracking-[0.15em] text-zinc-500">Program Recap</p>
             <h2 className="mt-2 font-syne text-2xl tracking-tight text-white">Night Summary</h2>
             <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-relaxed text-zinc-300">
-              <li>The night landed well overall with strong energy and positive audience response.</li>
-              <li>Emily unpacked taste through craft and consumption and gave the audience clear creative framing.</li>
-              <li>Justin mapped the current tool landscape across open source and custom workflows with practical examples.</li>
+              <li>
+                The night landed with strong momentum, sustained energy and a highly positive audience response across talks, screenings and activations.
+              </li>
+              <li>
+                Emily Switzer delivered a strong talk on taste through craft and consumption, grounding the room in creative decision-making and giving a clear
+                lens for how teams can evaluate emerging tools.
+              </li>
+              <li>
+                Justin Gerrard mapped the current tool landscape across open source and custom workflows, then translated that landscape into practical
+                implementation patterns the audience could apply immediately.
+              </li>
               <li>J Lee had to cancel due to a family emergency, so trailers were screened instead.</li>
-              <li>PrayFirst Diva's art installation was engaging, but audience flow was suboptimal and many guests missed it because it was at the back.</li>
-              <li>Timing improved with the adjusted run of show.</li>
+              <li>
+                The transition from the canceled segment into screenings was handled cleanly, which helped maintain flow and kept attendees engaged through the
+                second half of the night.
+              </li>
+              <li>
+                PrayFirst Diva&apos;s art installation was engaging, but audience flow was suboptimal and many guests missed it because it was placed at the back
+                of the venue.
+              </li>
+              <li>Overall timing improved with the adjusted run of show and pacing felt tighter than previous volumes.</li>
             </ul>
           </section>
 
@@ -567,9 +607,9 @@ export default function SponsorVol9ReportPage() {
               <article className="rounded-2xl border border-white/10 bg-white/[0.02] p-4">
                 <h3 className="font-medium text-zinc-100">Find a Friend Matchmaking</h3>
                 <p className="mt-2 text-sm leading-relaxed text-zinc-300">
-                  The Find a friend activation combined onboarding inputs with Claude Code pairing and became one of the strongest engagement moments of the
-                  event. It worked especially well for technical attendees and first-time guests. Next iteration should improve wayfinding, onboarding
-                  visibility and queue flow.
+                  Find a Friend used Luma onboarding responses to build an interest profile for attendees, then processed those profiles through Claude Code
+                  to identify strong one-to-one match candidates. The output was used as a networking and icebreaker tool that helped hosts facilitate better
+                  introductions and stronger early-event connections, especially for first-time guests.
                 </p>
               </article>
 
@@ -577,7 +617,16 @@ export default function SponsorVol9ReportPage() {
                 <h3 className="font-medium text-zinc-100">Places of Historical Significance by LTS Collective</h3>
                 <p className="mt-2 text-sm leading-relaxed text-zinc-300">
                   A canvas with topology sculpted on and fictional locations guests could point to with a tracking cursor to see terrain renders and read lore
-                  about the history and significance of each location.
+                  about the history and significance of each location. Artist reference:{' '}
+                  <a
+                    href="https://www.instagram.com/prayfirstdiva/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-emerald-200 underline decoration-emerald-300/60 underline-offset-2 hover:text-emerald-100"
+                  >
+                    Pray First Diva (@prayfirstdiva)
+                  </a>
+                  .
                 </p>
               </article>
             </div>
