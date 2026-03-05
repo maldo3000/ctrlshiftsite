@@ -240,10 +240,14 @@ function scrollToAnchor(anchorId: string) {
   }
 }
 
-function useActiveSection() {
+function useActiveSection(isEnabled: boolean) {
   const [activeSection, setActiveSection] = useState<SectionId>('overview');
 
   useEffect(() => {
+    if (!isEnabled) {
+      return;
+    }
+
     const sections = NAV_ITEMS.map(({ id }) => document.getElementById(id)).filter(Boolean) as HTMLElement[];
 
     if (!sections.length) {
@@ -296,7 +300,7 @@ function useActiveSection() {
       window.removeEventListener('resize', onScroll);
       window.removeEventListener('hashchange', onHashChange);
     };
-  }, []);
+  }, [isEnabled]);
 
   return { activeSection, setActiveSection };
 }
@@ -314,7 +318,7 @@ export default function SponsorVol9ReportPage() {
   const [interestFilter, setInterestFilter] = useState('all');
   const [toolFilter, setToolFilter] = useState('all');
 
-  const { activeSection, setActiveSection } = useActiveSection();
+  const { activeSection, setActiveSection } = useActiveSection(Boolean(data) && !loading);
   const expenseDonutData = useMemo(() => withChartColors(data?.financials.expensesByCategory ?? []), [data]);
   const toolsDonutData = useMemo(
     () => withChartColors(data?.audience.toolsDistribution.slice(0, 8) ?? []),
