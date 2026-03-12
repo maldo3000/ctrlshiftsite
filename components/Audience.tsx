@@ -61,7 +61,7 @@ const Audience: React.FC = () => {
                             <div className="flex items-baseline gap-4 mb-2">
                                 <span className="text-5xl lg:text-6xl font-bold text-purple-400 font-sans">60%</span>
                             </div>
-                            <p className="text-zinc-400 text-sm lg:text-base leading-relaxed max-w-xs">
+                            <p className="text-zinc-400 text-sm lg:text-base leading-relaxed max-w-xs lg:max-w-sm">
                                 Creative professionals (designers, filmmakers, artists, producers) experimenting with or curious about next gen creative tools.
                             </p>
                         </motion.div>
@@ -74,7 +74,7 @@ const Audience: React.FC = () => {
                              <div className="flex items-baseline gap-4 mb-2">
                                 <span className="text-5xl lg:text-6xl font-bold text-fuchsia-400 font-sans">40%</span>
                             </div>
-                            <p className="text-zinc-400 text-sm lg:text-base leading-relaxed max-w-xs">
+                            <p className="text-zinc-400 text-sm lg:text-base leading-relaxed max-w-xs lg:max-w-sm">
                                 Developers, creative technologists and technical folks, using AI tools to create new experiences.
                             </p>
                         </motion.div>
@@ -85,7 +85,7 @@ const Audience: React.FC = () => {
                         initial={{ opacity: 0, scale: 0.8 }}
                         animate={inView ? { opacity: 1, scale: 1 } : {}}
                         transition={{ delay: 0.4, duration: 0.8 }}
-                        className="w-48 h-48 lg:w-56 lg:h-56 xl:w-64 xl:h-64 flex-shrink-0 relative"
+                        className="w-full max-w-[320px] aspect-square lg:max-w-[224px] xl:max-w-[256px] flex-shrink-0 relative"
                     >
                         <ResponsiveContainer width="100%" height="100%">
                             <PieChart>
@@ -93,8 +93,8 @@ const Audience: React.FC = () => {
                                 data={data}
                                 cx="50%"
                                 cy="50%"
-                                innerRadius={60}
-                                outerRadius={90}
+                                innerRadius="58%"
+                                outerRadius="88%"
                                 paddingAngle={4}
                                 dataKey="value"
                                 stroke="none"

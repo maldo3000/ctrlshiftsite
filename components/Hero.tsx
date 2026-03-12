@@ -10,13 +10,13 @@ const Hero: React.FC = () => {
   const y2 = useTransform(scrollY, [0, 500], [0, -100]);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center pt-20 pb-10 overflow-hidden bg-black">
+    <section className="relative min-h-screen flex items-center justify-center pt-24 sm:pt-20 pb-10 overflow-hidden bg-black">
       {/* Background Interactive Tubes */}
       <div className="absolute inset-0 z-0 opacity-80">
         <TubesBackground />
       </div>
 
-      <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 xl:gap-20 items-center relative z-10 pointer-events-none">
+      <div className="container mx-auto px-5 sm:px-6 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 xl:gap-20 items-center relative z-10 pointer-events-none">
         
         <div className="pointer-events-auto">
           <motion.div
@@ -24,7 +24,7 @@ const Hero: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-6xl md:text-8xl font-syne font-extrabold tracking-[-0.05em] leading-[1.1] mb-6 text-white drop-shadow-[0_0_25px_rgba(255,255,255,0.3)] uppercase">
+            <h1 className="text-5xl sm:text-6xl md:text-8xl font-syne font-extrabold tracking-[-0.05em] leading-[1.02] sm:leading-[1.1] mb-5 sm:mb-6 text-white drop-shadow-[0_0_25px_rgba(255,255,255,0.3)] uppercase">
               CTRL<br/>+ SHIFT
             </h1>
           </motion.div>
@@ -33,14 +33,14 @@ const Hero: React.FC = () => {
             initial={{ opacity: 0, width: 0 }}
             animate={{ opacity: 1, width: "100%" }}
             transition={{ delay: 0.5, duration: 0.8 }}
-            className="h-px bg-gradient-to-r from-white to-transparent my-8 max-w-md"
+            className="h-px bg-gradient-to-r from-white to-transparent my-6 sm:my-8 max-w-md"
           />
 
           <motion.h2
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.8, duration: 0.8 }}
-            className="text-3xl md:text-5xl font-sans font-semibold leading-tight mb-8 text-zinc-100"
+            className="text-[2.45rem] sm:text-5xl font-sans font-semibold leading-tight mb-6 sm:mb-8 text-zinc-100"
           >
             Where creativity meets <br/>
             <span className="font-bold text-white">emerging technology.</span>
@@ -50,7 +50,7 @@ const Hero: React.FC = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.2, duration: 0.8 }}
-            className="text-zinc-400 max-w-lg text-lg leading-relaxed mb-10"
+            className="text-zinc-400 max-w-lg text-base sm:text-lg leading-relaxed mb-8 sm:mb-10"
           >
             Calling artists, designers, filmmakers, musicians, and developers who see technology as a tool for expanding their creative horizons and amplifying the human touch in art.
           </motion.p>
@@ -64,7 +64,7 @@ const Hero: React.FC = () => {
                href="https://luma.com/ctrlshift?k=c"
                target="_blank"
                rel="noopener noreferrer"
-               className="inline-flex items-center justify-center px-8 py-4 text-lg font-syne font-bold text-white transition-all duration-300 ease-out bg-purple-600 rounded-full shadow-[0_0_15px_rgba(147,51,234,0.3)] hover:bg-purple-500 hover:scale-105 hover:shadow-[0_0_25px_rgba(147,51,234,0.5)] gap-2 group"
+               className="inline-flex w-full sm:w-auto items-center justify-center px-8 py-4 text-lg font-syne font-bold text-white transition-all duration-300 ease-out bg-purple-600 rounded-full shadow-[0_0_15px_rgba(147,51,234,0.3)] hover:bg-purple-500 hover:scale-105 hover:shadow-[0_0_25px_rgba(147,51,234,0.5)] gap-2 group"
              >
                 Upcoming Events
                 <ArrowUpRight className="w-5 h-5 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform duration-300" />

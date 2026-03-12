@@ -7,10 +7,66 @@ interface RetroDesktopProps {
   onLaunch: () => void;
 }
 
+type IconPosition = { top: number; left: number };
+
+type IconPositions = {
+  youtube: IconPosition;
+  twitter: IconPosition;
+  instagram: IconPosition;
+  paint: IconPosition;
+  documents: IconPosition;
+};
+
+interface DesktopIconProps {
+  icon: React.ElementType;
+  label: string;
+  color?: string;
+  onClick: () => void;
+  position: IconPosition;
+}
+
 const RetroDesktop: React.FC<RetroDesktopProps> = ({ onLaunch }) => {
   const MOBILE_BREAKPOINT = 640;
   const MOBILE_MAIN_WINDOW_HEIGHT = 260;
   const DESKTOP_MAIN_WINDOW = { width: 400, height: 200 };
+  const initialIsMobile = window.innerWidth < MOBILE_BREAKPOINT;
+
+  const getDesktopIconPositions = (): IconPositions => ({
+    youtube: { top: Math.random() * 200 + 60, left: Math.random() * 100 + 20 },
+    twitter: { top: Math.random() * 200 + 60, left: Math.random() * 100 + 20 },
+    instagram: { top: Math.random() * 200 + 60, left: Math.random() * 100 + 20 },
+    paint: { top: Math.random() * 200 + 60, left: Math.random() * 100 + 20 },
+    documents: { top: window.innerHeight / 2, left: window.innerWidth - 120 }
+  });
+
+  const getMobileIconPositions = (): IconPositions => {
+    const iconWidth = 80;
+    const leftPadding = 12;
+    const rowGap = 94;
+    const topStart = 56;
+    const columns = window.innerWidth >= 360 ? 3 : 2;
+    const availableWidth = Math.max(0, window.innerWidth - leftPadding * 2 - iconWidth * columns);
+    const columnGap = columns > 1 ? availableWidth / (columns - 1) : 0;
+    const getX = (column: number) => leftPadding + column * (iconWidth + columnGap);
+
+    if (columns === 3) {
+      return {
+        youtube: { top: topStart, left: getX(0) },
+        twitter: { top: topStart, left: getX(1) },
+        instagram: { top: topStart, left: getX(2) },
+        paint: { top: topStart + rowGap, left: getX(0) },
+        documents: { top: topStart + rowGap, left: getX(1) }
+      };
+    }
+
+    return {
+      youtube: { top: topStart, left: getX(0) },
+      twitter: { top: topStart, left: getX(1) },
+      instagram: { top: topStart + rowGap, left: getX(0) },
+      paint: { top: topStart + rowGap, left: getX(1) },
+      documents: { top: topStart + rowGap * 2, left: getX(0) }
+    };
+  };
 
   const [isStartOpen, setIsStartOpen] = useState(false);
   const [time, setTime] = useState('');
@@ -21,7 +77,8 @@ const RetroDesktop: React.FC<RetroDesktopProps> = ({ onLaunch }) => {
   // Window State
   const [activeWindow, setActiveWindow] = useState<'main' | 'paint'>('main');
   const [zIndices, setZIndices] = useState({ main: 20, paint: 10 });
-  const [isMobile, setIsMobile] = useState(window.innerWidth < MOBILE_BREAKPOINT);
+  const [isMobile, setIsMobile] = useState(initialIsMobile);
+  const wasMobileRef = useRef(initialIsMobile);
 
   // Main App Window State
   const [windowSize, setWindowSize] = useState(DESKTOP_MAIN_WINDOW);
@@ -38,15 +95,14 @@ const RetroDesktop: React.FC<RetroDesktopProps> = ({ onLaunch }) => {
   const [isDrawing, setIsDrawing] = useState(false);
   const [currentColor, setCurrentColor] = useState('#000000');
   const [currentTool, setCurrentTool] = useState<'brush' | 'eraser'>('brush');
+  const iconTouchStartRef = useRef<{ x: number; y: number; time: number } | null>(null);
+  const iconLastTapRef = useRef<Record<string, number>>({});
+  const [selectedIcon, setSelectedIcon] = useState<string | null>(null);
 
-  // Icon positions - initialized once to prevent rearrangement on re-renders
-  const [iconPositions] = useState(() => ({
-    youtube: { top: Math.random() * 200 + 60, left: Math.random() * 100 + 20 },
-    twitter: { top: Math.random() * 200 + 60, left: Math.random() * 100 + 20 },
-    instagram: { top: Math.random() * 200 + 60, left: Math.random() * 100 + 20 },
-    paint: { top: Math.random() * 200 + 60, left: Math.random() * 100 + 20 },
-    documents: { top: window.innerHeight / 2, left: window.innerWidth - 120 }
-  }));
+  // Icon positions
+  const [iconPositions, setIconPositions] = useState<IconPositions>(() => (
+    initialIsMobile ? getMobileIconPositions() : getDesktopIconPositions()
+  ));
 
   // Constants
   const COLORS = [
@@ -68,6 +124,14 @@ const RetroDesktop: React.FC<RetroDesktopProps> = ({ onLaunch }) => {
     const updateWindowLayout = () => {
       const mobile = window.innerWidth < MOBILE_BREAKPOINT;
       setIsMobile(mobile);
+
+      if (mobile !== wasMobileRef.current) {
+        setIconPositions(mobile ? getMobileIconPositions() : getDesktopIconPositions());
+        if (!mobile && !isMaximized) {
+          setWindowSize(DESKTOP_MAIN_WINDOW);
+        }
+        wasMobileRef.current = mobile;
+      }
 
       if (!mobile || isMaximized) return;
 
@@ -120,6 +184,7 @@ const RetroDesktop: React.FC<RetroDesktopProps> = ({ onLaunch }) => {
   }, [currentColor, currentTool, isPaintOpen]);
 
   const handleWindowClick = (window: 'main' | 'paint') => {
+    setSelectedIcon(null);
     setActiveWindow(window);
     setZIndices({
         main: window === 'main' ? 30 : 20,
@@ -128,6 +193,7 @@ const RetroDesktop: React.FC<RetroDesktopProps> = ({ onLaunch }) => {
   };
 
   const handleNavClick = (id: string) => {
+    setSelectedIcon(null);
     setIsStartOpen(false);
     onLaunch();
     setTimeout(() => {
@@ -178,28 +244,78 @@ const RetroDesktop: React.FC<RetroDesktopProps> = ({ onLaunch }) => {
       }
   };
 
-  const DesktopIcon = ({ icon: Icon, label, color = "text-blue-600", onClick, position }: any) => (
+  const handleIconTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+    const touch = e.touches[0];
+    iconTouchStartRef.current = {
+      x: touch.clientX,
+      y: touch.clientY,
+      time: Date.now()
+    };
+  };
+
+  const handleIconTouchEnd = (
+    e: React.TouchEvent<HTMLDivElement>,
+    label: string,
+    onClick: () => void
+  ) => {
+    if (!isMobile || !iconTouchStartRef.current) return;
+
+    const touch = e.changedTouches[0];
+    const { x, y, time } = iconTouchStartRef.current;
+    iconTouchStartRef.current = null;
+
+    const moveX = Math.abs(touch.clientX - x);
+    const moveY = Math.abs(touch.clientY - y);
+    const duration = Date.now() - time;
+    if (moveX > 10 || moveY > 10 || duration > 300) return;
+
+    const now = Date.now();
+    const lastTap = iconLastTapRef.current[label] || 0;
+    const isRepeatedTap = selectedIcon === label && now - lastTap < 1600;
+    if (isRepeatedTap) {
+      e.preventDefault();
+      onClick();
+      iconLastTapRef.current[label] = 0;
+      setSelectedIcon(null);
+      return;
+    }
+
+    setSelectedIcon(label);
+    iconLastTapRef.current[label] = now;
+  };
+
+  const controlButtonSize = isMobile ? 'w-8 h-8' : 'w-5 h-5';
+  const desktopIconWidth = isMobile ? 'w-20' : 'w-24';
+
+  const DesktopIcon = ({ icon: Icon, label, color = "text-blue-600", onClick, position }: DesktopIconProps) => (
     <motion.div
       drag
       dragConstraints={constraintsRef}
       dragMomentum={false}
+      onDragStart={() => setSelectedIcon(null)}
       whileDrag={{ scale: 1.1, zIndex: 50 }}
-      className="flex flex-col items-center gap-1 w-24 p-2 cursor-pointer group absolute text-center"
+      className={`flex flex-col items-center gap-1 ${desktopIconWidth} ${isMobile ? 'p-1.5' : 'p-2'} cursor-pointer group absolute text-center touch-none`}
       style={{ 
-        top: position?.top || 60, 
-        left: position?.left || 20 
+        top: position.top,
+        left: position.left
       }}
       onDoubleClick={onClick}
-      onTouchStart={onClick} // For mobile friendliness
+      onTouchStart={handleIconTouchStart}
+      onTouchEnd={(e) => handleIconTouchEnd(e, label, onClick)}
     >
-      <div className="w-10 h-10 bg-white border-2 border-black shadow-[2px_2px_0px_rgba(0,0,0,0.3)] flex items-center justify-center group-hover:bg-blue-800 transition-colors relative">
-        <Icon className={`w-6 h-6 ${color} group-hover:text-white`} />
+      <div className={`w-10 h-10 bg-white border-2 border-black shadow-[2px_2px_0px_rgba(0,0,0,0.3)] flex items-center justify-center ${selectedIcon === label ? 'bg-blue-700' : 'group-hover:bg-blue-800'} transition-colors relative`}>
+        <Icon className={`w-6 h-6 ${color} ${selectedIcon === label ? 'text-white' : 'group-hover:text-white'}`} />
         {/* Selection overlay */}
         <div className="absolute inset-0 bg-blue-800 opacity-0 group-hover:opacity-20 mix-blend-overlay"></div>
       </div>
-      <span className="text-white text-xs font-bold bg-blue-900/50 px-1 leading-tight mt-1 border border-transparent group-hover:border-white/50 group-hover:bg-blue-800">
+      <span className={`text-white ${isMobile ? 'text-[11px]' : 'text-xs'} font-bold bg-blue-900/50 px-1 leading-tight mt-1 border ${selectedIcon === label ? 'border-white/70 bg-blue-800' : 'border-transparent group-hover:border-white/50 group-hover:bg-blue-800'}`}>
         {label}
       </span>
+      {isMobile && selectedIcon === label && (
+        <span className="text-[10px] font-bold text-black bg-[#ffffe1] border border-black px-1 whitespace-nowrap">
+          Tap again to open
+        </span>
+      )}
     </motion.div>
   );
 
@@ -213,7 +329,7 @@ const RetroDesktop: React.FC<RetroDesktopProps> = ({ onLaunch }) => {
     <div className="fixed inset-0 z-50 bg-[#008080] overflow-hidden font-sans select-none" ref={constraintsRef}>
       
       {/* Desktop Icons Layer */}
-      <div className="absolute inset-0 p-10 z-0 pointer-events-auto">
+      <div className={`absolute inset-0 z-0 pointer-events-auto ${isMobile ? 'p-0' : 'p-10'}`}>
          <DesktopIcon 
             icon={Youtube} 
             label="YouTube.exe" 
@@ -252,7 +368,7 @@ const RetroDesktop: React.FC<RetroDesktopProps> = ({ onLaunch }) => {
             dragConstraints={constraintsRef}
             dragMomentum={false}
             whileDrag={{ scale: 1.1, zIndex: 50 }}
-            className="absolute flex flex-col items-center gap-1 w-24 cursor-pointer group"
+            className={`absolute flex flex-col items-center gap-1 ${desktopIconWidth} cursor-pointer group touch-none`}
             style={{ 
               top: iconPositions.documents.top, 
               left: iconPositions.documents.left 
@@ -286,17 +402,21 @@ const RetroDesktop: React.FC<RetroDesktopProps> = ({ onLaunch }) => {
             {/* Paint Title Bar */}
             <div 
                 onPointerDown={(e) => paintDragControls.start(e)}
-                className={`bg-gradient-to-r ${activeWindow === 'paint' ? 'from-[#000080] to-[#1084d0]' : 'from-[#808080] to-[#b0b0b0]'} px-1 py-0.5 flex items-center justify-between cursor-default select-none h-8 flex-shrink-0`}
+                className={`bg-gradient-to-r ${activeWindow === 'paint' ? 'from-[#000080] to-[#1084d0]' : 'from-[#808080] to-[#b0b0b0]'} px-1 py-0.5 flex items-center justify-between cursor-default select-none h-10 sm:h-8 flex-shrink-0 touch-none`}
             >
                 <div className="flex items-center gap-2 text-white font-bold text-sm tracking-wide px-1">
                     <Palette size={14} />
                     <span>untitled - Paint</span>
                 </div>
                 <div className="flex items-center gap-1">
-                    <button className={`w-5 h-5 bg-[#c0c0c0] ${buttonBorder} flex items-center justify-center active:border-t-black active:border-l-black active:border-b-white active:border-r-white focus:outline-none`}>
-                        <Minus size={10} strokeWidth={3} className="text-black"/>
+                    <button
+                        onPointerDown={(e) => e.stopPropagation()}
+                        className={`${controlButtonSize} bg-[#c0c0c0] ${buttonBorder} flex items-center justify-center active:border-t-black active:border-l-black active:border-b-white active:border-r-white focus:outline-none`}
+                    >
+                        <Minus size={isMobile ? 12 : 10} strokeWidth={3} className="text-black"/>
                     </button>
                     <button 
+                        onPointerDown={(e) => e.stopPropagation()}
                         onClick={() => {
                             if(isPaintMaximized) {
                                 setPaintWindowSize({ width: 600, height: 450 });
@@ -306,15 +426,16 @@ const RetroDesktop: React.FC<RetroDesktopProps> = ({ onLaunch }) => {
                                 setIsPaintMaximized(true);
                             }
                         }}
-                        className={`w-5 h-5 bg-[#c0c0c0] ${buttonBorder} flex items-center justify-center active:border-t-black active:border-l-black active:border-b-white active:border-r-white focus:outline-none`}
+                        className={`${controlButtonSize} bg-[#c0c0c0] ${buttonBorder} flex items-center justify-center active:border-t-black active:border-l-black active:border-b-white active:border-r-white focus:outline-none`}
                     >
-                        <Maximize2 size={10} strokeWidth={3} className="text-black"/>
+                        <Maximize2 size={isMobile ? 12 : 10} strokeWidth={3} className="text-black"/>
                     </button>
                     <button 
+                        onPointerDown={(e) => e.stopPropagation()}
                         onClick={() => setIsPaintOpen(false)}
-                        className={`w-5 h-5 bg-[#c0c0c0] ${buttonBorder} flex items-center justify-center active:border-t-black active:border-l-black active:border-b-white active:border-r-white ml-1 focus:outline-none`}
+                        className={`${controlButtonSize} bg-[#c0c0c0] ${buttonBorder} flex items-center justify-center active:border-t-black active:border-l-black active:border-b-white active:border-r-white ml-1 focus:outline-none`}
                     >
-                        <X size={12} strokeWidth={3} className="text-black"/>
+                        <X size={isMobile ? 14 : 12} strokeWidth={3} className="text-black"/>
                     </button>
                 </div>
             </div>
@@ -435,22 +556,26 @@ const RetroDesktop: React.FC<RetroDesktopProps> = ({ onLaunch }) => {
                 height: windowSize.height,
                 zIndex: zIndices.main 
             }}
-            className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-auto bg-[#c0c0c0] ${windowBorder} shadow-[8px_8px_0px_rgba(0,0,0,0.3)] flex flex-col relative`}
+            className={`absolute left-1/2 -translate-x-1/2 ${isMobile ? 'top-[57%]' : 'top-1/2'} -translate-y-1/2 pointer-events-auto bg-[#c0c0c0] ${windowBorder} shadow-[8px_8px_0px_rgba(0,0,0,0.3)] flex flex-col relative`}
         >
             {/* Title Bar */}
             <div 
                 onPointerDown={(e) => dragControls.start(e)}
-                className={`bg-gradient-to-r ${activeWindow === 'main' ? 'from-[#000080] to-[#1084d0]' : 'from-[#808080] to-[#b0b0b0]'} px-1 py-0.5 flex items-center justify-between cursor-default select-none h-8 flex-shrink-0`}
+                className={`bg-gradient-to-r ${activeWindow === 'main' ? 'from-[#000080] to-[#1084d0]' : 'from-[#808080] to-[#b0b0b0]'} px-1 py-0.5 flex items-center justify-between cursor-default select-none h-10 sm:h-8 flex-shrink-0 touch-none`}
             >
                 <div className="flex items-center gap-2 text-white font-bold text-sm tracking-wide px-1">
                     <Terminal size={14} />
                     <span>CTRL+SHIFT.exe</span>
                 </div>
                 <div className="flex items-center gap-1">
-                    <button className={`w-5 h-5 bg-[#c0c0c0] ${buttonBorder} flex items-center justify-center active:border-t-black active:border-l-black active:border-b-white active:border-r-white focus:outline-none`}>
-                        <Minus size={10} strokeWidth={3} className="text-black"/>
+                    <button
+                        onPointerDown={(e) => e.stopPropagation()}
+                        className={`${controlButtonSize} bg-[#c0c0c0] ${buttonBorder} flex items-center justify-center active:border-t-black active:border-l-black active:border-b-white active:border-r-white focus:outline-none`}
+                    >
+                        <Minus size={isMobile ? 12 : 10} strokeWidth={3} className="text-black"/>
                     </button>
                     <button 
+                        onPointerDown={(e) => e.stopPropagation()}
                         onClick={() => {
                             if(isMaximized) {
                                 if (isMobile) {
@@ -467,15 +592,16 @@ const RetroDesktop: React.FC<RetroDesktopProps> = ({ onLaunch }) => {
                                 setIsMaximized(true);
                             }
                         }}
-                        className={`w-5 h-5 bg-[#c0c0c0] ${buttonBorder} flex items-center justify-center active:border-t-black active:border-l-black active:border-b-white active:border-r-white focus:outline-none`}
+                        className={`${controlButtonSize} bg-[#c0c0c0] ${buttonBorder} flex items-center justify-center active:border-t-black active:border-l-black active:border-b-white active:border-r-white focus:outline-none`}
                     >
-                        <Maximize2 size={10} strokeWidth={3} className="text-black"/>
+                        <Maximize2 size={isMobile ? 12 : 10} strokeWidth={3} className="text-black"/>
                     </button>
                     <button 
+                        onPointerDown={(e) => e.stopPropagation()}
                         onClick={onLaunch}
-                        className={`w-5 h-5 bg-[#c0c0c0] ${buttonBorder} flex items-center justify-center active:border-t-black active:border-l-black active:border-b-white active:border-r-white ml-1 focus:outline-none`}
+                        className={`${controlButtonSize} bg-[#c0c0c0] ${buttonBorder} flex items-center justify-center active:border-t-black active:border-l-black active:border-b-white active:border-r-white ml-1 focus:outline-none`}
                     >
-                        <X size={12} strokeWidth={3} className="text-black"/>
+                        <X size={isMobile ? 14 : 12} strokeWidth={3} className="text-black"/>
                     </button>
                 </div>
             </div>
@@ -540,10 +666,13 @@ const RetroDesktop: React.FC<RetroDesktopProps> = ({ onLaunch }) => {
       {/* Taskbar */}
       <div className={`absolute top-0 left-0 right-0 h-10 bg-[#c0c0c0] border-b-2 border-white shadow-md z-50 flex items-center px-1 justify-between ${windowBorder} border-b-black border-r-black pointer-events-auto`}>
         
-        <div className="flex items-center gap-2 h-full py-1">
+        <div className="flex items-center gap-1 h-full py-1 min-w-0 flex-1">
             <button 
-                onClick={() => setIsStartOpen(!isStartOpen)}
-                className={`h-full px-2 flex items-center gap-1 font-bold ${isStartOpen ? pressedButtonBorder + ' bg-[#b0b0b0]' : buttonBorder} active:bg-[#b0b0b0] focus:outline-none`}
+                onClick={() => {
+                  setSelectedIcon(null);
+                  setIsStartOpen(!isStartOpen);
+                }}
+                className={`h-full ${isMobile ? 'px-1.5' : 'px-2'} flex items-center gap-1 font-bold ${isStartOpen ? pressedButtonBorder + ' bg-[#b0b0b0]' : buttonBorder} active:bg-[#b0b0b0] focus:outline-none`}
             >
                 <div className="w-4 h-4 grid grid-cols-2 gap-0.5 flex-shrink-0">
                     <div className="bg-[#000080]"></div>
@@ -551,41 +680,42 @@ const RetroDesktop: React.FC<RetroDesktopProps> = ({ onLaunch }) => {
                     <div className="bg-[#ff0000]"></div>
                     <div className="bg-[#ffff00]"></div>
                 </div>
-                <span className="text-sm text-black">Start</span>
+                <span className={`${isMobile ? 'text-xs' : 'text-sm'} text-black`}>Start</span>
             </button>
             
-            <div className="h-full w-px bg-gray-500 mx-1"></div>
-            <div className="h-full w-px bg-white mx-1"></div>
+            {!isMobile && <div className="h-full w-px bg-gray-500 mx-1"></div>}
+            {!isMobile && <div className="h-full w-px bg-white mx-1"></div>}
 
-            {/* Taskbar Items */}
-            {isPaintOpen && (
+            <div className="flex items-center gap-1 min-w-0 overflow-x-auto pr-1">
+                {/* Taskbar Items */}
+                {isPaintOpen && (
+                    <div 
+                        onClick={() => {
+                            if (activeWindow === 'paint') {
+                                 handleWindowClick('paint');
+                            } else {
+                                 handleWindowClick('paint');
+                            }
+                        }}
+                        className={`h-full ${isMobile ? 'w-9 px-1 justify-center' : 'w-32 px-2'} flex items-center gap-1 text-sm cursor-pointer ${activeWindow === 'paint' ? insetBorder + ' bg-[#eeeeee]' : windowBorder} truncate`}
+                    >
+                        <Palette size={14} className="text-black"/>
+                        {!isMobile && <span className="text-black truncate">untitled - Paint</span>}
+                    </div>
+                )}
                 <div 
-                    onClick={() => {
-                        if (activeWindow === 'paint') {
-                             // Minimize logic could go here, for now just focus
-                             handleWindowClick('paint');
-                        } else {
-                             handleWindowClick('paint');
-                        }
-                    }}
-                    className={`h-full px-2 flex items-center gap-1 text-sm cursor-pointer ${activeWindow === 'paint' ? insetBorder + ' bg-[#eeeeee]' : windowBorder} w-32 truncate`}
-                >
-                    <Palette size={14} className="text-black"/>
-                    <span className="text-black truncate">untitled - Paint</span>
+                        onClick={() => handleWindowClick('main')}
+                        className={`h-full ${isMobile ? 'w-9 px-1 justify-center' : 'w-32 px-2'} flex items-center gap-1 text-sm cursor-pointer ${activeWindow === 'main' ? insetBorder + ' bg-[#eeeeee]' : windowBorder} truncate ml-1`}
+                    >
+                        <Terminal size={14} className="text-black"/>
+                        {!isMobile && <span className="text-black truncate">CTRL+SHIFT.exe</span>}
                 </div>
-            )}
-            <div 
-                    onClick={() => handleWindowClick('main')}
-                    className={`h-full px-2 flex items-center gap-1 text-sm cursor-pointer ${activeWindow === 'main' ? insetBorder + ' bg-[#eeeeee]' : windowBorder} w-32 truncate ml-1`}
-                >
-                    <Terminal size={14} className="text-black"/>
-                    <span className="text-black truncate">CTRL+SHIFT.exe</span>
             </div>
         </div>
 
         {/* Clock */}
-        <div className={`h-full px-4 flex items-center gap-2 text-sm font-mono ${insetBorder} bg-[#c0c0c0] my-1 mr-1 text-black`}>
-            <span>🔊</span>
+        <div className={`h-full ${isMobile ? 'px-2 text-xs min-w-[74px]' : 'px-4 text-sm'} flex items-center justify-center gap-2 font-mono ${insetBorder} bg-[#c0c0c0] my-1 mr-1 text-black`}>
+            {!isMobile && <span>🔊</span>}
             <span>{time}</span>
         </div>
 
@@ -596,7 +726,7 @@ const RetroDesktop: React.FC<RetroDesktopProps> = ({ onLaunch }) => {
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
-                    className={`absolute top-10 left-0 w-64 bg-[#c0c0c0] ${windowBorder} shadow-xl flex z-50`}
+                    className={`absolute top-10 left-0 w-64 max-w-[92vw] bg-[#c0c0c0] ${windowBorder} shadow-xl flex z-50`}
                 >
                     <div className="w-8 bg-[#000080] text-white flex items-end justify-center pb-4 relative">
                         <span className="transform -rotate-90 whitespace-nowrap font-bold text-xl tracking-widest absolute bottom-12">CTRL+SHIFT</span>
