@@ -19,7 +19,7 @@ const CtrlshiftCon: React.FC = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 className="text-xl text-zinc-300 max-w-md mt-8 lg:mt-0 text-right font-light"
             >
-                Expanding our format into a larger scale two day conference starting in Toronto, Spring 2026.
+                Expanding our format into a larger scale two day conference starting in Spring 2026.
             </motion.p>
         </div>
 
