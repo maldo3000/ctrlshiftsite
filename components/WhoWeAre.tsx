@@ -54,7 +54,7 @@ const WhoWeAre: React.FC = () => {
             className="flex flex-col justify-center space-y-8"
           >
             <h3 className="text-4xl md:text-5xl font-semibold leading-tight">
-              Nine sold-out editions. A growing network of artists & developers shaping what’s next.
+              Ten sold-out editions. A growing network of artists & developers shaping what’s next.
             </h3>
             
             <div className="space-y-6 text-zinc-400 text-lg leading-relaxed">
