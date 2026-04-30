@@ -1,6 +1,14 @@
 {
   "rewrites": [
     {
+      "source": "/rawclaw",
+      "destination": "/rawclaw/index.html"
+    },
+    {
+      "source": "/rawclaw/",
+      "destination": "/rawclaw/index.html"
+    },
+    {
       "source": "/sponsors",
       "destination": "/index.html"
     },
