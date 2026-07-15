@@ -89,6 +89,12 @@ const Hero: React.FC = () => {
                 loading="eager"
                 decoding="async"
                 className="w-full h-full object-cover rounded-2xl opacity-80 hover:opacity-100 transition-all duration-700"
+                style={{
+                  maskImage:
+                    'linear-gradient(to right, transparent 0%, rgba(0,0,0,0.6) 25%, black 55%)',
+                  WebkitMaskImage:
+                    'linear-gradient(to right, transparent 0%, rgba(0,0,0,0.6) 25%, black 55%)',
+                }}
              />
            </picture>
         </motion.div>
