@@ -105,6 +105,15 @@ async function createApp() {
     next();
   });
 
+  app.get(['/academy', '/academy/'], (request, response) => {
+    if (!request.path.endsWith('/')) {
+      response.redirect(301, request.originalUrl.replace('/academy', '/academy/'));
+      return;
+    }
+    const baseDir = isProduction ? 'dist' : 'public';
+    response.sendFile(path.resolve(ROOT, baseDir, 'academy', 'index.html'));
+  });
+
   if (isProduction) {
     app.use(express.static(path.resolve(ROOT, 'dist')));
   } else {

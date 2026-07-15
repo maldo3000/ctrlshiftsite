@@ -1,0 +1,1775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CTRL+SHIFT Academy | AI workshops for creatives</title>
+<meta name="description" content="CTRL+SHIFT Academy is a new kind of creative education. Hands-on AI workshops and courses for designers, filmmakers, and art directors. Join the waitlist." />
+<meta property="og:title" content="CTRL+SHIFT Academy" />
+<meta property="og:description" content="AI workshops for creatives. Hands-on, not hypothetical. Join the waitlist." />
+<meta property="og:type" content="website" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Work+Sans:wght@800;900&display=swap" rel="stylesheet" />
+<link rel="preload" as="image" href="hero-purple.jpg" />
+<link rel="preload" as="image" href="hero-yellow.jpg" />
+<style>
+  /* Agrandir Wide (PP Agrandir) is a licensed font and is not bundled.
+     Drop your licensed webfont files into ./fonts/ with these exact names
+     and the headings switch over automatically. Until then, Work Sans renders. */
+  @font-face {
+    font-family: "Agrandir Wide";
+    src: url("fonts/AgrandirWide-Bold.woff2") format("woff2");
+    font-weight: 700;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Agrandir Wide";
+    src: url("fonts/AgrandirWide-Black.woff2") format("woff2");
+    font-weight: 800 900;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Aileron";
+    src: url("fonts/aileron-latin-600-normal.woff2") format("woff2");
+    font-weight: 600;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Aileron";
+    src: url("fonts/aileron-latin-700-normal.woff2") format("woff2");
+    font-weight: 700;
+    font-display: swap;
+  }
+
+  :root {
+    --bg: #070906;
+    --bg-raised: #0D100A;
+    --acid: #A06EE7;
+    --acid-bright: #C9ABF5;
+    --acid-rgb: 160, 110, 231;
+    --acid-dim: rgba(var(--acid-rgb), 0.3);
+    --acid-faint: rgba(var(--acid-rgb), 0.12);
+    --ink: #0A0C07;
+    --white: #F4F7EE;
+    --grey: #9AA093;
+    --grey-dark: #565B50;
+    --border: rgba(244, 247, 238, 0.09);
+    --display: "Agrandir Wide", "Work Sans", "Inter", -apple-system, sans-serif;
+    --mono: "Space Mono", ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+    --radius: 22px;
+  }
+
+  /* Track 02 (creative software) runs pastel yellow instead of purple */
+  html[data-track="soft"] {
+    --acid: #F3E37F;
+    --acid-bright: #FAF1B4;
+    --acid-rgb: 243, 227, 127;
+    --acid-dim: rgba(243, 227, 127, 0.3);
+    --acid-faint: rgba(243, 227, 127, 0.12);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { overflow-x: clip; }
+  html.lenis, html.lenis body { height: auto; }
+  .lenis.lenis-smooth { scroll-behavior: auto !important; }
+
+  body {
+    background: var(--bg);
+    color: var(--white);
+    font-family: "Inter", -apple-system, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  ::selection { background: var(--acid); color: var(--ink); }
+
+  .wrap { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+
+  .micro {
+    font-family: "Inter", -apple-system, sans-serif;
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--acid-bright);
+  }
+
+  /* ================= FIXED FX ================= */
+  .grain {
+    position: fixed;
+    inset: -100px;
+    z-index: 200;
+    pointer-events: none;
+    opacity: 0.05;
+    background-image: url("data:image/png;base64,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");
+    background-repeat: repeat;
+  }
+
+  #cursor {
+    position: fixed;
+    top: 0; left: 0;
+    width: 36px; height: 36px;
+    margin: -18px 0 0 -18px;
+    z-index: 300;
+    pointer-events: none;
+    mix-blend-mode: screen;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  #cursor svg { width: 100%; height: 100%; display: block; }
+  #cursor svg line { stroke: var(--acid-bright); }
+  #cursor svg circle { fill: var(--acid-bright); }
+  .reticle > circle { fill: var(--acid); }
+  @media (pointer: coarse) { #cursor { display: none; } }
+
+  #progress {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 2px;
+    z-index: 120;
+    background: var(--acid);
+    transform-origin: 0 50%;
+    transform: scaleX(0);
+    box-shadow: 0 0 12px var(--acid-dim);
+    pointer-events: none;
+  }
+
+  .nebula {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(110px);
+    pointer-events: none;
+    will-change: transform;
+    z-index: 0;
+  }
+  .nebula-1 {
+    width: 720px; height: 720px;
+    background: radial-gradient(circle, rgba(var(--acid-rgb),0.11) 0%, transparent 70%);
+    top: -260px; left: 50%;
+    margin-left: -360px;
+  }
+  .nebula-2 {
+    width: 560px; height: 560px;
+    background: radial-gradient(circle, rgba(var(--acid-rgb),0.07) 0%, transparent 70%);
+    bottom: -260px; left: -180px;
+  }
+
+  /* ================= FLOATING PILL NAV ================= */
+  nav {
+    position: fixed;
+    top: 14px;
+    left: 50%;
+    translate: -50% 0;
+    width: min(1160px, calc(100% - 24px));
+    z-index: 100;
+    background: rgba(10, 12, 7, 0.66);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    transform: translateY(-130%);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: transform 0.45s ease, opacity 0.45s ease, visibility 0.45s;
+  }
+  nav.nav-visible {
+    transform: none;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    border-radius: 16px;
+  }
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+    min-height: 58px;
+    padding: 8px 18px;
+  }
+  .lockup {
+    font-family: "Aileron", "Inter", -apple-system, sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--white);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .lockup .academy { color: var(--acid); }
+
+  .btn {
+    display: inline-block;
+    white-space: nowrap;
+    background: var(--acid);
+    color: var(--ink);
+    font-family: "Aileron", "Inter", -apple-system, sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 14px 26px;
+    border: none;
+    border-radius: 10px;
+    text-decoration: none;
+    cursor: pointer;
+    position: relative;
+    transition: background 0.2s ease, box-shadow 0.25s ease;
+  }
+  .btn:hover {
+    background: var(--acid-bright);
+    box-shadow: 0 0 32px rgba(var(--acid-rgb), 0.5);
+  }
+  .btn-sm { font-size: 12px; padding: 9px 16px; border-radius: 8px; }
+
+  /* ================= HERO (centered) ================= */
+  header.hero {
+    position: relative;
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+    padding: 56px 0 30px;
+    text-align: center;
+    overflow: hidden;
+    z-index: 1;
+  }
+  .hero > .wrap { position: relative; z-index: 2; width: 100%; }
+  .badge {
+    display: inline-block;
+    font-family: "Aileron", "Inter", -apple-system, sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.34em;
+    text-transform: uppercase;
+    color: var(--white);
+    text-shadow: 0 1px 14px rgba(7, 9, 6, 0.9);
+    margin-bottom: 16px;
+  }
+  .hero-logo {
+    margin: 0 auto 20px;
+  }
+  .hero-logo img {
+    display: block;
+    margin: 0 auto;
+    width: min(90px, 19vw);
+    height: auto;
+    filter: drop-shadow(0 2px 24px rgba(7, 9, 6, 0.8));
+  }
+  .hero-logo .hero-logo-text {
+    display: none;
+    font-family: var(--display);
+    font-weight: 900;
+    font-size: clamp(24px, 3vw, 40px);
+    letter-spacing: -0.02em;
+    line-height: 1;
+    color: var(--white);
+  }
+  .hero-logo.logo-fallback img { display: none; }
+  .hero-logo.logo-fallback .hero-logo-text { display: block; }
+  .hero h1 {
+    font-family: var(--display);
+    font-size: clamp(37px, min(7.5vw, 10.8svh), 106px);
+    font-weight: 900;
+    line-height: 0.98;
+    letter-spacing: -0.03em;
+    margin: 0 auto 22px;
+    max-width: 16ch;
+    text-wrap: balance;
+  }
+  .hero h1 .accent {
+    color: var(--acid);
+    text-shadow: 0 0 48px rgba(var(--acid-rgb), 0.45);
+  }
+  .hero h1 .w { display: inline-block; will-change: transform; }
+  .hero .subhead {
+    font-size: clamp(14px, 1.3vw, 16px);
+    font-weight: 500;
+    color: var(--white);
+    max-width: 40ch;
+    margin: 0 auto 20px;
+    text-wrap: balance;
+  }
+  .hero .subhead strong { color: var(--white); font-weight: 600; }
+
+  .tabs {
+    position: relative;
+    display: inline-flex;
+    gap: 4px;
+    padding: 4px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: rgba(7, 9, 6, 0.55);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    margin-bottom: 16px;
+  }
+  .tab {
+    position: relative;
+    z-index: 2;
+    font-family: "Aileron", "Inter", -apple-system, sans-serif;
+    font-weight: 700;
+    font-size: clamp(14px, 1.5vw, 17px);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--grey);
+    background: none;
+    border: none;
+    border-radius: 11px;
+    padding: 14px 34px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: color 0.3s ease;
+  }
+  .tab.active { color: var(--ink); }
+  .tab-pill {
+    position: absolute;
+    top: 4px; bottom: 4px; left: 4px;
+    width: 40px;
+    border-radius: 11px;
+    background: var(--acid);
+    box-shadow: 0 0 24px rgba(var(--acid-rgb), 0.4);
+    z-index: 1;
+    will-change: transform, width;
+  }
+  .track-desc {
+    font-size: clamp(15px, 1.7vw, 17px);
+    color: var(--white);
+    font-weight: 500;
+    max-width: 560px;
+    margin: 0 auto 16px;
+  }
+
+  .hero-form {
+    display: flex;
+    gap: 10px;
+    max-width: 540px;
+    margin: 0 auto;
+  }
+  .hero-form input { text-align: left; }
+  .hero-success {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    max-width: 540px;
+    margin: 0 auto;
+    font-size: 17px;
+    font-weight: 600;
+    padding: 20px 24px;
+    border: 1px solid var(--acid-dim);
+    border-radius: 12px;
+    background: rgba(var(--acid-rgb), 0.06);
+  }
+  .hero-success svg {
+    width: 24px; height: 24px;
+    flex: none;
+    color: var(--acid-bright);
+    filter: drop-shadow(0 0 12px rgba(var(--acid-rgb), 0.7));
+  }
+  .hero .form-error { position: static; }
+  .limited {
+    display: block;
+    margin-top: 14px;
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--grey-dark);
+  }
+  .limited::before { content: "[ "; color: var(--acid-bright); }
+  .limited::after  { content: " ]"; color: var(--acid-bright); }
+
+  input[type="text"], input[type="email"] {
+    flex: 1;
+    min-width: 0;
+    background: rgba(13, 16, 10, 0.85);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 20px;
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    color: var(--white);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  input::placeholder { color: var(--grey-dark); }
+  input:focus {
+    outline: none;
+    border-color: var(--acid);
+    box-shadow: 0 0 0 3px rgba(var(--acid-rgb), 0.16), 0 0 24px rgba(var(--acid-rgb), 0.1);
+  }
+  .form-error { display: none; color: #E07868; font-size: 14px; margin-top: 8px; }
+
+  /* ================= HERO ART (figure lives in the header) ================= */
+  .hero-art {
+    position: absolute;
+    top: 52%;
+    left: 50%;
+    translate: -50% -50%;
+    height: min(128vh, 1180px);
+    z-index: 0;
+    pointer-events: none;
+    will-change: transform;
+    --art-opacity: 0.55;
+  }
+  .hero-art img {
+    display: block;
+    height: 100%;
+    width: auto;
+    opacity: var(--art-opacity);
+    -webkit-mask-image: radial-gradient(ellipse 60% 62% at 50% 47%, #000 38%, transparent 82%);
+    mask-image: radial-gradient(ellipse 60% 62% at 50% 47%, #000 38%, transparent 82%);
+    transition: opacity 0.6s ease;
+  }
+  .hero-art .hero-art-soft {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+  }
+  html[data-track="soft"] .hero-art .hero-art-gen { opacity: 0; }
+  html[data-track="soft"] .hero-art .hero-art-soft { opacity: var(--art-opacity); }
+  .hero-veil {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: radial-gradient(ellipse 58% 52% at 50% 56%, rgba(7, 9, 6, 0.6), transparent 78%);
+    pointer-events: none;
+  }
+  .hero .scanline {
+    position: absolute;
+    left: 0; right: 0; top: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(var(--acid-rgb),0.25) 30%, rgba(198,246,87,0.5) 50%, rgba(var(--acid-rgb),0.25) 70%, transparent);
+    pointer-events: none;
+    will-change: transform;
+    opacity: 0.5;
+    z-index: 1;
+  }
+  .hero .frame-mark {
+    position: absolute;
+    width: 22px; height: 22px;
+    border: 0 solid rgba(198, 246, 87, 0.4);
+    pointer-events: none;
+    z-index: 1;
+  }
+  .fm-tl { top: 96px; left: 26px; border-top-width: 1px; border-left-width: 1px; }
+  .fm-tr { top: 96px; right: 26px; border-top-width: 1px; border-right-width: 1px; }
+  .fm-bl { bottom: 26px; left: 26px; border-bottom-width: 1px; border-left-width: 1px; }
+  .fm-br { bottom: 26px; right: 26px; border-bottom-width: 1px; border-right-width: 1px; }
+
+  .reticle {
+    position: absolute;
+    right: 5%;
+    bottom: 6%;
+    width: 170px; height: 170px;
+    pointer-events: none;
+    opacity: 0.45;
+    z-index: 1;
+  }
+  .reticle circle, .reticle line { stroke: var(--acid); }
+  .reticle .r-outer, .reticle .r-inner { transform-origin: 50% 50%; will-change: transform; }
+
+  /* ================= MARQUEE ================= */
+  .marquee {
+    overflow: hidden;
+    padding: 34px 0 10px;
+    position: relative;
+    z-index: 1;
+  }
+  .marquee-track {
+    display: flex;
+    align-items: center;
+    gap: 52px;
+    white-space: nowrap;
+    width: max-content;
+    will-change: transform;
+  }
+  .marquee-track span {
+    font-family: var(--display);
+    font-size: clamp(22px, 3vw, 36px);
+    font-weight: 900;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    color: var(--white);
+    opacity: 0.9;
+  }
+  .marquee-track span.outline {
+    color: transparent;
+    -webkit-text-stroke: 1px var(--acid);
+    opacity: 1;
+  }
+  .marquee-track .tick { font-size: 16px; color: var(--acid); -webkit-text-stroke: 0; }
+
+  /* ================= SECTIONS ================= */
+  section { padding: 96px 0; position: relative; z-index: 1; }
+  .section-head { text-align: center; max-width: 640px; margin: 0 auto 52px; }
+  .section-label {
+    display: block;
+    margin-bottom: 14px;
+    font-family: var(--display);
+    font-weight: 900;
+    font-size: 17px;
+    letter-spacing: 0.02em;
+    color: var(--acid-bright);
+  }
+  .section-label::before { content: "+ "; }
+  .ticket-info .section-label { color: var(--white); }
+  h2 {
+    font-family: var(--display);
+    font-size: clamp(30px, 4.2vw, 48px);
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+  }
+
+  /* ---- bento ---- */
+  .bento {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 16px;
+  }
+  .cell {
+    position: relative;
+    overflow: hidden;
+    background: var(--bg-raised);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 34px 32px;
+    transform-style: preserve-3d;
+    will-change: transform;
+    transition: border-color 0.3s ease;
+  }
+  .cell::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(360px circle at var(--mx, 50%) var(--my, 50%), rgba(var(--acid-rgb),0.09), transparent 65%);
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    pointer-events: none;
+  }
+  .cell:hover { border-color: var(--acid-dim); }
+  .cell:hover::after { opacity: 1; }
+  .cell-4 { grid-column: span 4; }
+  .cell-2 { grid-column: span 2; }
+  .cell-3 { grid-column: span 3; }
+  .cell .icon {
+    width: 40px; height: 40px;
+    margin-bottom: 20px;
+    color: var(--acid);
+    filter: drop-shadow(0 0 12px rgba(var(--acid-rgb), 0.55));
+  }
+  .cell h3 {
+    font-family: var(--display);
+    font-size: 19px;
+    font-weight: 800;
+    margin-bottom: 10px;
+    letter-spacing: -0.01em;
+  }
+  .cell p { color: var(--grey); font-size: 15.5px; }
+  .cell .stat {
+    font-family: var(--display);
+    font-weight: 900;
+    font-size: 56px;
+    line-height: 1;
+    color: var(--acid);
+    text-shadow: 0 0 34px rgba(var(--acid-rgb), 0.4);
+    margin-bottom: 8px;
+  }
+  .cell-capture {
+    background: linear-gradient(135deg, rgba(var(--acid-rgb),0.09), rgba(var(--acid-rgb),0.02));
+    border-color: var(--acid-dim);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .cell-capture h3 { font-size: 24px; }
+  .cell-capture p { margin-bottom: 20px; }
+  .capture-form { display: flex; gap: 10px; position: relative; }
+  .capture-success {
+    display: none;
+    align-items: center;
+    gap: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 18px 20px;
+    border: 1px solid var(--acid-dim);
+    border-radius: 12px;
+    background: rgba(var(--acid-rgb), 0.07);
+  }
+  .capture-success svg {
+    width: 24px; height: 24px;
+    flex: none;
+    color: var(--acid-bright);
+    filter: drop-shadow(0 0 12px rgba(var(--acid-rgb), 0.7));
+  }
+
+  /* ---- learn card ---- */
+  .learn-card {
+    background: var(--bg-raised);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: clamp(32px, 5vw, 64px);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+  .learn-copy p { color: var(--grey); font-size: 17px; }
+  .learn-copy p strong { color: var(--acid-bright); font-weight: 600; }
+  .topics { list-style: none; }
+  .topics li {
+    padding: 15px 0 15px 34px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    font-size: 16px;
+    font-weight: 500;
+    transition: padding-left 0.3s ease, color 0.3s ease;
+  }
+  .topics li:first-child { border-top: 1px solid var(--border); }
+  .topics li::before {
+    content: "+";
+    position: absolute;
+    left: 4px;
+    color: var(--acid);
+    font-weight: 700;
+    text-shadow: 0 0 12px rgba(var(--acid-rgb), 0.7);
+    transition: transform 0.3s ease;
+  }
+  .topics li:hover { padding-left: 42px; color: var(--acid-bright); }
+  .topics li:hover::before { transform: rotate(90deg); }
+
+  /* ---- who ---- */
+  .who-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .who-grid .cell { min-height: 220px; display: flex; flex-direction: column; gap: 16px; }
+  .num {
+    font-weight: 600;
+    font-size: 12px;
+    color: var(--acid-bright);
+    letter-spacing: 0.18em;
+  }
+  .ghost {
+    position: absolute;
+    top: 4px; right: 14px;
+    font-family: var(--display);
+    font-size: 104px;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--acid);
+    opacity: 0.05;
+    pointer-events: none;
+  }
+  .who-grid p {
+    font-size: 16.5px;
+    color: var(--white);
+    font-weight: 500;
+    line-height: 1.55;
+    position: relative;
+  }
+
+  /* ================= FINAL CTA CARD ================= */
+  .waitlist { padding: 40px 0 110px; }
+  .cta-card {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--acid-dim);
+    border-radius: 28px;
+    padding: clamp(56px, 8vw, 104px) 24px;
+    text-align: center;
+  }
+  .cta-bg {
+    position: absolute;
+    inset: -6%;
+    background-image: url("hero-media.jpg");
+    background-size: cover;
+    background-position: 50% 82%;
+    opacity: 0.22;
+    will-change: transform;
+    pointer-events: none;
+  }
+  .cta-shade {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 75% 90% at 50% 50%, rgba(7,9,6,0.25), rgba(7,9,6,0.92));
+    pointer-events: none;
+  }
+  .form-box { position: relative; max-width: 540px; margin: 0 auto; z-index: 2; }
+  .form-box h2 { margin-bottom: 14px; }
+  .form-box .form-sub { color: var(--grey); margin-bottom: 38px; font-size: 17px; }
+  .form-box form { display: flex; flex-direction: column; gap: 12px; }
+  .who-waitlist {
+    max-width: 640px;
+    margin: 44px auto 0;
+    text-align: center;
+  }
+  .who-waitlist h3 {
+    font-family: var(--display);
+    font-weight: 900;
+    font-size: clamp(20px, 2.4vw, 28px);
+    margin-bottom: 8px;
+  }
+  .who-waitlist .form-sub {
+    font-size: 14px;
+    color: var(--grey);
+    margin-bottom: 18px;
+  }
+  /* Snap frames: keep each one within a viewport */
+  #how, #workshop, #whofor, #tickets { padding: 88px 0 40px; }
+
+  /* ================= TINTED PHOTOS (track-colored duotone) ================= */
+  .tint {
+    position: relative;
+    overflow: hidden;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    margin: 0;
+  }
+  .tint img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(1) contrast(1.06) brightness(0.92);
+  }
+  .tint::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(180deg, transparent 55%, rgba(7, 9, 6, 0.35));
+    pointer-events: none;
+  }
+
+  /* ================= HOW IT WORKS ================= */
+  #how {
+    position: relative;
+    overflow: hidden;
+    min-height: 100svh;
+  }
+  #how > .wrap { position: relative; z-index: 2; }
+  .how-bg { position: absolute; inset: 0; z-index: 0; margin: 0; }
+  .how-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 65% 40%;
+    filter: grayscale(1) contrast(1.05) brightness(0.8);
+    opacity: 0.5;
+  }
+  .how-bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: rgb(var(--acid-rgb));
+    mix-blend-mode: color;
+    opacity: 0.9;
+    transition: background 0.5s ease;
+    pointer-events: none;
+  }
+  .how-bg::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    background:
+      linear-gradient(180deg, var(--bg) 0%, transparent 22%, transparent 72%, var(--bg) 100%),
+      linear-gradient(90deg, rgba(7, 9, 6, 0.92) 0%, rgba(7, 9, 6, 0.55) 48%, rgba(7, 9, 6, 0.25) 100%);
+    pointer-events: none;
+  }
+  .how-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px 56px;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  .how-copy h2 { font-size: clamp(24px, 3vw, 38px); max-width: 20ch; margin: 10px 0 16px; }
+  .how-copy p { color: var(--white); opacity: 0.82; font-size: 15px; margin-bottom: 12px; max-width: 44ch; }
+  .format-blocks { display: grid; gap: 10px; }
+  .format-block {
+    display: grid;
+    grid-template-columns: 96px 1fr;
+    column-gap: 20px;
+    align-items: start;
+    padding: 15px 20px;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: rgba(10, 12, 7, 0.68);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+  .format-block .format-label {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .format-label b {
+    font-family: var(--display);
+    font-weight: 900;
+    font-size: 40px;
+    line-height: 0.9;
+    color: var(--acid-bright);
+  }
+  .format-label i {
+    font-style: normal;
+    font-family: "Aileron", "Inter", -apple-system, sans-serif;
+    font-weight: 700;
+    font-size: 10.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--grey);
+    margin-top: 7px;
+  }
+  .format-block h3 { font-size: 16px; margin-bottom: 3px; }
+  .format-block p { color: var(--grey); font-size: 13.5px; }
+  .proof-caption { font-size: 13px; color: var(--grey); margin-top: 12px; text-align: center; }
+
+  /* ================= THE FIRST WORKSHOP ================= */
+  .workshop-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+    align-items: stretch;
+  }
+  .workshop-left h2 { margin: 12px 0 14px; }
+  .workshop-intro { color: var(--grey); font-size: 15px; max-width: 50ch; }
+  .workshop-intro p { margin-bottom: 8px; }
+  .workshop-photo { min-height: 100%; }
+  .col-label {
+    display: block;
+    margin: 26px 0 12px;
+    font-family: var(--display);
+    font-weight: 900;
+    font-size: 17px;
+    letter-spacing: 0.02em;
+    color: var(--acid-bright);
+  }
+
+  /* ================= WHO THIS IS FOR ================= */
+  #whofor h2 { margin: 12px 0 22px; }
+  .who-photo { height: 300px; }
+  .persona-row {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: -70px 28px 0;
+  }
+  .persona-card {
+    padding: 22px 24px 20px;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    background: rgba(10, 12, 7, 0.82);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+  .persona-num {
+    display: block;
+    font-family: var(--display);
+    font-weight: 900;
+    font-size: 28px;
+    line-height: 1;
+    color: var(--acid-bright);
+    margin-bottom: 10px;
+  }
+  .persona-card p { color: var(--white); opacity: 0.82; font-size: 14.5px; }
+  .who-note { text-align: center; margin-top: 20px; color: var(--acid-bright); font-size: 14px; font-weight: 600; }
+
+  /* ================= TICKETS ================= */
+  .ticket-card {
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    max-width: 960px;
+    margin: 0 auto;
+    overflow: hidden;
+    border: 1px solid var(--acid-dim);
+    border-radius: var(--radius);
+    background: rgba(var(--acid-rgb), 0.05);
+  }
+  .ticket-photo { border: none; border-radius: 0; border-right: 1px solid var(--border); }
+  .ticket-info { padding: 34px 38px; text-align: left; }
+  .ticket-price {
+    display: block;
+    font-family: var(--display);
+    font-weight: 900;
+    font-size: clamp(44px, 5vw, 60px);
+    line-height: 1;
+    color: var(--acid-bright);
+    margin: 10px 0 8px;
+  }
+  .ticket-sub { color: var(--grey); font-size: 14px; margin-bottom: 16px; }
+  .ticket-details {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 20px;
+    font-family: "Aileron", "Inter", -apple-system, sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.03em;
+    color: var(--white);
+  }
+  .ticket-details li::before { content: "+ "; color: var(--acid); }
+  .ticket-cta { display: block; text-align: center; }
+  .field-row { display: flex; gap: 12px; }
+  .form-note { font-size: 13px; color: var(--grey); margin-top: 14px; }
+
+  .success {
+    display: none;
+    padding: 42px 24px;
+    border: 1px solid var(--acid-dim);
+    border-radius: 14px;
+    background: rgba(var(--acid-rgb), 0.06);
+  }
+  .success .check {
+    width: 42px; height: 42px;
+    margin: 0 auto 16px;
+    color: var(--acid-bright);
+    filter: drop-shadow(0 0 16px rgba(var(--acid-rgb), 0.7));
+  }
+  .success p { font-size: 19px; font-weight: 600; }
+
+  /* ================= FOOTER ================= */
+  footer { padding: 0 0 40px; position: relative; z-index: 1; }
+  .footer-inner {
+    border-top: 1px solid var(--border);
+    padding-top: 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 14px;
+    color: var(--grey);
+  }
+  .footer-inner a { color: var(--grey); text-decoration: none; transition: color 0.2s; }
+  .footer-inner a:hover { color: var(--acid-bright); }
+  .footer-brand { color: var(--white); font-weight: 700; font-family: "Aileron", "Inter", -apple-system, sans-serif; font-size: 13px; }
+
+  /* Agrandir Wide runs much wider than Work Sans: when it's loaded,
+     open the tracking and pull display sizes down so lines still fit. */
+  .has-agrandir h2,
+  .has-agrandir .cell h3,
+  .has-agrandir .marquee-track span { letter-spacing: 0; }
+  .has-agrandir .hero h1 {
+    font-size: clamp(30px, min(6.2vw, 9svh), 90px);
+    letter-spacing: -0.01em;
+    line-height: 1.02;
+  }
+  .has-agrandir h2 { font-size: clamp(26px, 3.6vw, 42px); }
+  .has-agrandir .marquee-track span { font-size: clamp(20px, 2.7vw, 32px); }
+
+  /* ================= MOTION SAFETY ================= */
+  @media (prefers-reduced-motion: reduce) {
+    .scanline, #cursor { display: none !important; }
+    .marquee { overflow-x: auto; }
+  }
+
+  /* ================= RESPONSIVE ================= */
+  @media (max-width: 900px) {
+    header.hero { padding: 48px 0 28px; }
+    section { padding: 68px 0; }
+    .bento { grid-template-columns: 1fr; }
+    .cell-4, .cell-2, .cell-3 { grid-column: auto; }
+    .learn-card { grid-template-columns: 1fr; gap: 36px; }
+    .who-grid { grid-template-columns: 1fr; }
+    .who-grid .cell { min-height: 0; }
+    .hero-form, .capture-form { flex-direction: column; }
+    .how-grid, .workshop-grid { grid-template-columns: 1fr; gap: 28px; }
+    .who-photo { height: 190px; }
+    .persona-row { grid-template-columns: 1fr; margin: -46px 12px 0; }
+    .workshop-photo { min-height: 200px; }
+    .how-bg img { object-position: 60% 30%; }
+    .ticket-card { grid-template-columns: 1fr; }
+    .ticket-photo { border-right: none; border-bottom: 1px solid var(--border); height: 160px; }
+    .tabs { width: 100%; max-width: 440px; }
+    .tab { flex: 1; padding: 16px 8px; font-size: 13px; letter-spacing: 0.05em; }
+    .hero-art { height: min(100vh, 820px); top: 48%; --art-opacity: 0.42; }
+    .field-row { flex-direction: column; }
+    .reticle { width: 120px; height: 120px; }
+  }
+  @media (max-width: 480px) {
+    .lockup { font-size: 12px; letter-spacing: 0.06em; }
+    .btn-sm { font-size: 10px; padding: 7px 10px; }
+    .nav-inner { flex-wrap: nowrap; gap: 6px; padding: 8px 14px; min-height: 48px; }
+    .limited { font-size: 10px; letter-spacing: 0.08em; }
+  }
+</style>
+</head>
+<body>
+
+<div id="progress" aria-hidden="true"></div>
+
+<div id="cursor" aria-hidden="true">
+  <svg viewBox="0 0 36 36" fill="none">
+    <line x1="18" y1="4" x2="18" y2="13" stroke="#C6F657" stroke-width="1.5"/>
+    <line x1="18" y1="23" x2="18" y2="32" stroke="#C6F657" stroke-width="1.5"/>
+    <line x1="4" y1="18" x2="13" y2="18" stroke="#C6F657" stroke-width="1.5"/>
+    <line x1="23" y1="18" x2="32" y2="18" stroke="#C6F657" stroke-width="1.5"/>
+    <circle cx="18" cy="18" r="2.5" fill="#C6F657"/>
+  </svg>
+</div>
+
+<div class="nebula nebula-1" aria-hidden="true"></div>
+<div class="nebula nebula-2" aria-hidden="true"></div>
+
+<!-- ================= NAV ================= -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a class="lockup" href="#top" data-scroll>CTRL+SHIFT <span class="academy">Academy</span></a>
+    <a class="btn btn-sm" href="#waitlist" data-scroll data-magnetic>Join the Waitlist</a>
+  </div>
+</nav>
+
+<!-- ================= HERO ================= -->
+<header class="hero" id="top" data-snap>
+  <div class="hero-art" aria-hidden="true">
+    <img class="hero-art-gen" src="hero-purple.jpg" alt="" width="1000" height="1411" />
+    <img class="hero-art-soft" src="hero-yellow.jpg" alt="" width="1000" height="1410" />
+  </div>
+  <div class="hero-veil" aria-hidden="true"></div>
+  <div class="scanline" aria-hidden="true"></div>
+  <span class="frame-mark fm-tl"></span>
+  <span class="frame-mark fm-tr"></span>
+  <span class="frame-mark fm-bl"></span>
+  <span class="frame-mark fm-br"></span>
+  <svg class="reticle" viewBox="0 0 220 220" fill="none" aria-hidden="true">
+    <g class="r-outer" stroke-width="1">
+      <circle cx="110" cy="110" r="104" stroke-dasharray="2 10" opacity="0.9"/>
+      <circle cx="110" cy="110" r="78" stroke-dasharray="40 22" opacity="0.5"/>
+    </g>
+    <g class="r-inner" stroke-width="1">
+      <circle cx="110" cy="110" r="46" stroke-dasharray="6 6" opacity="0.8"/>
+      <line x1="110" y1="52" x2="110" y2="76" opacity="0.8"/>
+      <line x1="110" y1="144" x2="110" y2="168" opacity="0.8"/>
+      <line x1="52" y1="110" x2="76" y2="110" opacity="0.8"/>
+      <line x1="144" y1="110" x2="168" y2="110" opacity="0.8"/>
+    </g>
+    <circle cx="110" cy="110" r="3" style="fill: var(--acid)"/>
+  </svg>
+  <div class="wrap">
+    <div class="badge" data-hero-fade>CTRL+SHIFT Academy</div>
+    <div class="hero-logo" data-hero-fade>
+      <img src="CTRL_SHIFT_MARK.png" alt="CTRL+SHIFT" width="3240" height="2356" onerror="this.closest('.hero-logo').classList.add('logo-fallback')" />
+      <span class="hero-logo-text" aria-hidden="true">CTRL+SHIFT</span>
+    </div>
+    <p class="subhead" data-hero-fade>We've been discussing how AI is changing creative work, but what do we actually do about it? Academy is our answer. Hands-on, small group, and built for practitioners.</p>
+    <h1 id="headline">The Academy for <span class="accent">New Creatives</span></h1>
+
+    <div class="tabs" role="tablist" aria-label="Choose a track" data-hero-fade>
+      <span class="tab-pill" aria-hidden="true"></span>
+      <button type="button" class="tab active" role="tab" aria-selected="true" data-track="gen">Generative Media</button>
+      <button type="button" class="tab" role="tab" aria-selected="false" data-track="soft">Creative Software</button>
+    </div>
+    <p class="track-desc" data-hero-fade data-dyn data-slot="desc">Generative media and generative storytelling. AI-directed image and video, short film, visual treatment.</p>
+
+    <!-- Submission is handled by the GOOGLE_FORM config in the page script -->
+    <form class="hero-form" id="hero-form" action="#" method="POST" data-hero-fade>
+      <input type="hidden" name="track" value="generative-media" />
+      <input type="email" name="email" placeholder="your@email.com" required autocomplete="email" aria-label="Email address" />
+      <button type="submit" class="btn" data-magnetic>Join the Waitlist</button>
+    </form>
+    <div class="hero-success" id="hero-success" role="status">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
+      </svg>
+      <span>You're on the list. We'll be in touch.</span>
+    </div>
+    <p class="form-error" id="hero-error">Something went wrong. Give it another shot.</p>
+    <span class="limited" data-hero-fade>First workshop limited to 30 people</span>
+  </div>
+</header>
+
+<!-- ================= MARQUEE ================= -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track" id="marquee-track">
+    <span>Visual treatments</span><span class="tick">+</span>
+    <span class="outline">AI image</span><span class="tick">+</span>
+    <span>AI video</span><span class="tick">+</span>
+    <span class="outline">Story direction</span><span class="tick">+</span>
+    <span>Finished sequence</span><span class="tick">+</span>
+  </div>
+</div>
+
+<!-- ================= HOW IT WORKS ================= -->
+<section id="how" data-snap>
+  <figure class="how-bg" aria-hidden="true"><img src="img/collab.jpg" alt="" loading="lazy" /></figure>
+  <div class="wrap">
+    <div class="how-grid">
+      <div class="how-copy">
+        <span class="micro section-label" data-reveal>How it works</span>
+        <h2 data-cascade>AI information is everywhere. Practical skill is not.</h2>
+        <p data-reveal>Most people are trying to learn through scattered tutorials, product demos, and endless updates about the next new tool.</p>
+        <p data-reveal>CTRL+SHIFT workshops give you a focused place to learn what matters, ask questions, and practise with guidance.</p>
+      </div>
+      <div class="format-blocks">
+        <div class="format-block" data-reveal data-tilt>
+          <span class="format-label"><b>1</b><i>hour</i></span>
+          <div>
+            <h3>Understand the concepts.</h3>
+            <p>Learn the principles, tools, and creative decisions behind the workflow before you begin.</p>
+          </div>
+        </div>
+        <div class="format-block" data-reveal data-tilt>
+          <span class="format-label"><b>2</b><i>hours</i></span>
+          <div>
+            <h3>Build with guidance.</h3>
+            <p>Work through a real project with live instruction, practical exercises, and help when you get stuck.</p>
+          </div>
+        </div>
+        <div class="format-block" data-reveal data-tilt>
+          <span class="format-label"><b>&infin;</b><i>leave with</i></span>
+          <div>
+            <h3>Something you can use.</h3>
+            <p>Finish the session with a completed piece or prototype, a repeatable process, and resources for continuing on your own.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="proof-caption" data-reveal>Built by the community behind 14 CTRL+SHIFT events in Toronto. Academy turns the conversation into practice.</p>
+  </div>
+</section>
+
+<!-- ================= THE FIRST WORKSHOP ================= -->
+<section id="workshop" data-snap>
+  <div class="wrap">
+    <div class="workshop-grid">
+      <div class="workshop-left">
+        <span class="micro section-label" data-reveal>The first workshop</span>
+        <h2 data-dyn data-slot="learn_h2">Direct the machines.</h2>
+        <div class="workshop-intro" data-dyn data-slot="learn_p">
+          <p>Learn a practical workflow for developing a visual idea with generative image and video tools.</p>
+          <p>You will move from concept and reference to directed outputs and a finished short-form sequence.</p>
+        </div>
+        <h3 class="micro col-label" data-reveal>What you will learn</h3>
+        <ul class="topics" id="topics" data-dyn>
+          <li>Build references, lookbooks, and style frames</li>
+          <li>Create visual consistency across multiple shots</li>
+          <li>Assemble your work into a finished short-form piece</li>
+        </ul>
+      </div>
+      <figure class="tint workshop-photo" data-reveal><img src="img/building.jpg" alt="Participants building at laptops during a session" loading="lazy" /></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ================= WHO THIS IS FOR ================= -->
+<section id="whofor" data-snap>
+  <div class="wrap">
+    <span class="micro section-label" data-reveal>Who this is for</span>
+    <h2 data-cascade>This is for you if&hellip;</h2>
+    <figure class="tint who-photo" data-reveal><img src="img/audience.jpg" alt="The audience at a CTRL+SHIFT session" loading="lazy" /></figure>
+    <div class="persona-row">
+      <div class="persona-card" data-reveal data-tilt>
+        <span class="persona-num">01</span>
+        <p data-dyn data-slot="who1">You are a filmmaker, designer, photographer, artist, creative director, producer, marketer, or student who wants to incorporate generative media into real creative work.</p>
+      </div>
+      <div class="persona-card" data-reveal data-tilt>
+        <span class="persona-num">02</span>
+        <p data-dyn data-slot="who2">You may have experimented with AI already but still feel like your results are inconsistent, generic, or difficult to control.</p>
+      </div>
+    </div>
+    <p class="who-note" data-dyn data-slot="who3">No advanced technical background is required.</p>
+  </div>
+</section>
+
+<!-- ================= TICKETS ================= -->
+<section id="tickets" data-snap>
+  <div class="wrap">
+    <div class="ticket-card" id="waitlist" data-reveal>
+      <figure class="tint ticket-photo"><img src="img/crowd.jpg" alt="The crowd at a CTRL+SHIFT event" loading="lazy" /></figure>
+      <div class="ticket-info">
+        <span class="micro section-label">Founding workshop</span>
+        <span class="ticket-price">$65</span>
+        <p class="ticket-sub">Three hours of guided learning and hands-on building.</p>
+        <ul class="ticket-details">
+          <li>6:00&ndash;9:00 PM</li>
+          <li>Limited to 30 participants</li>
+          <li>Bring your laptop and charger</li>
+        </ul>
+
+        <a class="btn ticket-cta" href="#top" data-scroll data-magnetic>Join the First Workshop</a>
+        <p class="form-note">Join the list for first access when tickets go live.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap footer-inner">
+    <span><span class="footer-brand">CTRL+SHIFT Academy</span> &nbsp;|&nbsp; <a href="https://ctrlshift.community" target="_blank" rel="noopener">ctrlshift.community</a></span>
+    <span>&copy; 2026 Maldonado Enterprises Inc.</span>
+  </div>
+</footer>
+
+<div class="grain" aria-hidden="true"></div>
+
+<script src="vendor/gsap.min.js"></script>
+<script src="vendor/ScrollTrigger.min.js"></script>
+<script src="vendor/lenis.min.js"></script>
+<script src="vendor/motion.js"></script>
+<script>
+(function () {
+  "use strict";
+
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var finePointer = window.matchMedia("(pointer: fine)").matches;
+  var hasGsap = typeof gsap !== "undefined";
+
+  /* ---------- Agrandir Wide: flag when the licensed font is present ---------- */
+  if (document.fonts && document.fonts.load) {
+    document.fonts.load('900 1em "Agrandir Wide"').then(function () {
+      if (document.fonts.check('900 1em "Agrandir Wide"')) {
+        document.documentElement.classList.add("has-agrandir");
+      }
+    }).catch(function () {});
+  }
+
+  /* ---------- Signup forms (always active) ---------- */
+  /* ---------- Google Form email capture ----------
+     Setup (one time):
+     1. Create a Google Form with two "Short answer" questions: Email and Track.
+     2. In the form editor click ⋮ → "Get pre-filled link", type anything into
+        both fields, click "Get link", and copy it.
+     3. From that link, paste below:
+        - id: the long string between /d/e/ and /viewform
+        - emailEntry / trackEntry: the two entry.XXXXXXXXX parameter names
+     Responses land in the form's linked Google Sheet, with track set to
+     "generative-media" or "creative-software" based on the selected tab. */
+  var GOOGLE_FORM = {
+    id: "PASTE_FORM_ID",
+    emailEntry: "entry.PASTE_EMAIL_ID",
+    trackEntry: "entry.PASTE_TRACK_ID",
+  };
+
+  function wireForm(form, successBox, successDisplay, errorEl) {
+    if (!form || !successBox) return;
+    var errorMsg = errorEl || form.querySelector(".form-error");
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      if (errorMsg) errorMsg.style.display = "none";
+      var button = form.querySelector("button");
+      var originalLabel = button.textContent;
+
+      if (GOOGLE_FORM.id.indexOf("PASTE") !== -1) {
+        console.warn("Google Form not configured yet - fill in GOOGLE_FORM at the top of the script.");
+        if (errorMsg) errorMsg.style.display = "block";
+        return;
+      }
+
+      button.disabled = true;
+      button.textContent = "Saving…";
+
+      var data = new FormData(form);
+      var params = new URLSearchParams();
+      params.append(GOOGLE_FORM.emailEntry, data.get("email"));
+      params.append(GOOGLE_FORM.trackEntry, data.get("track"));
+
+      // no-cors: Google Forms doesn't send CORS headers, so the response is
+      // opaque. The promise only rejects on network failure.
+      fetch("https://docs.google.com/forms/d/e/" + GOOGLE_FORM.id + "/formResponse", {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: params.toString(),
+      })
+        .then(function () {
+          form.style.display = "none";
+          successBox.style.display = successDisplay;
+          if (hasGsap && !reduceMotion) {
+            gsap.from(successBox, { scale: 0.94, opacity: 0, duration: 0.5, ease: "back.out(1.6)" });
+          }
+        })
+        .catch(function () {
+          if (errorMsg) errorMsg.style.display = "block";
+          button.disabled = false;
+          button.textContent = originalLabel;
+        });
+    });
+  }
+  wireForm(document.getElementById("hero-form"), document.getElementById("hero-success"), "flex", document.getElementById("hero-error"));
+
+  /* ---------- Track system (works with or without motion) ---------- */
+  var TRACKS = {
+    gen: {
+      formValue: "generative-media",
+      marquee: ["Visual treatments", "AI image", "AI video", "Story direction", "Finished sequence"],
+      topics: [
+        "Build references, lookbooks, and style frames",
+        "Create visual consistency across multiple shots",
+        "Assemble your work into a finished short-form piece",
+      ],
+      slots: {
+        desc: "Generative media and generative storytelling. AI-directed image and video, short film, visual treatment.",
+        learn_h2: "Direct the machines.",
+        learn_p: "<p>Learn a practical workflow for developing a visual idea with generative image and video tools.</p><p>You will move from concept and reference to directed outputs and a finished short-form sequence.</p>",
+        who1: "You are a filmmaker, designer, photographer, artist, creative director, producer, marketer, or student who wants to incorporate generative media into real creative work.",
+        who2: "You may have experimented with AI already but still feel like your results are inconsistent, generic, or difficult to control.",
+        who3: "No advanced technical background is required.",
+      },
+    },
+    soft: {
+      formValue: "creative-software",
+      marquee: ["Product thinking", "AI-assisted code", "Interface design", "Prototyping", "Working product"],
+      topics: [
+        "Turn a rough idea into a buildable product brief",
+        "Build interfaces, interactions and product logic with AI",
+        "Publish a working prototype",
+      ],
+      slots: {
+        desc: "Apps and software as a medium of creative expression. Tools, agentic workflows, interactive experiences.",
+        learn_h2: "Build what you imagine.",
+        learn_p: "<p>Learn a practical workflow for turning a creative idea into a working digital product using AI-assisted coding.</p><p>You will define the idea, generate the interface, build the core functionality, and publish a working prototype.</p>",
+        who1: "You are a designer, producer, founder, strategist, marketer, or creative person with ideas you have never been able to build yourself.",
+        who2: "You do not need to become a traditional developer. You need enough technical fluency to turn an idea into something real.",
+        who3: "The session is beginner-friendly.",
+      },
+    },
+  };
+  var currentTrack = "gen";
+  var marqueeCtl = { rebuild: null };
+
+  function marqueeHTML(words) {
+    return words.map(function (w, i) {
+      return '<span class="' + (i % 2 ? "outline" : "") + '">' + w + '</span><span class="tick">+</span>';
+    }).join("");
+  }
+
+  function applyTrack(key) {
+    var t = TRACKS[key];
+    Object.keys(t.slots).forEach(function (slot) {
+      var el = document.querySelector('[data-slot="' + slot + '"]');
+      if (el) el.innerHTML = t.slots[slot];
+    });
+    document.getElementById("topics").innerHTML = t.topics.map(function (x) { return "<li>" + x + "</li>"; }).join("");
+    document.querySelectorAll('input[name="track"]').forEach(function (input) { input.value = t.formValue; });
+    if (marqueeCtl.rebuild) marqueeCtl.rebuild(t.marquee);
+    else document.getElementById("marquee-track").innerHTML = marqueeHTML(t.marquee);
+  }
+
+  function positionPill(animate) {
+    var pill = document.querySelector(".tab-pill");
+    var active = document.querySelector(".tab.active");
+    if (!pill || !active) return;
+    var x = active.offsetLeft - 4;
+    var w = active.offsetWidth;
+    if (hasGsap && animate && !reduceMotion) {
+      gsap.to(pill, { x: x, width: w, duration: 0.45, ease: "power3.inOut" });
+    } else if (hasGsap) {
+      gsap.set(pill, { x: x, width: w });
+    } else {
+      pill.style.transform = "translateX(" + x + "px)";
+      pill.style.width = w + "px";
+    }
+  }
+
+  function markActiveTab(key) {
+    document.querySelectorAll(".tab").forEach(function (b) {
+      var active = b.getAttribute("data-track") === key;
+      b.classList.toggle("active", active);
+      b.setAttribute("aria-selected", active ? "true" : "false");
+    });
+  }
+
+  function setTab(key) {
+    currentTrack = key;
+    document.documentElement.setAttribute("data-track", key);
+    markActiveTab(key);
+    positionPill(true);
+    if (history.replaceState) history.replaceState(null, "", key === "soft" ? "#software" : "#media");
+    if (hasGsap && !reduceMotion) {
+      var dyn = gsap.utils.toArray("[data-dyn]");
+      gsap.to(dyn, {
+        opacity: 0, y: 10, duration: 0.22, ease: "power2.in", stagger: 0.015, overwrite: "auto",
+        onComplete: function () {
+          applyTrack(key);
+          gsap.to(dyn, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out", stagger: 0.03, overwrite: "auto" });
+          if (typeof ScrollTrigger !== "undefined") ScrollTrigger.refresh();
+        },
+      });
+    } else {
+      applyTrack(key);
+    }
+  }
+
+  document.querySelectorAll(".tab").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var key = b.getAttribute("data-track");
+      if (key !== currentTrack) setTab(key);
+    });
+  });
+  window.addEventListener("resize", function () { positionPill(false); });
+
+  // Nav stays hidden during the hero; slides in once the hero scrolls out of view
+  (function () {
+    var nav = document.querySelector("nav");
+    var hero = document.querySelector("header.hero");
+    if (!nav || !hero) return;
+    if (!("IntersectionObserver" in window)) {
+      nav.classList.add("nav-visible");
+      return;
+    }
+    new IntersectionObserver(function (entries) {
+      nav.classList.toggle("nav-visible", !entries[0].isIntersecting);
+    }).observe(hero);
+  })();
+  window.addEventListener("load", function () { positionPill(false); });
+  window.addEventListener("hashchange", function () {
+    var key = location.hash === "#software" ? "soft" : "gen";
+    if (key !== currentTrack) setTab(key);
+  });
+
+  if (location.hash === "#software") {
+    currentTrack = "soft";
+    document.documentElement.setAttribute("data-track", "soft");
+    markActiveTab("soft");
+    applyTrack("soft");
+  } else {
+    document.documentElement.setAttribute("data-track", "gen");
+  }
+  positionPill(false);
+
+  if (!hasGsap) return; // static page still fully usable
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  /* ---------- Smooth scroll (Lenis) ---------- */
+  var lenis = null;
+  if (!reduceMotion && typeof Lenis !== "undefined") {
+    lenis = new Lenis({ lerp: 0.11 });
+    lenis.on("scroll", ScrollTrigger.update);
+    gsap.ticker.add(function (time) { lenis.raf(time * 1000); });
+    gsap.ticker.lagSmoothing(0);
+  }
+
+  document.querySelectorAll("[data-scroll]").forEach(function (link) {
+    link.addEventListener("click", function (e) {
+      var target = link.getAttribute("href");
+      if (!target || target.charAt(0) !== "#") return;
+      e.preventDefault();
+      if (lenis) lenis.scrollTo(target, { offset: 0, duration: 1.4 });
+      else document.querySelector(target).scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth" });
+    });
+  });
+
+  /* ---------- Section snapping (desktop, motion allowed) ---------- */
+  (function () {
+    if (reduceMotion || !window.matchMedia("(min-width: 900px)").matches) return;
+    var frames = Array.prototype.slice.call(document.querySelectorAll("[data-snap]"));
+    if (frames.length < 2) return;
+
+    ScrollTrigger.create({
+      start: 0,
+      end: function () { return ScrollTrigger.maxScroll(window); },
+      snap: {
+        snapTo: function (value) {
+          var max = ScrollTrigger.maxScroll(window);
+          if (!max) return value;
+          var vhFrac = window.innerHeight / max;
+          var pts = frames.map(function (el, i) {
+            return i === 0 ? 0 : Math.min(el.offsetTop, max) / max;
+          });
+          if (value > pts[pts.length - 1] + vhFrac * 0.4) return value; // footer is free-scroll
+          var nearest = pts.reduce(function (a, b) {
+            return Math.abs(b - value) < Math.abs(a - value) ? b : a;
+          });
+          return Math.abs(nearest - value) <= vhFrac * 0.5 ? nearest : value;
+        },
+        duration: { min: 0.25, max: 0.6 },
+        delay: 0.05,
+        ease: "power2.out"
+      }
+    });
+  })();
+
+  /* ---------- Scroll progress hairline ---------- */
+  gsap.to("#progress", {
+    scaleX: 1,
+    ease: "none",
+    scrollTrigger: { start: 0, end: "max", scrub: 0.3 },
+  });
+
+  if (reduceMotion) return; // everything below is decorative motion
+
+  /* ---------- Word splitting (shared) ---------- */
+  function splitWords(el) {
+    function wrapTextNode(node) {
+      var frag = document.createDocumentFragment();
+      node.textContent.split(/(\s+)/).forEach(function (piece) {
+        if (!piece) return;
+        if (/^\s+$/.test(piece)) { frag.appendChild(document.createTextNode(" ")); return; }
+        var s = document.createElement("span");
+        s.className = "w";
+        s.style.display = "inline-block";
+        s.style.willChange = "transform";
+        s.textContent = piece;
+        frag.appendChild(s);
+      });
+      node.parentNode.replaceChild(frag, node);
+    }
+    Array.prototype.slice.call(el.childNodes).forEach(function (node) {
+      if (node.nodeType === 3) wrapTextNode(node);
+      else if (node.nodeType === 1) {
+        Array.prototype.slice.call(node.childNodes).forEach(function (inner) {
+          if (inner.nodeType === 3) wrapTextNode(inner);
+        });
+      }
+    });
+    return el.querySelectorAll(".w");
+  }
+
+  /* ---------- Hero intro ---------- */
+  var headline = document.getElementById("headline");
+  splitWords(headline);
+
+  var intro = gsap.timeline({ defaults: { ease: "power3.out" } });
+  intro
+    .from("#headline .w", {
+      yPercent: 110,
+      opacity: 0,
+      rotate: 2,
+      duration: 0.9,
+      stagger: 0.05,
+    }, 0.1)
+    .from("[data-hero-fade]", { y: 24, opacity: 0, duration: 0.8, stagger: 0.1 }, 0.55)
+    .from(".hero-art", { opacity: 0, scale: 1.06, duration: 1.8, ease: "power2.out" }, 0);
+
+  /* ---------- Hero art: continuous life ---------- */
+  gsap.to(".hero-art", {
+    y: "+=16",
+    duration: 5,
+    yoyo: true,
+    repeat: -1,
+    ease: "sine.inOut",
+  });
+  gsap.to(".hero-art", {
+    yPercent: 10,
+    ease: "none",
+    scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true },
+  });
+  gsap.to(".reticle .r-outer", { rotation: 360, duration: 46, repeat: -1, ease: "none" });
+  gsap.to(".reticle .r-inner", { rotation: -360, duration: 28, repeat: -1, ease: "none" });
+  gsap.fromTo(".hero .scanline",
+    { y: 0 },
+    {
+      y: function () { return document.querySelector(".hero").offsetHeight; },
+      duration: 8,
+      repeat: -1,
+      ease: "none",
+    });
+
+  gsap.to(".nebula-1", { x: 70, y: 50, scale: 1.12, duration: 18, yoyo: true, repeat: -1, ease: "sine.inOut" });
+  gsap.to(".nebula-2", { x: -60, y: -40, scale: 1.1, duration: 22, yoyo: true, repeat: -1, ease: "sine.inOut" });
+
+  /* ---------- Animated grain ---------- */
+  (function () {
+    var grain = document.querySelector(".grain");
+    var frames = [[0,0],[-32,16],[16,-48],[-16,32],[48,-16],[-48,-32],[32,48],[0,-32]];
+    var i = 0;
+    setInterval(function () {
+      i = (i + 1) % frames.length;
+      grain.style.transform = "translate(" + frames[i][0] + "px," + frames[i][1] + "px)";
+    }, 90);
+  })();
+
+  /* ---------- Marquee (rebuildable, so track switches can swap the words) ---------- */
+  (function () {
+    var track = document.getElementById("marquee-track");
+    var tween = null;
+
+    function build() {
+      if (tween) tween.kill();
+      gsap.set(track, { x: 0 });
+      track.innerHTML += track.innerHTML; // duplicate for seamless loop
+      var half = track.scrollWidth / 2;
+      tween = gsap.to(track, {
+        x: -half,
+        duration: half / 90,
+        repeat: -1,
+        ease: "none",
+        modifiers: { x: function (x) { return (parseFloat(x) % half) + "px"; } },
+      });
+    }
+    build();
+
+    marqueeCtl.rebuild = function (words) {
+      track.innerHTML = marqueeHTML(words);
+      build();
+    };
+
+    ScrollTrigger.create({
+      onUpdate: function (self) {
+        var raw = self.getVelocity();
+        var v = Math.min(Math.abs(raw) / 900, 3);
+        if (tween) gsap.to(tween, { timeScale: 1 + v, duration: 0.4, overwrite: true });
+        // scroll velocity leans the type, like tape dragged over a head
+        gsap.to(track, {
+          skewX: gsap.utils.clamp(-8, 8, raw / 260),
+          duration: 0.5,
+          ease: "power2.out",
+          overwrite: "auto",
+          onComplete: function () { gsap.to(track, { skewX: 0, duration: 0.6 }); },
+        });
+      },
+    });
+  })();
+
+  /* ---------- Scroll reveals (directional) ---------- */
+  gsap.utils.toArray("[data-reveal]").forEach(function (el, i) {
+    var dir = el.getAttribute("data-dir");
+    gsap.from(el, {
+      x: dir === "left" ? -72 : dir === "right" ? 72 : 0,
+      y: dir ? 0 : 44,
+      rotate: dir === "left" ? -1.2 : dir === "right" ? 1.2 : 0,
+      opacity: 0,
+      duration: 0.95,
+      ease: "power3.out",
+      scrollTrigger: { trigger: el, start: "top 88%", once: true },
+      delay: (i % 3) * 0.08,
+    });
+  });
+
+  /* ---------- Hero exit: type drifts up on scroll away ---------- */
+  gsap.to(".hero .wrap", {
+    yPercent: -8,
+    opacity: 0.3,
+    ease: "none",
+    scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true },
+  });
+
+  /* ---------- Final card ambience ---------- */
+  gsap.fromTo(".cta-bg",
+    { yPercent: 0, scale: 1.16 },
+    {
+      yPercent: -7,
+      scale: 1,
+      ease: "none",
+      scrollTrigger: { trigger: ".cta-card", start: "top bottom", end: "bottom top", scrub: true },
+    });
+
+  /* ---------- Motion (Framer Motion engine): scroll-linked dynamics ---------- */
+  if (typeof Motion !== "undefined") {
+    var mAnimate = Motion.animate, mScroll = Motion.scroll, mInView = Motion.inView, mStagger = Motion.stagger;
+
+    // section headings cascade in word by word
+    // (triggered by ScrollTrigger so anchor jumps can't skip them; animated by Motion)
+    document.querySelectorAll("[data-cascade]").forEach(function (h) {
+      var words = splitWords(h);
+      words.forEach(function (w) { w.style.opacity = "0"; });
+      ScrollTrigger.create({
+        trigger: h,
+        start: "top 92%",
+        once: true,
+        onEnter: function () {
+          mAnimate(words,
+            { opacity: [0, 1], transform: ["translateY(34px) rotate(2deg)", "translateY(0px) rotate(0deg)"] },
+            { duration: 0.65, delay: mStagger(0.055), ease: [0.22, 1, 0.36, 1] });
+        },
+      });
+    });
+
+    // topics list slides in line by line
+    document.querySelectorAll(".topics li").forEach(function (li, i) {
+      li.style.opacity = "0";
+      ScrollTrigger.create({
+        trigger: li,
+        start: "top 94%",
+        once: true,
+        onEnter: function () {
+          mAnimate(li,
+            { opacity: [0, 1], transform: ["translateX(-32px)", "translateX(0px)"] },
+            { duration: 0.55, delay: (i % 6) * 0.07, ease: [0.22, 1, 0.36, 1] });
+        },
+      });
+    });
+
+    // stat counter counts up
+    document.querySelectorAll("[data-count]").forEach(function (stat) {
+      var target = parseInt(stat.getAttribute("data-count"), 10);
+      stat.textContent = "0";
+      ScrollTrigger.create({
+        trigger: stat,
+        start: "top 94%",
+        once: true,
+        onEnter: function () {
+          mAnimate(0, target, {
+            duration: 1.4,
+            ease: "easeOut",
+            onUpdate: function (v) { stat.textContent = Math.round(v); },
+          });
+        },
+      });
+    });
+
+    // ghost numerals drift at their own speed inside the who-cards
+    document.querySelectorAll(".ghost").forEach(function (ghost) {
+      mScroll(
+        mAnimate(ghost, { transform: ["translateY(46px)", "translateY(-46px)"] }, { ease: "linear" }),
+        { target: ghost.closest(".cell"), offset: ["start end", "end start"] }
+      );
+    });
+
+  }
+
+  /* ---------- Pointer-only garnish ---------- */
+  if (!finePointer) return;
+
+  var cursor = document.getElementById("cursor");
+  var cx = gsap.quickTo(cursor, "x", { duration: 0.35, ease: "power3.out" });
+  var cy = gsap.quickTo(cursor, "y", { duration: 0.35, ease: "power3.out" });
+  window.addEventListener("mousemove", function (e) {
+    cursor.style.opacity = "1";
+    cx(e.clientX);
+    cy(e.clientY);
+  });
+  document.addEventListener("mouseleave", function () { cursor.style.opacity = "0"; });
+  document.querySelectorAll("a, button, input, .topics li").forEach(function (el) {
+    el.addEventListener("mouseenter", function () { gsap.to(cursor, { scale: 1.7, rotate: 45, duration: 0.3 }); });
+    el.addEventListener("mouseleave", function () { gsap.to(cursor, { scale: 1, rotate: 0, duration: 0.3 }); });
+  });
+
+  document.querySelectorAll("[data-magnetic]").forEach(function (el) {
+    var xTo = gsap.quickTo(el, "x", { duration: 0.4, ease: "power3.out" });
+    var yTo = gsap.quickTo(el, "y", { duration: 0.4, ease: "power3.out" });
+    el.addEventListener("mousemove", function (e) {
+      var r = el.getBoundingClientRect();
+      xTo((e.clientX - (r.left + r.width / 2)) * 0.25);
+      yTo((e.clientY - (r.top + r.height / 2)) * 0.35);
+    });
+    el.addEventListener("mouseleave", function () { xTo(0); yTo(0); });
+  });
+
+  document.querySelectorAll("[data-tilt]").forEach(function (card) {
+    card.addEventListener("mousemove", function (e) {
+      var r = card.getBoundingClientRect();
+      var px = (e.clientX - r.left) / r.width;
+      var py = (e.clientY - r.top) / r.height;
+      card.style.setProperty("--mx", (px * 100) + "%");
+      card.style.setProperty("--my", (py * 100) + "%");
+      gsap.to(card, {
+        rotateY: (px - 0.5) * 6,
+        rotateX: (0.5 - py) * 6,
+        transformPerspective: 700,
+        duration: 0.5,
+        ease: "power2.out",
+      });
+    });
+    card.addEventListener("mouseleave", function () {
+      gsap.to(card, { rotateY: 0, rotateX: 0, duration: 0.7, ease: "elastic.out(1, 0.5)" });
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

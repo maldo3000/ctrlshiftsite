@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Unreferenced original photos kept out of the deploy
+image-originals/
