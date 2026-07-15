@@ -1,16 +1,20 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import HomePage from './src/pages/HomePage';
 import { RedirectIfSponsorAuthed, RequireSponsorAuth, SponsorAuthProvider } from './src/sponsors/auth';
-import SponsorLayout from './src/sponsors/components/SponsorLayout';
-import SponsorLoginPage from './src/sponsors/pages/SponsorLoginPage';
-import SponsorsLandingPage from './src/sponsors/pages/SponsorsLandingPage';
-import SponsorVol9ReportPage from './src/sponsors/pages/SponsorVol9ReportPage';
+
+// Sponsor pages pull in recharts, xlsx and react-table — keep them out of the
+// main bundle so the public homepage doesn't pay for them.
+const SponsorLayout = lazy(() => import('./src/sponsors/components/SponsorLayout'));
+const SponsorLoginPage = lazy(() => import('./src/sponsors/pages/SponsorLoginPage'));
+const SponsorsLandingPage = lazy(() => import('./src/sponsors/pages/SponsorsLandingPage'));
+const SponsorVol9ReportPage = lazy(() => import('./src/sponsors/pages/SponsorVol9ReportPage'));
 
 function App() {
   return (
     <BrowserRouter>
       <SponsorAuthProvider>
+        <Suspense fallback={<div className="min-h-screen bg-black" />}>
         <Routes>
           <Route path="/" element={<HomePage />} />
 
@@ -36,6 +40,7 @@ function App() {
 
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
+        </Suspense>
       </SponsorAuthProvider>
     </BrowserRouter>
   );

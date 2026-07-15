@@ -13,9 +13,14 @@ const FluidBackground: React.FC = () => {
     let time = 0;
     let animationFrameId: number;
 
+    // The background is all soft gradients, so it can render at half
+    // resolution (4x fewer pixels per frame) and upscale invisibly via CSS.
+    const RENDER_SCALE = 0.5;
+
     const resize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      canvas.width = window.innerWidth * RENDER_SCALE;
+      canvas.height = window.innerHeight * RENDER_SCALE;
+      ctx.setTransform(RENDER_SCALE, 0, 0, RENDER_SCALE, 0, 0);
     };
 
     window.addEventListener('resize', resize);
@@ -24,9 +29,9 @@ const FluidBackground: React.FC = () => {
     const draw = () => {
       time += 0.002;
       if (!ctx) return;
-      
-      const width = canvas.width;
-      const height = canvas.height;
+
+      const width = window.innerWidth;
+      const height = window.innerHeight;
       
       ctx.clearRect(0, 0, width, height);
       
@@ -80,10 +85,20 @@ const FluidBackground: React.FC = () => {
       animationFrameId = requestAnimationFrame(draw);
     };
 
+    // Pause the loop entirely while the tab is hidden.
+    const handleVisibility = () => {
+      cancelAnimationFrame(animationFrameId);
+      if (!document.hidden) {
+        animationFrameId = requestAnimationFrame(draw);
+      }
+    };
+    document.addEventListener('visibilitychange', handleVisibility);
+
     draw();
 
     return () => {
       window.removeEventListener('resize', resize);
+      document.removeEventListener('visibilitychange', handleVisibility);
       cancelAnimationFrame(animationFrameId);
     };
   }, []);

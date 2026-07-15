@@ -15,12 +15,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preconnect" href="https://cdn.jsdelivr.net" />
     
-    <!-- Preload critical hero image for faster LCP -->
-    <link rel="preload" as="image" href="/assets/images/hero-image.jpg" />
-    <link rel="preload" as="image" href="/assets/images/hero-image.webp" type="image/webp" />
-    
-    <!-- Preload CDN script for TubesBackground -->
-    <link rel="preload" as="script" href="https://cdn.jsdelivr.net/npm/threejs-components@0.0.19/build/cursors/tubes1.min.js" />
+    <!-- Preload critical hero image for faster LCP (desktop only — it is hidden below lg) -->
+    <link rel="preload" as="image" href="/assets/images/hero-image.webp" type="image/webp" media="(min-width: 1024px)" />
     
     <!-- Optimized font loading: Using <link> instead of @import for non-blocking loading -->
     <!-- Only loading fonts and weights actually used in the site -->

@@ -115,7 +115,16 @@ async function createApp() {
   });
 
   if (isProduction) {
-    app.use(express.static(path.resolve(ROOT, 'dist')));
+    app.use(express.static(path.resolve(ROOT, 'dist'), {
+      setHeaders: (response, filePath) => {
+        if (/\.(js|css|woff2)$/.test(filePath) && /-[\w]{8,}\./.test(path.basename(filePath))) {
+          // Vite emits content-hashed filenames — safe to cache forever.
+          response.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+        } else if (/\.(jpg|jpeg|png|webp|svg|woff2)$/i.test(filePath)) {
+          response.setHeader('Cache-Control', 'public, max-age=86400, stale-while-revalidate=604800');
+        }
+      }
+    }));
   } else {
     vite = await createViteServer({
       root: ROOT,
