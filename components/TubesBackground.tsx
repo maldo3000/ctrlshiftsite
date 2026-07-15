@@ -34,13 +34,12 @@ const TubesBackground: React.FC = () => {
         if (!canvasRef.current || instanceRef.current) return;
 
         // Initialize the effect
-        // 2026 brand palette: soft pink / mint / creamy on pitch black
         instanceRef.current = TubesCursor(canvasRef.current, {
           tubes: {
-            colors: ["#ffe4ff", "#e9ffff", "#fff2e1"],
+            colors: ["#f967fb", "#53bc28", "#6958d5"],
             lights: {
               intensity: 200,
-              colors: ["#ffe4ff", "#e9ffff", "#fff2e1", "#e6e7e8"]
+              colors: ["#83f36e", "#fe8a2e", "#ff008a", "#60aed5"]
             }
           }
         });
