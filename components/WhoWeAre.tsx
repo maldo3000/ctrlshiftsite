@@ -31,20 +31,27 @@ const WhoWeAre: React.FC = () => {
             transition={{ delay: 0.2, duration: 0.8 }}
             className="relative group cursor-pointer"
           >
-            {/* Glow effect matching the blue vibe */}
+            {/* Glow effect matching the blue vibe — kept behind the fade */}
             <div className="absolute inset-0 bg-blue-600/30 blur-3xl -z-10 group-hover:bg-blue-500/50 transition-all duration-700 opacity-60"></div>
-            
-            {/* Main Image using the new System */}
-            <div className="rounded-lg overflow-hidden shadow-2xl border border-white/10 group-hover:shadow-blue-900/50 transition-shadow duration-500">
+
+            {/* Image dissolves left -> right into the text column, like the hero */}
+            <div
+              className="relative overflow-hidden"
+              style={{
+                maskImage:
+                  'linear-gradient(to right, black 50%, rgba(0,0,0,0.5) 78%, transparent 100%)',
+                WebkitMaskImage:
+                  'linear-gradient(to right, black 50%, rgba(0,0,0,0.5) 78%, transparent 100%)',
+              }}
+            >
                 <RevealImage
                   src={ASSETS.whoWeAre.hero}
                   alt="Event crowd watching projection"
                   className="w-full h-[500px] group-hover:scale-[1.03] transition-transform duration-700"
                 />
+                {/* Decorative overlay for extra texture */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-60 pointer-events-none"></div>
             </div>
-            
-            {/* Decorative overlay for extra texture */}
-            <div className="absolute inset-0 rounded-lg bg-gradient-to-t from-black/60 to-transparent opacity-60 pointer-events-none"></div>
           </motion.div>
 
           <motion.div
