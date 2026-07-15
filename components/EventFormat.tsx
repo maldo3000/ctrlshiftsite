@@ -42,7 +42,7 @@ const EventFormat: React.FC = () => {
           className="flex flex-col justify-between"
         >
           <div>
-            <h2 className="text-7xl md:text-8xl font-bit font-semibold tracking-tight mb-8">
+            <h2 className="text-7xl md:text-8xl font-syne font-semibold tracking-tight mb-8">
               Event<br/>Format
             </h2>
             

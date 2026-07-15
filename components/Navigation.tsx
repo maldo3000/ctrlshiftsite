@@ -63,7 +63,7 @@ const Navigation: React.FC = () => {
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
         >
           <img src="/assets/images/ctrl-shift-mark.png" alt="" className="h-5 w-auto" />
-          <span className="font-bit font-bold text-2xl tracking-[-0.01em]">CTRL+SHIFT</span>
+          <span className="font-helvetica font-bold text-xl tracking-[-0.02em]">CTRL + SHIFT</span>
         </div>
 
         <button

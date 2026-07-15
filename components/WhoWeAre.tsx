@@ -21,7 +21,7 @@ const WhoWeAre: React.FC = () => {
           transition={{ duration: 0.8 }}
           className="mb-16"
         >
-          <h2 className="text-6xl md:text-8xl font-bit font-semibold tracking-tight mb-4">Who We Are</h2>
+          <h2 className="text-6xl md:text-8xl font-syne font-semibold tracking-tight mb-4">Who We Are</h2>
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">

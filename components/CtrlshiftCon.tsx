@@ -10,7 +10,7 @@ const CtrlshiftCon: React.FC = () => {
             <motion.h2 
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                className="text-6xl md:text-8xl font-bit font-semibold tracking-tighter"
+                className="text-6xl md:text-8xl font-syne font-semibold tracking-tighter"
             >
                 Ctrlshift Con
             </motion.h2>

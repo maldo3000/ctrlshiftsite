@@ -41,7 +41,7 @@ const ContentPillars: React.FC = () => {
                 transition={{ duration: 0.8 }}
                 className="lg:col-span-1 text-center lg:text-left"
             >
-                <h2 className="text-6xl md:text-7xl font-bit font-semibold tracking-tighter leading-none mb-8">
+                <h2 className="text-6xl md:text-7xl font-syne font-semibold tracking-tighter leading-none mb-8">
                     Content<br/>Pillars
                 </h2>
                 <div className="h-px w-24 bg-white mb-8 mx-auto lg:mx-0"></div>
