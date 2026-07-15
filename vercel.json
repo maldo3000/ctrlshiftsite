@@ -31,6 +31,14 @@
       "destination": "/rawclaw/index.html"
     },
     {
+      "source": "/launch",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/launch/",
+      "destination": "/index.html"
+    },
+    {
       "source": "/sponsors",
       "destination": "/index.html"
     },

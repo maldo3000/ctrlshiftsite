@@ -17,6 +17,7 @@ function App() {
         <Suspense fallback={<div className="min-h-screen bg-black" />}>
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/launch" element={<HomePage startAtDesktop />} />
 
           <Route
             path="/sponsors/login"

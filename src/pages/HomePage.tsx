@@ -1,4 +1,5 @@
 import React, { useState, Suspense, lazy } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import Navigation from '../../components/Navigation';
 import Hero from '../../components/Hero';
@@ -16,8 +17,11 @@ const ExpansionPlan = lazy(() => import('../../components/ExpansionPlan'));
 const CtrlshiftCon = lazy(() => import('../../components/CtrlshiftCon'));
 const Footer = lazy(() => import('../../components/Footer'));
 
-function HomePage() {
-  const [isLaunched, setIsLaunched] = useState(false);
+// The retro desktop is a fun intro, not a gate: "/" goes straight to the
+// site, and "/launch" starts at the emulator (which lands back on "/").
+function HomePage({ startAtDesktop = false }: { startAtDesktop?: boolean }) {
+  const [isLaunched, setIsLaunched] = useState(!startAtDesktop);
+  const navigate = useNavigate();
 
   return (
     <div className="relative min-h-screen text-white selection:bg-white selection:text-black">
@@ -48,7 +52,12 @@ function HomePage() {
               className="h-full w-full"
             >
               <Suspense fallback={<div className="h-full w-full bg-[#008080]" />}>
-                <RetroDesktop onLaunch={() => setIsLaunched(true)} />
+                <RetroDesktop
+                  onLaunch={() => {
+                    setIsLaunched(true);
+                    navigate('/', { replace: true });
+                  }}
+                />
               </Suspense>
             </motion.div>
           </motion.div>
