@@ -22,7 +22,7 @@ const Hero: React.FC = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1.5, ease: "easeOut" }}
-        className="absolute inset-y-0 right-0 hidden lg:block w-[58%] z-[5] pointer-events-none"
+        className="absolute inset-y-0 right-0 w-full lg:w-[72%] opacity-50 sm:opacity-60 lg:opacity-100 z-[5] pointer-events-none"
       >
         <picture>
           <source srcSet="/assets/images/hero-image.webp" type="image/webp" />
@@ -34,9 +34,9 @@ const Hero: React.FC = () => {
             className="w-full h-full object-cover opacity-90"
             style={{
               maskImage:
-                'linear-gradient(to right, transparent 0%, rgba(0,0,0,0.45) 28%, black 62%)',
+                'linear-gradient(to right, transparent 0%, rgba(0,0,0,0.5) 30%, black 65%)',
               WebkitMaskImage:
-                'linear-gradient(to right, transparent 0%, rgba(0,0,0,0.45) 28%, black 62%)',
+                'linear-gradient(to right, transparent 0%, rgba(0,0,0,0.5) 30%, black 65%)',
             }}
           />
         </picture>
@@ -51,7 +51,7 @@ const Hero: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="mb-5 sm:mb-6">
+            <h1 className="mb-10 sm:mb-12">
               <img
                 src="/assets/images/logo-wordmark.png"
                 alt="CTRL + SHIFT"
