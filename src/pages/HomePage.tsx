@@ -29,14 +29,28 @@ function HomePage() {
             exit={{
               opacity: 0,
               scale: 15,
-              filter: 'blur(20px) brightness(1.5)',
               transition: { duration: 1.2, ease: 'easeInOut' }
             }}
+            // Scale/opacity animate on this outer layer and the blur on the inner
+            // one: filter-before-transform composes identically (CSS order), but
+            // split this way the blur runs over a viewport-sized texture instead
+            // of re-rasterizing a 15x-scaled fullscreen layer every frame.
+            // pointer-events off during the exit so the overlay never blocks the
+            // page underneath while it zooms away.
+            style={{ pointerEvents: isLaunched ? 'none' : undefined, willChange: 'transform, opacity' }}
             className="fixed inset-0 z-[100] origin-center"
           >
-            <Suspense fallback={<div className="h-full w-full bg-[#008080]" />}>
-              <RetroDesktop onLaunch={() => setIsLaunched(true)} />
-            </Suspense>
+            <motion.div
+              exit={{
+                filter: 'blur(20px) brightness(1.5)',
+                transition: { duration: 1.2, ease: 'easeInOut' }
+              }}
+              className="h-full w-full"
+            >
+              <Suspense fallback={<div className="h-full w-full bg-[#008080]" />}>
+                <RetroDesktop onLaunch={() => setIsLaunched(true)} />
+              </Suspense>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>

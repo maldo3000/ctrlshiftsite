@@ -12,6 +12,7 @@ const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..')
 const TARGETS = [
   { dir: 'public/assets/images', maxWidth: 1600, files: [
     'hero-image', 'collaboration', 'event-format', 'talk-1', 'talk-2', 'talk-3', 'talk-4',
+    'event-crowd', 'grid-1', 'grid-2', 'grid-3',
   ]},
   { dir: 'public/academy', maxWidth: 2000, files: [
     'hero', 'hero-media', 'hero-purple', 'hero-yellow',

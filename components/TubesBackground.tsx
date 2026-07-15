@@ -46,6 +46,19 @@ const TubesBackground: React.FC = () => {
 
         setIsLoading(false);
 
+        // Seed the cursor effect with a centered pointer position — until the
+        // first real mousemove the library computes NaN geometry and logs a
+        // THREE.js error every frame, which is expensive enough to cause jank.
+        canvasRef.current.dispatchEvent(new PointerEvent('pointermove', {
+          clientX: window.innerWidth / 2,
+          clientY: window.innerHeight / 2,
+          bubbles: true
+        }));
+        window.dispatchEvent(new PointerEvent('pointermove', {
+          clientX: window.innerWidth / 2,
+          clientY: window.innerHeight / 2
+        }));
+
         // Random color generator
         const randomColors = (count: number) => {
           return new Array(count)
