@@ -16,8 +16,35 @@ const Hero: React.FC = () => {
         <TubesBackground />
       </div>
 
+      {/* Full-bleed hero photo: spans to the right viewport edge and dissolves toward the text */}
+      <motion.div
+        style={{ y: y1 }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.5, ease: "easeOut" }}
+        className="absolute inset-y-0 right-0 hidden lg:block w-[58%] z-[5] pointer-events-none"
+      >
+        <picture>
+          <source srcSet="/assets/images/hero-image.webp" type="image/webp" />
+          <img
+            src="/assets/images/hero-image.jpg"
+            alt="Crowd at a CTRL+SHIFT event under a disco ball"
+            loading="eager"
+            decoding="async"
+            className="w-full h-full object-cover opacity-90"
+            style={{
+              maskImage:
+                'linear-gradient(to right, transparent 0%, rgba(0,0,0,0.45) 28%, black 62%)',
+              WebkitMaskImage:
+                'linear-gradient(to right, transparent 0%, rgba(0,0,0,0.45) 28%, black 62%)',
+            }}
+          />
+        </picture>
+        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-black to-transparent"></div>
+      </motion.div>
+
       <div className="container mx-auto px-5 sm:px-6 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 xl:gap-20 items-center relative z-10 pointer-events-none">
-        
+
         <div className="pointer-events-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -76,32 +103,6 @@ const Hero: React.FC = () => {
           </motion.div>
         </div>
 
-        {/* Abstract visual element on the right for desktop */}
-        <motion.div 
-          style={{ y: y1 }}
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.5, ease: "easeOut" }}
-          className="relative hidden lg:block h-full w-full pointer-events-auto"
-        >
-           <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-20"></div>
-           <picture>
-             <source srcSet="/assets/images/hero-image.webp" type="image/webp" />
-             <img
-                src="/assets/images/hero-image.jpg"
-                alt="Speaker at CTRL+SHIFT"
-                loading="eager"
-                decoding="async"
-                className="w-full h-full object-cover rounded-2xl opacity-80 hover:opacity-100 transition-all duration-700"
-                style={{
-                  maskImage:
-                    'linear-gradient(to right, transparent 0%, rgba(0,0,0,0.6) 25%, black 55%)',
-                  WebkitMaskImage:
-                    'linear-gradient(to right, transparent 0%, rgba(0,0,0,0.6) 25%, black 55%)',
-                }}
-             />
-           </picture>
-        </motion.div>
       </div>
 
       <motion.a
