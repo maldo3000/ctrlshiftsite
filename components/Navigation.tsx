@@ -91,8 +91,8 @@ const Navigation: React.FC = () => {
             Upcoming Events <ArrowUpRight size={14} />
           </a>
 
-          <a href="#contact" onClick={(e) => scrollToSection(e, 'contact')} className="bg-white text-black px-4 py-2 rounded-full hover:bg-zinc-200 transition-colors">
-            Get in Touch
+          <a href="/academy/" className="bg-white text-black px-4 py-2 rounded-full hover:bg-zinc-200 transition-colors">
+            Academy
           </a>
         </div>
       </div>
@@ -117,6 +117,12 @@ const Navigation: React.FC = () => {
               className="mt-2 w-full rounded-lg bg-purple-600 px-4 py-3 text-base font-semibold text-white flex items-center justify-center gap-2"
             >
               Upcoming Events <ArrowUpRight size={16} />
+            </a>
+            <a
+              href="/academy/"
+              className="w-full rounded-lg bg-white px-4 py-3 text-base font-semibold text-black flex items-center justify-center"
+            >
+              Academy
             </a>
           </div>
         </div>
