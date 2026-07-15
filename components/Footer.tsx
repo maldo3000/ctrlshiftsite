@@ -15,7 +15,7 @@ const Footer: React.FC = () => {
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="text-7xl md:text-9xl font-syne font-semibold tracking-tighter leading-[0.95] mb-8 lg:mb-0"
+                    className="text-7xl md:text-9xl font-bit font-semibold tracking-tighter leading-[0.95] mb-8 lg:mb-0"
                 >
                     Let's Build<br/>
                     the Ecosystem<br/>

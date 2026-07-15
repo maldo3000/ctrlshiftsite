@@ -1,6 +1,16 @@
 @import "tailwindcss";
 @config "./tailwind.config.js";
 
+/* 2026 brand headline face — single bold cut, mapped to all weights so the
+   browser never synthesizes a faux bold/light on top of the pixel shapes */
+@font-face {
+  font-family: 'PP Neue Bit';
+  src: url('/assets/fonts/PPNeueBit-Bold.otf') format('opentype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* Match Google AI Studio base font-size for consistent scaling */
 html {
   font-size: 14px;

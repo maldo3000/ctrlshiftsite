@@ -11,6 +11,7 @@ export default {
       fontFamily: {
         sans: ['Inter', 'sans-serif'],
         syne: ['Syne', 'sans-serif'],
+        bit: ['PP Neue Bit', 'Syne', 'sans-serif'],
         space: ['Space Grotesk', 'sans-serif'],
         anton: ['Anton', 'sans-serif'],
         retro: ['VT323', 'monospace'],

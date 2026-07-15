@@ -33,7 +33,7 @@ const ExpansionPlan: React.FC = () => {
         <motion.h2 
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            className="text-6xl md:text-8xl font-syne font-semibold tracking-tighter mb-24"
+            className="text-6xl md:text-8xl font-bit font-semibold tracking-tighter mb-24"
         >
             What's next?
         </motion.h2>

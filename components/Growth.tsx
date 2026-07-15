@@ -34,7 +34,7 @@ const Growth: React.FC = () => {
         <motion.h2 
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            className="text-7xl font-syne font-semibold mb-20 text-center md:text-left"
+            className="text-7xl font-bit font-semibold mb-20 text-center md:text-left"
         >
             Growth
         </motion.h2>

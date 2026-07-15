@@ -24,7 +24,7 @@ const Hero: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-5xl sm:text-6xl md:text-8xl font-syne font-extrabold tracking-[-0.05em] leading-[1.02] sm:leading-[1.1] mb-5 sm:mb-6 text-white drop-shadow-[0_0_25px_rgba(255,255,255,0.3)] uppercase">
+            <h1 className="text-5xl sm:text-6xl md:text-8xl font-bit font-bold tracking-[-0.01em] leading-[1.02] sm:leading-[1.1] mb-5 sm:mb-6 text-white drop-shadow-[0_0_25px_rgba(255,255,255,0.3)] uppercase">
               CTRL<br/>+ SHIFT
             </h1>
           </motion.div>

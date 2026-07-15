@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { Sparkles, ArrowUpRight, Menu, X } from 'lucide-react';
+import { ArrowUpRight, Menu, X } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const Navigation: React.FC = () => {
@@ -62,8 +62,8 @@ const Navigation: React.FC = () => {
           className="flex items-center gap-2 text-white cursor-pointer"
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
         >
-          <Sparkles className="w-5 h-5 text-white" />
-          <span className="font-syne font-semibold text-xl tracking-[-0.05em]">CTRL + SHIFT</span>
+          <img src="/assets/images/ctrl-shift-mark.png" alt="" className="h-5 w-auto" />
+          <span className="font-bit font-bold text-2xl tracking-[-0.01em]">CTRL+SHIFT</span>
         </div>
 
         <button
