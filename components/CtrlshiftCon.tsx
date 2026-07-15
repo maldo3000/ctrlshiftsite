@@ -14,13 +14,6 @@ const CtrlshiftCon: React.FC = () => {
             >
                 Ctrlshift Con
             </motion.h2>
-            <motion.p 
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                className="text-xl text-zinc-300 max-w-md mt-8 lg:mt-0 text-right font-light"
-            >
-                Expanding our format into a larger scale two day conference starting in Spring 2026.
-            </motion.p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 border-t border-white/20">
