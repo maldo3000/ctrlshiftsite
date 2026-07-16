@@ -41,6 +41,8 @@ const Hero: React.FC = () => {
           />
         </picture>
         <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-black to-transparent"></div>
+        {/* Legibility tint: only below lg, where the photo sits behind the text */}
+        <div className="absolute inset-0 bg-black/45 lg:hidden"></div>
       </motion.div>
 
       <div className="container mx-auto px-5 sm:px-6 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 xl:gap-20 items-center relative z-10 pointer-events-none">
