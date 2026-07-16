@@ -1,5 +1,5 @@
-import React, { useState, Suspense, lazy } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect, Suspense, lazy } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import Navigation from '../../components/Navigation';
 import Hero from '../../components/Hero';
@@ -22,6 +22,15 @@ const Footer = lazy(() => import('../../components/Footer'));
 function HomePage({ startAtDesktop = false }: { startAtDesktop?: boolean }) {
   const [isLaunched, setIsLaunched] = useState(!startAtDesktop);
   const navigate = useNavigate();
+  const location = useLocation();
+
+  // "/" and "/launch" render this same component, so React keeps the instance
+  // (and its state) across in-app navigation between them — sync with the URL.
+  // Launching sets isLaunched *before* navigating to "/", so this effect is a
+  // no-op then and the zoom-out exit still plays.
+  useEffect(() => {
+    setIsLaunched(location.pathname !== '/launch');
+  }, [location.pathname]);
 
   return (
     <div className="relative min-h-screen text-white selection:bg-white selection:text-black">

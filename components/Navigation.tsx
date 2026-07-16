@@ -1,9 +1,11 @@
 
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { ArrowUpRight, Menu, X } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const Navigation: React.FC = () => {
+  const navigate = useNavigate();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -58,9 +60,11 @@ const Navigation: React.FC = () => {
       }`}
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
-        <div 
+        {/* Easter egg: the logo drops you back into the retro-desktop launcher */}
+        <div
           className="flex items-center gap-2 text-white cursor-pointer"
-          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          onClick={() => navigate('/launch')}
+          title="Relaunch CTRL+SHIFT.exe"
         >
           <img src="/assets/images/logo-lockup.png" alt="CTRL + SHIFT" className="h-7 w-auto" />
         </div>
