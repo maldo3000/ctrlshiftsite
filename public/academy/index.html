@@ -372,19 +372,20 @@
     filter: drop-shadow(0 0 12px rgba(var(--acid-rgb), 0.7));
   }
   .hero .form-error { position: static; }
-  .limited {
+  .track-mini {
     display: block;
-    margin-top: 14px;
-    font-weight: 500;
+    margin-bottom: 10px;
+    font-weight: 400;
     font-size: 12px;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--grey-dark);
+    color: var(--acid-bright);
+    text-shadow: 0 0 14px rgba(var(--acid-rgb), 0.65), 0 0 34px rgba(var(--acid-rgb), 0.35);
   }
-  .limited::before { content: "[ "; color: var(--acid-bright); }
-  .limited::after  { content: " ]"; color: var(--acid-bright); }
+  .track-mini::before { content: "[ "; color: var(--acid-bright); }
+  .track-mini::after  { content: " ]"; color: var(--acid-bright); }
 
-  input[type="text"], input[type="email"] {
+  input[type="text"], input[type="email"], select {
     flex: 1;
     min-width: 0;
     background: rgba(13, 16, 10, 0.85);
@@ -397,6 +398,53 @@
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
   }
   input::placeholder { color: var(--grey-dark); }
+
+  /* ================= SIGNUP MODAL ================= */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 300;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(7, 9, 6, 0.72);
+    backdrop-filter: blur(9px);
+    -webkit-backdrop-filter: blur(9px);
+  }
+  .modal-overlay.open { display: flex; }
+  .modal-card {
+    position: relative;
+    width: min(460px, 100%);
+    max-height: calc(100svh - 40px);
+    overflow-y: auto;
+    padding: 32px 30px 28px;
+    background: var(--bg-raised);
+    border: 1px solid var(--acid-dim);
+    border-radius: 20px;
+    text-align: left;
+  }
+  .modal-card h3 {
+    font-family: var(--display);
+    font-weight: 900;
+    font-size: 26px;
+    margin-bottom: 6px;
+  }
+  .modal-card .modal-sub { color: var(--grey); font-size: 14px; margin-bottom: 20px; }
+  .modal-card form { display: flex; flex-direction: column; gap: 12px; }
+  .modal-close {
+    position: absolute;
+    top: 14px;
+    right: 16px;
+    background: none;
+    border: none;
+    color: var(--grey);
+    font-size: 26px;
+    line-height: 1;
+    cursor: pointer;
+    transition: color 0.2s ease;
+  }
+  .modal-close:hover { color: var(--white); }
   input:focus {
     outline: none;
     border-color: var(--acid);
@@ -938,7 +986,32 @@
   .success p { font-size: 19px; font-weight: 600; }
 
   /* ================= FOOTER ================= */
-  footer { padding: 0 0 40px; position: relative; z-index: 1; }
+  footer { padding: 56px 0 40px; position: relative; z-index: 1; border-top: 1px solid var(--border); }
+  .footer-links {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px 48px;
+    max-width: 720px;
+    margin: 0 auto 48px;
+  }
+  .footer-link-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(244, 247, 238, 0.2);
+    font-size: 14px;
+  }
+  .footer-link-row span { color: var(--grey); white-space: nowrap; }
+  .footer-link-row a {
+    color: var(--white);
+    font-weight: 700;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: color 0.2s;
+  }
+  .footer-link-row a:hover { color: var(--acid-bright); }
   .footer-inner {
     border-top: 1px solid var(--border);
     padding-top: 28px;
@@ -952,7 +1025,6 @@
   }
   .footer-inner a { color: var(--grey); text-decoration: none; transition: color 0.2s; }
   .footer-inner a:hover { color: var(--acid-bright); }
-  .footer-brand { color: var(--white); font-weight: 700; font-family: "Aileron", "Inter", -apple-system, sans-serif; font-size: 13px; }
 
   /* Agrandir Wide runs much wider than Work Sans: when it's loaded,
      open the tracking and pull display sizes down so lines still fit. */
@@ -984,6 +1056,7 @@
     .who-grid .cell { min-height: 0; }
     .hero-form, .capture-form { flex-direction: column; }
     .how-grid, .workshop-grid { grid-template-columns: 1fr; gap: 28px; }
+    .footer-links { grid-template-columns: 1fr; gap: 14px; }
     .who-photo { height: 190px; }
     .persona-row { grid-template-columns: 1fr; margin: -46px 12px 0; }
     .workshop-photo { min-height: 200px; }
@@ -1000,7 +1073,7 @@
     .lockup { font-size: 12px; letter-spacing: 0.06em; }
     .btn-sm { font-size: 10px; padding: 7px 10px; }
     .nav-inner { flex-wrap: nowrap; gap: 6px; padding: 8px 14px; min-height: 48px; }
-    .limited { font-size: 10px; letter-spacing: 0.08em; }
+    .track-mini { font-size: 10px; letter-spacing: 0.08em; }
   }
 </style>
 </head>
@@ -1069,6 +1142,7 @@
       <button type="button" class="tab active" role="tab" aria-selected="true" data-track="gen">Generative Media</button>
       <button type="button" class="tab" role="tab" aria-selected="false" data-track="soft">Creative Software</button>
     </div>
+    <span class="track-mini" data-hero-fade data-dyn data-slot="trackTitle">Make content with AI</span>
     <p class="track-desc" data-hero-fade data-dyn data-slot="desc">Generative media and generative storytelling. AI-directed image and video, short film, visual treatment.</p>
 
     <!-- Submission is handled by the GOOGLE_FORM config in the page script -->
@@ -1084,7 +1158,6 @@
       <span>You're on the list. We'll be in touch.</span>
     </div>
     <p class="form-error" id="hero-error">Something went wrong. Give it another shot.</p>
-    <span class="limited" data-hero-fade>First workshop limited to 30 people</span>
   </div>
 </header>
 
@@ -1205,11 +1278,52 @@
 
 <!-- ================= FOOTER ================= -->
 <footer>
-  <div class="wrap footer-inner">
-    <span><span class="footer-brand">CTRL+SHIFT Academy</span> &nbsp;|&nbsp; <a href="https://ctrlshift.community" target="_blank" rel="noopener">ctrlshift.community</a></span>
-    <span>&copy; 2026 Maldonado Enterprises Inc.</span>
+  <div class="wrap">
+    <div class="footer-links">
+      <div class="footer-link-row">
+        <span>Website</span>
+        <a href="https://www.ctrlshift.community" target="_blank" rel="noopener noreferrer">ctrlshift.community</a>
+      </div>
+      <div class="footer-link-row">
+        <span>Youtube</span>
+        <a href="https://www.youtube.com/@CTRLSHIFT-AI" target="_blank" rel="noopener noreferrer">@CTRLSHIFT-AI</a>
+      </div>
+      <div class="footer-link-row">
+        <span>Instagram</span>
+        <a href="https://www.instagram.com/ctrlshift.to/" target="_blank" rel="noopener noreferrer">@ctrlshift.to</a>
+      </div>
+      <div class="footer-link-row">
+        <span>X</span>
+        <a href="https://x.com/ctrlshift_ai" target="_blank" rel="noopener noreferrer">@ctrlshift_ai</a>
+      </div>
+    </div>
+    <div class="footer-inner">
+      <a href="https://www.ctrlshift.community" target="_blank" rel="noopener noreferrer">www.ctrlshift.community</a>
+      <a href="https://www.instagram.com/ctrlshift.to/" target="_blank" rel="noopener noreferrer">@ctrlshift.to &rarr;</a>
+    </div>
   </div>
 </footer>
+
+<!-- ================= SIGNUP MODAL ================= -->
+<div class="modal-overlay" id="signup-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal-card">
+    <button type="button" class="modal-close" id="modal-close" aria-label="Close">&times;</button>
+    <h3 id="modal-title">Almost in.</h3>
+    <p class="modal-sub">Confirm your details and pick the track you're interested in.</p>
+    <form id="modal-form" action="#" method="POST">
+      <input type="email" name="email" placeholder="Email address" required autocomplete="email" aria-label="Email address" />
+      <input type="text" name="name" placeholder="Your name" autocomplete="name" aria-label="Your name" />
+      <select name="track" aria-label="Track">
+        <option value="generative-media">Generative Media</option>
+        <option value="creative-software">Creative Software</option>
+      </select>
+      <input type="text" name="linkedin" placeholder="LinkedIn (optional)" autocomplete="url" aria-label="LinkedIn (optional)" />
+      <input type="text" name="twitter" placeholder="X / Twitter (optional)" aria-label="X or Twitter (optional)" />
+      <button type="submit" class="btn" data-magnetic>Join the Waitlist</button>
+      <p class="form-error" id="modal-error">Something went wrong. Give it another shot.</p>
+    </form>
+  </div>
+</div>
 
 <div class="grain" aria-hidden="true"></div>
 
@@ -1236,44 +1350,78 @@
 
   /* ---------- Signup forms (always active) ---------- */
   /* ---------- Google Form email capture ----------
+     Flow: hero form takes the email and opens the signup modal, where the
+     visitor confirms email, adds their name, picks a track, and can add
+     LinkedIn / X. Everything lands as one row in one Google Sheet.
+
      Setup (one time):
-     1. Create a Google Form with two "Short answer" questions: Email and Track.
-     2. In the form editor click ⋮ → "Get pre-filled link", type anything into
-        both fields, click "Get link", and copy it.
+     1. Create a Google Form with five "Short answer" questions:
+        Email, Name, Track, LinkedIn, Twitter.
+     2. In the form editor click ⋮ → "Get pre-filled link", type something
+        into every field, click "Get link", and copy it.
      3. From that link, paste below:
         - id: the long string between /d/e/ and /viewform
-        - emailEntry / trackEntry: the two entry.XXXXXXXXX parameter names
-     Responses land in the form's linked Google Sheet, with track set to
-     "generative-media" or "creative-software" based on the selected tab. */
+        - the five entry.XXXXXXXXX parameter names, in field order */
   var GOOGLE_FORM = {
-    id: "PASTE_FORM_ID",
-    emailEntry: "entry.PASTE_EMAIL_ID",
-    trackEntry: "entry.PASTE_TRACK_ID",
+    id: "1FAIpQLSea1zA_xW6l58lqOhe7B0PCNiPOnUR2nUBKU_NOZ9wEaXrLoQ",
+    emailEntry: "entry.1975401655",
+    nameEntry: "entry.244340706",
+    trackEntry: "entry.1165531818",
+    linkedinEntry: "entry.339071565",
+    twitterEntry: "entry.375203949",
   };
 
-  function wireForm(form, successBox, successDisplay, errorEl) {
-    if (!form || !successBox) return;
-    var errorMsg = errorEl || form.querySelector(".form-error");
+  var signupModal = document.getElementById("signup-modal");
+  var modalForm = document.getElementById("modal-form");
+  var heroForm = document.getElementById("hero-form");
+  var heroSuccess = document.getElementById("hero-success");
+  var modalError = document.getElementById("modal-error");
 
-    form.addEventListener("submit", function (e) {
+  function openSignupModal() {
+    modalForm.querySelector('[name="email"]').value = heroForm.querySelector('[name="email"]').value;
+    modalForm.querySelector('[name="track"]').value = TRACKS[currentTrack].formValue;
+    signupModal.classList.add("open");
+    setTimeout(function () { modalForm.querySelector('[name="name"]').focus(); }, 60);
+  }
+  function closeSignupModal() {
+    signupModal.classList.remove("open");
+  }
+
+  if (heroForm && signupModal) {
+    heroForm.addEventListener("submit", function (e) {
       e.preventDefault();
-      if (errorMsg) errorMsg.style.display = "none";
-      var button = form.querySelector("button");
-      var originalLabel = button.textContent;
+      openSignupModal();
+    });
+    document.getElementById("modal-close").addEventListener("click", closeSignupModal);
+    signupModal.addEventListener("click", function (e) {
+      if (e.target === signupModal) closeSignupModal();
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && signupModal.classList.contains("open")) closeSignupModal();
+    });
+
+    modalForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      modalError.style.display = "none";
 
       if (GOOGLE_FORM.id.indexOf("PASTE") !== -1) {
         console.warn("Google Form not configured yet - fill in GOOGLE_FORM at the top of the script.");
-        if (errorMsg) errorMsg.style.display = "block";
+        modalError.style.display = "block";
         return;
       }
 
+      var button = modalForm.querySelector('button[type="submit"]');
+      var originalLabel = button.textContent;
       button.disabled = true;
       button.textContent = "Saving…";
 
-      var data = new FormData(form);
+      var data = new FormData(modalForm);
       var params = new URLSearchParams();
       params.append(GOOGLE_FORM.emailEntry, data.get("email"));
+      params.append(GOOGLE_FORM.nameEntry, data.get("name") || "");
       params.append(GOOGLE_FORM.trackEntry, data.get("track"));
+      params.append(GOOGLE_FORM.linkedinEntry, data.get("linkedin") || "");
+      params.append(GOOGLE_FORM.twitterEntry, data.get("twitter") || "");
 
       // no-cors: Google Forms doesn't send CORS headers, so the response is
       // opaque. The promise only rejects on network failure.
@@ -1284,20 +1432,22 @@
         body: params.toString(),
       })
         .then(function () {
-          form.style.display = "none";
-          successBox.style.display = successDisplay;
+          closeSignupModal();
+          heroForm.style.display = "none";
+          heroSuccess.style.display = "flex";
           if (hasGsap && !reduceMotion) {
-            gsap.from(successBox, { scale: 0.94, opacity: 0, duration: 0.5, ease: "back.out(1.6)" });
+            gsap.from(heroSuccess, { scale: 0.94, opacity: 0, duration: 0.5, ease: "back.out(1.6)" });
           }
+          button.disabled = false;
+          button.textContent = originalLabel;
         })
         .catch(function () {
-          if (errorMsg) errorMsg.style.display = "block";
+          modalError.style.display = "block";
           button.disabled = false;
           button.textContent = originalLabel;
         });
     });
   }
-  wireForm(document.getElementById("hero-form"), document.getElementById("hero-success"), "flex", document.getElementById("hero-error"));
 
   /* ---------- Track system (works with or without motion) ---------- */
   var TRACKS = {
@@ -1310,6 +1460,7 @@
         "Assemble your work into a finished short-form piece",
       ],
       slots: {
+        trackTitle: "Make content with AI",
         desc: "Generative media and generative storytelling. AI-directed image and video, short film, visual treatment.",
         learn_h2: "Direct the machines.",
         learn_p: "<p>Learn a practical workflow for developing a visual idea with generative image and video tools.</p><p>You will move from concept and reference to directed outputs and a finished short-form sequence.</p>",
@@ -1327,6 +1478,7 @@
         "Publish a working prototype",
       ],
       slots: {
+        trackTitle: "Make apps and software with AI",
         desc: "Apps and software as a medium of creative expression. Tools, agentic workflows, interactive experiences.",
         learn_h2: "Build what you imagine.",
         learn_p: "<p>Learn a practical workflow for turning a creative idea into a working digital product using AI-assisted coding.</p><p>You will define the idea, generate the interface, build the core functionality, and publish a working prototype.</p>",
