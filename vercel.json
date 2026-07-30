@@ -15,6 +15,14 @@
   ],
   "rewrites": [
     {
+      "source": "/academy/coursebook",
+      "destination": "/academy/coursebook/index.html"
+    },
+    {
+      "source": "/academy/coursebook/",
+      "destination": "/academy/coursebook/index.html"
+    },
+    {
       "source": "/academy",
       "destination": "/academy/index.html"
     },
