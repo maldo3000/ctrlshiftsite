@@ -1,7 +1,7 @@
 # CTRL+SHIFT Academy — Generative Media (Course Book)
 
 The interactive course book for the Generative Media track, served at
-`/academy/coursebook/`. Nineteen chapters plus an appendix, with progress
+`/academy/sample-coursebook/`. Nineteen chapters plus an appendix, with progress
 tracking, knowledge checks, exercises, per-chapter notes and twenty-one
 interactive teaching tools.
 
@@ -13,11 +13,11 @@ of the Vite app and does not affect the main bundle.
 
 ```bash
 npx http-server public -p 8899
-# → http://127.0.0.1:8899/academy/coursebook/
+# → http://127.0.0.1:8899/academy/sample-coursebook/
 ```
 
-`vercel.json` carries the two rewrites that map `/academy/coursebook` and
-`/academy/coursebook/` to `index.html`, matching the pattern used for
+`vercel.json` carries the two rewrites that map `/academy/sample-coursebook` and
+`/academy/sample-coursebook/` to `index.html`, matching the pattern used for
 `/academy`. The existing `/academy/(.*)\.(jpg|png|svg|woff2|js|css)` cache
 header rule already covers this folder's fonts.
 
@@ -25,8 +25,8 @@ To ship it somewhere else — a workshop handout, an offline copy — bundle it
 into one file with the fonts inlined:
 
 ```bash
-node scripts/build-coursebook.mjs --out dist/coursebook.html
-node scripts/build-coursebook.mjs --fragment --out dist/coursebook-fragment.html
+node scripts/build-coursebook.mjs --out dist/sample-coursebook.html
+node scripts/build-coursebook.mjs --fragment --out dist/sample-coursebook-fragment.html
 ```
 
 `--fragment` drops the document wrapper and keeps the title, styles, markup and

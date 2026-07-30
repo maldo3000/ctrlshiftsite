@@ -15,12 +15,12 @@
   ],
   "rewrites": [
     {
-      "source": "/academy/coursebook",
-      "destination": "/academy/coursebook/index.html"
+      "source": "/academy/sample-coursebook",
+      "destination": "/academy/sample-coursebook/index.html"
     },
     {
-      "source": "/academy/coursebook/",
-      "destination": "/academy/coursebook/index.html"
+      "source": "/academy/sample-coursebook/",
+      "destination": "/academy/sample-coursebook/index.html"
     },
     {
       "source": "/academy",
