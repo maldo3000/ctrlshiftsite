@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import { ArrowUpRight, Instagram } from 'lucide-react';
 import { useInView } from 'react-intersection-observer';
 import RevealImage from './RevealImage';
 import { ASSETS } from '../utils/assets';
@@ -61,7 +62,7 @@ const WhoWeAre: React.FC = () => {
             className="flex flex-col justify-center space-y-8"
           >
             <h3 className="text-4xl md:text-5xl font-semibold leading-tight">
-              Ten sold-out editions. A growing network of artists & developers shaping what’s next.
+              A growing network of artists & developers shaping what’s next.
             </h3>
             
             <div className="space-y-6 text-zinc-400 text-lg leading-relaxed">
@@ -72,6 +73,17 @@ const WhoWeAre: React.FC = () => {
                 We bring together forward-thinking creators, founders, and technologists for talks, installations, and community connection.
               </p>
             </div>
+
+            <a
+              href="https://www.instagram.com/ctrlshift.to/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-base text-white hover:text-zinc-300 transition-colors group w-fit"
+            >
+              <Instagram className="w-4 h-4" />
+              <span>Check us out on Instagram</span>
+              <ArrowUpRight className="w-4 h-4 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform duration-300" />
+            </a>
           </motion.div>
         </div>
         
