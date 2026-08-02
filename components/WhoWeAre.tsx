@@ -81,7 +81,7 @@ const WhoWeAre: React.FC = () => {
               className="inline-flex items-center gap-2 text-base text-white hover:text-zinc-300 transition-colors group w-fit"
             >
               <Instagram className="w-4 h-4" />
-              <span>Check us out on Instagram</span>
+              <span>Check us out</span>
               <ArrowUpRight className="w-4 h-4 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform duration-300" />
             </a>
           </motion.div>
