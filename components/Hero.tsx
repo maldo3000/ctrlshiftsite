@@ -75,8 +75,8 @@ const Hero: React.FC = () => {
             transition={{ delay: 0.8, duration: 0.8 }}
             className="text-[2.45rem] sm:text-5xl font-sans font-semibold leading-tight mb-6 sm:mb-8 text-zinc-100"
           >
-            Where creativity meets <br/>
-            <span className="font-bold text-white">emerging technology.</span>
+            Signals for <br/>
+            <span className="font-bold text-white">creative intelligence.</span>
           </motion.h2>
 
           <motion.p
