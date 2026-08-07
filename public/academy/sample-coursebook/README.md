@@ -32,6 +32,27 @@ node scripts/build-coursebook.mjs --fragment --out dist/sample-coursebook-fragme
 `--fragment` drops the document wrapper and keeps the title, styles, markup and
 script, for a CMS or app shell that supplies its own page chrome.
 
+## The print edition
+
+`scripts/build-coursebook-pdf.mjs` renders the whole book as a 91-page PDF —
+title page, contents, part dividers, running header and page numbers:
+
+```bash
+npm i -D playwright && npx playwright install chromium   # once
+node scripts/build-coursebook-pdf.mjs                    # → dist/….pdf
+```
+
+It reads the chapter data out of `index.html` rather than duplicating it, so the
+PDF cannot drift from the web edition. Each interactive is driven into a
+meaningful state and screenshotted as a figure — the denoiser becomes a
+five-frame filmstrip, the pipeline builder is captured mid-example with its
+missing-fallback warning showing — and every figure is captioned with a pointer
+back to the live version. Quiz answers are marked inline, since a book cannot
+hide them.
+
+Playwright is deliberately **not** a dependency of this project. Producing the
+PDF is a once-an-edition job, and the script says how to install it if missing.
+
 ## Editing the content
 
 Everything lives in the `<script>` block at the bottom of `index.html`:
