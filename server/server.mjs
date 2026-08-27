@@ -4,6 +4,7 @@ import crypto from 'node:crypto';
 import express from 'express';
 import cookieParser from 'cookie-parser';
 import { createServer as createViteServer } from 'vite';
+import raffleGuestsHandler from '../api/raffle/guests.js';
 
 const ROOT = process.cwd();
 const isProduction = process.env.NODE_ENV === 'production';
@@ -75,6 +76,8 @@ async function createApp() {
   app.get('/api/sponsors/session', (request, response) => {
     response.json({ authenticated: isSponsorAuthenticated(request) });
   });
+
+  app.get('/api/raffle/guests', (request, response) => raffleGuestsHandler(request, response));
 
   app.use('/sponsors', (request, response, next) => {
     const pathname = request.originalUrl.split('?')[0];

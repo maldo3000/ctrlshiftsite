@@ -39,6 +39,14 @@
       "destination": "/rawclaw/index.html"
     },
     {
+      "source": "/raffle/vol-13",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/raffle/vol-13/",
+      "destination": "/index.html"
+    },
+    {
       "source": "/launch",
       "destination": "/index.html"
     },
