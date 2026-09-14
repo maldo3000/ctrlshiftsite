@@ -8,11 +8,18 @@ Prerequisites: Node.js 20+
    `npm install`
 2. Set required env vars in your shell or `.env`:
    - `SPONSOR_PORTAL_PASSWORD` for `/sponsors` access
+   - `VOLUNTEER_GOOGLE_SCRIPT_URL` to send `/volunteer` submissions to Google Sheets
    - `GEMINI_API_KEY` only if you still use Gemini-powered features in the main site
 3. Start dev server:
    `npm run dev`
 
 The app runs through the local Express server at `http://localhost:3000`.
+
+## Volunteer form
+
+- Public page: `/volunteer`
+- Submission endpoint: `/api/volunteer`
+- Google Sheets setup: `docs/volunteer-form-setup.md`
 
 ## Sponsor portal routes
 

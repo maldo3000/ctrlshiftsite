@@ -94,6 +94,10 @@ const Navigation: React.FC = () => {
             Upcoming Events <ArrowUpRight size={14} />
           </a>
 
+          <a href="/volunteer" className="text-purple-300 hover:text-white transition-colors">
+            Volunteer
+          </a>
+
           <a href="/academy/" className="bg-white text-black px-4 py-2 rounded-full hover:bg-zinc-200 transition-colors">
             Academy
           </a>
@@ -126,6 +130,12 @@ const Navigation: React.FC = () => {
               className="w-full rounded-lg bg-white px-4 py-3 text-base font-semibold text-black flex items-center justify-center"
             >
               Academy
+            </a>
+            <a
+              href="/volunteer"
+              className="w-full rounded-lg border border-purple-400/50 bg-purple-500/15 px-4 py-3 text-base font-semibold text-purple-100 flex items-center justify-center"
+            >
+              Volunteer
             </a>
           </div>
         </div>

@@ -47,6 +47,14 @@
       "destination": "/index.html"
     },
     {
+      "source": "/volunteer",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/volunteer/",
+      "destination": "/index.html"
+    },
+    {
       "source": "/sponsors",
       "destination": "/index.html"
     },

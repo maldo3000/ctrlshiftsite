@@ -9,6 +9,7 @@ const SponsorLayout = lazy(() => import('./src/sponsors/components/SponsorLayout
 const SponsorLoginPage = lazy(() => import('./src/sponsors/pages/SponsorLoginPage'));
 const SponsorsLandingPage = lazy(() => import('./src/sponsors/pages/SponsorsLandingPage'));
 const SponsorVol9ReportPage = lazy(() => import('./src/sponsors/pages/SponsorVol9ReportPage'));
+const VolunteerPage = lazy(() => import('./src/pages/VolunteerPage'));
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/launch" element={<HomePage startAtDesktop />} />
+          <Route path="/volunteer" element={<VolunteerPage />} />
 
           <Route
             path="/sponsors/login"

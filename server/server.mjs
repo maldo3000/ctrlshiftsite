@@ -4,6 +4,7 @@ import crypto from 'node:crypto';
 import express from 'express';
 import cookieParser from 'cookie-parser';
 import { createServer as createViteServer } from 'vite';
+import volunteerHandler from '../api/volunteer.js';
 
 const ROOT = process.cwd();
 const isProduction = process.env.NODE_ENV === 'production';
@@ -46,6 +47,8 @@ async function createApp() {
 
   app.use(express.json());
   app.use(cookieParser());
+
+  app.post('/api/volunteer', volunteerHandler);
 
   app.post('/api/sponsors/login', (request, response) => {
     const configuredPassword = process.env.SPONSOR_PORTAL_PASSWORD;
