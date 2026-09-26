@@ -121,31 +121,27 @@
     padding: 0 var(--gutter) 96px;
   }
   .hero__kicker { display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; margin-bottom: 20px; }
-  .hero__word {
-    font-family: var(--bit); font-weight: 700;
-    font-size: clamp(64px, 17.5vw, 300px);
-    line-height: 0.78; letter-spacing: 0.01em;
-    position: relative; white-space: nowrap;
+  .lockup { position: relative; display: block; width: min(92vw, 900px, calc((100svh - 500px) * 2.43)); min-width: min(92vw, 300px); }
+  .lockup img { width: 100%; height: auto; }
+  .lockup__ch {
+    position: absolute; inset: 0; opacity: 0; pointer-events: none; mix-blend-mode: screen;
+    -webkit-mask: url("/con/img/lockup.png") center / 100% 100% no-repeat;
+            mask: url("/con/img/lockup.png") center / 100% 100% no-repeat;
   }
-  .glitch { position: relative; display: inline-block; }
-  .glitch::before, .glitch::after {
-    content: attr(data-text); position: absolute; inset: 0; pointer-events: none;
-    opacity: 0;
-  }
-  .glitch::before { color: #ff2bd6; transform: translate(-4px, 0); mix-blend-mode: screen; }
-  .glitch::after { color: #19f0ff; transform: translate(4px, 0); mix-blend-mode: screen; }
-  .glitch.is-glitching::before, .glitch.is-glitching::after { opacity: .85; animation: slice .32s steps(2) 1; }
+  .lockup__ch--r { background: #ff2bd6; transform: translateX(-6px); }
+  .lockup__ch--b { background: #19f0ff; transform: translateX(6px); }
+  .lockup.is-glitching .lockup__ch { opacity: .85; animation: slice .32s steps(2) 1; }
   @keyframes slice {
     0% { clip-path: inset(10% 0 70% 0); }
-    25% { clip-path: inset(60% 0 12% 0); transform: translate(6px, 0); }
-    50% { clip-path: inset(35% 0 40% 0); transform: translate(-6px, 0); }
+    25% { clip-path: inset(60% 0 12% 0); }
+    50% { clip-path: inset(35% 0 40% 0); }
     75% { clip-path: inset(80% 0 4% 0); }
     100% { clip-path: inset(0 0 100% 0); }
   }
   .hero__sub {
     font-family: var(--display); font-weight: 900; text-transform: uppercase;
     font-size: clamp(40px, 9.5vw, 168px); line-height: 0.85; letter-spacing: -0.02em;
-    margin-top: 0.08em;
+    margin-top: 0.22em;
   }
   .hero__meta {
     display: grid; grid-template-columns: repeat(4, auto); justify-content: space-between; gap: 20px;
@@ -159,7 +155,7 @@
   @media (max-width: 860px) {
     .hero__meta { grid-template-columns: 1fr 1fr; }
     .hero__inner { padding-bottom: 48px; }
-    .scroll-cue { display: none; }
+    .hero .scroll-cue { display: none; }
   }
   .scroll-cue { position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%); z-index: 3; display: flex; flex-direction: column; align-items: center; gap: 8px; }
   .scroll-cue i { width: 1px; height: 36px; background: linear-gradient(var(--white), transparent); animation: cue 1.8s ease-in-out infinite; transform-origin: top; }
@@ -167,7 +163,7 @@
 
   /* ---------- MARQUEE ---------- */
   .marquee { overflow: hidden; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 18px 0; background: var(--bg); }
-  .marquee--signal { background: var(--signal); color: var(--bg); border: 0; transform: rotate(-1.5deg) scale(1.03); margin: 40px 0; }
+  .marquee--signal { background: var(--signal); color: var(--bg); border: 0; margin: 40px 0; }
   .marquee__track { display: flex; width: max-content; animation: marquee 38s linear infinite; }
   .marquee--signal .marquee__track { animation-duration: 26s; animation-direction: reverse; }
   .marquee__track span {
@@ -446,7 +442,11 @@
       <span class="eyebrow" style="color:var(--white)">Day Con &nbsp;/&nbsp; 2026</span>
     </div>
     <h1>
-      <span class="hero__word"><span class="glitch" data-text="CTRL+SHIFT" id="heroGlitch">CTRL+SHIFT</span></span>
+      <span class="lockup" id="heroGlitch" role="img" aria-label="CTRL+SHIFT">
+        <img src="/con/img/lockup.png" alt="" width="1800" height="740" />
+        <i class="lockup__ch lockup__ch--r" aria-hidden="true"></i>
+        <i class="lockup__ch lockup__ch--b" aria-hidden="true"></i>
+      </span>
       <span class="hero__sub reveal-line"><span>Conference</span></span>
     </h1>
     <div class="hero__meta">
@@ -467,12 +467,6 @@
   <div class="scroll-cue" aria-hidden="true"><span class="mono" style="font-size:10px">Scroll</span><i></i></div>
 </header>
 
-<div class="marquee" aria-hidden="true">
-  <div class="marquee__track">
-    <span>Talks</span><span class="outline">Conversation</span><span>Interactive installations</span><span class="outline">AV performance</span><span>Dance floor</span><span class="outline">800+ guests</span>
-    <span>Talks</span><span class="outline">Conversation</span><span>Interactive installations</span><span class="outline">AV performance</span><span>Dance floor</span><span class="outline">800+ guests</span>
-  </div>
-</div>
 
 <!-- ============ MANIFESTO ============ -->
 <section class="sec" id="about">
@@ -861,7 +855,7 @@
   }
 
   /* Hero intro */
-  gsap.from('.hero__word', { yPercent: 40, opacity: 0, duration: 1.2, ease: 'expo.out', delay: 0.15 });
+  gsap.from('.lockup', { yPercent: 40, opacity: 0, duration: 1.2, ease: 'expo.out', delay: 0.15 });
   gsap.from('.hero__sub > span', { yPercent: 105, duration: 1.1, ease: 'expo.out', delay: 0.35 });
   gsap.from('.hero__meta > div, .hero__kicker > span', { y: 24, opacity: 0, duration: 0.9, stagger: 0.08, ease: 'power3.out', delay: 0.6 });
   gsap.to('.hero__media', { yPercent: 18, scale: 1.08, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
