@@ -83,8 +83,13 @@
   .eyebrow { font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.2em; font-size: 12px; color: var(--grey); }
   .display { font-family: var(--display); font-weight: 900; text-transform: uppercase; line-height: 0.88; letter-spacing: -0.02em; }
   .bit { font-family: var(--bit); font-weight: 700; }
-  /* Pixel headings: PP Neue Bit with the open tracking of the CTRL+SHIFT wordmark */
-  .pix { font-family: var(--bit); font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; line-height: 0.82; word-spacing: 0.1em; }
+  /* Pixel headings in the CTRL+SHIFT brand treatment: PP Neue Bit stretched wide
+     (letters roughly square, like the wordmark) with tight tracking. Lines wrap at
+     1/--sx of the box, then scaleX brings them back to full width. */
+  .pix, .manifesto__grid h3 { --sx: 1.55; font-family: var(--bit); font-weight: 700; text-transform: uppercase; letter-spacing: 0.02em; line-height: 0.84; word-spacing: 0.1em; }
+  .px { display: inline-block; width: calc(100% / var(--sx)); transform: scaleX(var(--sx)); transform-origin: left top; -webkit-text-stroke: 0.004em currentColor; }
+  .strobe__txt .px { transform-origin: center top; }
+  .sec__head > .pix { flex: 1; }
   .wrap { padding: 0 var(--gutter); max-width: 1600px; margin: 0 auto; }
 
   /* ---------- NAV ---------- */
@@ -192,7 +197,7 @@
   .manifesto__text .w { display: inline-block; opacity: 0.12; transition: none; }
   .manifesto__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); margin-top: clamp(56px, 8vw, 120px); border: 1px solid var(--line); }
   .manifesto__grid > div { background: var(--bg); padding: clamp(24px, 3vw, 44px); min-height: 240px; display: flex; flex-direction: column; justify-content: space-between; gap: 32px; }
-  .manifesto__grid h3 { font-family: var(--bit); font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; font-size: clamp(36px, 3.6vw, 60px); line-height: .85; }
+  .manifesto__grid h3 { font-size: clamp(36px, 3.4vw, 56px); }
   .manifesto__grid p { color: #c9c9c9; max-width: 36ch; font-size: 18px; }
   @media (max-width: 900px) { .manifesto__grid { grid-template-columns: 1fr; } }
 
@@ -479,15 +484,15 @@
     <div class="manifesto__grid">
       <div>
         <span class="eyebrow">01 · The practical</span>
-        <div><h3>Careers, companies &amp; tools</h3><p style="margin-top:14px">The careers, companies and tools reshaping creative work, straight from the people building them.</p></div>
+        <div><h3><span class="px">Careers, companies &amp; tools</span></h3><p style="margin-top:14px">The careers, companies and tools reshaping creative work, straight from the people building them.</p></div>
       </div>
       <div>
         <span class="eyebrow">02 · The philosophical</span>
-        <div><h3>Authorship &amp; meaning</h3><p style="margin-top:14px">Authorship, meaning and what culture values next, when anyone can make anything.</p></div>
+        <div><h3><span class="px">Authorship &amp; meaning</span></h3><p style="margin-top:14px">Authorship, meaning and what culture values next, when anyone can make anything.</p></div>
       </div>
       <div>
         <span class="eyebrow">03 · The purely creative</span>
-        <div><h3>The raw art</h3><p style="margin-top:14px">No pitch, no thesis. Just the work: installations, performance and pieces made with the new tools, in the room.</p></div>
+        <div><h3><span class="px">The raw art</span></h3><p style="margin-top:14px">No pitch, no thesis. Just the work: installations, performance and pieces made with the new tools, in the room.</p></div>
       </div>
     </div>
   </div>
@@ -508,7 +513,7 @@
         </div>
       </div>
       <div>
-        <h2 class="pix" style="font-size:clamp(52px,7vw,120px);margin-bottom:40px">A conversation surrounded by art</h2>
+        <h2 class="pix" style="font-size:clamp(40px,5vw,88px);margin-bottom:40px"><span class="px">A conversation surrounded by art</span></h2>
         <div class="concept__item">
           <h3><small>01</small>The conversation</h3>
           <p>Talks and panels on where and how AI is changing the act of creation, from generative media to agentic software.</p>
@@ -533,7 +538,7 @@
 <section class="sec" id="program">
   <div class="wrap">
     <div class="sec__head">
-      <h2 class="pix sec__title">Program</h2>
+      <h2 class="pix sec__title"><span class="px">Program</span></h2>
       <span class="eyebrow">3 talks · 1 performance · dance floor</span>
     </div>
     <div class="program">
@@ -554,7 +559,7 @@
   </video>
   <div class="strobe__txt">
     <p class="eyebrow">Then the lights go down</p>
-    <p class="pix" style="font-size:clamp(72px,15vw,260px)">Into the<br/>night</p>
+    <p class="pix" style="font-size:clamp(56px,11vw,190px)"><span class="px">Into the<br/>night</span></p>
   </div>
 </section>
 
@@ -562,7 +567,7 @@
 <section class="sec" id="lineup">
   <div class="wrap">
     <div class="sec__head">
-      <h2 class="pix sec__title">Lineup</h2>
+      <h2 class="pix sec__title"><span class="px">Lineup</span></h2>
       <span class="eyebrow">Decrypting soon</span>
     </div>
     <div class="lineup">
@@ -588,7 +593,7 @@
     <div class="venue__track" id="venueTrack">
       <div class="venue__intro">
         <span class="eyebrow">The venue</span>
-        <h2 class="pix" style="margin-top:14px;font-size:clamp(80px,11vw,180px)">Demo<br/>Room</h2>
+        <h2 class="pix" style="margin-top:14px;font-size:clamp(80px,11vw,180px)"><span class="px">Demo<br/>Room</span></h2>
         <p>A 16,000 sq ft creative venue on Toronto's waterfront, built as a production environment first. Live production, modular architecture and cultural programming under one roof.</p>
         <dl class="specs">
           <div><dt>Space</dt><dd>16,000 sq ft · 24 ft ceilings</dd></div>
@@ -629,7 +634,7 @@
         <img class="a3" src="/con/img/art-hand.webp" alt="" loading="lazy" />
       </div>
       <div>
-        <h2 class="pix" style="font-size:clamp(72px,9.5vw,160px)">Sky Fine Foods</h2>
+        <h2 class="pix" style="font-size:clamp(72px,9.5vw,160px)"><span class="px">Sky Fine Foods</span></h2>
         <p>A Toronto contemporary art organization concerned with the liminal, screens and realities. It represents artists working with new ideas and new processes, and is curating the installation program that surrounds the stage.</p>
         <dl class="specs" style="max-width:520px">
           <div><dt>Focus</dt><dd>Digital and new-media art</dd></div>
@@ -644,7 +649,7 @@
 <!-- ============ PILLARS ============ -->
 <section class="sec" style="padding-top:0">
   <div class="wrap">
-    <div class="sec__head"><h2 class="pix sec__title" style="font-size:clamp(56px,8.5vw,140px)">What we talk about</h2></div>
+    <div class="sec__head"><h2 class="pix sec__title" style="font-size:clamp(56px,8.5vw,140px)"><span class="px">What we talk about</span></h2></div>
     <div class="pillars">
       <div class="pillar"><div class="pillar__top"><span class="mono">01</span><svg viewBox="0 0 40 40"><rect x="6" y="8" width="28" height="24"/><path d="M11 8v24M29 8v24M6 13h5M6 18h5M6 23h5M6 28h5M29 13h5M29 18h5M29 23h5M29 28h5M17 15l7 5-7 5z"/></svg></div><h3>Generative media &amp; storytelling</h3></div>
       <div class="pillar"><div class="pillar__top"><span class="mono">02</span><svg viewBox="0 0 40 40"><rect x="8" y="10" width="24" height="16"/><path d="M4 30h32M14 30l1-4h10l1 4"/></svg></div><h3>Software as a creative medium</h3></div>
@@ -676,7 +681,7 @@
         <div class="slides__bars" id="slidesBars"><i><b></b></i><i><b></b></i><i><b></b></i><i><b></b></i><i><b></b></i><i><b></b></i><i><b></b></i><i><b></b></i><i><b></b></i></div>
       </div>
       <div>
-        <h2 class="pix" style="font-size:clamp(56px,6.6vw,112px)">A monthly room, scaled up</h2>
+        <h2 class="pix" style="font-size:clamp(56px,6.6vw,112px)"><span class="px">A monthly room, scaled up</span></h2>
         <p style="margin:24px 0 32px;color:#c9c9c9;font-size:18px;max-width:46ch">CTRL+SHIFT is a monthly creative-tech series exploring how technology is changing what it means to create. The conference is every edition, in one room, for one day.</p>
         <div class="stats">
           <div class="stat"><b data-count="14">0</b><span class="mono">Sold-out events</span></div>
