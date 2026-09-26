@@ -120,13 +120,13 @@
     display: flex; flex-direction: column; justify-content: flex-end;
     padding: 0 var(--gutter) 96px;
   }
-  .hero__kicker { display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; margin-bottom: 20px; }
-  .lockup { position: relative; display: block; width: min(92vw, 900px, calc((100svh - 500px) * 2.43)); min-width: min(92vw, 300px); }
+  .hero__kicker { display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; margin-bottom: clamp(28px, 4vh, 48px); }
+  .lockup { position: relative; display: block; width: min(92vw, 1180px); }
   .lockup img { width: 100%; height: auto; }
   .lockup__ch {
     position: absolute; inset: 0; opacity: 0; pointer-events: none; mix-blend-mode: screen;
-    -webkit-mask: url("/con/img/lockup.png") center / 100% 100% no-repeat;
-            mask: url("/con/img/lockup.png") center / 100% 100% no-repeat;
+    -webkit-mask: url("/con/img/lockup.png?v=2") center / 100% 100% no-repeat;
+            mask: url("/con/img/lockup.png?v=2") center / 100% 100% no-repeat;
   }
   .lockup__ch--r { background: #ff2bd6; transform: translateX(-6px); }
   .lockup__ch--b { background: #19f0ff; transform: translateX(6px); }
@@ -417,8 +417,7 @@
 
 <nav class="nav" aria-label="Primary">
   <a class="nav__logo" href="/" aria-label="CTRL+SHIFT home">
-    <img src="/con/img/mark.png" alt="" />
-    <span>CTRL+SHIFT</span>
+    <img src="/con/img/lockup.png?v=2" alt="CTRL+SHIFT" />
   </a>
   <div class="nav__links">
     <a href="#about">About</a>
@@ -443,7 +442,7 @@
     </div>
     <h1>
       <span class="lockup" id="heroGlitch" role="img" aria-label="CTRL+SHIFT">
-        <img src="/con/img/lockup.png" alt="" width="1800" height="740" />
+        <img src="/con/img/lockup.png?v=2" alt="" width="2000" height="404" />
         <i class="lockup__ch lockup__ch--r" aria-hidden="true"></i>
         <i class="lockup__ch lockup__ch--b" aria-hidden="true"></i>
       </span>
