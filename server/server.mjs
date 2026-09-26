@@ -117,6 +117,11 @@ async function createApp() {
     response.sendFile(path.resolve(ROOT, baseDir, 'academy', 'index.html'));
   });
 
+  app.get(['/con', '/con/'], (request, response) => {
+    const baseDir = isProduction ? 'dist' : 'public';
+    response.sendFile(path.resolve(ROOT, baseDir, 'con', 'index.html'));
+  });
+
   if (isProduction) {
     app.use(express.static(path.resolve(ROOT, 'dist'), {
       setHeaders: (response, filePath) => {

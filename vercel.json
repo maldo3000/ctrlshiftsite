@@ -3,17 +3,40 @@
     {
       "source": "/assets/images/(.*)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=86400, stale-while-revalidate=604800" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400, stale-while-revalidate=604800"
+        }
       ]
     },
     {
       "source": "/academy/(.*)\\.(jpg|png|svg|woff2|js|css)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=86400, stale-while-revalidate=604800" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400, stale-while-revalidate=604800"
+        }
+      ]
+    },
+    {
+      "source": "/con/(.*)\\.(webp|jpg|png|mp4|otf|js)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400, stale-while-revalidate=604800"
+        }
       ]
     }
   ],
   "rewrites": [
+    {
+      "source": "/con",
+      "destination": "/con/index.html"
+    },
+    {
+      "source": "/con/",
+      "destination": "/con/index.html"
+    },
     {
       "source": "/academy/sample-coursebook",
       "destination": "/academy/sample-coursebook/index.html"
@@ -77,6 +100,13 @@
     {
       "source": "/sponsors/vol-9/",
       "destination": "/index.html"
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/conference",
+      "destination": "/con",
+      "permanent": false
     }
   ]
 }
