@@ -441,23 +441,31 @@
     .nav__logo img { height: 22px; }
     .nav__cta { padding: 8px 12px; font-size: 11px; background: var(--signal); color: var(--bg); border-color: var(--signal); }
 
-    /* Hero */
-    .hero { min-height: 100svh; height: auto; }
-    .hero__inner { padding: 96px 16px 40px; min-height: 100svh; }
-    .hero__kicker { flex-direction: column; align-items: flex-start; gap: 14px; margin-bottom: 26px; }
-    .presented img { height: 24px; }
-    .lockup { width: 100%; }
-    .hero__sub { font-size: clamp(44px, 13.2vw, 64px); margin-top: .18em; }
-    .hero__cta .btn { width: 100%; justify-content: center; padding: 20px 18px; }
-    .hero__meta { grid-template-columns: 1fr 1fr; gap: 18px 16px; padding-top: 18px; }
-    .hero__meta > div:nth-child(2) { grid-column: auto; }
-    .hero__meta > div:last-child { grid-column: 1 / -1; }
-    .hero__addr { font-size: 11px; letter-spacing: .08em; }
+    /* Hero: top-aligned under the nav, content-sized, proportional rhythm */
+    .hero { height: auto; min-height: 0; }
+    .hero__inner { justify-content: flex-start; min-height: 0; padding: 84px 16px 32px; }
+    .hero__kicker { flex-direction: row; align-items: center; justify-content: space-between; flex-wrap: nowrap; gap: 12px; margin-bottom: 30px; }
+    .hero__kicker > .eyebrow { display: none; }
+    .presented { gap: 10px; }
+    .presented .eyebrow { font-size: 10px; letter-spacing: .16em; padding-right: 10px; white-space: nowrap; }
+    .presented img { height: 22px; }
+    .lockup { width: 100%; min-width: 0; }
+    .hero__sub { font-size: 13.3vw; margin-top: .14em; letter-spacing: -.025em; }
+    .hero__cta { margin-top: 26px; }
+    .hero__cta .btn { width: 100%; justify-content: center; padding: 19px 18px; font-size: 14px; }
+    .hero__meta { margin-top: 26px; grid-template-columns: 1fr auto; grid-template-areas: "date doors" "loc loc"; gap: 20px 16px; padding-top: 18px; }
+    .hero__meta > div:nth-child(1) { grid-area: date; }
+    .hero__meta > div:nth-child(2) { grid-area: loc; }
+    .hero__meta > div:nth-child(3) { grid-area: doors; grid-column: auto; }
+    .hero__meta strong { font-size: 17px; }
+    .hero__meta .countdown { font-size: 26px; gap: 10px; }
+    .hero__addr { font-size: 11px; letter-spacing: .1em; margin-top: 2px; }
 
     /* Section heads stack instead of squeezing labels beside big titles */
     .sec__head { flex-direction: column; align-items: flex-start; gap: 12px; }
     .sec__head > .pix--wide { flex: none; width: 100%; }
     .sec { padding: 88px 0; }
+    #about { padding-top: 48px; }
 
     /* Manifesto */
     .manifesto__text { font-size: clamp(30px, 9vw, 40px); }
