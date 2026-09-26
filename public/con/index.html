@@ -6,13 +6,21 @@
 <title>CTRL+SHIFT Conference | 19 Nov 2026 · Demo Room, Toronto</title>
 <meta name="description" content="CTRL+SHIFT Conference. One day of talks, interactive installations, a live AV performance and a dance floor. 19 November 2026 at Demo Room, Toronto." />
 <link rel="canonical" href="https://www.ctrlshift.community/con" />
-<meta property="og:title" content="CTRL+SHIFT Conference · 19.11.2026 · Toronto" />
-<meta property="og:description" content="A conversation surrounded by art. Talks, installations, AV performance and a dance floor at Demo Room, Toronto." />
+<meta property="og:title" content="CTRL+SHIFT Conference · Night Con · 19.11.2026" />
+<meta property="og:description" content="Presented by Demo Room. Talks, interactive installations, a live AV set and a dance floor. Demo Room Toronto, 307 Lake Shore Blvd E." />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="CTRL+SHIFT" />
 <meta property="og:url" content="https://www.ctrlshift.community/con" />
-<meta property="og:image" content="https://www.ctrlshift.community/con/img/hero-poster.jpg" />
+<!-- Link-preview card, 1200x630 (og.jpg). Regenerate if the date, venue or branding changes. -->
+<meta property="og:image" content="https://www.ctrlshift.community/con/og.jpg" />
+<meta property="og:image:type" content="image/jpeg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="CTRL+SHIFT Conference. Night Con, 19.11.2026, Demo Room Toronto. Presented by Demo Room." />
 <meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="CTRL+SHIFT Conference · Night Con · 19.11.2026" />
+<meta name="twitter:description" content="Presented by Demo Room. Talks, installations, AV and a dance floor in Toronto." />
+<meta name="twitter:image" content="https://www.ctrlshift.community/con/og.jpg" />
 <meta name="theme-color" content="#050505" />
 <link rel="icon" href="/favicon.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -420,6 +428,94 @@
   .reveal-line { overflow: hidden; display: block; }
   .reveal-line > span { display: block; }
 
+
+  /* Hero ticket CTA */
+  .hero__cta { margin-top: clamp(22px, 3vh, 36px); }
+  .btn--xl { font-size: clamp(14px, 1.2vw, 17px); padding: 22px 34px; font-weight: 700; box-shadow: 0 0 60px rgba(var(--signal-rgb), .28); }
+  .hero__meta { margin-top: clamp(24px, 3.5vh, 36px); }
+
+  /* ---------- MOBILE PASS ---------- */
+  @media (max-width: 760px) {
+    /* Nav: solid bar instead of difference-blend so it never collides with content */
+    .nav { mix-blend-mode: normal; padding: 12px 16px; background: linear-gradient(180deg, rgba(5,5,5,.92), rgba(5,5,5,.7)); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+    .nav__logo img { height: 22px; }
+    .nav__cta { padding: 8px 12px; font-size: 11px; background: var(--signal); color: var(--bg); border-color: var(--signal); }
+
+    /* Hero */
+    .hero { min-height: 100svh; height: auto; }
+    .hero__inner { padding: 96px 16px 40px; min-height: 100svh; }
+    .hero__kicker { flex-direction: column; align-items: flex-start; gap: 14px; margin-bottom: 26px; }
+    .presented img { height: 24px; }
+    .lockup { width: 100%; }
+    .hero__sub { font-size: clamp(44px, 13.2vw, 64px); margin-top: .18em; }
+    .hero__cta .btn { width: 100%; justify-content: center; padding: 20px 18px; }
+    .hero__meta { grid-template-columns: 1fr 1fr; gap: 18px 16px; padding-top: 18px; }
+    .hero__meta > div:nth-child(2) { grid-column: auto; }
+    .hero__meta > div:last-child { grid-column: 1 / -1; }
+    .hero__addr { font-size: 11px; letter-spacing: .08em; }
+
+    /* Section heads stack instead of squeezing labels beside big titles */
+    .sec__head { flex-direction: column; align-items: flex-start; gap: 12px; }
+    .sec__head > .pix--wide { flex: none; width: 100%; }
+    .sec { padding: 88px 0; }
+
+    /* Manifesto */
+    .manifesto__text { font-size: clamp(30px, 9vw, 40px); }
+    .manifesto__grid > div { min-height: 0; gap: 22px; }
+
+    /* Concept orbit: keep the tiles inside the viewport */
+    .orbit { width: 80vw; margin: 8px auto 24px; }
+    .concept h2.display { font-size: clamp(38px, 11vw, 48px) !important; }
+
+    /* Program */
+    .row__desc { font-size: 15px; }
+
+    /* Strobe */
+    .strobe { height: 60vh; min-height: 360px; }
+    .strobe__txt .display { font-size: clamp(52px, 16vw, 80px); }
+
+    /* Lineup */
+    .lineup-note { flex-direction: column; align-items: stretch; }
+    .lineup-note .btn { justify-content: center; }
+
+    /* Venue */
+    .venue__intro .display { font-size: clamp(56px, 17vw, 80px); }
+    .venue__end .display { font-size: clamp(36px, 10vw, 48px); }
+    .venue__end { margin-top: 16px; }
+
+    /* Partner */
+    .partner .display { font-size: clamp(48px, 14vw, 68px); }
+    .partner__art { max-width: 88vw; margin: 0 auto; }
+
+    /* Pillars: single column, no overflow */
+    .pillars { grid-template-columns: minmax(0, 1fr); }
+    .pillar { min-height: 0; gap: 36px; padding: 22px 20px 26px; }
+    .sec__title[style] { font-size: clamp(40px, 12vw, 56px) !important; }
+
+    /* Community */
+    .community__media { min-height: 0; aspect-ratio: 4 / 5; }
+    .community h2.display { font-size: clamp(38px, 11vw, 52px) !important; }
+    .stat b { font-size: clamp(44px, 13vw, 60px); }
+    .stat:nth-child(odd) { padding-right: 14px; }
+    .stat:nth-child(even) { padding-left: 16px; }
+
+    /* Mosaic: no row spans so the 2-col grid fills cleanly */
+    .mosaic .h2 { grid-row: auto; }
+
+    /* Signal + build */
+    .signal { min-height: 0; padding: 96px 0; }
+    .signal .display { font-size: clamp(56px, 17vw, 84px); }
+    .signal p.lede { font-size: 17px; }
+    .signal__row { flex-direction: column; }
+    .signal__row .btn { justify-content: center; }
+    .build h4 { font-size: 26px; }
+
+    /* Footer */
+    .foot { flex-direction: column; align-items: flex-start; }
+    .foot img { height: 48px; }
+    .foot__presented { line-height: 2; }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .grain, .marquee__track, .orbit__spin, .orbit__node img, .orbit__pulse, .scroll-cue i { animation: none !important; }
   }
@@ -438,7 +534,7 @@
     <a href="#lineup">Lineup</a>
     <a href="#venue">Venue</a>
   </div>
-  <a class="nav__cta" href="#signal">Get notified</a>
+  <a class="nav__cta" href="https://luma.com/ctrlshift?k=c" target="_blank" rel="noopener">Tickets</a>
 </nav>
 
 <!-- ============ HERO ============ -->
@@ -464,6 +560,9 @@
       </span>
       <span class="hero__sub reveal-line"><span>Conference</span></span>
     </h1>
+    <div class="hero__cta">
+      <a class="btn btn--signal btn--xl" href="https://luma.com/ctrlshift?k=c" target="_blank" rel="noopener">Get tickets on Luma <span class="arr">→</span></a>
+    </div>
     <div class="hero__meta">
       <div><span class="eyebrow">Date</span><strong>19 Nov 2026</strong></div>
       <div><span class="eyebrow">Location</span><strong>Demo Room Toronto</strong><span class="hero__addr">307 Lake Shore Blvd E</span></div>
@@ -726,7 +825,7 @@
     <h2 class="display" style="margin-top:18px">Stay in<br/>the <em>signal</em></h2>
     <p class="lede">Tickets, speakers and artists drop to the list first. Every CTRL+SHIFT edition has sold out within days.</p>
     <div class="signal__row">
-      <a class="btn btn--signal" href="https://luma.com/ctrlshift?k=c" target="_blank" rel="noopener">Subscribe on Luma <span class="arr">→</span></a>
+      <a class="btn btn--signal" href="https://luma.com/ctrlshift?k=c" target="_blank" rel="noopener">Get tickets on Luma <span class="arr">→</span></a>
       <a class="btn" href="https://www.instagram.com/ctrlshift.to/" target="_blank" rel="noopener">@ctrlshift.to <span class="arr">↗</span></a>
     </div>
   </div>
