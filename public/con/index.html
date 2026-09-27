@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="CTRL+SHIFT" />
 <meta property="og:url" content="https://www.ctrlshift.community/con" />
 <!-- Link-preview card, 1200x630 (og.jpg). Regenerate if the date, venue or branding changes. -->
-<meta property="og:image" content="https://www.ctrlshift.community/con/og.jpg" />
+<meta property="og:image" content="https://www.ctrlshift.community/con/og.jpg?v=2" />
 <meta property="og:image:type" content="image/jpeg" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
@@ -20,7 +20,7 @@
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="CTRL+SHIFT Conference · Night Con · 19.11.2026" />
 <meta name="twitter:description" content="Presented by Demo Room. Talks, installations, AV and a dance floor in Toronto." />
-<meta name="twitter:image" content="https://www.ctrlshift.community/con/og.jpg" />
+<meta name="twitter:image" content="https://www.ctrlshift.community/con/og.jpg?v=2" />
 <meta name="theme-color" content="#050505" />
 <link rel="icon" href="/favicon.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -43,8 +43,8 @@
     --grey-dark: #4a4a4a;
     --line: rgba(242, 242, 242, 0.14);
     --line-strong: rgba(242, 242, 242, 0.32);
-    --signal: #f5d547;
-    --signal-rgb: 245, 213, 71;
+    --signal: #ff2e93;
+    --signal-rgb: 255, 46, 147;
     --pink: #ffe4ff;
     --mint: #e9ffff;
     --display: "Work Sans", "Inter", -apple-system, sans-serif;
@@ -132,29 +132,33 @@
   }
   .hero__inner {
     position: relative; z-index: 2; height: 100%;
-    display: flex; flex-direction: column; justify-content: flex-end;
-    padding: 0 var(--gutter) 96px;
+    display: flex; flex-direction: column; justify-content: flex-start;
+    padding: clamp(92px, 12vh, 120px) var(--gutter) clamp(28px, 4vh, 44px);
   }
+  /* Lockup, Conference and CTA sit as one group, centered between the top row and the details bar.
+     --lw drives both the lockup width and the Conference size so the two always align. */
+  .hero h1 { margin-top: auto; --lw: clamp(300px, min(42vw, calc((100svh - 400px) * 2.1)), 700px); }
+  .hero__cta { margin-bottom: auto; }
   .presented { display: flex; align-items: center; gap: 16px; }
   .presented .eyebrow { color: var(--white); padding-right: 16px; border-right: 1px solid var(--line-strong); }
-  .presented img { height: clamp(22px, 2.6vw, 38px); width: auto; }
+  .presented img { height: clamp(20px, 2vw, 30px); width: auto; }
   .hero__addr { font-family: var(--mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: #c9c9c9; }
   .hero__kicker { display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; margin-bottom: 20px; }
-  .lockup { position: relative; display: block; width: min(92vw, 900px, calc((100svh - 500px) * 2.43)); min-width: min(92vw, 300px); }
+  .lockup { position: relative; display: block; width: var(--lw); }
   .lockup img { width: 100%; height: auto; }
   .lockup__ch {
     position: absolute; inset: 0; opacity: 0; pointer-events: none; mix-blend-mode: screen;
-    -webkit-mask: url("/con/img/lockup.png?v=3") center / 100% 100% no-repeat;
-            mask: url("/con/img/lockup.png?v=3") center / 100% 100% no-repeat;
+    -webkit-mask: url("/con/img/lockup.png?v=4") center / 100% 100% no-repeat;
+            mask: url("/con/img/lockup.png?v=4") center / 100% 100% no-repeat;
   }
   .lockup__ch--r { background: #ff2bd6; transform: translateX(-6px); }
   .lockup__ch--b { background: #19f0ff; transform: translateX(6px); }
   .lockup.is-glitching .lockup__ch { opacity: .85; }
   .lockup img { transition: none; }
   .hero__sub {
-    font-family: var(--display); font-weight: 900; text-transform: uppercase;
-    font-size: clamp(40px, 9.5vw, 168px); line-height: 0.85; letter-spacing: -0.02em;
-    margin-top: 0.22em;
+    display: block; font-family: var(--display); font-weight: 900; text-transform: uppercase;
+    font-size: calc(var(--lw) * var(--conf-k, .152)); line-height: 0.85; letter-spacing: -0.02em;
+    margin-top: calc(var(--lw) * .045);
   }
   .hero__meta {
     display: grid; grid-template-columns: repeat(3, auto); justify-content: space-between; gap: 20px;
@@ -424,9 +428,9 @@
 
 
   /* Hero ticket CTA */
-  .hero__cta { margin-top: clamp(22px, 3vh, 36px); }
-  .btn--xl { font-size: clamp(14px, 1.2vw, 17px); padding: 22px 34px; font-weight: 700; box-shadow: 0 0 60px rgba(var(--signal-rgb), .28); }
-  .hero__meta { margin-top: clamp(24px, 3.5vh, 36px); }
+  .hero__cta { margin-top: clamp(28px, 4.5vh, 48px); }
+  .btn--xl { font-size: 13px; padding: 16px 24px; font-weight: 700; box-shadow: 0 0 44px rgba(var(--signal-rgb), .35); }
+  .hero__meta { margin-top: 0; }
 
   /* ---------- MOBILE PASS ---------- */
   @media (max-width: 760px) {
@@ -439,17 +443,15 @@
     .hero { height: auto; min-height: 100svh; }
     .hero__inner { justify-content: flex-start; min-height: 100svh; padding: 80px 16px 28px; }
     /* Presented-by at top, meta at bottom, logo + CTA centered in between */
-    .hero h1 { margin-top: auto; }
-    .hero__cta { margin-bottom: auto; }
     .hero__kicker { flex-direction: row; align-items: center; justify-content: space-between; flex-wrap: nowrap; gap: 12px; margin-bottom: 0; }
     .hero__kicker > .eyebrow { display: none; }
     .presented { gap: 10px; }
     .presented .eyebrow { font-size: 10px; letter-spacing: .16em; padding-right: 10px; white-space: nowrap; }
     .presented img { height: 22px; }
-    .lockup { width: 82%; min-width: 0; }
-    .hero__sub { font-size: 11vw; margin-top: .2em; letter-spacing: -.025em; }
+    .hero h1 { --lw: calc((100vw - 32px) * .84); }
     .hero__cta { margin-top: 30px; }
-    .hero__cta .btn { width: 100%; justify-content: center; padding: 19px 18px; font-size: 14px; }
+    .hero__meta { margin-top: 32px; }
+    .hero__cta .btn { padding: 15px 20px; font-size: 12px; }
     .hero__meta { margin-top: 32px; grid-template-columns: 1fr auto; grid-template-areas: "date doors" "loc loc"; gap: 20px 16px; padding-top: 18px; }
     .hero__meta > div:nth-child(1) { grid-area: date; }
     .hero__meta > div:nth-child(2) { grid-area: loc; }
@@ -559,7 +561,7 @@
     </div>
     <h1>
       <span class="lockup" id="heroGlitch" role="img" aria-label="CTRL+SHIFT">
-        <img src="/con/img/lockup.png?v=3" alt="" width="1800" height="740" />
+        <img src="/con/img/lockup.png?v=4" alt="" width="1800" height="740" />
         <i class="lockup__ch lockup__ch--r" aria-hidden="true"></i>
         <i class="lockup__ch lockup__ch--b" aria-hidden="true"></i>
       </span>
@@ -582,7 +584,6 @@
       </div>
     </div>
   </div>
-  <div class="scroll-cue" aria-hidden="true"><span class="mono" style="font-size:10px">Scroll</span><i></i></div>
 </header>
 
 
@@ -983,7 +984,7 @@
         const d = Math.hypot(x - mx, y - my);
         const near = Math.max(0, 1 - d / 180);
         const r = 0.8 + (wave + 1) * 0.7 + near * 5;
-        ctx.fillStyle = near > 0.05 ? `rgba(245,213,71,${0.35 + near * 0.65})` : `rgba(242,242,242,${0.08 + (wave + 1) * 0.08})`;
+        ctx.fillStyle = near > 0.05 ? `rgba(255,46,147,${0.35 + near * 0.65})` : `rgba(242,242,242,${0.08 + (wave + 1) * 0.08})`;
         ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI * 2); ctx.fill();
       }
     }
