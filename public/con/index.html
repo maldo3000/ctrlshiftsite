@@ -26,7 +26,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&family=Work+Sans:wght@800;900&display=swap" rel="stylesheet" />
-<link rel="preload" as="image" href="/con/img/hero-poster.jpg" />
+<link rel="preload" as="image" href="/con/img/hero-reel-poster.jpg?v=2" media="(min-width: 761px)" />
+<link rel="preload" as="image" href="/con/img/hero-reel-m-poster.jpg?v=2" media="(max-width: 760px)" />
 <style>
   @font-face {
     font-family: "PP Neue Bit";
@@ -157,7 +158,7 @@
   .lockup img { transition: none; }
   .hero__sub {
     display: block; font-family: var(--display); font-weight: 900; text-transform: uppercase;
-    font-size: calc(var(--lw) * var(--conf-k, .152)); line-height: 0.85; letter-spacing: -0.02em;
+    font-size: calc(var(--lw) * var(--conf-k, .162)); line-height: 0.85; letter-spacing: 0.04em;
     margin-top: calc(var(--lw) * .045);
   }
   .hero__meta {
@@ -547,9 +548,16 @@
 <!-- ============ HERO ============ -->
 <header class="hero" id="top">
   <div class="hero__media">
-    <video autoplay muted loop playsinline preload="auto" poster="/con/img/hero-poster.jpg">
-      <source src="/con/img/hero-reel.mp4" type="video/mp4" />
-    </video>
+    <!-- Separate 16:9 and 9:16 cuts, each framed on its subject; picked before the first frame loads -->
+    <video id="heroVideo" autoplay muted loop playsinline preload="auto"></video>
+    <script>
+      (() => {
+        const v = document.getElementById('heroVideo');
+        const m = matchMedia('(max-width: 760px)').matches ? '-m' : '';
+        v.poster = `/con/img/hero-reel${m}-poster.jpg?v=2`;
+        v.src = `/con/img/hero-reel${m}.mp4?v=2`;
+      })();
+    </script>
   </div>
   <div class="hero__inner">
     <div class="hero__kicker">
