@@ -96,7 +96,7 @@
   .pix { font-family: var(--bit); font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; line-height: 0.82; word-spacing: 0.1em; }
   /* Wide variant (Program, Lineup): stretched to match the brand artboards' wide pixel headlines.
      Lines wrap at 1/--sx of the box, then scaleX brings them back to full width. */
-  .pix--wide { --sx: 1.55; letter-spacing: 0.02em; line-height: 0.84; }
+  .pix--wide { --sx: 1.55; letter-spacing: 0.02em; line-height: 0.84; word-spacing: 0.02em; }
   .pix--wide .px { display: inline-block; width: calc(100% / var(--sx)); transform: scaleX(var(--sx)); transform-origin: left top; -webkit-text-stroke: 0.004em currentColor; }
   .sec__head > .pix--wide { flex: 1; }
   .wrap { padding: 0 var(--gutter); max-width: 1600px; margin: 0 auto; }
@@ -128,7 +128,8 @@
   .hero__media::after {
     content: ""; position: absolute; inset: 0;
     background:
-      linear-gradient(180deg, rgba(5,5,5,.55) 0%, rgba(5,5,5,.15) 35%, rgba(5,5,5,.35) 65%, rgba(5,5,5,1) 100%),
+      linear-gradient(90deg, rgba(5,5,5,.55) 0%, rgba(5,5,5,.3) 55%, rgba(5,5,5,.1) 100%),
+      linear-gradient(180deg, rgba(5,5,5,.7) 0%, rgba(5,5,5,.35) 35%, rgba(5,5,5,.5) 65%, rgba(5,5,5,1) 100%),
       repeating-linear-gradient(0deg, rgba(0,0,0,.28) 0 1px, transparent 1px 3px);
   }
   .hero__inner {
@@ -207,11 +208,20 @@
     max-width: 16ch;
   }
   .manifesto__text .w { display: inline-block; opacity: 0.12; transition: none; }
-  .manifesto__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); margin-top: clamp(56px, 8vw, 120px); border: 1px solid var(--line); }
-  .manifesto__grid > div { background: var(--bg); padding: clamp(24px, 3vw, 44px); min-height: 240px; display: flex; flex-direction: column; justify-content: space-between; gap: 32px; }
-  .manifesto__grid h3 { font-family: var(--display); font-weight: 900; text-transform: uppercase; font-size: clamp(28px, 3.4vw, 52px); line-height: .95; }
+  .manifesto__grid { display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: auto auto 1fr; column-gap: 0; margin-top: clamp(56px, 8vw, 120px); }
+  .manifesto__grid > div { display: grid; grid-row: span 3; grid-template-rows: subgrid; row-gap: 22px; padding: 4px clamp(20px, 2.6vw, 40px) 8px; }
+  .manifesto__grid > div > div { display: contents; }
+  .manifesto__grid > div:first-child { padding-left: 0; }
+  .manifesto__grid > div:last-child { padding-right: 0; }
+  .manifesto__grid > div + div { border-left: 1px solid var(--line-strong); }
+  .manifesto__grid h3 + p { margin-top: 0 !important; }
+  .manifesto__grid h3 { font-family: var(--display); font-weight: 900; text-transform: uppercase; font-size: clamp(26px, 2.8vw, 42px); line-height: .95; }
   .manifesto__grid p { color: #c9c9c9; max-width: 36ch; font-size: 18px; }
-  @media (max-width: 900px) { .manifesto__grid { grid-template-columns: 1fr; } }
+  @media (max-width: 900px) {
+    .manifesto__grid { grid-template-columns: 1fr; grid-template-rows: none; }
+    .manifesto__grid > div { grid-row: auto; grid-template-rows: none; padding: 28px 0; row-gap: 14px; }
+    .manifesto__grid > div + div { border-left: 0; border-top: 1px solid var(--line-strong); }
+  }
 
   /* Concept orbit */
   .concept { display: grid; grid-template-columns: 1.05fr 1fr; gap: clamp(40px, 6vw, 96px); align-items: center; }
@@ -342,14 +352,15 @@
   @media (max-width: 860px) { .partner { grid-template-columns: 1fr; } .partner__art { order: 2; } }
 
   /* Pillars */
-  .pillars { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
-  .pillar { background: var(--bg); padding: 26px 24px 30px; min-height: 300px; display: flex; flex-direction: column; justify-content: space-between; transition: background .35s, color .35s; }
+  .pillars { display: grid; grid-template-columns: repeat(4, 1fr); }
+  .pillar + .pillar { border-left: 1px solid var(--line-strong); }
+  .pillar { background: transparent; padding: 26px 24px 30px; min-height: 300px; display: flex; flex-direction: column; justify-content: space-between; transition: background .35s, color .35s; }
   .pillar:hover { background: var(--signal); color: var(--bg); }
   .pillar:hover .mono { color: var(--bg); }
   .pillar__top { display: flex; justify-content: space-between; align-items: flex-start; }
   .pillar svg { width: 38px; height: 38px; stroke: currentColor; fill: none; stroke-width: 1.4; }
   .pillar h3 { font-family: var(--display); font-weight: 900; text-transform: uppercase; font-size: clamp(24px, 2.2vw, 32px); line-height: .98; }
-  @media (max-width: 1000px) { .pillars { grid-template-columns: 1fr 1fr; } .pillar { min-height: 220px; } }
+  @media (max-width: 1000px) { .pillars { grid-template-columns: 1fr 1fr; } .pillar { min-height: 220px; } .pillar:nth-child(3) { border-left: 0; } .pillar:nth-child(n+3) { border-top: 1px solid var(--line-strong); } }
 
   /* Community */
   .community { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(32px, 5vw, 80px); align-items: stretch; }
@@ -470,7 +481,6 @@
 
     /* Manifesto */
     .manifesto__text { font-size: clamp(30px, 9vw, 40px); }
-    .manifesto__grid > div { min-height: 0; gap: 22px; }
 
     /* Concept orbit: keep the tiles inside the viewport */
     .orbit { width: 80vw; margin: 8px auto 24px; }
@@ -500,6 +510,7 @@
     /* Pillars: single column, no overflow */
     .pillars { grid-template-columns: minmax(0, 1fr); }
     .pillar { min-height: 0; gap: 36px; padding: 22px 20px 26px; }
+    .pillar + .pillar { border-left: 0; border-top: 1px solid var(--line-strong); }
     .sec__title[style] { font-size: clamp(40px, 12vw, 56px) !important; }
 
     /* Community */
@@ -774,7 +785,7 @@
 <!-- ============ PILLARS ============ -->
 <section class="sec" style="padding-top:0">
   <div class="wrap">
-    <div class="sec__head"><h2 class="display sec__title" style="font-size:clamp(44px,7vw,112px)">What we talk about</h2></div>
+    <div class="sec__head"><h2 class="pix pix--wide sec__title" style="font-size:clamp(44px,7vw,120px)"><span class="px">What we talk about</span></h2></div>
     <div class="pillars">
       <div class="pillar"><div class="pillar__top"><span class="mono">01</span><svg viewBox="0 0 40 40"><rect x="6" y="8" width="28" height="24"/><path d="M11 8v24M29 8v24M6 13h5M6 18h5M6 23h5M6 28h5M29 13h5M29 18h5M29 23h5M29 28h5M17 15l7 5-7 5z"/></svg></div><h3>Generative media &amp; storytelling</h3></div>
       <div class="pillar"><div class="pillar__top"><span class="mono">02</span><svg viewBox="0 0 40 40"><rect x="8" y="10" width="24" height="16"/><path d="M4 30h32M14 30l1-4h10l1 4"/></svg></div><h3>Software as a creative medium</h3></div>
