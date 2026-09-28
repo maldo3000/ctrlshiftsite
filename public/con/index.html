@@ -139,7 +139,7 @@
   /* Lockup, Conference and CTA sit as one group, centered between the top row and the details bar.
      --lw drives both the lockup width and the Conference size so the two always align. */
   .hero h1 { margin-top: auto; --lw: clamp(300px, min(42vw, calc((100svh - 400px) * 2.1)), 700px); }
-  .hero__cta { margin-bottom: auto; }
+  .hero h1 { margin-bottom: auto; }
   .presented { display: flex; align-items: center; gap: 16px; }
   .presented .eyebrow { color: var(--white); padding-right: 16px; border-right: 1px solid var(--line-strong); }
   .presented img { height: clamp(20px, 2vw, 30px); width: auto; }
@@ -429,9 +429,12 @@
 
 
   /* Hero ticket CTA */
-  .hero__cta { margin-top: clamp(28px, 4.5vh, 48px); }
   .btn--xl { font-size: 13px; padding: 16px 24px; font-weight: 700; box-shadow: 0 0 44px rgba(var(--signal-rgb), .35); }
   .hero__meta { margin-top: 0; }
+
+  /* Ticket CTA under the program */
+  .tix { display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; margin-top: clamp(40px, 5vw, 64px); padding: clamp(24px, 3vw, 36px); border: 1px solid var(--line-strong); background: linear-gradient(90deg, rgba(var(--signal-rgb), .12), rgba(var(--signal-rgb), 0) 70%); }
+  .tix__line { font-family: var(--display); font-weight: 900; text-transform: uppercase; font-size: clamp(26px, 3vw, 44px); line-height: 1; margin-top: 10px; }
 
   /* ---------- MOBILE PASS ---------- */
   @media (max-width: 760px) {
@@ -450,9 +453,7 @@
     .presented .eyebrow { font-size: 10px; letter-spacing: .16em; padding-right: 10px; white-space: nowrap; }
     .presented img { height: 22px; }
     .hero h1 { --lw: calc((100vw - 32px) * .84); }
-    .hero__cta { margin-top: 30px; }
     .hero__meta { margin-top: 32px; }
-    .hero__cta .btn { padding: 15px 20px; font-size: 12px; }
     .hero__meta { margin-top: 32px; grid-template-columns: 1fr auto; grid-template-areas: "date doors" "loc loc"; gap: 20px 16px; padding-top: 18px; }
     .hero__meta > div:nth-child(1) { grid-area: date; }
     .hero__meta > div:nth-child(2) { grid-area: loc; }
@@ -477,6 +478,7 @@
 
     /* Program */
     .row__desc { font-size: 15px; }
+    .tix .btn { width: 100%; justify-content: center; }
 
     /* Strobe */
     .strobe { height: 60vh; min-height: 360px; }
@@ -575,9 +577,6 @@
       </span>
       <span class="hero__sub reveal-line"><span>Conference</span></span>
     </h1>
-    <div class="hero__cta">
-      <a class="btn btn--signal btn--xl" href="https://luma.com/ctrlshift?k=c" target="_blank" rel="noopener">Get tickets on Luma <span class="arr">→</span></a>
-    </div>
     <div class="hero__meta">
       <div><span class="eyebrow">Date</span><strong>19 Nov 2026</strong></div>
       <div><span class="eyebrow">Location</span><strong>Demo Room Toronto</strong><span class="hero__addr">307 Lake Shore Blvd E</span></div>
@@ -667,6 +666,13 @@
       <div class="row"><span class="row__n">03</span><span class="row__kind">Talk</span><span class="row__title">Artist talk</span><span class="row__desc">An artist on their practice and the work in the room.</span><span class="row__dur">20 MIN</span></div>
       <div class="row row--closer"><span class="row__n">04</span><span class="row__kind">Closer</span><span class="row__title">AV performance</span><span class="row__desc">A live audiovisual set to close the program.</span><span class="row__dur">60 MIN</span></div>
       <div class="row row--after"><span class="row__n">—</span><span class="row__kind">After</span><span class="row__title">Dance floor</span><span class="row__desc">DJs, open networking and installations into the night.</span><span class="row__dur">60 MIN</span></div>
+    </div>
+    <div class="tix">
+      <div>
+        <span class="eyebrow">19 Nov 2026 · Demo Room Toronto</span>
+        <p class="tix__line">Tickets are on Luma.</p>
+      </div>
+      <a class="btn btn--signal btn--xl" href="https://luma.com/ctrlshift?k=c" target="_blank" rel="noopener">Get tickets on Luma <span class="arr">→</span></a>
     </div>
   </div>
 </section>
