@@ -85,7 +85,7 @@ const Hero: React.FC = () => {
             transition={{ delay: 1.2, duration: 0.8 }}
             className="text-zinc-400 max-w-lg text-base sm:text-lg leading-relaxed mb-8 sm:mb-10"
           >
-            Calling artists, designers, filmmakers, musicians, and developers who see technology as a tool for expanding their creative horizons and amplifying the human touch in art.
+            Calling all creatives, creators, entrepreneurs, founders, artists, and designers who see technology as a tool for building what's next, without losing the human touch.
           </motion.p>
 
           <motion.div
