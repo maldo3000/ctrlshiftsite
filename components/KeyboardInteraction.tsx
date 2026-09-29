@@ -1,8 +1,15 @@
 
 import React, { useEffect, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+// Easter egg: tapping ctrl → + → shift on the keypad opens the retro desktop.
+const SECRET_SEQUENCE = ['one', 'two', 'three'];
+const SEQUENCE_WINDOW_MS = 2000;
 
 const KeyboardInteraction: React.FC = () => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const navigate = useNavigate();
+  const sequence = useRef({ progress: 0, lastTap: 0 });
   // Track pressed state for each key ID
   const [pressedState, setPressedState] = useState<Record<string, boolean>>({
     one: false,
@@ -58,6 +65,27 @@ const KeyboardInteraction: React.FC = () => {
         if (!prev[id]) playSound();
         return { ...prev, [id]: true };
     });
+  };
+
+  // Only on-screen taps count toward the sequence, not the o / g / Enter keys.
+  const handleTap = (id: string) => {
+    const now = Date.now();
+    const seq = sequence.current;
+    if (now - seq.lastTap > SEQUENCE_WINDOW_MS) seq.progress = 0;
+    seq.lastTap = now;
+
+    if (id === SECRET_SEQUENCE[seq.progress]) seq.progress += 1;
+    else seq.progress = id === SECRET_SEQUENCE[0] ? 1 : 0;
+
+    if (seq.progress === SECRET_SEQUENCE.length) {
+      seq.progress = 0;
+      // Let the shift key land before the desktop takes over; reset scroll so
+      // launching from the desktop reveals the top of the page, not the footer.
+      setTimeout(() => {
+        navigate('/launch');
+        window.scrollTo(0, 0);
+      }, 250);
+    }
   };
 
   const handleRelease = (id: string) => {
@@ -240,7 +268,7 @@ const KeyboardInteraction: React.FC = () => {
             id="one" 
             className="key keypad__single keypad__single--left"
             data-pressed={pressedState.one}
-            onPointerDown={() => handlePress('one')}
+            onPointerDown={() => { handlePress('one'); handleTap('one'); }}
             onPointerUp={() => handleRelease('one')}
             onPointerLeave={() => handleRelease('one')}
             style={{
@@ -263,7 +291,7 @@ const KeyboardInteraction: React.FC = () => {
             id="two" 
             className="key keypad__single"
             data-pressed={pressedState.two}
-            onPointerDown={() => handlePress('two')}
+            onPointerDown={() => { handlePress('two'); handleTap('two'); }}
             onPointerUp={() => handleRelease('two')}
             onPointerLeave={() => handleRelease('two')}
             style={{
@@ -286,7 +314,7 @@ const KeyboardInteraction: React.FC = () => {
             id="three" 
             className="key keypad__double"
             data-pressed={pressedState.three}
-            onPointerDown={() => handlePress('three')}
+            onPointerDown={() => { handlePress('three'); handleTap('three'); }}
             onPointerUp={() => handleRelease('three')}
             onPointerLeave={() => handleRelease('three')}
             style={{
