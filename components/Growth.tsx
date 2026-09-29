@@ -4,7 +4,7 @@ import { useInView } from 'react-intersection-observer';
 
 const stats = [
     {
-        val: "11",
+        val: "14",
         label: "Sold out Events",
         desc: "Each edition reached capacity within days of launch, reflecting the demand for spaces where creativity and technology intersect."
     },
