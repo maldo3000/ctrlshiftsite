@@ -1,7 +1,8 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence, useDragControls } from 'framer-motion';
-import { X, Minus, Maximize2, Youtube, Twitter, Instagram, Terminal, Folder, ExternalLink, Palette, Eraser, Trash2, MousePointer2 } from 'lucide-react';
+import { X, Minus, Maximize2, Youtube, Twitter, Instagram, Terminal, Folder, ExternalLink, Palette, Eraser, Trash2, MousePointer2, Gamepad2 } from 'lucide-react';
+import InvadersGame, { GAME_WIDTH, GAME_HEIGHT } from './InvadersGame';
 
 interface RetroDesktopProps {
   onLaunch: () => void;
@@ -14,8 +15,11 @@ type IconPositions = {
   twitter: IconPosition;
   instagram: IconPosition;
   paint: IconPosition;
+  invaders: IconPosition;
   documents: IconPosition;
 };
+
+type WindowId = 'main' | 'paint' | 'invaders';
 
 interface DesktopIconProps {
   icon: React.ElementType;
@@ -36,6 +40,7 @@ const RetroDesktop: React.FC<RetroDesktopProps> = ({ onLaunch }) => {
     twitter: { top: Math.random() * 200 + 60, left: Math.random() * 100 + 20 },
     instagram: { top: Math.random() * 200 + 60, left: Math.random() * 100 + 20 },
     paint: { top: Math.random() * 200 + 60, left: Math.random() * 100 + 20 },
+    invaders: { top: window.innerHeight / 2 + 110, left: window.innerWidth - 120 },
     documents: { top: window.innerHeight / 2, left: window.innerWidth - 120 }
   });
 
@@ -55,7 +60,8 @@ const RetroDesktop: React.FC<RetroDesktopProps> = ({ onLaunch }) => {
         twitter: { top: topStart, left: getX(1) },
         instagram: { top: topStart, left: getX(2) },
         paint: { top: topStart + rowGap, left: getX(0) },
-        documents: { top: topStart + rowGap, left: getX(1) }
+        documents: { top: topStart + rowGap, left: getX(1) },
+        invaders: { top: topStart + rowGap, left: getX(2) }
       };
     }
 
@@ -64,7 +70,8 @@ const RetroDesktop: React.FC<RetroDesktopProps> = ({ onLaunch }) => {
       twitter: { top: topStart, left: getX(1) },
       instagram: { top: topStart + rowGap, left: getX(0) },
       paint: { top: topStart + rowGap, left: getX(1) },
-      documents: { top: topStart + rowGap * 2, left: getX(0) }
+      documents: { top: topStart + rowGap * 2, left: getX(0) },
+      invaders: { top: topStart + rowGap * 2, left: getX(1) }
     };
   };
 
@@ -73,10 +80,13 @@ const RetroDesktop: React.FC<RetroDesktopProps> = ({ onLaunch }) => {
   const constraintsRef = useRef(null);
   const dragControls = useDragControls();
   const paintDragControls = useDragControls();
+  const invadersDragControls = useDragControls();
+  const isTouch = window.matchMedia?.('(pointer: coarse)').matches ?? false;
   
-  // Window State
-  const [activeWindow, setActiveWindow] = useState<'main' | 'paint'>('main');
-  const [zIndices, setZIndices] = useState({ main: 20, paint: 10 });
+  // Window State: back-to-front stacking order; the game opens on top.
+  const [activeWindow, setActiveWindow] = useState<WindowId>('invaders');
+  const [windowOrder, setWindowOrder] = useState<WindowId[]>(['paint', 'main', 'invaders']);
+  const zIndexOf = (id: WindowId) => 20 + windowOrder.indexOf(id);
   const [isMobile, setIsMobile] = useState(initialIsMobile);
   const wasMobileRef = useRef(initialIsMobile);
 
@@ -88,6 +98,18 @@ const RetroDesktop: React.FC<RetroDesktopProps> = ({ onLaunch }) => {
   const [isPaintOpen, setIsPaintOpen] = useState(false);
   const [paintWindowSize, setPaintWindowSize] = useState({ width: 600, height: 450 });
   const [isPaintMaximized, setIsPaintMaximized] = useState(false);
+
+  // Invaders Window State: open by default so it's the first thing on /launch.
+  // The window hugs the canvas, so its width is derived from the viewport.
+  const getInvadersWidth = () => {
+    const chromeHeight = 32 + 28 + 16 + (window.innerWidth < MOBILE_BREAKPOINT || isTouch ? 56 : 0);
+    const fitHeight = ((window.innerHeight - 40 - 32 - chromeHeight) * GAME_WIDTH) / GAME_HEIGHT + 12;
+    const fitWidth = window.innerWidth - 24;
+    return Math.max(260, Math.min(540, fitWidth, fitHeight));
+  };
+  const [isInvadersOpen, setIsInvadersOpen] = useState(true);
+  const [isInvadersMinimized, setIsInvadersMinimized] = useState(false);
+  const [invadersWidth, setInvadersWidth] = useState(getInvadersWidth);
 
   // Paint Logic
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -124,6 +146,7 @@ const RetroDesktop: React.FC<RetroDesktopProps> = ({ onLaunch }) => {
     const updateWindowLayout = () => {
       const mobile = window.innerWidth < MOBILE_BREAKPOINT;
       setIsMobile(mobile);
+      setInvadersWidth(getInvadersWidth());
 
       if (mobile !== wasMobileRef.current) {
         setIconPositions(mobile ? getMobileIconPositions() : getDesktopIconPositions());
@@ -183,13 +206,16 @@ const RetroDesktop: React.FC<RetroDesktopProps> = ({ onLaunch }) => {
     }
   }, [currentColor, currentTool, isPaintOpen]);
 
-  const handleWindowClick = (window: 'main' | 'paint') => {
+  const handleWindowClick = (window: WindowId) => {
     setSelectedIcon(null);
     setActiveWindow(window);
-    setZIndices({
-        main: window === 'main' ? 30 : 20,
-        paint: window === 'paint' ? 30 : 20
-    });
+    setWindowOrder(prev => [...prev.filter(id => id !== window), window]);
+  };
+
+  const openInvaders = () => {
+    setIsInvadersOpen(true);
+    setIsInvadersMinimized(false);
+    handleWindowClick('invaders');
   };
 
   const handleNavClick = (id: string) => {
@@ -363,6 +389,14 @@ const RetroDesktop: React.FC<RetroDesktopProps> = ({ onLaunch }) => {
             }} 
          />
 
+         <DesktopIcon 
+            icon={Gamepad2} 
+            label="Invaders.exe" 
+            color="text-purple-700" 
+            position={iconPositions.invaders}
+            onClick={openInvaders} 
+         />
+
          <motion.div
             drag
             dragConstraints={constraintsRef}
@@ -394,7 +428,7 @@ const RetroDesktop: React.FC<RetroDesktopProps> = ({ onLaunch }) => {
             style={{ 
                 width: paintWindowSize.width, 
                 height: paintWindowSize.height,
-                zIndex: zIndices.paint
+                zIndex: zIndexOf('paint')
             }}
             onPointerDown={() => handleWindowClick('paint')}
             className={`absolute top-10 left-10 pointer-events-auto bg-[#c0c0c0] ${windowBorder} shadow-[8px_8px_0px_rgba(0,0,0,0.3)] flex flex-col`}
@@ -541,6 +575,75 @@ const RetroDesktop: React.FC<RetroDesktopProps> = ({ onLaunch }) => {
       )}
 
 
+      {/* === INVADERS WINDOW === */}
+      {isInvadersOpen && (
+          <motion.div
+            drag
+            dragListener={false}
+            dragControls={invadersDragControls}
+            dragMomentum={false}
+            dragConstraints={constraintsRef}
+            initial={{ scale: 0.9, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            onPointerDown={() => handleWindowClick('invaders')}
+            style={{
+                width: invadersWidth,
+                zIndex: zIndexOf('invaders'),
+                display: isInvadersMinimized ? 'none' : undefined
+            }}
+            className={`absolute left-1/2 -translate-x-1/2 top-[calc(50%+20px)] -translate-y-1/2 pointer-events-auto bg-[#c0c0c0] ${windowBorder} shadow-[8px_8px_0px_rgba(0,0,0,0.3)] flex flex-col`}
+        >
+            {/* Invaders Title Bar */}
+            <div
+                onPointerDown={(e) => invadersDragControls.start(e)}
+                className={`bg-gradient-to-r ${activeWindow === 'invaders' ? 'from-[#000080] to-[#1084d0]' : 'from-[#808080] to-[#b0b0b0]'} px-1 py-0.5 flex items-center justify-between cursor-default select-none h-10 sm:h-8 flex-shrink-0 touch-none`}
+            >
+                <div className="flex items-center gap-2 text-white font-bold text-sm tracking-wide px-1">
+                    <Gamepad2 size={14} />
+                    <span>INVADERS.EXE</span>
+                </div>
+                <div className="flex items-center gap-1">
+                    <button
+                        onPointerDown={(e) => e.stopPropagation()}
+                        onClick={() => {
+                            setIsInvadersMinimized(true);
+                            setActiveWindow('main');
+                        }}
+                        aria-label="Minimize"
+                        className={`${controlButtonSize} bg-[#c0c0c0] ${buttonBorder} flex items-center justify-center active:border-t-black active:border-l-black active:border-b-white active:border-r-white focus:outline-none`}
+                    >
+                        <Minus size={isMobile ? 12 : 10} strokeWidth={3} className="text-black"/>
+                    </button>
+                    <button
+                        onPointerDown={(e) => e.stopPropagation()}
+                        onClick={() => {
+                            setIsInvadersOpen(false);
+                            setActiveWindow('main');
+                        }}
+                        aria-label="Close"
+                        className={`${controlButtonSize} bg-[#c0c0c0] ${buttonBorder} flex items-center justify-center active:border-t-black active:border-l-black active:border-b-white active:border-r-white ml-1 focus:outline-none`}
+                    >
+                        <X size={isMobile ? 14 : 12} strokeWidth={3} className="text-black"/>
+                    </button>
+                </div>
+            </div>
+
+            <div className="p-1.5">
+                <div className={`${insetBorder} bg-black`}>
+                    <InvadersGame
+                        active={activeWindow === 'invaders' && !isInvadersMinimized}
+                        touchControls={isMobile || isTouch}
+                    />
+                </div>
+            </div>
+
+            {/* Status Bar */}
+            <div className={`mx-1.5 mb-1.5 px-2 py-0.5 text-[11px] text-black truncate ${insetBorder}`}>
+                {isMobile || isTouch ? 'Hold ◀ ▶ to move, FIRE to shoot' : 'Move: ← → or WASD · Fire: Space'}
+            </div>
+        </motion.div>
+      )}
+
       {/* === MAIN CTRL+SHIFT WINDOW === */}
       <motion.div 
             drag
@@ -554,7 +657,7 @@ const RetroDesktop: React.FC<RetroDesktopProps> = ({ onLaunch }) => {
             style={{ 
                 width: windowSize.width, 
                 height: windowSize.height,
-                zIndex: zIndices.main 
+                zIndex: zIndexOf('main')
             }}
             className={`absolute left-1/2 -translate-x-1/2 ${isMobile ? 'top-[57%]' : 'top-1/2'} -translate-y-1/2 pointer-events-auto bg-[#c0c0c0] ${windowBorder} shadow-[8px_8px_0px_rgba(0,0,0,0.3)] flex flex-col relative`}
         >
@@ -703,6 +806,24 @@ const RetroDesktop: React.FC<RetroDesktopProps> = ({ onLaunch }) => {
                         {!isMobile && <span className="text-black truncate">untitled - Paint</span>}
                     </div>
                 )}
+                {isInvadersOpen && (
+                    <div
+                        onClick={() => {
+                            if (isInvadersMinimized) {
+                                openInvaders();
+                            } else if (activeWindow === 'invaders') {
+                                setIsInvadersMinimized(true);
+                                setActiveWindow('main');
+                            } else {
+                                handleWindowClick('invaders');
+                            }
+                        }}
+                        className={`h-full ${isMobile ? 'w-9 px-1 justify-center' : 'w-32 px-2'} flex items-center gap-1 text-sm cursor-pointer ${activeWindow === 'invaders' && !isInvadersMinimized ? insetBorder + ' bg-[#eeeeee]' : windowBorder} truncate`}
+                    >
+                        <Gamepad2 size={14} className="text-black"/>
+                        {!isMobile && <span className="text-black truncate">INVADERS.EXE</span>}
+                    </div>
+                )}
                 <div 
                         onClick={() => handleWindowClick('main')}
                         className={`h-full ${isMobile ? 'w-9 px-1 justify-center' : 'w-32 px-2'} flex items-center gap-1 text-sm cursor-pointer ${activeWindow === 'main' ? insetBorder + ' bg-[#eeeeee]' : windowBorder} truncate ml-1`}
@@ -759,6 +880,17 @@ const RetroDesktop: React.FC<RetroDesktopProps> = ({ onLaunch }) => {
                         >
                              <span className="text-black group-hover:text-white"><Palette size={16} /></span>
                              <span className="font-bold text-black group-hover:text-white">Paint</span>
+                        </button>
+
+                        <button
+                            onClick={() => {
+                                setIsStartOpen(false);
+                                openInvaders();
+                            }}
+                            className="w-full text-left px-4 py-3 hover:bg-[#000080] hover:text-white flex items-center gap-3 text-sm group focus:outline-none"
+                        >
+                             <span className="text-black group-hover:text-white"><Gamepad2 size={16} /></span>
+                             <span className="font-bold text-black group-hover:text-white">Invaders</span>
                         </button>
 
                         <div className="border-t border-gray-500 border-b border-white my-1"></div>
