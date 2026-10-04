@@ -38,14 +38,17 @@ const CtrlshiftCon: React.FC = () => {
                     whileInView={{ opacity: 1 }}
                     className="text-sm uppercase tracking-[0.2em] text-purple-400 mb-6"
                 >
-                    Night Con · Presented by Demo Room
+                    CTRL+SHIFT × Demo Room × Sky Fine Foods
                 </motion.p>
                 <motion.h2
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     className="text-6xl md:text-8xl font-syne font-semibold tracking-tighter"
                 >
-                    CTRL+SHIFT Conference
+                    {/* ASMBLY wordmark: alternate letters drop below the baseline, as on /con */}
+                    <span aria-label="ASMBLY">
+                        A<span className="inline-block translate-y-[0.17em]">S</span>M<span className="inline-block translate-y-[0.17em]">B</span>L<span className="inline-block translate-y-[0.17em]">Y</span>
+                    </span>
                 </motion.h2>
                 <motion.p
                     initial={{ opacity: 0 }}
@@ -53,8 +56,8 @@ const CtrlshiftCon: React.FC = () => {
                     transition={{ delay: 0.15 }}
                     className="text-zinc-400 text-lg leading-relaxed max-w-2xl mt-6"
                 >
-                    We're building our first conference: a night of talks, installations and
-                    live AV, developed with Demo Room in Toronto.
+                    Our first conference: ASMBLY, a night of talks, art and performance at Demo
+                    Room in Toronto, with art curated by Sky Fine Foods.
                 </motion.p>
             </div>
 
@@ -65,7 +68,7 @@ const CtrlshiftCon: React.FC = () => {
                 transition={{ delay: 0.2 }}
                 className="inline-flex shrink-0 items-center gap-2 px-8 py-4 text-lg font-syne font-bold bg-white text-black rounded-full transition-all duration-300 ease-out hover:bg-zinc-200 hover:scale-105 group"
             >
-                See the Conference
+                Explore ASMBLY
                 <ArrowUpRight className="w-5 h-5 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform duration-300" />
             </motion.a>
         </div>
@@ -73,7 +76,7 @@ const CtrlshiftCon: React.FC = () => {
         <div className="grid grid-cols-2 lg:grid-cols-3 lg:grid-rows-2 gap-4">
             <motion.a
                 href="/con"
-                aria-label="CTRL+SHIFT Night Con at Demo Room"
+                aria-label="ASMBLY at Demo Room"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 }}
@@ -95,7 +98,7 @@ const CtrlshiftCon: React.FC = () => {
                     <span>Toronto</span>
                 </div>
                 <div className="absolute bottom-5 left-5 right-5 sm:bottom-8 sm:left-8 sm:right-8 flex justify-between items-end gap-6">
-                    <span className="text-2xl sm:text-4xl font-syne font-semibold tracking-tight">Night Con</span>
+                    <span className="text-2xl sm:text-4xl font-syne font-semibold tracking-tight">ASMBLY</span>
                     <span className="flex flex-col items-end gap-2">
                         <span className="text-[10px] sm:text-xs uppercase tracking-[0.2em] text-zinc-400">Presented by</span>
                         <img src="/con/img/demoroom-logo.png" alt="Demo Room" className="h-3 sm:h-4 w-auto" loading="lazy" />

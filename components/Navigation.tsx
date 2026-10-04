@@ -99,7 +99,7 @@ const Navigation: React.FC = () => {
           </a>
 
           <a href="/con" className="bg-white text-black px-4 py-2 rounded-full hover:bg-zinc-200 transition-colors">
-            Night Con
+            ASMBLY
           </a>
         </div>
       </div>
@@ -129,7 +129,7 @@ const Navigation: React.FC = () => {
               href="/con"
               className="w-full rounded-lg bg-white px-4 py-3 text-base font-semibold text-black flex items-center justify-center"
             >
-              Night Con
+              ASMBLY
             </a>
             <a
               href="/volunteer"
