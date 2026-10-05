@@ -12,7 +12,7 @@ const talks = [
         link: "https://x.com/nickfloats"
     },
     {
-        name: "Jay Allamar",
+        name: "Jay Alammar",
         role: "Author + Director, Engineering @ Cohere",
         social: "@JAYALAMMAR",
         desc: "Spoke about the concept of LLM's as a thought partner.",

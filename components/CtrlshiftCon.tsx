@@ -2,10 +2,10 @@ import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 
-// Media is shared with the /con landing page (public/con/img).
+// Media is shared with the /asmbly landing page (public/asmbly/img).
 const tiles = [
-    { src: '/con/img/dr-curtain.webp', alt: 'Visitor silhouetted inside an LED curtain installation at Demo Room', label: 'Installations' },
-    { src: '/con/img/dr-laser-crowd.webp', alt: 'Lasers cutting through haze over the Demo Room floor', label: 'Live AV & music' },
+    { src: '/asmbly/img/dr-curtain.webp', alt: 'Visitor silhouetted inside an LED curtain installation at Demo Room', label: 'Installations' },
+    { src: '/asmbly/img/dr-laser-crowd.webp', alt: 'Lasers cutting through haze over the Demo Room floor', label: 'Live AV & music' },
 ];
 
 const CtrlshiftCon: React.FC = () => {
@@ -45,7 +45,7 @@ const CtrlshiftCon: React.FC = () => {
                     whileInView={{ opacity: 1, x: 0 }}
                     className="text-6xl md:text-8xl font-syne font-semibold tracking-tighter"
                 >
-                    {/* ASMBLY wordmark: alternate letters drop below the baseline, as on /con */}
+                    {/* ASMBLY wordmark: alternate letters drop below the baseline, as on /asmbly */}
                     <span aria-label="ASMBLY">
                         A<span className="inline-block translate-y-[0.17em]">S</span>M<span className="inline-block translate-y-[0.17em]">B</span>L<span className="inline-block translate-y-[0.17em]">Y</span>
                     </span>
@@ -62,7 +62,7 @@ const CtrlshiftCon: React.FC = () => {
             </div>
 
             <motion.a
-                href="/con"
+                href="/asmbly"
                 initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.2 }}
@@ -75,7 +75,7 @@ const CtrlshiftCon: React.FC = () => {
 
         <div className="grid grid-cols-2 lg:grid-cols-3 lg:grid-rows-2 gap-4">
             <motion.a
-                href="/con"
+                href="/asmbly"
                 aria-label="ASMBLY at Demo Room"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -84,8 +84,8 @@ const CtrlshiftCon: React.FC = () => {
             >
                 <video
                     ref={videoRef}
-                    src="/con/img/hero-reel.mp4"
-                    poster="/con/img/hero-reel-poster.jpg"
+                    src="/asmbly/img/hero-reel.mp4"
+                    poster="/asmbly/img/hero-reel-poster.jpg"
                     muted
                     loop
                     playsInline
@@ -101,7 +101,7 @@ const CtrlshiftCon: React.FC = () => {
                     <span className="text-2xl sm:text-4xl font-syne font-semibold tracking-tight">ASMBLY</span>
                     <span className="flex flex-col items-end gap-2">
                         <span className="text-[10px] sm:text-xs uppercase tracking-[0.2em] text-zinc-400">Presented by</span>
-                        <img src="/con/img/demoroom-logo.png" alt="Demo Room" className="h-3 sm:h-4 w-auto" loading="lazy" />
+                        <img src="/asmbly/img/demoroom-logo.png" alt="Demo Room" className="h-3 sm:h-4 w-auto" loading="lazy" />
                     </span>
                 </div>
             </motion.a>
@@ -109,7 +109,7 @@ const CtrlshiftCon: React.FC = () => {
             {tiles.map((tile, i) => (
                 <motion.a
                     key={tile.src}
-                    href="/con"
+                    href="/asmbly"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.2 + i * 0.1 }}

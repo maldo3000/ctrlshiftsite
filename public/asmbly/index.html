@@ -5,14 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>ASMBLY | A gathering for new ideas, art and technology · 19 Nov 2026, Toronto</title>
 <meta name="description" content="ASMBLY by CTRL+SHIFT, Demo Room and Sky Fine Foods. Talks, art and performance: a night of conversation, interactive installations, a live AV set and a dance floor. 19 November 2026 at Demo Room, Toronto." />
-<link rel="canonical" href="https://www.ctrlshift.community/con" />
+<link rel="canonical" href="https://www.ctrlshift.community/asmbly" />
 <meta property="og:title" content="ASMBLY · A gathering for new ideas, art and technology · 19.11.2026 · Toronto" />
 <meta property="og:description" content="A gathering for new ideas, art and technology by CTRL+SHIFT and Demo Room. Talks, art and performance, with art curated by Sky Fine Foods. Demo Room, 307 Lake Shore Blvd E, Toronto." />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="CTRL+SHIFT" />
-<meta property="og:url" content="https://www.ctrlshift.community/con" />
+<meta property="og:url" content="https://www.ctrlshift.community/asmbly" />
 <!-- Link-preview card, 2400x1260 (og.jpg). Regenerate if the date, venue or branding changes. -->
-<meta property="og:image" content="https://www.ctrlshift.community/con/og.jpg?v=5" />
+<meta property="og:image" content="https://www.ctrlshift.community/asmbly/og.jpg?v=6" />
 <meta property="og:image:type" content="image/jpeg" />
 <meta property="og:image:width" content="2400" />
 <meta property="og:image:height" content="1260" />
@@ -20,19 +20,19 @@
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="ASMBLY · A gathering for new ideas, art and technology · 19.11.2026 · Toronto" />
 <meta name="twitter:description" content="A gathering for new ideas, art and technology. CTRL+SHIFT × Demo Room, Toronto. Art curated by Sky Fine Foods." />
-<meta name="twitter:image" content="https://www.ctrlshift.community/con/og.jpg?v=5" />
+<meta name="twitter:image" content="https://www.ctrlshift.community/asmbly/og.jpg?v=6" />
 <meta name="theme-color" content="#fe2e89" />
 <link rel="icon" href="/favicon.png" />
-<link rel="preload" href="/con/fonts/ClashDisplay-600.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="/asmbly/fonts/ClashDisplay-600.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Doto:wght@800;900&display=swap" rel="stylesheet" />
 <style>
-  @font-face { font-family: "PP Neue Bit"; src: url("/con/fonts/PPNeueBit-Bold-sub.woff2") format("woff2"); font-weight: 700; font-display: swap; }
+  @font-face { font-family: "PP Neue Bit"; src: url("/asmbly/fonts/PPNeueBit-Bold-sub.woff2") format("woff2"); font-weight: 700; font-display: swap; }
   /* Clash Display (Fontshare, ITF Free Font License): the ASMBLY display face */
-  @font-face { font-family: "Clash Display"; src: url("/con/fonts/ClashDisplay-500.woff2") format("woff2"); font-weight: 500; font-display: swap; }
-  @font-face { font-family: "Clash Display"; src: url("/con/fonts/ClashDisplay-600.woff2") format("woff2"); font-weight: 600; font-display: swap; }
-  @font-face { font-family: "Clash Display"; src: url("/con/fonts/ClashDisplay-700.woff2") format("woff2"); font-weight: 700; font-display: swap; }
+  @font-face { font-family: "Clash Display"; src: url("/asmbly/fonts/ClashDisplay-500.woff2") format("woff2"); font-weight: 500; font-display: swap; }
+  @font-face { font-family: "Clash Display"; src: url("/asmbly/fonts/ClashDisplay-600.woff2") format("woff2"); font-weight: 600; font-display: swap; }
+  @font-face { font-family: "Clash Display"; src: url("/asmbly/fonts/ClashDisplay-700.woff2") format("woff2"); font-weight: 700; font-display: swap; }
 
   :root {
     --bg: #050505;
@@ -268,7 +268,7 @@
   }
 
   /* Strobe band */
-  .strobe { background: #050505 url("/con/img/dr-lasers.webp") center / cover; position: relative; height: 72vh; min-height: 420px; overflow: hidden; display: grid; place-items: center; text-align: center; }
+  .strobe { background: #050505 url("/asmbly/img/dr-lasers.webp") center / cover; position: relative; height: 72vh; min-height: 420px; overflow: hidden; display: grid; place-items: center; text-align: center; }
   .strobe video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: saturate(1.2) contrast(1.1); }
   .strobe::after { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(5,5,5,.25), rgba(5,5,5,.85)), repeating-linear-gradient(0deg, rgba(0,0,0,.35) 0 1px, transparent 1px 3px); }
   .strobe__txt { position: relative; z-index: 2; padding: 0 var(--gutter); }
@@ -542,8 +542,8 @@
       (() => {
         const v = document.getElementById('heroVideo');
         const m = matchMedia('(max-width: 760px)').matches ? '-m' : '';
-        v.poster = `/con/img/hero-reel${m}-poster.jpg?v=5`;
-        v.src = `/con/img/hero-reel${m}.mp4?v=5`;
+        v.poster = `/asmbly/img/hero-reel${m}-poster.jpg?v=5`;
+        v.src = `/asmbly/img/hero-reel${m}.mp4?v=5`;
       })();
     </script>
   </div>
@@ -555,11 +555,11 @@
     </div>
     <div class="hero__center">
       <div class="partners" aria-label="CTRL+SHIFT × Demo Room × Sky Fine Foods">
-        <img decoding="async" class="p-cs" src="/con/img/cs-white.png" alt="CTRL+SHIFT" width="594" height="120" />
+        <img decoding="async" class="p-cs" src="/asmbly/img/cs-white.png" alt="CTRL+SHIFT" width="594" height="120" />
         <i aria-hidden="true">×</i>
-        <img decoding="async" class="p-dr" src="/con/img/demoroom-logo.png?v=2" alt="Demo Room" width="514" height="68" />
+        <img decoding="async" class="p-dr" src="/asmbly/img/demoroom-logo.png?v=2" alt="Demo Room" width="514" height="68" />
         <i aria-hidden="true">×</i>
-        <img decoding="async" class="p-sff" src="/con/img/sff-white.png" alt="Sky Fine Foods" width="428" height="64" />
+        <img decoding="async" class="p-sff" src="/asmbly/img/sff-white.png" alt="Sky Fine Foods" width="428" height="64" />
       </div>
       <div class="asmbly-wrap" id="heroGlitch">
         <h1 class="asmbly asm" aria-label="ASMBLY"><span>A</span><span class="lo">S</span><span>M</span><span class="lo">B</span><span>L</span><span class="lo">Y</span></h1>
@@ -665,7 +665,7 @@
 
 <!-- ============ STROBE ============ -->
 <section class="strobe" aria-label="After dark">
-  <video muted loop playsinline preload="none" poster="/con/img/dr-lasers.webp" data-src="/con/img/strobe.mp4"></video>
+  <video muted loop playsinline preload="none" poster="/asmbly/img/dr-lasers.webp" data-src="/asmbly/img/strobe.mp4"></video>
   <div class="strobe__txt">
     <p class="eyebrow">Then the lights go down</p>
     <p class="display">Into the<br/>night</p>
@@ -680,14 +680,14 @@
       <span class="eyebrow">Decrypting soon</span>
     </div>
     <div class="lineup">
-      <article class="card"><div class="card__img"><img decoding="async" src="/con/img/art-statue-s.webp" alt="" loading="lazy" /><span class="card__q">?</span></div><div class="card__body"><div class="card__name" data-scramble="SPEAKER 01">SPEAKER 01</div><div class="card__role mono">Culture &amp; philosophy</div></div></article>
-      <article class="card"><div class="card__img"><img decoding="async" src="/con/img/art-bust-s.webp" alt="" loading="lazy" /><span class="card__q">?</span></div><div class="card__body"><div class="card__name" data-scramble="SPEAKER 02">SPEAKER 02</div><div class="card__role mono">Modern entrepreneurship</div></div></article>
-      <article class="card"><div class="card__img"><img decoding="async" src="/con/img/art-hand-s.webp" alt="" loading="lazy" /><span class="card__q">?</span></div><div class="card__body"><div class="card__name" data-scramble="ARTIST 01">ARTIST 01</div><div class="card__role mono">Artist talk</div></div></article>
-      <article class="card"><div class="card__img"><img decoding="async" src="/con/img/dr-curtain-s.webp" alt="" loading="lazy" /><span class="card__q">?</span></div><div class="card__body"><div class="card__name" data-scramble="AV ACT">AV ACT</div><div class="card__role mono">Live audiovisual set</div></div></article>
-      <article class="card"><div class="card__img"><img decoding="async" src="/con/img/art-flower-s.webp" alt="" loading="lazy" /><span class="card__q">?</span></div><div class="card__body"><div class="card__name" data-scramble="INSTALLATION">INSTALLATION</div><div class="card__role mono">Curated by Sky Fine Foods</div></div></article>
-      <article class="card"><div class="card__img"><img decoding="async" src="/con/img/art-brain-s.webp" alt="" loading="lazy" /><span class="card__q">?</span></div><div class="card__body"><div class="card__name" data-scramble="INSTALLATION">INSTALLATION</div><div class="card__role mono">Curated by Sky Fine Foods</div></div></article>
-      <article class="card"><div class="card__img"><img decoding="async" src="/con/img/art-ascii-s.webp" alt="" loading="lazy" /><span class="card__q">?</span></div><div class="card__body"><div class="card__name" data-scramble="INSTALLATION">INSTALLATION</div><div class="card__role mono">Curated by Sky Fine Foods</div></div></article>
-      <article class="card"><div class="card__img"><img decoding="async" src="/con/img/dr-dj-s.webp" alt="" loading="lazy" /><span class="card__q">?</span></div><div class="card__body"><div class="card__name" data-scramble="DJS">DJS</div><div class="card__role mono">Dance floor</div></div></article>
+      <article class="card"><div class="card__img"><img decoding="async" src="/asmbly/img/art-statue-s.webp" alt="" loading="lazy" /><span class="card__q">?</span></div><div class="card__body"><div class="card__name" data-scramble="SPEAKER 01">SPEAKER 01</div><div class="card__role mono">Culture &amp; philosophy</div></div></article>
+      <article class="card"><div class="card__img"><img decoding="async" src="/asmbly/img/art-bust-s.webp" alt="" loading="lazy" /><span class="card__q">?</span></div><div class="card__body"><div class="card__name" data-scramble="SPEAKER 02">SPEAKER 02</div><div class="card__role mono">Modern entrepreneurship</div></div></article>
+      <article class="card"><div class="card__img"><img decoding="async" src="/asmbly/img/art-hand-s.webp" alt="" loading="lazy" /><span class="card__q">?</span></div><div class="card__body"><div class="card__name" data-scramble="ARTIST 01">ARTIST 01</div><div class="card__role mono">Artist talk</div></div></article>
+      <article class="card"><div class="card__img"><img decoding="async" src="/asmbly/img/dr-curtain-s.webp" alt="" loading="lazy" /><span class="card__q">?</span></div><div class="card__body"><div class="card__name" data-scramble="AV ACT">AV ACT</div><div class="card__role mono">Live audiovisual set</div></div></article>
+      <article class="card"><div class="card__img"><img decoding="async" src="/asmbly/img/art-flower-s.webp" alt="" loading="lazy" /><span class="card__q">?</span></div><div class="card__body"><div class="card__name" data-scramble="INSTALLATION">INSTALLATION</div><div class="card__role mono">Curated by Sky Fine Foods</div></div></article>
+      <article class="card"><div class="card__img"><img decoding="async" src="/asmbly/img/art-brain-s.webp" alt="" loading="lazy" /><span class="card__q">?</span></div><div class="card__body"><div class="card__name" data-scramble="INSTALLATION">INSTALLATION</div><div class="card__role mono">Curated by Sky Fine Foods</div></div></article>
+      <article class="card"><div class="card__img"><img decoding="async" src="/asmbly/img/art-ascii-s.webp" alt="" loading="lazy" /><span class="card__q">?</span></div><div class="card__body"><div class="card__name" data-scramble="INSTALLATION">INSTALLATION</div><div class="card__role mono">Curated by Sky Fine Foods</div></div></article>
+      <article class="card"><div class="card__img"><img decoding="async" src="/asmbly/img/dr-dj-s.webp" alt="" loading="lazy" /><span class="card__q">?</span></div><div class="card__body"><div class="card__name" data-scramble="DJS">DJS</div><div class="card__role mono">Dance floor</div></div></article>
     </div>
     <div class="lineup-note">
       <span class="eyebrow">Speakers &amp; artists to be announced</span>
@@ -710,18 +710,18 @@
           <div><dt>Address</dt><dd>307 Lake Shore Blvd E, Toronto</dd></div>
         </dl>
       </div>
-      <figure class="shot shot--l"><img decoding="async" src="/con/img/dr-conf.webp" alt="Conference stage at Demo Room with yellow LED walls" loading="lazy" /></figure>
+      <figure class="shot shot--l"><img decoding="async" src="/asmbly/img/dr-conf.webp" alt="Conference stage at Demo Room with yellow LED walls" loading="lazy" /></figure>
       <div class="shot__stack">
-        <figure class="shot"><img decoding="async" src="/con/img/dr-hoops.webp" alt="Performers under suspended light rings" loading="lazy" /></figure>
-        <figure class="shot"><img decoding="async" src="/con/img/dr-lasers.webp" alt="Laser rig over the floor" loading="lazy" /></figure>
+        <figure class="shot"><img decoding="async" src="/asmbly/img/dr-hoops.webp" alt="Performers under suspended light rings" loading="lazy" /></figure>
+        <figure class="shot"><img decoding="async" src="/asmbly/img/dr-lasers.webp" alt="Laser rig over the floor" loading="lazy" /></figure>
       </div>
-      <figure class="shot shot--t"><img decoding="async" src="/con/img/dr-curtain.webp" alt="Figure silhouetted against an LED curtain" loading="lazy" /></figure>
-      <figure class="shot shot--m"><img decoding="async" src="/con/img/dr-ribbons.webp" alt="Purple fabric installation over a long table" loading="lazy" /></figure>
+      <figure class="shot shot--t"><img decoding="async" src="/asmbly/img/dr-curtain.webp" alt="Figure silhouetted against an LED curtain" loading="lazy" /></figure>
+      <figure class="shot shot--m"><img decoding="async" src="/asmbly/img/dr-ribbons.webp" alt="Purple fabric installation over a long table" loading="lazy" /></figure>
       <div class="shot__stack">
-        <figure class="shot"><img decoding="async" src="/con/img/dr-laser-ring.webp" alt="Pink laser ring" loading="lazy" /></figure>
-        <figure class="shot"><img decoding="async" src="/con/img/dr-exterior.webp" alt="Demo Room exterior at night" loading="lazy" /></figure>
+        <figure class="shot"><img decoding="async" src="/asmbly/img/dr-laser-ring.webp" alt="Pink laser ring" loading="lazy" /></figure>
+        <figure class="shot"><img decoding="async" src="/asmbly/img/dr-exterior.webp" alt="Demo Room exterior at night" loading="lazy" /></figure>
       </div>
-      <figure class="shot shot--l"><img decoding="async" src="/con/img/dr-laser-crowd.webp" alt="Crowd under laser beams" loading="lazy" /></figure>
+      <figure class="shot shot--l"><img decoding="async" src="/asmbly/img/dr-laser-crowd.webp" alt="Crowd under laser beams" loading="lazy" /></figure>
       <div class="venue__end">
         <span class="eyebrow">Getting there</span>
         <p class="display" style="margin-top:14px">Five min from downtown</p>
@@ -738,9 +738,9 @@
     <div class="sec__head"><span class="eyebrow">ASMBLY art partner</span><span class="eyebrow">Installation program</span></div>
     <div class="partner">
       <div class="partner__art" aria-hidden="true">
-        <img decoding="async" class="a1" src="/con/img/art-statue-s.webp" alt="" loading="lazy" />
-        <img decoding="async" class="a2" src="/con/img/art-flower-s.webp" alt="" loading="lazy" />
-        <img decoding="async" class="a3" src="/con/img/art-hand-s.webp" alt="" loading="lazy" />
+        <img decoding="async" class="a1" src="/asmbly/img/art-statue-s.webp" alt="" loading="lazy" />
+        <img decoding="async" class="a2" src="/asmbly/img/art-flower-s.webp" alt="" loading="lazy" />
+        <img decoding="async" class="a3" src="/asmbly/img/art-hand-s.webp" alt="" loading="lazy" />
       </div>
       <div>
         <h2 class="display">Sky Fine Foods</h2>
@@ -774,15 +774,15 @@
     <div class="sec__head"><span class="eyebrow">Who's behind it</span><span class="eyebrow">ctrlshift.community</span></div>
     <div class="community">
       <div class="community__media slides" id="slides">
-          <img decoding="async" src="/con/img/v13-crowd.webp" alt="CTRL+SHIFT Vol XIII" data-cap="Vol XIII" class="is-on" />
-          <img decoding="async" src="/con/img/cs-talk-1.webp" alt="CTRL+SHIFT Vol XII" data-cap="Vol XII" />
-          <img decoding="async" src="/con/img/v14-room.webp" alt="CTRL+SHIFT Vol XIV" data-cap="Vol XIV" loading="lazy" />
-          <img decoding="async" src="/con/img/cs-crowd-1.webp" alt="CTRL+SHIFT Vol XII" data-cap="Vol XII" loading="lazy" />
-          <img decoding="async" src="/con/img/v13-genjam.webp" alt="CTRL+SHIFT Vol XIII" data-cap="Vol XIII" loading="lazy" />
-          <img decoding="async" src="/con/img/cs-ttw-floor.webp" alt="CTRL+SHIFT Toronto Tech Week" data-cap="Toronto Tech Week" loading="lazy" />
-          <img decoding="async" src="/con/img/cs-talk-2.webp" alt="CTRL+SHIFT Vol XII" data-cap="Vol XII" loading="lazy" />
-          <img decoding="async" src="/con/img/v14-talk.webp" alt="CTRL+SHIFT Vol XIV" data-cap="Vol XIV" loading="lazy" />
-          <img decoding="async" src="/con/img/cs-glow.webp" alt="CTRL+SHIFT Vol XII" data-cap="Vol XII" loading="lazy" />
+          <img decoding="async" src="/asmbly/img/v13-crowd.webp" alt="CTRL+SHIFT Vol XIII" data-cap="Vol XIII" class="is-on" />
+          <img decoding="async" src="/asmbly/img/cs-talk-1.webp" alt="CTRL+SHIFT Vol XII" data-cap="Vol XII" />
+          <img decoding="async" src="/asmbly/img/v14-room.webp" alt="CTRL+SHIFT Vol XIV" data-cap="Vol XIV" loading="lazy" />
+          <img decoding="async" src="/asmbly/img/cs-crowd-1.webp" alt="CTRL+SHIFT Vol XII" data-cap="Vol XII" loading="lazy" />
+          <img decoding="async" src="/asmbly/img/v13-genjam.webp" alt="CTRL+SHIFT Vol XIII" data-cap="Vol XIII" loading="lazy" />
+          <img decoding="async" src="/asmbly/img/cs-ttw-floor.webp" alt="CTRL+SHIFT Toronto Tech Week" data-cap="Toronto Tech Week" loading="lazy" />
+          <img decoding="async" src="/asmbly/img/cs-talk-2.webp" alt="CTRL+SHIFT Vol XII" data-cap="Vol XII" loading="lazy" />
+          <img decoding="async" src="/asmbly/img/v14-talk.webp" alt="CTRL+SHIFT Vol XIV" data-cap="Vol XIV" loading="lazy" />
+          <img decoding="async" src="/asmbly/img/cs-glow.webp" alt="CTRL+SHIFT Vol XII" data-cap="Vol XII" loading="lazy" />
         <div class="slides__ui">
           <span class="mono slides__cap" id="slidesCap">Vol XIII</span>
           <span class="mono slides__n" id="slidesN">01 / 09</span>
@@ -802,21 +802,21 @@
       </div>
     </div>
     <div class="mosaic">
-      <figure class="w2 h2"><img decoding="async" src="/con/img/v13-wide.webp" alt="" loading="lazy" /></figure>
-      <figure class=""><img decoding="async" src="/con/img/cs-talk-2.webp" alt="" loading="lazy" /></figure>
-      <figure class=""><img decoding="async" src="/con/img/cs-duo.webp" alt="" loading="lazy" /></figure>
-      <figure class="w2"><img decoding="async" src="/con/img/v14-screen.webp" alt="" loading="lazy" /></figure>
-      <figure class="h2"><img decoding="async" src="/con/img/cs-disco.webp" alt="" loading="lazy" /></figure>
-      <figure class=""><img decoding="async" src="/con/img/v13-talk.webp" alt="" loading="lazy" /></figure>
-      <figure class="w2"><img decoding="async" src="/con/img/cs-v14-signal.webp" alt="" loading="lazy" /></figure>
-      <figure class=""><img decoding="async" src="/con/img/cs-ttw-screen.webp" alt="" loading="lazy" /></figure>
-      <figure class="w2 h2"><img decoding="async" src="/con/img/v13-pillars.webp" alt="" loading="lazy" /></figure>
-      <figure class=""><img decoding="async" src="/con/img/cs-crowd-2.webp" alt="" loading="lazy" /></figure>
-      <figure class=""><img decoding="async" src="/con/img/cs-brain.webp" alt="" loading="lazy" /></figure>
-      <figure class=""><img decoding="async" src="/con/img/v13-chat.webp" alt="" loading="lazy" /></figure>
-      <figure class="w2"><img decoding="async" src="/con/img/cs-couch.webp" alt="" loading="lazy" /></figure>
-      <figure class=""><img decoding="async" src="/con/img/cs-friends.webp" alt="" loading="lazy" /></figure>
-      <figure class=""><img decoding="async" src="/con/img/cs-v14-glow.webp" alt="" loading="lazy" /></figure>
+      <figure class="w2 h2"><img decoding="async" src="/asmbly/img/v13-wide.webp" alt="" loading="lazy" /></figure>
+      <figure class=""><img decoding="async" src="/asmbly/img/cs-talk-2.webp" alt="" loading="lazy" /></figure>
+      <figure class=""><img decoding="async" src="/asmbly/img/cs-duo.webp" alt="" loading="lazy" /></figure>
+      <figure class="w2"><img decoding="async" src="/asmbly/img/v14-screen.webp" alt="" loading="lazy" /></figure>
+      <figure class="h2"><img decoding="async" src="/asmbly/img/cs-disco.webp" alt="" loading="lazy" /></figure>
+      <figure class=""><img decoding="async" src="/asmbly/img/v13-talk.webp" alt="" loading="lazy" /></figure>
+      <figure class="w2"><img decoding="async" src="/asmbly/img/cs-v14-signal.webp" alt="" loading="lazy" /></figure>
+      <figure class=""><img decoding="async" src="/asmbly/img/cs-ttw-screen.webp" alt="" loading="lazy" /></figure>
+      <figure class="w2 h2"><img decoding="async" src="/asmbly/img/v13-pillars.webp" alt="" loading="lazy" /></figure>
+      <figure class=""><img decoding="async" src="/asmbly/img/cs-crowd-2.webp" alt="" loading="lazy" /></figure>
+      <figure class=""><img decoding="async" src="/asmbly/img/cs-brain.webp" alt="" loading="lazy" /></figure>
+      <figure class=""><img decoding="async" src="/asmbly/img/v13-chat.webp" alt="" loading="lazy" /></figure>
+      <figure class="w2"><img decoding="async" src="/asmbly/img/cs-couch.webp" alt="" loading="lazy" /></figure>
+      <figure class=""><img decoding="async" src="/asmbly/img/cs-friends.webp" alt="" loading="lazy" /></figure>
+      <figure class=""><img decoding="async" src="/asmbly/img/cs-v14-glow.webp" alt="" loading="lazy" /></figure>
     </div>
   </div>
 </section>
@@ -855,11 +855,11 @@
     <div>
       <div class="foot__brand asm" aria-label="ASMBLY"><span>A</span><span class="lo">S</span><span>M</span><span class="lo">B</span><span>L</span><span class="lo">Y</span></div>
       <div class="partners partners--foot" aria-label="CTRL+SHIFT × Demo Room × Sky Fine Foods">
-        <img decoding="async" class="p-cs" src="/con/img/cs-white.png" alt="CTRL+SHIFT" width="594" height="120" loading="lazy" />
+        <img decoding="async" class="p-cs" src="/asmbly/img/cs-white.png" alt="CTRL+SHIFT" width="594" height="120" loading="lazy" />
         <i aria-hidden="true">×</i>
-        <img decoding="async" class="p-dr" src="/con/img/demoroom-logo.png?v=2" alt="Demo Room" width="514" height="68" loading="lazy" />
+        <img decoding="async" class="p-dr" src="/asmbly/img/demoroom-logo.png?v=2" alt="Demo Room" width="514" height="68" loading="lazy" />
         <i aria-hidden="true">×</i>
-        <img decoding="async" class="p-sff" src="/con/img/sff-white.png" alt="Sky Fine Foods" width="428" height="64" loading="lazy" />
+        <img decoding="async" class="p-sff" src="/asmbly/img/sff-white.png" alt="Sky Fine Foods" width="428" height="64" loading="lazy" />
       </div>
     </div>
     <div class="foot__links mono">
@@ -870,9 +870,9 @@
   </div>
 </footer>
 
-<script src="/con/vendor/gsap.min.js"></script>
-<script src="/con/vendor/ScrollTrigger.min.js"></script>
-<script src="/con/vendor/lenis.min.js"></script>
+<script src="/asmbly/vendor/gsap.min.js"></script>
+<script src="/asmbly/vendor/ScrollTrigger.min.js"></script>
+<script src="/asmbly/vendor/lenis.min.js"></script>
 <script>
 (() => {
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -947,7 +947,7 @@
     el.className = 'orbit__node';
     el.style.left = (50 + Math.cos(a) * 50) + '%';
     el.style.top = (50 + Math.sin(a) * 50) + '%';
-    el.innerHTML = `<img src="/con/img/${name}-xs.webp" alt="" loading="lazy" decoding="async">`;
+    el.innerHTML = `<img src="/asmbly/img/${name}-xs.webp" alt="" loading="lazy" decoding="async">`;
     spin.appendChild(el);
   });
 

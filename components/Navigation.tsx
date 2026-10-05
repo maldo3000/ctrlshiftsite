@@ -98,7 +98,7 @@ const Navigation: React.FC = () => {
             Volunteer
           </a>
 
-          <a href="/con" className="bg-white text-black px-4 py-2 rounded-full hover:bg-zinc-200 transition-colors">
+          <a href="/asmbly" className="bg-white text-black px-4 py-2 rounded-full hover:bg-zinc-200 transition-colors">
             ASMBLY
           </a>
         </div>
@@ -126,7 +126,7 @@ const Navigation: React.FC = () => {
               Upcoming Events <ArrowUpRight size={16} />
             </a>
             <a
-              href="/con"
+              href="/asmbly"
               className="w-full rounded-lg bg-white px-4 py-3 text-base font-semibold text-black flex items-center justify-center"
             >
               ASMBLY

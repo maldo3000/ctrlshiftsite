@@ -117,9 +117,13 @@ async function createApp() {
     response.sendFile(path.resolve(ROOT, baseDir, 'academy', 'index.html'));
   });
 
-  app.get(['/con', '/con/', '/asmbly', '/asmbly/'], (request, response) => {
+  app.get(['/con', '/con/', '/conference'], (request, response) => {
+    response.redirect(307, '/asmbly');
+  });
+
+  app.get(['/asmbly', '/asmbly/'], (request, response) => {
     const baseDir = isProduction ? 'dist' : 'public';
-    response.sendFile(path.resolve(ROOT, baseDir, 'con', 'index.html'));
+    response.sendFile(path.resolve(ROOT, baseDir, 'asmbly', 'index.html'));
   });
 
   if (isProduction) {
