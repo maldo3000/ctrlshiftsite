@@ -27,6 +27,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Doto:wght@800;900&display=swap" rel="stylesheet" />
 <style>
+  @font-face { font-family: "PP Neue Bit"; src: url("/con/fonts/PPNeueBit-Bold.otf") format("opentype"); font-weight: 700; font-display: swap; }
   /* Clash Display (Fontshare, ITF Free Font License): the ASMBLY display face */
   @font-face { font-family: "Clash Display"; src: url("/con/fonts/ClashDisplay-500.woff2") format("woff2"); font-weight: 500; font-display: swap; }
   @font-face { font-family: "Clash Display"; src: url("/con/fonts/ClashDisplay-600.woff2") format("woff2"); font-weight: 600; font-display: swap; }
@@ -96,7 +97,7 @@
   .nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 50;
     display: flex; align-items: center; justify-content: space-between;
-    padding: 16px var(--gutter); color: var(--ink);
+    padding: 16px var(--gutter); color: var(--white);
     transition: background-color .35s, color .35s, border-color .35s;
     border-bottom: 1px solid transparent;
   }
@@ -108,7 +109,7 @@
   .nav__links a:hover::after { transform: scaleX(1); transform-origin: left; }
   .nav__cta {
     font-family: var(--mono); font-size: 14px; letter-spacing: 0.14em; text-transform: uppercase;
-    padding: 10px 16px; background: var(--ink); color: var(--signal); border: 1px solid var(--ink); transition: background .35s, color .35s, border-color .35s;
+    padding: 10px 16px; background: var(--signal); color: var(--ink); border: 1px solid var(--signal); transition: background .35s, color .35s, border-color .35s;
   }
   .nav--dark .nav__cta { background: var(--signal); color: var(--ink); border-color: var(--signal); }
   @media (max-width: 860px) { .nav__links { display: none; } }
@@ -119,19 +120,16 @@
   .asm .lo { transform: translateY(0.17em); }
 
   /* ---------- HERO: ASMBLY poster ---------- */
-  /* The photo reel plays underneath; a see-through pink wash + grid sits over it (--wash = pink opacity) */
-  .hero {
-    --cell: clamp(46px, 6.45vw, 128px); --grid: rgba(11,11,11,.14); --wash: .74;
-    position: relative; overflow: hidden; min-height: 100svh;
-    background: #1a0710; color: var(--ink);
-  }
+  /* White type over the photo reel, darkened with a tint + scanlines */
+  .hero { position: relative; overflow: hidden; min-height: 100svh; background: #050505; color: var(--white); }
   .hero__media { position: absolute; inset: 0; z-index: 0; }
-  .hero__media video { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.15) brightness(1.1); }
+  .hero__media video { width: 100%; height: 100%; object-fit: cover; }
   .hero__wash {
     position: absolute; inset: 0; z-index: 1; pointer-events: none;
-    background-color: rgba(var(--signal-rgb), var(--wash));
-    background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px);
-    background-size: var(--cell) var(--cell); background-position: calc(var(--cell) * .4) calc(var(--cell) * .4);
+    background:
+      linear-gradient(90deg, rgba(5,5,5,.62) 0%, rgba(5,5,5,.35) 55%, rgba(5,5,5,.15) 100%),
+      linear-gradient(180deg, rgba(5,5,5,.7) 0%, rgba(5,5,5,.38) 35%, rgba(5,5,5,.5) 65%, rgba(5,5,5,.95) 100%),
+      repeating-linear-gradient(0deg, rgba(0,0,0,.28) 0 1px, transparent 1px 3px);
   }
   .hero__inner {
     position: relative; z-index: 2; min-height: 100svh;
@@ -148,12 +146,14 @@
   .asmbly-wrap { position: relative; margin-top: clamp(22px, 3vw, 52px); }
   .asmbly { font-family: var(--display); font-weight: 600; font-size: min(calc((100vw - 2 * var(--gutter)) / 4.4), 400px); line-height: .74; letter-spacing: -0.012em; }
   .asmbly__ch { position: absolute; inset: 0; pointer-events: none; opacity: 0; }
-  .asmbly__ch--a { color: #ffffff; }
-  .asmbly__ch--b { color: #19f0ff; }
+  .asmbly__ch--a { color: #ff2bd6; mix-blend-mode: screen; }
+  .asmbly__ch--b { color: #19f0ff; mix-blend-mode: screen; }
   .asmbly-wrap.is-glitching .asmbly__ch { opacity: .9; }
-  .hero__kind { font-family: var(--display); font-weight: 600; text-transform: uppercase; font-size: clamp(24px, 3.3vw, 60px); line-height: 1; letter-spacing: -0.005em; word-spacing: .08em; margin-top: clamp(40px, 5.2vw, 100px); }
+  /* PP Neue Bit in the CTRL+SHIFT brand treatment: stretched wide (letters ~square) with tight tracking */
+  .hero__kind { --sx: 1.55; font-family: "PP Neue Bit", var(--mono); font-weight: 700; text-transform: uppercase; font-size: clamp(26px, 3.4vw, 62px); line-height: .84; letter-spacing: .02em; word-spacing: .02em; margin-top: clamp(40px, 5.2vw, 100px); }
+  .hero__kind .px { display: inline-block; white-space: nowrap; transform: scaleX(var(--sx)); transform-origin: left top; -webkit-text-stroke: .004em currentColor; }
   .hero__tag { font-family: var(--body); font-weight: 500; font-size: clamp(16px, 1.6vw, 28px); letter-spacing: -0.01em; margin-top: clamp(10px, 1vw, 16px); }
-  .hero__bottom { border-top: 1px solid rgba(11,11,11,.6); padding-top: clamp(16px, 2vw, 26px); }
+  .hero__bottom { border-top: 1px solid var(--line-strong); padding-top: clamp(16px, 2vw, 26px); }
   .countdown { display: flex; gap: 14px; }
   .countdown span { display: flex; flex-direction: column; align-items: flex-start; }
   .countdown b { font-family: var(--mono); font-weight: 900; font-size: clamp(26px, 2.6vw, 44px); line-height: 1; }
@@ -237,10 +237,10 @@
     padding: 26px 20px; border-bottom: 1px solid var(--line);
     position: relative; overflow: hidden; cursor: default;
   }
-  .row::before { content: ""; position: absolute; inset: 0; background: var(--white); transform: scaleY(0); transform-origin: bottom; transition: transform .45s cubic-bezier(.7,0,.2,1); z-index: 0; }
+  .row::before { content: ""; position: absolute; inset: 0; background: var(--signal); transform: scaleY(0); transform-origin: bottom; transition: transform .45s cubic-bezier(.7,0,.2,1); z-index: 0; }
   .row > * { position: relative; z-index: 1; transition: color .3s; }
   .row:hover::before { transform: scaleY(1); }
-  .row:hover > * { color: var(--bg); }
+  .row:hover > * { color: var(--ink); }
   .row:hover .row__dur { border-color: var(--bg); }
   .row__n, .row__kind { font-family: var(--mono); font-size: 14px; letter-spacing: .18em; text-transform: uppercase; color: var(--grey); }
   .row__title { font-family: var(--display); font-weight: 600; text-transform: uppercase; font-size: clamp(24px, 2.8vw, 42px); line-height: .95; }
@@ -443,7 +443,7 @@
     .hero__inner { min-height: 90svh; }
     .hero { min-height: 90svh; }
     .hero__center { padding: 48px 0; }
-    .hero__kind { font-size: 26px; margin-top: 34px; }
+    .hero__kind { font-size: 6.2vw; margin-top: 34px; }
     .hero__tag { font-size: 16px; margin-top: 8px; }
     .hero__bottom { flex-direction: column; align-items: flex-start; gap: 16px; }
     .countdown b { font-size: 26px; }
@@ -538,8 +538,8 @@
       (() => {
         const v = document.getElementById('heroVideo');
         const m = matchMedia('(max-width: 760px)').matches ? '-m' : '';
-        v.poster = `/con/img/hero-reel${m}-poster.jpg?v=3`;
-        v.src = `/con/img/hero-reel${m}.mp4?v=3`;
+        v.poster = `/con/img/hero-reel${m}-poster.jpg?v=4`;
+        v.src = `/con/img/hero-reel${m}.mp4?v=4`;
       })();
     </script>
   </div>
@@ -551,16 +551,16 @@
     </div>
     <div class="hero__center">
       <div class="partners" aria-label="CTRL+SHIFT × Demo Room">
-        <img class="p-cs" src="/con/img/cs-black.png" alt="CTRL+SHIFT" width="594" height="120" />
+        <img class="p-cs" src="/con/img/cs-white.png" alt="CTRL+SHIFT" width="594" height="120" />
         <i aria-hidden="true">×</i>
-        <img class="p-dr" src="/con/img/demoroom-logo-black.png?v=2" alt="Demo Room" width="514" height="68" />
+        <img class="p-dr" src="/con/img/demoroom-logo.png?v=2" alt="Demo Room" width="514" height="68" />
       </div>
       <div class="asmbly-wrap" id="heroGlitch">
         <h1 class="asmbly asm" aria-label="ASMBLY"><span>A</span><span class="lo">S</span><span>M</span><span class="lo">B</span><span>L</span><span class="lo">Y</span></h1>
         <div class="asmbly asm asmbly__ch asmbly__ch--a" aria-hidden="true"><span>A</span><span class="lo">S</span><span>M</span><span class="lo">B</span><span>L</span><span class="lo">Y</span></div>
         <div class="asmbly asm asmbly__ch asmbly__ch--b" aria-hidden="true"><span>A</span><span class="lo">S</span><span>M</span><span class="lo">B</span><span>L</span><span class="lo">Y</span></div>
       </div>
-      <p class="hero__kind">Conference + Art Show</p>
+      <p class="hero__kind"><span class="px">Conference + Art Show</span></p>
       <p class="hero__tag">Art curated by Sky Fine Foods</p>
     </div>
     <div class="hero__bottom">
@@ -1046,7 +1046,6 @@
   gsap.from('.hero .partners', { y: 20, opacity: 0, duration: .9, ease: 'power3.out', delay: .25 });
   gsap.from('.hero__kind, .hero__tag', { y: 20, opacity: 0, duration: .9, ease: 'power3.out', delay: .5 });
   gsap.from('.hero__top > *, .hero__bottom > *', { y: 24, opacity: 0, duration: 0.9, stagger: 0.08, ease: 'power3.out', delay: 0.6 });
-  gsap.to('.hero__media', { yPercent: 14, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
 
   /* Manifesto word-by-word light-up */
   const man = document.getElementById('manifesto');
