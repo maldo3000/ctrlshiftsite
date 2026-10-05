@@ -889,7 +889,7 @@
   };
   tick(); setInterval(tick, 1000);
 
-  /* ASMBLY wordmark: letters flicker on in random order, then every few seconds one or two letters stutter */
+  /* ASMBLY wordmark: letters flicker on in random order, then letters keep blipping and stuttering */
   const fl = document.getElementById('heroFlicker');
   if (!reduce) {
     const chars = [...fl.querySelectorAll('.asmbly span')];
@@ -906,15 +906,18 @@
       };
       step();
     };
+    // Near-constant: small blips most of the time, with a fuller stutter now and then
     const idle = () => {
-      const n = Math.random() < .3 ? 2 : 1;
-      for (let i = 0; i < n; i++) stutter(pick(), ['off', '', 'dim', 'off', '', 'off', '']);
-      setTimeout(idle, rnd(2600, 5200));
+      const n = Math.random() < .35 ? 2 : 1;
+      for (let i = 0; i < n; i++) stutter(pick(), Math.random() < .3
+        ? ['off', '', 'dim', 'off', '', 'off', '']
+        : Math.random() < .5 ? ['dim', ''] : ['off', '', 'dim', '']);
+      setTimeout(idle, rnd(450, 1400));
     };
     chars.forEach(c => c.classList.add('off'));
     [...chars].sort(() => Math.random() - .5).forEach((c, i) =>
       setTimeout(() => stutter(c, ['', 'off', 'dim', 'off', '']), 350 + i * rnd(90, 160)));
-    setTimeout(idle, 3200);
+    setTimeout(idle, 2400);
   }
 
   /* In-page links: native smooth scroll (CSS scroll-behavior would fight ScrollTrigger's refresh) */
