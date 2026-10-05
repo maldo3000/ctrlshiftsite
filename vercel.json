@@ -19,7 +19,7 @@
       ]
     },
     {
-      "source": "/con/(.*)\\.(webp|jpg|png|mp4|otf|js)",
+      "source": "/asmbly/(.*)\\.(webp|jpg|png|mp4|woff2|js)",
       "headers": [
         {
           "key": "Cache-Control",
@@ -30,20 +30,12 @@
   ],
   "rewrites": [
     {
-      "source": "/asmbly/",
-      "destination": "/con/index.html"
-    },
-    {
       "source": "/asmbly",
-      "destination": "/con/index.html"
+      "destination": "/asmbly/index.html"
     },
     {
-      "source": "/con",
-      "destination": "/con/index.html"
-    },
-    {
-      "source": "/con/",
-      "destination": "/con/index.html"
+      "source": "/asmbly/",
+      "destination": "/asmbly/index.html"
     },
     {
       "source": "/academy/sample-coursebook",
@@ -112,8 +104,18 @@
   ],
   "redirects": [
     {
+      "source": "/con",
+      "destination": "/asmbly",
+      "permanent": false
+    },
+    {
+      "source": "/con/:path*",
+      "destination": "/asmbly/:path*",
+      "permanent": false
+    },
+    {
       "source": "/conference",
-      "destination": "/con",
+      "destination": "/asmbly",
       "permanent": false
     }
   ]
