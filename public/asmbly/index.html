@@ -28,7 +28,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Doto:wght@800;900&display=swap" rel="stylesheet" />
 <style>
-  @font-face { font-family: "PP Neue Bit"; src: url("/asmbly/fonts/PPNeueBit-Bold-sub.woff2") format("woff2"); font-weight: 700; font-display: swap; }
+  @font-face { font-family: "PP Neue Bit"; src: url("/asmbly/fonts/PPNeueBit-Bold-sub.woff2?v=2") format("woff2"); font-weight: 700; font-display: swap; }
   /* Clash Display (Fontshare, ITF Free Font License): the ASMBLY display face */
   @font-face { font-family: "Clash Display"; src: url("/asmbly/fonts/ClashDisplay-500.woff2") format("woff2"); font-weight: 500; font-display: swap; }
   @font-face { font-family: "Clash Display"; src: url("/asmbly/fonts/ClashDisplay-600.woff2") format("woff2"); font-weight: 600; font-display: swap; }
@@ -137,7 +137,10 @@
     padding: clamp(96px, 13vh, 132px) var(--gutter) clamp(28px, 4vh, 44px);
   }
   .hero__top, .hero__bottom { display: flex; justify-content: space-between; align-items: flex-end; gap: 20px; }
-  .hero__top .dot, .hero__bottom .dot { font-size: clamp(14px, 1.5vw, 24px); }
+  /* Corner + baseline labels: PP Neue Bit in the CTRL+SHIFT wordmark treatment (1.44x stretch, tracking pulled in).
+     Scaled from the outer edge so the overflow runs inward and the corners stay aligned. */
+  .hero .bit { --sx: 1.44; display: inline-block; font-family: "PP Neue Bit", var(--mono); font-weight: 700; text-transform: uppercase; font-size: clamp(20px, 1.95vw, 34px); line-height: 1; letter-spacing: -0.027em; word-spacing: .04em; white-space: nowrap; transform: scaleX(var(--sx)); transform-origin: left center; -webkit-text-stroke: .004em currentColor; }
+  .hero .bit--r { transform-origin: right center; }
   .hero__center { margin: auto 0; padding: clamp(32px, 5vh, 64px) 0; }
   .partners { display: flex; align-items: center; flex-wrap: wrap; gap: clamp(10px, 1.5vw, 24px); }
   .partners img { height: clamp(22px, 2.9vw, 52px); width: auto; }
@@ -151,8 +154,8 @@
   .asmbly span.off { opacity: .12; }
   .asmbly span.dim { opacity: .45; }
   /* PP Neue Bit matched to the CTRL+SHIFT wordmark: glyphs stretched 1.44x with tracking pulled in */
-  .hero__kind { --sx: 1.44; font-family: "PP Neue Bit", var(--mono); font-weight: 700; text-transform: uppercase; font-size: clamp(24px, 2.75vw, 50px); line-height: .9; letter-spacing: -0.027em; word-spacing: .04em; margin-top: clamp(40px, 5.2vw, 100px); }
-  .hero__kind .px { display: inline-block; text-wrap: balance; width: calc(var(--measure, 72%) / var(--sx)); transform: scaleX(var(--sx)); transform-origin: left top; -webkit-text-stroke: .004em currentColor; }
+  /* Subtitle: plain Inter Medium, sentence case, breaking after "ideas," */
+  .hero__kind { font-family: var(--body); font-weight: 600; font-size: clamp(26px, 3.35vw, 62px); line-height: 1.08; letter-spacing: -0.022em; margin-top: clamp(36px, 4.6vw, 90px); }
   .hero__tag { font-family: var(--body); font-weight: 500; font-size: clamp(16px, 1.6vw, 28px); letter-spacing: -0.01em; margin-top: clamp(10px, 1vw, 16px); }
   .hero__bottom { border-top: 1px solid var(--line-strong); padding-top: clamp(16px, 2vw, 26px); }
   .countdown { display: flex; gap: 14px; }
@@ -436,7 +439,7 @@
 
     /* Hero poster: date/location at top, partners + ASMBLY centered, tagline + countdown at the bottom */
     .hero__inner { padding: 78px 16px 24px; }
-    .hero__top .dot, .hero__bottom .dot { font-size: 13px; letter-spacing: .1em; }
+    .hero .bit { font-size: 17px; }
     .partners { gap: 7px; flex-wrap: nowrap; }
     .partners img { height: 15px; }
     .partners img.p-dr { height: 10.5px; }
@@ -445,7 +448,7 @@
     .hero__inner { min-height: 90svh; }
     .hero { min-height: 90svh; }
     .hero__center { padding: 48px 0; }
-    .hero__kind { --measure: 100%; font-size: 6.2vw; margin-top: 34px; }
+    .hero__kind { font-size: 6.4vw; margin-top: 48px; }
     .hero__tag { font-size: 16px; margin-top: 8px; }
     .hero__bottom { flex-direction: column; align-items: flex-start; gap: 16px; }
     .countdown b { font-size: 26px; }
@@ -548,8 +551,8 @@
   <div class="hero__wash" aria-hidden="true"></div>
   <div class="hero__inner">
     <div class="hero__top">
-      <span class="dot">19 Nov 2026</span>
-      <span class="dot">Demo Room, Toronto</span>
+      <span class="bit">19 Nov 2026</span>
+      <span class="bit bit--r">Demo Room, Toronto</span>
     </div>
     <div class="hero__center">
       <div class="partners" aria-label="CTRL+SHIFT × Demo Room × Sky Fine Foods">
@@ -562,10 +565,10 @@
       <div class="asmbly-wrap" id="heroFlicker">
         <h1 class="asmbly asm" aria-label="ASMBLY"><span>A</span><span class="lo">S</span><span>M</span><span class="lo">B</span><span>L</span><span class="lo">Y</span></h1>
       </div>
-      <p class="hero__kind"><span class="px">A gathering for new ideas, art and technology</span></p>
+      <p class="hero__kind">A gathering for new ideas,<br>art and technology</p>
     </div>
     <div class="hero__bottom">
-      <span class="dot">Talks &nbsp;·&nbsp; Art &nbsp;·&nbsp; Performance</span>
+      <span class="bit">Talks &nbsp;·&nbsp; Art &nbsp;·&nbsp; Performance</span>
       <div class="countdown" id="countdown" aria-label="Countdown to doors">
         <span><b data-u="d">--</b><small>DAYS</small></span>
         <span><b data-u="h">--</b><small>HRS</small></span>
