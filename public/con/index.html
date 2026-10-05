@@ -3,24 +3,24 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>ASMBLY | 19 Nov 2026 · Demo Room, Toronto</title>
+<title>ASMBLY | Conference + Art Show · 19 Nov 2026 · Demo Room, Toronto</title>
 <meta name="description" content="ASMBLY by CTRL+SHIFT, Demo Room and Sky Fine Foods. Talks, art and performance: a night of conversation, interactive installations, a live AV set and a dance floor. 19 November 2026 at Demo Room, Toronto." />
 <link rel="canonical" href="https://www.ctrlshift.community/con" />
-<meta property="og:title" content="ASMBLY · 19.11.2026 · Demo Room, Toronto" />
-<meta property="og:description" content="CTRL+SHIFT × Demo Room × Sky Fine Foods. Talks, art and performance. Art curated by Sky Fine Foods. Demo Room, 307 Lake Shore Blvd E, Toronto." />
+<meta property="og:title" content="ASMBLY · Conference + Art Show · 19.11.2026 · Toronto" />
+<meta property="og:description" content="A conference + art show by CTRL+SHIFT and Demo Room. Talks, art and performance, with art curated by Sky Fine Foods. Demo Room, 307 Lake Shore Blvd E, Toronto." />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="CTRL+SHIFT" />
 <meta property="og:url" content="https://www.ctrlshift.community/con" />
 <!-- Link-preview card, 2400x1260 (og.jpg). Regenerate if the date, venue or branding changes. -->
-<meta property="og:image" content="https://www.ctrlshift.community/con/og.jpg?v=3" />
+<meta property="og:image" content="https://www.ctrlshift.community/con/og.jpg?v=4" />
 <meta property="og:image:type" content="image/jpeg" />
 <meta property="og:image:width" content="2400" />
 <meta property="og:image:height" content="1260" />
-<meta property="og:image:alt" content="ASMBLY. 19 Nov 2026, Demo Room, Toronto. CTRL+SHIFT × Demo Room × Sky Fine Foods." />
+<meta property="og:image:alt" content="ASMBLY, conference + art show. 19 Nov 2026, Demo Room, Toronto. CTRL+SHIFT × Demo Room." />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="ASMBLY · 19.11.2026 · Demo Room, Toronto" />
-<meta name="twitter:description" content="Talks, art and performance. CTRL+SHIFT × Demo Room × Sky Fine Foods, Toronto." />
-<meta name="twitter:image" content="https://www.ctrlshift.community/con/og.jpg?v=3" />
+<meta name="twitter:title" content="ASMBLY · Conference + Art Show · 19.11.2026 · Toronto" />
+<meta name="twitter:description" content="Conference + art show. CTRL+SHIFT × Demo Room, Toronto. Art curated by Sky Fine Foods." />
+<meta name="twitter:image" content="https://www.ctrlshift.community/con/og.jpg?v=4" />
 <meta name="theme-color" content="#fe2e89" />
 <link rel="icon" href="/favicon.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -119,10 +119,17 @@
   .asm .lo { transform: translateY(0.17em); }
 
   /* ---------- HERO: ASMBLY poster ---------- */
+  /* The photo reel plays underneath; a see-through pink wash + grid sits over it (--wash = pink opacity) */
   .hero {
-    --cell: clamp(46px, 6.45vw, 128px); --grid: rgba(11,11,11,.14);
+    --cell: clamp(46px, 6.45vw, 128px); --grid: rgba(11,11,11,.14); --wash: .74;
     position: relative; overflow: hidden; min-height: 100svh;
-    background-color: var(--signal); color: var(--ink);
+    background: #1a0710; color: var(--ink);
+  }
+  .hero__media { position: absolute; inset: 0; z-index: 0; }
+  .hero__media video { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.15) brightness(1.1); }
+  .hero__wash {
+    position: absolute; inset: 0; z-index: 1; pointer-events: none;
+    background-color: rgba(var(--signal-rgb), var(--wash));
     background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px);
     background-size: var(--cell) var(--cell); background-position: calc(var(--cell) * .4) calc(var(--cell) * .4);
   }
@@ -137,7 +144,6 @@
   .partners { display: flex; align-items: center; flex-wrap: wrap; gap: clamp(10px, 1.5vw, 24px); }
   .partners img { height: clamp(22px, 2.9vw, 52px); width: auto; }
   .partners img.p-dr { height: clamp(16px, 2.05vw, 36px); }
-  .partners img.p-sff { height: clamp(18px, 2.35vw, 42px); }
   .partners i { font-style: normal; font-family: var(--body); font-size: clamp(14px, 1.5vw, 26px); opacity: .55; line-height: 1; }
   .asmbly-wrap { position: relative; margin-top: clamp(22px, 3vw, 52px); }
   .asmbly { font-family: var(--display); font-weight: 600; font-size: min(calc((100vw - 2 * var(--gutter)) / 4.4), 400px); line-height: .74; letter-spacing: -0.012em; }
@@ -145,22 +151,13 @@
   .asmbly__ch--a { color: #ffffff; }
   .asmbly__ch--b { color: #19f0ff; }
   .asmbly-wrap.is-glitching .asmbly__ch { opacity: .9; }
-  .hero__tag { font-family: var(--body); font-weight: 500; font-size: clamp(18px, 2.25vw, 40px); letter-spacing: -0.01em; margin-top: clamp(40px, 5.2vw, 100px); }
+  .hero__kind { font-family: var(--display); font-weight: 600; text-transform: uppercase; font-size: clamp(24px, 3.3vw, 60px); line-height: 1; letter-spacing: -0.005em; word-spacing: .08em; margin-top: clamp(40px, 5.2vw, 100px); }
+  .hero__tag { font-family: var(--body); font-weight: 500; font-size: clamp(16px, 1.6vw, 28px); letter-spacing: -0.01em; margin-top: clamp(10px, 1vw, 16px); }
   .hero__bottom { border-top: 1px solid rgba(11,11,11,.6); padding-top: clamp(16px, 2vw, 26px); }
   .countdown { display: flex; gap: 14px; }
   .countdown span { display: flex; flex-direction: column; align-items: flex-start; }
   .countdown b { font-family: var(--mono); font-weight: 900; font-size: clamp(26px, 2.6vw, 44px); line-height: 1; }
   .countdown small { font-family: var(--mono); font-size: 14px; letter-spacing: .16em; margin-top: 6px; opacity: .7; }
-
-  /* ---------- REEL: the Demo Room / CTRL+SHIFT photo reel, right under the poster ---------- */
-  .reel { position: relative; height: clamp(420px, 82vh, 860px); overflow: hidden; background: #050505; }
-  .reel video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-  .reel::after {
-    content: ""; position: absolute; inset: 0; pointer-events: none;
-    background: linear-gradient(180deg, rgba(5,5,5,.35) 0%, rgba(5,5,5,.25) 50%, rgba(5,5,5,.85) 100%), repeating-linear-gradient(0deg, rgba(0,0,0,.28) 0 1px, transparent 1px 3px);
-  }
-  .reel__ui { position: absolute; left: 0; right: 0; bottom: clamp(20px, 3vw, 36px); z-index: 2; display: flex; justify-content: space-between; gap: 16px; }
-  .reel__ui .dot { font-size: clamp(13px, 1.2vw, 18px); color: var(--white); }
 
   /* ---------- MARQUEE ---------- */
   .marquee { overflow: hidden; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 18px 0; background: var(--bg); }
@@ -412,7 +409,7 @@
   .foot { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; flex-wrap: wrap; }
   .foot__brand { font-family: var(--display); font-weight: 600; font-size: clamp(56px, 7vw, 110px); line-height: .8; margin-bottom: clamp(40px, 4vw, 56px); }
   .partners--foot img { height: clamp(18px, 1.8vw, 28px); }
-  .partners--foot img.p-dr, .partners--foot img.p-sff { height: clamp(16px, 1.6vw, 25px); }
+  .partners--foot img.p-dr { height: clamp(16px, 1.6vw, 25px); }
   .foot__presented { color: var(--grey); }
   .foot__presented b { color: var(--white); font-weight: 400; }
   .foot__links { display: flex; gap: 22px; }
@@ -442,12 +439,12 @@
     .partners { gap: 7px; flex-wrap: nowrap; }
     .partners img { height: 15px; }
     .partners img.p-dr { height: 10.5px; }
-    .partners img.p-sff { height: 13px; }
-    .partners i { font-size: 10px; }
+      .partners i { font-size: 10px; }
     .hero__inner { min-height: 90svh; }
     .hero { min-height: 90svh; }
     .hero__center { padding: 48px 0; }
-    .hero__tag { font-size: 18px; margin-top: 34px; }
+    .hero__kind { font-size: 26px; margin-top: 34px; }
+    .hero__tag { font-size: 16px; margin-top: 8px; }
     .hero__bottom { flex-direction: column; align-items: flex-start; gap: 16px; }
     .countdown b { font-size: 26px; }
 
@@ -534,24 +531,36 @@
 
 <!-- ============ HERO: ASMBLY poster ============ -->
 <header class="hero" id="top">
+  <div class="hero__media" aria-hidden="true">
+    <!-- Separate 16:9 and 9:16 cuts, each framed on its subject; picked before the first frame loads -->
+    <video id="heroVideo" autoplay muted loop playsinline preload="auto"></video>
+    <script>
+      (() => {
+        const v = document.getElementById('heroVideo');
+        const m = matchMedia('(max-width: 760px)').matches ? '-m' : '';
+        v.poster = `/con/img/hero-reel${m}-poster.jpg?v=3`;
+        v.src = `/con/img/hero-reel${m}.mp4?v=3`;
+      })();
+    </script>
+  </div>
+  <div class="hero__wash" aria-hidden="true"></div>
   <div class="hero__inner">
     <div class="hero__top">
       <span class="dot">19 Nov 2026</span>
       <span class="dot">Demo Room, Toronto</span>
     </div>
     <div class="hero__center">
-      <div class="partners" aria-label="CTRL+SHIFT × Demo Room × Sky Fine Foods">
+      <div class="partners" aria-label="CTRL+SHIFT × Demo Room">
         <img class="p-cs" src="/con/img/cs-black.png" alt="CTRL+SHIFT" width="594" height="120" />
         <i aria-hidden="true">×</i>
         <img class="p-dr" src="/con/img/demoroom-logo-black.png?v=2" alt="Demo Room" width="514" height="68" />
-        <i aria-hidden="true">×</i>
-        <img class="p-sff" src="/con/img/sff-black.png" alt="Sky Fine Foods" width="428" height="64" />
       </div>
       <div class="asmbly-wrap" id="heroGlitch">
         <h1 class="asmbly asm" aria-label="ASMBLY"><span>A</span><span class="lo">S</span><span>M</span><span class="lo">B</span><span>L</span><span class="lo">Y</span></h1>
         <div class="asmbly asm asmbly__ch asmbly__ch--a" aria-hidden="true"><span>A</span><span class="lo">S</span><span>M</span><span class="lo">B</span><span>L</span><span class="lo">Y</span></div>
         <div class="asmbly asm asmbly__ch asmbly__ch--b" aria-hidden="true"><span>A</span><span class="lo">S</span><span>M</span><span class="lo">B</span><span>L</span><span class="lo">Y</span></div>
       </div>
+      <p class="hero__kind">Conference + Art Show</p>
       <p class="hero__tag">Art curated by Sky Fine Foods</p>
     </div>
     <div class="hero__bottom">
@@ -565,24 +574,6 @@
     </div>
   </div>
 </header>
-
-<!-- ============ REEL ============ -->
-<section class="reel" aria-label="Demo Room and past CTRL+SHIFT nights">
-  <!-- Separate 16:9 and 9:16 cuts, each framed on its subject; picked before the first frame loads -->
-  <video id="heroVideo" autoplay muted loop playsinline preload="metadata"></video>
-  <script>
-    (() => {
-      const v = document.getElementById('heroVideo');
-      const m = matchMedia('(max-width: 760px)').matches ? '-m' : '';
-      v.poster = `/con/img/hero-reel${m}-poster.jpg?v=3`;
-      v.src = `/con/img/hero-reel${m}.mp4?v=3`;
-    })();
-  </script>
-  <div class="wrap reel__ui">
-    <span class="dot">Demo Room · 307 Lake Shore Blvd E</span>
-    <span class="dot">19.11.2026</span>
-  </div>
-</section>
 
 <!-- ============ MANIFESTO ============ -->
 <section class="sec" id="about">
@@ -860,12 +851,10 @@
   <div class="wrap foot">
     <div>
       <div class="foot__brand asm" aria-label="ASMBLY"><span>A</span><span class="lo">S</span><span>M</span><span class="lo">B</span><span>L</span><span class="lo">Y</span></div>
-      <div class="partners partners--foot" aria-label="CTRL+SHIFT × Demo Room × Sky Fine Foods">
+      <div class="partners partners--foot" aria-label="CTRL+SHIFT × Demo Room">
         <img class="p-cs" src="/con/img/cs-white.png" alt="CTRL+SHIFT" width="594" height="120" loading="lazy" />
         <i aria-hidden="true">×</i>
         <img class="p-dr" src="/con/img/demoroom-logo.png?v=2" alt="Demo Room" width="514" height="68" loading="lazy" />
-        <i aria-hidden="true">×</i>
-        <img class="p-sff" src="/con/img/sff-white.png" alt="Sky Fine Foods" width="428" height="64" loading="lazy" />
       </div>
     </div>
     <div class="foot__links mono">
@@ -1055,9 +1044,9 @@
   /* Hero intro */
   gsap.from('.asmbly-wrap', { yPercent: 40, opacity: 0, duration: 1.2, ease: 'expo.out', delay: 0.15 });
   gsap.from('.hero .partners', { y: 20, opacity: 0, duration: .9, ease: 'power3.out', delay: .25 });
-  gsap.from('.hero__tag', { y: 20, opacity: 0, duration: .9, ease: 'power3.out', delay: .5 });
+  gsap.from('.hero__kind, .hero__tag', { y: 20, opacity: 0, duration: .9, ease: 'power3.out', delay: .5 });
   gsap.from('.hero__top > *, .hero__bottom > *', { y: 24, opacity: 0, duration: 0.9, stagger: 0.08, ease: 'power3.out', delay: 0.6 });
-  gsap.fromTo('.reel video', { yPercent: -8, scale: 1.1 }, { yPercent: 8, scale: 1.1, ease: 'none', scrollTrigger: { trigger: '.reel', start: 'top bottom', end: 'bottom top', scrub: true } });
+  gsap.to('.hero__media', { yPercent: 14, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
 
   /* Manifesto word-by-word light-up */
   const man = document.getElementById('manifesto');
