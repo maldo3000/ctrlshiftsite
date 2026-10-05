@@ -121,7 +121,7 @@
   .asm .lo { transform: translateY(0.17em); }
 
   /* ---------- HERO: ASMBLY poster ---------- */
-  /* White type over the photo reel: dark tint + scanlines, then a low-opacity pink wash and faint grid (--wash) */
+  /* White type over the photo reel: dark tint over footage that already carries a low-opacity pink (baked into the reel) */
   .hero { --wash: .55; --cell: clamp(46px, 6.45vw, 128px); position: relative; overflow: hidden; min-height: 100svh; background: #050505; color: var(--white); }
   .hero__media { position: absolute; inset: 0; z-index: 0; }
   .hero__media video { width: 100%; height: 100%; object-fit: cover; }
@@ -129,10 +129,8 @@
     position: absolute; inset: 0; z-index: 1; pointer-events: none;
     background:
       linear-gradient(90deg, rgba(5,5,5,.62) 0%, rgba(5,5,5,.35) 55%, rgba(5,5,5,.15) 100%),
-      linear-gradient(180deg, rgba(5,5,5,.7) 0%, rgba(5,5,5,.38) 35%, rgba(5,5,5,.5) 65%, rgba(5,5,5,.95) 100%),
-      repeating-linear-gradient(0deg, rgba(0,0,0,.28) 0 1px, transparent 1px 3px);
+      linear-gradient(180deg, rgba(5,5,5,.7) 0%, rgba(5,5,5,.38) 35%, rgba(5,5,5,.5) 65%, rgba(5,5,5,.95) 100%);
   }
-  /* Pink applied as a colour blend on the footage (keeps darks dark, lights glow pink), plus a faint grid */
   .hero__inner {
     position: relative; z-index: 2; min-height: 100svh;
     display: flex; flex-direction: column;
@@ -148,12 +146,12 @@
   .partners i { font-style: normal; font-family: var(--body); font-size: clamp(14px, 1.5vw, 26px); opacity: .55; line-height: 1; }
   .asmbly-wrap { position: relative; margin-top: clamp(22px, 3vw, 52px); }
   .asmbly { font-family: var(--display); font-weight: 600; font-size: min(calc((100vw - 2 * var(--gutter)) / 4.4), 400px); line-height: .74; letter-spacing: -0.012em; }
-  .asmbly__ch { position: absolute; inset: 0; pointer-events: none; opacity: 0; }
-  .asmbly__ch--a { color: #ff2bd6; mix-blend-mode: screen; }
-  .asmbly__ch--b { color: #19f0ff; mix-blend-mode: screen; }
-  .asmbly-wrap.is-glitching .asmbly__ch { opacity: .9; }
-  /* PP Neue Bit in the CTRL+SHIFT brand treatment: stretched wide (letters ~square) with tight tracking */
-  .hero__kind { --sx: 1.55; font-family: "PP Neue Bit", var(--mono); font-weight: 700; text-transform: uppercase; font-size: clamp(24px, 2.75vw, 50px); line-height: .9; letter-spacing: .02em; word-spacing: .02em; margin-top: clamp(40px, 5.2vw, 100px); }
+  /* Letters flicker like a failing sign: JS drops single letters to low opacity for a few frames */
+  .asmbly span { transition: none; }
+  .asmbly span.off { opacity: .12; }
+  .asmbly span.dim { opacity: .45; }
+  /* PP Neue Bit matched to the CTRL+SHIFT wordmark: glyphs stretched 1.44x with tracking pulled in */
+  .hero__kind { --sx: 1.44; font-family: "PP Neue Bit", var(--mono); font-weight: 700; text-transform: uppercase; font-size: clamp(24px, 2.75vw, 50px); line-height: .9; letter-spacing: -0.027em; word-spacing: .04em; margin-top: clamp(40px, 5.2vw, 100px); }
   .hero__kind .px { display: inline-block; text-wrap: balance; width: calc(var(--measure, 72%) / var(--sx)); transform: scaleX(var(--sx)); transform-origin: left top; -webkit-text-stroke: .004em currentColor; }
   .hero__tag { font-family: var(--body); font-weight: 500; font-size: clamp(16px, 1.6vw, 28px); letter-spacing: -0.01em; margin-top: clamp(10px, 1vw, 16px); }
   .hero__bottom { border-top: 1px solid var(--line-strong); padding-top: clamp(16px, 2vw, 26px); }
@@ -561,10 +559,8 @@
         <i aria-hidden="true">×</i>
         <img decoding="async" class="p-sff" src="/asmbly/img/sff-white.png" alt="Sky Fine Foods" width="428" height="64" />
       </div>
-      <div class="asmbly-wrap" id="heroGlitch">
+      <div class="asmbly-wrap" id="heroFlicker">
         <h1 class="asmbly asm" aria-label="ASMBLY"><span>A</span><span class="lo">S</span><span>M</span><span class="lo">B</span><span>L</span><span class="lo">Y</span></h1>
-        <div class="asmbly asm asmbly__ch asmbly__ch--a" aria-hidden="true"><span>A</span><span class="lo">S</span><span>M</span><span class="lo">B</span><span>L</span><span class="lo">Y</span></div>
-        <div class="asmbly asm asmbly__ch asmbly__ch--b" aria-hidden="true"><span>A</span><span class="lo">S</span><span>M</span><span class="lo">B</span><span>L</span><span class="lo">Y</span></div>
       </div>
       <p class="hero__kind"><span class="px">A gathering for new ideas, art and technology</span></p>
     </div>
@@ -893,30 +889,32 @@
   };
   tick(); setInterval(tick, 1000);
 
-  /* ASMBLY wordmark: a short stutter of offset colour slices, then it holds plain for a few seconds */
-  const g = document.getElementById('heroGlitch');
+  /* ASMBLY wordmark: letters flicker on in random order, then every few seconds one or two letters stutter */
+  const fl = document.getElementById('heroFlicker');
   if (!reduce) {
-    const [chA, chB] = g.querySelectorAll('.asmbly__ch');
+    const chars = [...fl.querySelectorAll('.asmbly span')];
     const rnd = (a, b) => a + Math.random() * (b - a);
-    const slice = el => { const top = rnd(0, 80), h = rnd(8, 30); el.style.clipPath = `inset(${top}% 0 ${Math.max(0, 100 - top - h)}% 0)`; };
-    const frame = () => {
-      slice(chA); slice(chB);
-      const dx = rnd(4, 12);
-      chA.style.transform = `translateX(${-dx}px)`;
-      chB.style.transform = `translateX(${dx}px)`;
-      g.classList.add('is-glitching');
-    };
-    const clear = () => g.classList.remove('is-glitching');
-    const burst = () => {
-      let n = Math.round(rnd(4, 7));
+    const pick = () => chars[Math.floor(Math.random() * chars.length)];
+    // Each step holds a state ('' = on) for a short random time
+    const stutter = (el, states, done) => {
+      let k = 0;
       const step = () => {
-        if (n-- <= 0) { clear(); setTimeout(burst, rnd(4200, 6500)); return; }
-        frame();
-        setTimeout(() => { clear(); setTimeout(step, rnd(30, 110)); }, rnd(45, 110));
+        el.classList.remove('off', 'dim');
+        if (k >= states.length) { done && done(); return; }
+        if (states[k]) el.classList.add(states[k]);
+        k++; setTimeout(step, rnd(35, 95));
       };
       step();
     };
-    setTimeout(burst, 1200);
+    const idle = () => {
+      const n = Math.random() < .3 ? 2 : 1;
+      for (let i = 0; i < n; i++) stutter(pick(), ['off', '', 'dim', 'off', '', 'off', '']);
+      setTimeout(idle, rnd(2600, 5200));
+    };
+    chars.forEach(c => c.classList.add('off'));
+    [...chars].sort(() => Math.random() - .5).forEach((c, i) =>
+      setTimeout(() => stutter(c, ['', 'off', 'dim', 'off', '']), 350 + i * rnd(90, 160)));
+    setTimeout(idle, 3200);
   }
 
   /* In-page links: native smooth scroll (CSS scroll-behavior would fight ScrollTrigger's refresh) */
@@ -1061,7 +1059,7 @@
   }
 
   /* Hero intro */
-  gsap.from('.asmbly-wrap', { yPercent: 40, opacity: 0, duration: 1.2, ease: 'expo.out', delay: 0.15 });
+  gsap.from('.asmbly-wrap', { yPercent: 40, duration: 1.2, ease: 'expo.out', delay: 0.15 });
   gsap.from('.hero .partners', { y: 20, opacity: 0, duration: .9, ease: 'power3.out', delay: .25 });
   gsap.from('.hero__kind', { y: 20, opacity: 0, duration: .9, ease: 'power3.out', delay: .5 });
   gsap.from('.hero__top > *, .hero__bottom > *', { y: 24, opacity: 0, duration: 0.9, stagger: 0.08, ease: 'power3.out', delay: 0.6 });
