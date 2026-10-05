@@ -55,6 +55,8 @@
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html.lenis, html.lenis body { height: auto; }
+  .lenis.lenis-stopped { overflow: hidden; }
   html { -webkit-text-size-adjust: 100%; overflow-x: clip; }
   body {
     background: var(--bg);
@@ -870,6 +872,7 @@
 
 <script src="/con/vendor/gsap.min.js"></script>
 <script src="/con/vendor/ScrollTrigger.min.js"></script>
+<script src="/con/vendor/lenis.min.js"></script>
 <script>
 (() => {
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -919,7 +922,8 @@
   /* In-page links: native smooth scroll (CSS scroll-behavior would fight ScrollTrigger's refresh) */
   document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', e => {
     const t = document.querySelector(a.getAttribute('href'));
-    if (t) { e.preventDefault(); t.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' }); }
+    if (!t) return; e.preventDefault();
+    if (lenis) lenis.scrollTo(t); else t.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' });
   }));
 
   /* Videos only decode while visible */
@@ -1038,6 +1042,15 @@
   if (!window.gsap) return;
   gsap.registerPlugin(ScrollTrigger);
 
+  /* Wheel smoothing for momentum on desktop; touch scrolling stays native. Snappier than Lenis' default. */
+  let lenis = null;
+  if (!reduce && window.Lenis && matchMedia('(pointer: fine)').matches) {
+    lenis = new Lenis({ lerp: 0.16, wheelMultiplier: 1.1 });
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add(time => lenis.raf(time * 1000));
+    gsap.ticker.lagSmoothing(0);
+  }
+
   if (reduce) {
     document.querySelectorAll('#manifesto').forEach(el => el.style.opacity = 1);
     document.querySelectorAll('[data-count]').forEach(el => {
@@ -1058,9 +1071,18 @@
   man.innerHTML = man.textContent.split(' ').map(w => `<span class="w">${w}</span>`).join(' ');
   gsap.to('#manifesto .w', { opacity: 1, stagger: 0.1, ease: 'none', scrollTrigger: { trigger: man, start: 'top 80%', end: 'bottom 45%', scrub: true } });
 
-  /* Generic rise-in */
-  gsap.utils.toArray('.sec__head, .manifesto__grid > div, .concept__item, .row, .card, .pillar, .build > div, .stat, .mosaic figure').forEach(el => {
-    gsap.from(el, { y: 50, opacity: 0, duration: 1, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 90%' } });
+  /* Fade-up reveals for every block below the manifesto line; things entering together cascade */
+  const revealTargets = [
+    '.manifesto__grid > div', '.sec__head', '.concept .display', '.concept__item', '.marquee--signal',
+    '.row', '.tix', '.strobe__txt > *', '.card', '.lineup-note', '.venue__intro > *', '.venue__end > *',
+    '.partner__art', '.partner > div:last-child > *', '.pillar', '.community__media', '.community > div:last-child > *',
+    '.stat', '.mosaic figure', '.signal__inner > *', '.build > div', '.build + div', '.foot > *'
+  ].join(', ');
+  const toReveal = gsap.utils.toArray(revealTargets).filter(el => !el.closest('.hero'));
+  gsap.set(toReveal, { y: 56, opacity: 0 });
+  ScrollTrigger.batch(toReveal, {
+    start: 'top 90%', once: true,
+    onEnter: batch => gsap.to(batch, { y: 0, opacity: 1, duration: 1.1, ease: 'expo.out', stagger: 0.08, overwrite: true })
   });
 
   /* Orbit scales in */
@@ -1091,8 +1113,6 @@
   gsap.to('.partner__art .a2', { yPercent: 12, rotate: 8, ease: 'none', scrollTrigger: { trigger: '.partner', scrub: true } });
   gsap.to('.partner__art .a3', { yPercent: -24, rotate: -10, ease: 'none', scrollTrigger: { trigger: '.partner', scrub: true } });
 
-  /* Signal headline */
-  gsap.from('.signal .display', { y: 80, opacity: 0, duration: 1.2, ease: 'expo.out', scrollTrigger: { trigger: '.signal', start: 'top 70%' } });
 })();
 </script>
 </body>
