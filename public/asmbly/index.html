@@ -191,8 +191,9 @@
 
   /* Manifesto */
   .manifesto__text {
-    font-family: var(--display); font-weight: 900; text-transform: uppercase;
-    font-size: clamp(34px, 6.2vw, 120px); line-height: .9; letter-spacing: -0.03em;
+    /* Josh's call: this statement is the one place besides the wordmark that uses Clash Display (Bold) */
+    font-family: var(--wordmark); font-weight: 700; text-transform: uppercase;
+    font-size: clamp(34px, 6vw, 116px); line-height: .9; letter-spacing: -0.01em; word-spacing: .14em;
     max-width: 15ch;
   }
   .manifesto__text .w { display: inline-block; opacity: 0.12; transition: none; }
@@ -465,7 +466,7 @@
     #about { padding-top: 64px; }
 
     /* Manifesto */
-    .manifesto__text { font-size: clamp(30px, 9vw, 40px); }
+    .manifesto__text { font-size: clamp(28px, 8.4vw, 38px); }
 
     /* Concept orbit: keep the tiles inside the viewport */
     .orbit { width: 80vw; margin: 8px auto 24px; }
@@ -729,7 +730,7 @@
       <figure class="shot shot--l"><img decoding="async" src="/asmbly/img/dr-laser-crowd.webp" alt="Crowd under laser beams" loading="lazy" /></figure>
       <div class="venue__end">
         <span class="eyebrow">Getting there</span>
-        <p class="display" style="margin-top:14px">Five min from downtown</p>
+        <p class="display" style="margin-top:14px">Right by Toronto’s Harbourfront</p>
         <p style="margin-top:16px;color:#c9c9c9">Steps from the Distillery District. TTC accessible, on-site parking.</p>
         <a class="btn" href="https://maps.google.com/?q=307+Lake+Shore+Blvd+E,+Toronto" target="_blank" rel="noopener">Open in maps <span class="arr">↗</span></a>
       </div>
@@ -750,11 +751,6 @@
       <div>
         <h2 class="display">Sky Fine Foods</h2>
         <p>A Toronto contemporary art organization concerned with the liminal, screens and realities. It represents artists working with new ideas and new processes, and is curating the installation program that surrounds the stage.</p>
-        <dl class="specs" style="max-width:520px">
-          <div><dt>Focus</dt><dd>Digital and new-media art</dd></div>
-          <div><dt>Role</dt><dd>Curates the installations</dd></div>
-          <div><dt>Base</dt><dd>Toronto</dd></div>
-        </dl>
       </div>
     </div>
   </div>
