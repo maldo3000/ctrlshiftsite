@@ -265,10 +265,10 @@
   .row--closer > * { color: var(--bg) !important; }
   .row--closer .row__dur { background: var(--bg); color: var(--white) !important; }
   .row--closer::before { background: var(--signal); }
-  /* Break: light Neue Montreal like "Doors open", but tinted pink so it reads as a pause in the run */
-  .row--break { background: rgba(var(--signal-rgb), .08); border-top-color: rgba(var(--signal-rgb), .45); border-bottom: 1px solid rgba(var(--signal-rgb), .45); }
-  .row--break .row__title { color: var(--signal); font-size: clamp(24px, 2.2vw, 32px); }
-  .row--break .row__kind, .row--break .row__n { color: var(--signal); }
+  /* Break: light Neue Montreal like "Doors open", on a faint white tint so it reads as a pause in the run */
+  .row--break { background: rgba(242, 242, 242, .07); border-bottom: 1px solid rgba(242, 242, 242, .5); }
+  .row--break .row__title { color: var(--white); font-size: clamp(24px, 2.2vw, 32px); }
+  .row--break .row__kind, .row--break .row__n { color: var(--white); }
   .row--break .row__desc { color: var(--white); }
   .row--break:hover > * { color: var(--ink); }
   .row--after { border: 1px solid var(--signal); margin-top: 14px; }
