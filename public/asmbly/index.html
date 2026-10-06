@@ -206,17 +206,9 @@
   .manifesto__grid h3 + p { margin-top: 0 !important; }
   .manifesto__grid h3 { font-family: var(--display); font-weight: 900; text-transform: uppercase; font-size: clamp(26px, 2.8vw, 42px); line-height: .9;  letter-spacing: -0.015em; }
   .manifesto__grid p { color: #c9c9c9; max-width: 36ch; font-size: 18px; }
-  /* Pillars: on hover a pink fill sweeps up from the bottom and the type flips to ink (same move as the program rows) */
-  .manifesto__grid > div { position: relative; isolation: isolate; }
-  .manifesto__grid > div::before { content: ""; position: absolute; inset: -22px 0 -22px; background: var(--signal); transform: scaleY(0); transform-origin: bottom; transition: transform .5s cubic-bezier(.7,0,.2,1); z-index: -1; }
-  .manifesto__grid > div:first-child::before { left: calc(-1 * clamp(16px, 1.6vw, 24px)); }
-  .manifesto__grid > div:last-child::before { right: calc(-1 * clamp(16px, 1.6vw, 24px)); }
-  .manifesto__grid h3, .manifesto__grid p, .manifesto__grid .eyebrow { transition: color .3s, transform .5s cubic-bezier(.7,0,.2,1); }
-  @media (hover: hover) {
-    .manifesto__grid > div:hover::before { transform: scaleY(1); }
-    .manifesto__grid > div:hover h3, .manifesto__grid > div:hover p, .manifesto__grid > div:hover .eyebrow { color: var(--ink); }
-    .manifesto__grid > div:hover h3 { transform: translateY(-6px); }
-  }
+  /* Pillars: on hover the heading turns hot pink */
+  .manifesto__grid h3 { transition: color .3s; }
+  @media (hover: hover) { .manifesto__grid > div:hover h3 { color: var(--signal); } }
   @media (max-width: 900px) {
     .manifesto__grid { grid-template-columns: 1fr; grid-template-rows: none; }
     .manifesto__grid > div { grid-row: auto; grid-template-rows: none; padding: 28px 0; row-gap: 14px; }
@@ -273,6 +265,12 @@
   .row--closer > * { color: var(--bg) !important; }
   .row--closer .row__dur { background: var(--bg); color: var(--white) !important; }
   .row--closer::before { background: var(--signal); }
+  /* Break: light Neue Montreal like "Doors open", but tinted pink so it reads as a pause in the run */
+  .row--break { background: rgba(var(--signal-rgb), .08); border-top-color: rgba(var(--signal-rgb), .45); border-bottom: 1px solid rgba(var(--signal-rgb), .45); }
+  .row--break .row__title { color: var(--signal); font-size: clamp(24px, 2.2vw, 32px); }
+  .row--break .row__kind, .row--break .row__n { color: var(--signal); }
+  .row--break .row__desc { color: var(--white); }
+  .row--break:hover > * { color: var(--ink); }
   .row--after { border: 1px solid var(--signal); margin-top: 14px; }
   .row--after > * { color: var(--signal); }
   .row--after .row__dur { background: var(--signal); color: var(--bg); border-color: var(--signal); }
@@ -666,7 +664,7 @@
       <div class="row"><span class="row__n">—</span><span class="row__kind">Before</span><span class="row__title row__title--light">Doors open</span><span class="row__desc">Browse the installations as guests arrive.</span><span></span></div>
       <div class="row"><span class="row__n">01</span><span class="row__kind">Talk</span><span class="row__title">Talk 01: TBD</span><span class="row__desc">Culture &amp; philosophy: how new technology changes the way we make, see and think.</span><span class="row__dur">20 MIN</span></div>
       <div class="row"><span class="row__n">02</span><span class="row__kind">Panel</span><span class="row__title">Panel: The future of entertainment</span><span class="row__desc">A panel on where entertainment goes when the tools change.</span><span></span></div>
-      <div class="row"><span class="row__n">—</span><span class="row__kind">Break</span><span class="row__title row__title--light">Break</span><span class="row__desc">Drinks and time with the installations.</span><span></span></div>
+      <div class="row row--break"><span class="row__n">—</span><span class="row__kind">Break</span><span class="row__title row__title--light">Break</span><span class="row__desc">Drinks and time with the installations.</span><span></span></div>
       <div class="row"><span class="row__n">03</span><span class="row__kind">Talk</span><span class="row__title">Talk 02: TBD</span><span class="row__desc">Modern entrepreneurship: building companies and careers with the new tools.</span><span class="row__dur">20 MIN</span></div>
       <div class="row"><span class="row__n">04</span><span class="row__kind">Talk</span><span class="row__title">Talk 03: TBD</span><span class="row__desc">Artist talk: an artist on their practice and the work in the room.</span><span class="row__dur">20 MIN</span></div>
       <div class="row row--closer"><span class="row__n">05</span><span class="row__kind">Closer</span><span class="row__title">AV performance</span><span class="row__desc">A live audiovisual set to close the program.</span><span class="row__dur">60 MIN</span></div>
