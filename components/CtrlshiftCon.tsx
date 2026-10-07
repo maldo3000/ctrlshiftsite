@@ -101,7 +101,7 @@ const CtrlshiftCon: React.FC = () => {
                     <span className="text-2xl sm:text-4xl font-syne font-semibold tracking-tight">ASMBLY</span>
                     <span className="flex flex-col items-end gap-2">
                         <span className="text-[10px] sm:text-xs uppercase tracking-[0.2em] text-zinc-400">Presented by</span>
-                        <img src="/asmbly/img/demoroom-logo.png" alt="Demo Room" className="h-3 sm:h-4 w-auto" loading="lazy" />
+                        <img src="/asmbly/img/demoroom-logo.png?v=3" alt="Demo Room" className="h-3 sm:h-4 w-auto" loading="lazy" />
                     </span>
                 </div>
             </motion.a>
