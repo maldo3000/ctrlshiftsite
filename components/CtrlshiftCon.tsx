@@ -84,8 +84,8 @@ const CtrlshiftCon: React.FC = () => {
             >
                 <video
                     ref={videoRef}
-                    src="/asmbly/img/hero-reel.mp4"
-                    poster="/asmbly/img/hero-reel-poster.jpg"
+                    src="/asmbly/img/hero-reel.mp4?v=7"
+                    poster="/asmbly/img/hero-reel-poster.jpg?v=7"
                     muted
                     loop
                     playsInline
