@@ -906,7 +906,8 @@
   };
   tick(); setInterval(tick, 1000);
 
-  /* ASMBLY wordmark: letters flicker on in random order, then letters keep blipping and stuttering */
+  /* ASMBLY wordmark: letters fly in and assemble flat, shift into the offset lockup (as in the promo film),
+     then keep blipping and stuttering */
   const fl = document.getElementById('heroFlicker');
   if (!reduce) {
     const chars = [...fl.querySelectorAll('.asmbly span')];
@@ -931,10 +932,25 @@
         : Math.random() < .5 ? ['dim', ''] : ['off', '', 'dim', '']);
       setTimeout(idle, rnd(450, 1400));
     };
-    chars.forEach(c => c.classList.add('off'));
-    [...chars].sort(() => Math.random() - .5).forEach((c, i) =>
-      setTimeout(() => stutter(c, ['', 'off', 'dim', 'off', '']), 350 + i * rnd(90, 160)));
-    setTimeout(idle, 2400);
+    if (window.gsap) {
+      // Each letter slides in from low right, tilted and faint, lands on a flat baseline,
+      // then A/M/L rise and S/B/Y drop 0.087em into the brand offset. Inline styles are cleared at the end
+      // so the CSS offset takes over (and stays right on resize).
+      const fs = parseFloat(getComputedStyle(chars[0]).fontSize);
+      const off = 0.087 * fs;
+      gsap.set(chars, { y: 0 });  // start from a flat baseline (overrides the CSS offset until the end)
+      gsap.timeline({ delay: .2, onComplete: () => { gsap.set(chars, { clearProps: 'all' }); setTimeout(idle, 900); } })
+        .from(chars, {
+          x: () => fs * rnd(.3, .6), y: () => fs * rnd(.25, .55), rotation: () => rnd(-24, 24),
+          opacity: 0, duration: .6, ease: 'power3.out', stagger: .12
+        })
+        .to(chars, { y: i => (i % 2 ? off : -off), duration: .55, ease: 'power3.inOut', stagger: .03 }, '+=.35');
+    } else {
+      chars.forEach(c => c.classList.add('off'));
+      [...chars].sort(() => Math.random() - .5).forEach((c, i) =>
+        setTimeout(() => stutter(c, ['', 'off', 'dim', 'off', '']), 350 + i * rnd(90, 160)));
+      setTimeout(idle, 2400);
+    }
   }
 
   /* In-page links: native smooth scroll (CSS scroll-behavior would fight ScrollTrigger's refresh) */
@@ -1079,7 +1095,6 @@
   }
 
   /* Hero intro */
-  gsap.from('.asmbly-wrap', { yPercent: 40, duration: 1.2, ease: 'expo.out', delay: 0.15 });
   gsap.from('.hero .partners', { y: 20, opacity: 0, duration: .9, ease: 'power3.out', delay: .25 });
   gsap.from('.hero__kind', { y: 20, opacity: 0, duration: .9, ease: 'power3.out', delay: .5 });
   gsap.from('.hero__top > *, .hero__bottom > *', { y: 24, opacity: 0, duration: 0.9, stagger: 0.08, ease: 'power3.out', delay: 0.6 });
