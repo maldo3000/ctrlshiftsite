@@ -445,6 +445,22 @@
   .reveal-line > span { display: block; }
 
 
+  /* Film: play button in the hero, full-screen player on click */
+  .hero__lede { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; }
+  .film-btn { display: inline-flex; align-items: center; gap: 14px; flex-shrink: 0; font-family: var(--body); font-weight: 500; font-size: 14px; letter-spacing: .1em; text-transform: uppercase; color: var(--white); background: none; border: 0; padding: 0; cursor: pointer; }
+  .film-btn__icon { display: grid; place-items: center; width: 52px; height: 52px; border-radius: 50%; border: 1px solid var(--white); background: rgba(5,5,5,.25); backdrop-filter: blur(6px); transition: background .3s, color .3s, transform .3s; }
+  .film-btn__icon svg { width: 16px; height: 16px; margin-left: 3px; fill: currentColor; }
+  .film-btn:hover .film-btn__icon { background: var(--white); color: var(--bg); transform: scale(1.06); }
+  .film-btn:focus-visible { outline: 1px solid var(--white); outline-offset: 6px; }
+  .film-btn small { color: var(--grey); letter-spacing: .1em; }
+  .film { width: 100vw; height: 100vh; max-width: none; max-height: none; margin: 0; padding: 0; border: 0; background: rgba(5,5,5,.94); color: var(--white); }
+  .film[open] { display: grid; place-items: center; }
+  .film::backdrop { background: transparent; }
+  .film video { width: min(92vw, calc(84vh * 4 / 3)); aspect-ratio: 4 / 3; background: #000; }
+  .film__close { position: absolute; top: 18px; right: 18px; font-family: var(--body); font-weight: 500; font-size: 14px; letter-spacing: .1em; text-transform: uppercase; color: var(--white); background: none; border: 1px solid var(--line-strong); padding: 10px 14px; cursor: pointer; }
+  .film__close:hover { border-color: var(--white); }
+  @media (max-width: 760px) { .hero__lede { flex-direction: column; align-items: flex-start; gap: 18px; } .film-btn__icon { width: 44px; height: 44px; } .film-btn { font-size: 12px; } }
+
   /* Hero ticket CTA */
   .btn--xl { font-size: 14px; padding: 16px 24px; font-weight: 500; box-shadow: 0 0 44px rgba(var(--signal-rgb), .35); }
   .hero__meta { margin-top: 0; }
@@ -588,7 +604,13 @@
       <div class="asmbly-wrap" id="heroFlicker">
         <h1 class="asmbly asm" aria-label="ASMBLY"><span>A</span><span>S</span><span>M</span><span>B</span><span>L</span><span>Y</span></h1>
       </div>
+      <div class="hero__lede">
       <p class="hero__kind">A gathering for new ideas,<br>technology, and art.</p>
+      <button class="film-btn" type="button" id="filmOpen" aria-haspopup="dialog">
+        <span class="film-btn__icon" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M2 1l13 7-13 7z"/></svg></span>
+        <span>Watch the film <small>0:35</small></span>
+      </button>
+      </div>
     </div>
     <div class="hero__bottom">
       <span class="bit">Talks &nbsp;·&nbsp; Art &nbsp;·&nbsp; Performance</span>
@@ -601,6 +623,11 @@
     </div>
   </div>
 </header>
+
+<dialog class="film" id="film" aria-label="ASMBLY film">
+  <button class="film__close" type="button" id="filmClose">Close ✕</button>
+  <video id="filmVideo" controls playsinline preload="none" poster="/asmbly/img/asmbly-film-poster.jpg"></video>
+</dialog>
 
 <!-- ============ MANIFESTO ============ -->
 <section class="sec" id="about">
@@ -1020,6 +1047,26 @@
     }, 1400);
   }
 
+  /* Film player: loads the video only when opened, pauses the hero reel and page scroll while it plays */
+  const film = document.getElementById('film');
+  const filmVideo = document.getElementById('filmVideo');
+  const heroVideo = document.getElementById('heroVideo');
+  document.getElementById('filmOpen').addEventListener('click', () => {
+    if (!filmVideo.src) filmVideo.src = '/asmbly/img/asmbly-film.mp4';
+    film.showModal();
+    lenis?.stop();
+    heroVideo.pause();
+    filmVideo.currentTime = 0;
+    filmVideo.play().catch(() => {});
+  });
+  document.getElementById('filmClose').addEventListener('click', () => film.close());
+  film.addEventListener('click', e => { if (e.target === film) film.close(); });
+  film.addEventListener('close', () => {
+    filmVideo.pause();
+    lenis?.start();
+    heroVideo.play().catch(() => {});
+  });
+
   /* Interactive dot-matrix field in the signal section */
   const cv = document.getElementById('dots');
   const ctx = cv.getContext('2d');
@@ -1103,6 +1150,7 @@
   /* Hero intro */
   gsap.from('.hero .partners', { y: 20, opacity: 0, duration: .9, ease: 'power3.out', delay: .25 });
   gsap.from('.hero__kind', { y: 20, opacity: 0, duration: .9, ease: 'power3.out', delay: .5 });
+  gsap.from('.film-btn', { y: 20, opacity: 0, duration: .9, ease: 'power3.out', delay: .6 });
   gsap.from('.hero__top > *, .hero__bottom > *', { y: 24, opacity: 0, duration: 0.9, stagger: 0.08, ease: 'power3.out', delay: 0.6 });
 
   /* Manifesto word-by-word light-up */
