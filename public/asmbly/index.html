@@ -153,6 +153,9 @@
   .partners img { height: clamp(22px, 2.9vw, 52px); width: auto; }
   .partners img.p-dr { height: clamp(16px, 2.05vw, 36px); }
   .partners img.p-sff { height: clamp(18px, 2.35vw, 42px); }
+  .partners__link { display: flex; align-items: center; transition: opacity .25s; }
+  .partners__link:hover { opacity: .7; }
+  .partners__link:focus-visible { outline: 1px solid currentColor; outline-offset: 6px; }
   .partners i { font-style: normal; font-family: var(--body); font-size: clamp(14px, 1.5vw, 26px); opacity: .55; line-height: 1; }
   .asmbly-wrap { position: relative; margin-top: clamp(22px, 3vw, 52px); }
   .asmbly { font-size: min(calc((100vw - 2 * var(--gutter)) / 4.4), 400px); }
@@ -576,11 +579,11 @@
     </div>
     <div class="hero__center">
       <div class="partners" aria-label="CTRL+SHIFT × Demo Room × Sky Fine Foods">
-        <img decoding="async" class="p-cs" src="/asmbly/img/cs-white.png" alt="CTRL+SHIFT" width="594" height="120" />
+        <a class="partners__link" href="/"><img decoding="async" class="p-cs" src="/asmbly/img/cs-white.png" alt="CTRL+SHIFT" width="594" height="120" /></a>
         <i aria-hidden="true">×</i>
-        <img decoding="async" class="p-dr" src="/asmbly/img/demoroom-logo.png?v=3" alt="Demo Room" width="1000" height="129" />
+        <a class="partners__link" href="https://www.demo-room.com/" target="_blank" rel="noopener"><img decoding="async" class="p-dr" src="/asmbly/img/demoroom-logo.png?v=3" alt="Demo Room" width="1000" height="129" /></a>
         <i aria-hidden="true">×</i>
-        <img decoding="async" class="p-sff" src="/asmbly/img/sff-white.png" alt="Sky Fine Foods" width="428" height="64" />
+        <a class="partners__link" href="https://skyfinefoods.com/" target="_blank" rel="noopener"><img decoding="async" class="p-sff" src="/asmbly/img/sff-white.png" alt="Sky Fine Foods" width="428" height="64" /></a>
       </div>
       <div class="asmbly-wrap" id="heroFlicker">
         <h1 class="asmbly asm" aria-label="ASMBLY"><span>A</span><span>S</span><span>M</span><span>B</span><span>L</span><span>Y</span></h1>
@@ -871,11 +874,11 @@
     <div>
       <div class="foot__brand asm" aria-label="ASMBLY"><span>A</span><span>S</span><span>M</span><span>B</span><span>L</span><span>Y</span></div>
       <div class="partners partners--foot" aria-label="CTRL+SHIFT × Demo Room × Sky Fine Foods">
-        <img decoding="async" class="p-cs" src="/asmbly/img/cs-white.png" alt="CTRL+SHIFT" width="594" height="120" loading="lazy" />
+        <a class="partners__link" href="/"><img decoding="async" class="p-cs" src="/asmbly/img/cs-white.png" alt="CTRL+SHIFT" width="594" height="120" loading="lazy" /></a>
         <i aria-hidden="true">×</i>
-        <img decoding="async" class="p-dr" src="/asmbly/img/demoroom-logo.png?v=3" alt="Demo Room" width="1000" height="129" loading="lazy" />
+        <a class="partners__link" href="https://www.demo-room.com/" target="_blank" rel="noopener"><img decoding="async" class="p-dr" src="/asmbly/img/demoroom-logo.png?v=3" alt="Demo Room" width="1000" height="129" loading="lazy" /></a>
         <i aria-hidden="true">×</i>
-        <img decoding="async" class="p-sff" src="/asmbly/img/sff-white.png" alt="Sky Fine Foods" width="428" height="64" loading="lazy" />
+        <a class="partners__link" href="https://skyfinefoods.com/" target="_blank" rel="noopener"><img decoding="async" class="p-sff" src="/asmbly/img/sff-white.png" alt="Sky Fine Foods" width="428" height="64" loading="lazy" /></a>
       </div>
     </div>
     <div class="foot__links mono">
