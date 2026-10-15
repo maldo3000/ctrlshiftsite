@@ -301,6 +301,9 @@
   .card__img::after { content: ""; position: absolute; inset: 0; background: repeating-linear-gradient(0deg, rgba(0,0,0,.4) 0 2px, transparent 2px 4px); mix-blend-mode: multiply; }
   .card__q { position: absolute; inset: 0; display: grid; place-items: center; font-family: var(--mono); font-weight: 600; font-size: clamp(80px, 10vw, 150px); color: rgba(242,242,242,.9); z-index: 2; transition: opacity .5s; }
   .card:hover .card__q { opacity: 0; }
+  .card--revealed .card__img img, .card--revealed:hover .card__img img { filter: none; transform: scale(1.02); }
+  .card--revealed:hover .card__img img { transform: scale(1.06); }
+  .card--revealed .card__img::after { opacity: .35; }
   .card__body { padding: 20px 20px 26px; border-top: 1px solid var(--line); }
   .card__name { font-family: var(--display); font-weight: 900; font-size: 24px; text-transform: uppercase; line-height: .9; min-height: 1em;  letter-spacing: -0.015em; }
   .card__role { margin-top: 10px; color: var(--grey); }
@@ -700,7 +703,7 @@
     <div class="lineup">
       <article class="card"><div class="card__img"><img decoding="async" src="/asmbly/img/art-statue-s.webp" alt="" loading="lazy" /><span class="card__q">?</span></div><div class="card__body"><div class="card__name" data-scramble="SPEAKER 01">SPEAKER 01</div><div class="card__role mono">Culture &amp; philosophy</div></div></article>
       <article class="card"><div class="card__img"><img decoding="async" src="/asmbly/img/art-bust-s.webp" alt="" loading="lazy" /><span class="card__q">?</span></div><div class="card__body"><div class="card__name" data-scramble="SPEAKER 02">SPEAKER 02</div><div class="card__role mono">Modern entrepreneurship</div></div></article>
-      <article class="card"><div class="card__img"><img decoding="async" src="/asmbly/img/art-hand-s.webp" alt="" loading="lazy" /><span class="card__q">?</span></div><div class="card__body"><div class="card__name" data-scramble="ARTIST 01">ARTIST 01</div><div class="card__role mono">Artist talk</div></div></article>
+      <article class="card card--revealed"><div class="card__img"><img decoding="async" src="/asmbly/img/pfd-s.webp" alt="Pray First Diva" loading="lazy" /></div><div class="card__body"><div class="card__name">Pray First Diva</div><div class="card__role mono">Artist talk</div></div></article>
       <article class="card"><div class="card__img"><img decoding="async" src="/asmbly/img/dr-curtain-s.webp" alt="" loading="lazy" /><span class="card__q">?</span></div><div class="card__body"><div class="card__name" data-scramble="AV ACT">AV ACT</div><div class="card__role mono">Live audiovisual set</div></div></article>
       <article class="card"><div class="card__img"><img decoding="async" src="/asmbly/img/art-flower-s.webp" alt="" loading="lazy" /><span class="card__q">?</span></div><div class="card__body"><div class="card__name" data-scramble="INSTALLATION">INSTALLATION</div><div class="card__role mono">Curated by Sky Fine Foods</div></div></article>
       <article class="card"><div class="card__img"><img decoding="async" src="/asmbly/img/art-brain-s.webp" alt="" loading="lazy" /><span class="card__q">?</span></div><div class="card__body"><div class="card__name" data-scramble="INSTALLATION">INSTALLATION</div><div class="card__role mono">Curated by Sky Fine Foods</div></div></article>
