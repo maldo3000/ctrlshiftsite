@@ -309,6 +309,11 @@
   .card--revealed .card__img img, .card--revealed:hover .card__img img { filter: none; transform: scale(1.02); }
   .card--revealed:hover .card__img img { transform: scale(1.06); }
   .card--revealed .card__img::after { opacity: .35; }
+  /* Revealed artists: the whole card opens their Instagram (the link stretches over the card) */
+  .card--revealed { position: relative; cursor: pointer; }
+  .card__ig { display: inline-block; margin-top: 8px; color: var(--white); text-transform: none; transition: color .25s; }
+  .card__ig::after { content: ""; position: absolute; inset: 0; z-index: 3; }
+  .card--revealed:hover .card__ig, .card__ig:focus-visible { color: var(--signal); }
   .card__body { padding: 20px 20px 26px; border-top: 1px solid var(--line); }
   .card__name { font-family: var(--display); font-weight: 900; font-size: 24px; text-transform: uppercase; line-height: .9; min-height: 1em;  letter-spacing: -0.015em; }
   .card__role { margin-top: 10px; color: var(--grey); }
@@ -735,8 +740,8 @@
     <div class="lineup">
       <article class="card"><div class="card__img"><img decoding="async" src="/asmbly/img/art-statue-s.webp" alt="" loading="lazy" /><span class="card__q">?</span></div><div class="card__body"><div class="card__name" data-scramble="SPEAKER 01">SPEAKER 01</div><div class="card__role mono">Culture &amp; philosophy</div></div></article>
       <article class="card"><div class="card__img"><img decoding="async" src="/asmbly/img/art-bust-s.webp" alt="" loading="lazy" /><span class="card__q">?</span></div><div class="card__body"><div class="card__name" data-scramble="SPEAKER 02">SPEAKER 02</div><div class="card__role mono">Modern entrepreneurship</div></div></article>
-      <article class="card card--revealed"><div class="card__img"><img decoding="async" src="/asmbly/img/pfd-s.webp" alt="Pray First Diva" loading="lazy" /></div><div class="card__body"><div class="card__name">Pray First Diva</div><div class="card__role mono">Artist talk</div></div></article>
-      <article class="card card--revealed"><div class="card__img"><img decoding="async" src="/asmbly/img/alex-mcleod-s.webp" alt="Alex McLeod" loading="lazy" /></div><div class="card__body"><div class="card__name">Alex McLeod</div><div class="card__role mono">Artist talk</div></div></article>
+      <article class="card card--revealed"><div class="card__img"><img decoding="async" src="/asmbly/img/pfd-s.webp" alt="Pray First Diva" loading="lazy" /></div><div class="card__body"><div class="card__name">Pray First Diva</div><div class="card__role mono">Exhibiting artist</div><a class="card__ig mono" href="https://www.instagram.com/prayfirstdiva/" target="_blank" rel="noopener" aria-label="Pray First Diva on Instagram">@prayfirstdiva ↗</a></div></article>
+      <article class="card card--revealed"><div class="card__img"><img decoding="async" src="/asmbly/img/alex-mcleod-s.webp?v=2" alt="Alex McLeod" loading="lazy" /></div><div class="card__body"><div class="card__name">Alex McLeod</div><div class="card__role mono">Exhibiting artist</div><a class="card__ig mono" href="https://www.instagram.com/alex_mcleod_/" target="_blank" rel="noopener" aria-label="Alex McLeod on Instagram">@alex_mcleod_ ↗</a></div></article>
       <article class="card"><div class="card__img"><img decoding="async" src="/asmbly/img/dr-curtain-s.webp" alt="" loading="lazy" /><span class="card__q">?</span></div><div class="card__body"><div class="card__name" data-scramble="AV ACT">AV ACT</div><div class="card__role mono">Live audiovisual set</div></div></article>
       <article class="card"><div class="card__img"><img decoding="async" src="/asmbly/img/art-flower-s.webp" alt="" loading="lazy" /><span class="card__q">?</span></div><div class="card__body"><div class="card__name" data-scramble="INSTALLATION">INSTALLATION</div><div class="card__role mono">Curated by Sky Fine Foods</div></div></article>
       <article class="card"><div class="card__img"><img decoding="async" src="/asmbly/img/art-brain-s.webp" alt="" loading="lazy" /><span class="card__q">?</span></div><div class="card__body"><div class="card__name" data-scramble="INSTALLATION">INSTALLATION</div><div class="card__role mono">Curated by Sky Fine Foods</div></div></article>
