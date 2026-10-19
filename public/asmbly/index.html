@@ -111,6 +111,8 @@
   }
   .nav--dark { background: rgba(5,5,5,.94); color: var(--white); border-bottom-color: var(--line); }
   .nav__brand { font-family: var(--display); font-weight: 900; font-size: 28px; line-height: 1; letter-spacing: -0.01em; height: 30px; }
+  .nav__brand { transition: color .3s ease; }
+  .nav__brand:hover, .nav__brand:focus-visible { color: var(--signal); }
   .nav__links { display: flex; gap: 28px; }
   .nav__links a { font-family: var(--body); font-weight: 500; font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase; position: relative; }
   .nav__links a::after { content: ""; position: absolute; left: 0; bottom: -4px; height: 1px; width: 100%; background: currentColor; transform: scaleX(0); transform-origin: right; transition: transform .35s ease; }
