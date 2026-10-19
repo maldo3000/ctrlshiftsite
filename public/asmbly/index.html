@@ -136,8 +136,8 @@
   .hero__wash {
     position: absolute; inset: 0; z-index: 1; pointer-events: none;
     background:
-      linear-gradient(90deg, rgba(5,5,5,.62) 0%, rgba(5,5,5,.35) 55%, rgba(5,5,5,.15) 100%),
-      linear-gradient(180deg, rgba(5,5,5,.7) 0%, rgba(5,5,5,.38) 35%, rgba(5,5,5,.5) 65%, rgba(5,5,5,.95) 100%);
+      linear-gradient(90deg, rgba(5,5,5,.48) 0%, rgba(5,5,5,.22) 55%, rgba(5,5,5,.06) 100%),
+      linear-gradient(180deg, rgba(5,5,5,.58) 0%, rgba(5,5,5,.2) 35%, rgba(5,5,5,.32) 65%, rgba(5,5,5,.9) 100%);
   }
   .hero__inner {
     position: relative; z-index: 2; min-height: 100svh;
@@ -160,7 +160,9 @@
   .asmbly-wrap { position: relative; margin-top: clamp(22px, 3vw, 52px); }
   .asmbly { font-size: min(calc((100vw - 2 * var(--gutter)) / 4.4), 400px); }
   /* Letters flicker like a failing sign: JS drops single letters to low opacity for a few frames */
-  .asmbly span { transition: none; }
+  .asmbly span { transition: color .7s ease; }
+  /* Hover: each letter snaps to hot pink under the cursor and fades back, leaving a short trail across the word */
+  @media (hover: hover) { #heroFlicker .asmbly span:hover { color: var(--signal); transition-duration: .08s; } }
   .asmbly span.off { opacity: .12; }
   .asmbly span.dim { opacity: .45; }
   /* Subtitle: Neue Montreal Medium, sentence case, breaking after "ideas," (54px at 1920) */
@@ -448,9 +450,9 @@
   /* Film: play button in the hero, full-screen player on click */
   .hero__lede { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; }
   .film-btn { display: inline-flex; align-items: center; gap: 14px; flex-shrink: 0; font-family: var(--body); font-weight: 500; font-size: 14px; letter-spacing: .1em; text-transform: uppercase; color: var(--white); background: none; border: 0; padding: 0; cursor: pointer; }
-  .film-btn__icon { display: grid; place-items: center; width: 52px; height: 52px; border-radius: 50%; border: 1px solid var(--white); background: rgba(5,5,5,.25); backdrop-filter: blur(6px); transition: background .3s, color .3s, transform .3s; }
+  .film-btn__icon { display: grid; place-items: center; width: 52px; height: 52px; border-radius: 50%; border: 1px solid var(--signal); background: var(--signal); color: var(--ink); transition: background .3s, color .3s, transform .3s; }
   .film-btn__icon svg { width: 16px; height: 16px; margin-left: 3px; fill: currentColor; }
-  .film-btn:hover .film-btn__icon { background: var(--white); color: var(--bg); transform: scale(1.06); }
+  .film-btn:hover .film-btn__icon { background: var(--white); border-color: var(--white); color: var(--bg); transform: scale(1.06); }
   .film-btn:focus-visible { outline: 1px solid var(--white); outline-offset: 6px; }
   .film-btn small { color: var(--grey); letter-spacing: .1em; }
   .film { width: 100vw; height: 100vh; max-width: none; max-height: none; margin: 0; padding: 0; border: 0; background: rgba(5,5,5,.94); color: var(--white); }
