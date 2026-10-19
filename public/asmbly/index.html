@@ -129,7 +129,7 @@
   .asm span:nth-child(even) { transform: translateY(0.087em); }
 
   /* ---------- HERO: ASMBLY poster ---------- */
-  /* White type over the photo reel: dark tint over footage that already carries a low-opacity pink (baked into the reel) */
+  /* White type over the black-and-white photo reel, under a dark tint */
   .hero { --wash: .55; --cell: clamp(46px, 6.45vw, 128px); position: relative; overflow: hidden; min-height: 100svh; background: #050505; color: var(--white); }
   .hero__media { position: absolute; inset: 0; z-index: 0; }
   .hero__media video { width: 100%; height: 100%; object-fit: cover; }
@@ -582,8 +582,8 @@
       (() => {
         const v = document.getElementById('heroVideo');
         const m = matchMedia('(max-width: 760px)').matches ? '-m' : '';
-        v.poster = `/asmbly/img/hero-reel${m}-poster.jpg?v=7`;
-        v.src = `/asmbly/img/hero-reel${m}.mp4?v=7`;
+        v.poster = `/asmbly/img/hero-reel${m}-poster.jpg?v=8`;
+        v.src = `/asmbly/img/hero-reel${m}.mp4?v=8`;
       })();
     </script>
   </div>
