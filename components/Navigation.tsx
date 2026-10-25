@@ -69,14 +69,24 @@ const Navigation: React.FC = () => {
           <img src="/assets/images/logo-lockup.png" alt="CTRL + SHIFT" className="h-7 w-auto" />
         </div>
 
-        <button
-          onClick={() => setIsMenuOpen(prev => !prev)}
-          className="md:hidden w-11 h-11 flex items-center justify-center text-white border border-white/20 rounded-lg bg-black/30 focus:outline-none focus:ring-2 focus:ring-white/40"
-          aria-label={isMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
-          aria-expanded={isMenuOpen}
-        >
-          {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
-        </button>
+        {/* Mobile: keep ASMBLY one tap away instead of only inside the hamburger menu */}
+        <div className="md:hidden flex items-center gap-3">
+          <a
+            href="/asmbly"
+            className="h-11 flex items-center bg-white text-black px-4 rounded-full text-sm font-semibold hover:bg-zinc-200 transition-colors"
+          >
+            ASMBLY
+          </a>
+
+          <button
+            onClick={() => setIsMenuOpen(prev => !prev)}
+            className="w-11 h-11 flex items-center justify-center text-white border border-white/20 rounded-lg bg-black/30 focus:outline-none focus:ring-2 focus:ring-white/40"
+            aria-label={isMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+            aria-expanded={isMenuOpen}
+          >
+            {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
+        </div>
 
         <div className="hidden md:flex items-center gap-8 text-sm font-medium text-zinc-300">
           {navItems.map((item) => (
