@@ -159,6 +159,30 @@
   .partners__link:hover { opacity: .7; }
   .partners__link:focus-visible { outline: 1px solid currentColor; outline-offset: 6px; }
   .partners i { font-style: normal; font-family: var(--body); font-size: clamp(14px, 1.5vw, 26px); opacity: .55; line-height: 1; }
+  /* Partner lockup: logo heights are multiples of --u so the rows scale together (u = 14.4px at 1440) */
+  .lockup { --u: clamp(9px, 1vw, 19px); display: flex; flex-direction: column; align-items: center; gap: calc(var(--u) * 1.9); }
+  .lockup__row, .lockup__group { display: flex; align-items: center; gap: calc(var(--u) * 1.25); }
+  .lockup i { font-style: normal; font-family: var(--body); font-size: calc(var(--u) * 1.1); opacity: .55; line-height: 1; }
+  .lockup img { width: auto; display: block; }
+  .lockup .l-cs { height: calc(var(--u) * 2.3); }
+  .lockup .l-dr { height: calc(var(--u) * 1.5); }
+  .lockup .l-sff { height: calc(var(--u) * 1.45); }
+  .lockup .l-mc { height: calc(var(--u) * 2.3); }
+  .lockup .l-nl { height: calc(var(--u) * 2.5); }
+  .lockup__row--support { gap: calc(var(--u) * 1.6); }
+  .lockup__row--support b { width: 1px; height: calc(var(--u) * 2); background: currentColor; opacity: .3; }
+  .lockup .l-inv { height: calc(var(--u) * 1.95); }
+  .lockup .l-dh { height: calc(var(--u) * 3.4); }
+  .lockup .l-q { height: calc(var(--u) * 1.45); }
+  /* Centered under the wordmark (reference poster); .hero--lockup-top keeps it above, left-aligned */
+  .hero__center { display: flex; flex-direction: column; }
+  .hero__center .asmbly-wrap { order: 1; margin-top: 0; }
+  .hero__center .lockup { order: 2; margin-top: clamp(24px, 2.8vw, 54px); }
+  .hero__center .hero__lede { order: 3; }
+  @media (min-width: 761px) { .hero__center .hero__kind { margin-top: clamp(28px, 3vw, 60px); } }
+  @media (min-width: 1100px) { .hero__center { padding-top: clamp(40px, 6vh, 90px); } }
+  .hero--lockup-top .hero__center .lockup { order: 0; margin-top: 0; align-items: flex-start; }
+  .hero--lockup-top .hero__center .asmbly-wrap { margin-top: clamp(22px, 3vw, 52px); }
   .asmbly-wrap { position: relative; margin-top: clamp(22px, 3vw, 52px); }
   .asmbly { font-size: min(calc((100vw - 2 * var(--gutter)) / 4.4), 400px); }
   /* Letters flicker like a failing sign: JS drops single letters to low opacity for a few frames */
@@ -492,6 +516,11 @@
     .partners img.p-dr { height: 10.5px; }
     .partners img.p-sff { height: 13px; }
       .partners i { font-size: 10px; }
+    /* Lockup: presenting row splits into two lines (no joining ×), supporting row below */
+    .lockup { --u: 7.4px; gap: 14px; }
+    .lockup__row:first-child { flex-direction: column; gap: 12px; }
+    .lockup__join { display: none; }
+    .hero--lockup-top .lockup__row:first-child { align-items: flex-start; }
     .hero__inner { min-height: 90svh; }
     .hero { min-height: 90svh; }
     .hero__center { padding: 48px 0; }
@@ -603,12 +632,30 @@
       <span class="bit">Toronto</span>
     </div>
     <div class="hero__center">
-      <div class="partners" aria-label="CTRL+SHIFT × Demo Room × Sky Fine Foods">
-        <a class="partners__link" href="/"><img decoding="async" class="p-cs" src="/asmbly/img/cs-white.png" alt="CTRL+SHIFT" width="594" height="120" /></a>
-        <i aria-hidden="true">×</i>
-        <a class="partners__link" href="https://www.demo-room.com/" target="_blank" rel="noopener"><img decoding="async" class="p-dr" src="/asmbly/img/demoroom-logo.png?v=3" alt="Demo Room" width="1000" height="129" /></a>
-        <i aria-hidden="true">×</i>
-        <a class="partners__link" href="https://skyfinefoods.com/" target="_blank" rel="noopener"><img decoding="async" class="p-sff" src="/asmbly/img/sff-white.png" alt="Sky Fine Foods" width="428" height="64" /></a>
+      <!-- Partner lockup: presenting partners on the first row, supporting partners under them -->
+      <div class="lockup" aria-label="CTRL+SHIFT × Demo Room × Sky Fine Foods × Machine Cinema × New Limit Labs, with Invisible, Dark Half and Quiver">
+        <div class="lockup__row">
+          <div class="lockup__group">
+            <a class="partners__link" href="/"><img decoding="async" class="l-cs" src="/asmbly/img/cs-white.png" alt="CTRL+SHIFT" width="594" height="120" /></a>
+            <i aria-hidden="true">×</i>
+            <a class="partners__link" href="https://www.demo-room.com/" target="_blank" rel="noopener"><img decoding="async" class="l-dr" src="/asmbly/img/demoroom-logo.png?v=3" alt="Demo Room" width="1000" height="129" /></a>
+            <i aria-hidden="true">×</i>
+            <a class="partners__link" href="https://skyfinefoods.com/" target="_blank" rel="noopener"><img decoding="async" class="l-sff" src="/asmbly/img/sff-white.png" alt="Sky Fine Foods" width="428" height="64" /></a>
+          </div>
+          <i class="lockup__join" aria-hidden="true">×</i>
+          <div class="lockup__group">
+            <img decoding="async" class="l-mc" src="/asmbly/img/p-machine-cinema.png" alt="Machine Cinema" width="536" height="132" />
+            <i aria-hidden="true">×</i>
+            <img decoding="async" class="l-nl" src="/asmbly/img/p-new-limit.png" alt="New Limit Labs" width="480" height="148" />
+          </div>
+        </div>
+        <div class="lockup__row lockup__row--support">
+          <img decoding="async" class="l-inv" src="/asmbly/img/p-invisible.png" alt="Invisible" width="580" height="112" />
+          <b aria-hidden="true"></b>
+          <img decoding="async" class="l-dh" src="/asmbly/img/p-dark-half.png" alt="Dark Half" width="324" height="196" />
+          <b aria-hidden="true"></b>
+          <img decoding="async" class="l-q" src="/asmbly/img/p-quiver.png" alt="Quiver" width="404" height="84" />
+        </div>
       </div>
       <div class="asmbly-wrap" id="heroFlicker">
         <h1 class="asmbly asm" aria-label="ASMBLY"><span>A</span><span>S</span><span>M</span><span>B</span><span>L</span><span>Y</span></h1>
