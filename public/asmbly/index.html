@@ -335,7 +335,12 @@
   .card--revealed .card__img::after { opacity: .35; }
   /* Revealed artists: the whole card opens their Instagram (the link stretches over the card) */
   .card--revealed { position: relative; cursor: pointer; }
-  .card__ig { display: inline-block; margin-top: 8px; color: var(--white); text-transform: none; transition: color .25s; }
+  /* Decrypt on hover: a canvas over the portrait flicks through the artist's work as pixel tiles, then resolves back */
+  .card__decrypt { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; image-rendering: pixelated; opacity: 0; pointer-events: none; }
+  .card__decrypt.on { opacity: 1; }
+  .card__tag { position: absolute; top: 12px; left: 12px; z-index: 2; font-family: var(--mono); font-weight: 600; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; background: var(--white); color: #050505; padding: 4px 7px; opacity: 0; pointer-events: none; }
+  .card__tag.on { opacity: 1; }
+  .card__ig { display: inline-block; max-width: 100%; overflow-wrap: anywhere; margin-top: 8px; color: var(--white); text-transform: none; transition: color .25s; }
   .card__ig::after { content: ""; position: absolute; inset: 0; z-index: 3; }
   .card--revealed:hover .card__ig, .card__ig:focus-visible { color: var(--signal); }
   .card__body { padding: 20px 20px 26px; border-top: 1px solid var(--line); }
@@ -343,7 +348,7 @@
   .card__role { margin-top: 10px; color: var(--grey); }
   .lineup-note { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; margin-top: 28px; }
   @media (max-width: 1000px) { .lineup { grid-template-columns: repeat(2, 1fr); } }
-  @media (max-width: 480px) { .card__name { font-size: 18px; } .card__body { padding: 14px; } }
+  @media (max-width: 480px) { .card__name { font-size: 18px; } .card__body { padding: 14px; } .card__ig { font-size: 11px; letter-spacing: .04em; } }
 
   /* Venue horizontal scroll */
   .venue { overflow: hidden; }
@@ -792,11 +797,11 @@
       <span class="eyebrow">Decrypting soon</span>
     </div>
     <div class="lineup">
-      <article class="card card--revealed"><div class="card__img"><img decoding="async" src="/asmbly/img/sophie-hospes-s.webp" alt="Sophie Hospes" loading="lazy" /></div><div class="card__body"><div class="card__name">Sophie Hospes</div><div class="card__role mono">Speaker · The future of creative work</div><a class="card__ig mono" href="https://www.instagram.com/studiosophiehospes/" target="_blank" rel="noopener" aria-label="Sophie Hospes on Instagram">@studiosophiehospes ↗</a></div></article>
+      <article class="card card--revealed" data-decrypt="/asmbly/img/decrypt-sophie-hospes.webp"><div class="card__img"><img decoding="async" src="/asmbly/img/sophie-hospes-s.webp" alt="Sophie Hospes" loading="lazy" /></div><div class="card__body"><div class="card__name">Sophie Hospes</div><div class="card__role mono">Speaker · The future of creative work</div><a class="card__ig mono" href="https://www.instagram.com/studiosophiehospes/" target="_blank" rel="noopener" aria-label="Sophie Hospes on Instagram">@studiosophiehospes ↗</a></div></article>
       <article class="card"><div class="card__img"><img decoding="async" src="/asmbly/img/art-bust-s.webp" alt="" loading="lazy" /><span class="card__q">?</span></div><div class="card__body"><div class="card__name" data-scramble="SPEAKER 02">SPEAKER 02</div><div class="card__role mono">Modern entrepreneurship</div></div></article>
-      <article class="card card--revealed"><div class="card__img"><img decoding="async" src="/asmbly/img/pfd-s.webp" alt="Pray First Diva" loading="lazy" /></div><div class="card__body"><div class="card__name">Pray First Diva</div><div class="card__role mono">Exhibiting artist</div><a class="card__ig mono" href="https://www.instagram.com/prayfirstdiva/" target="_blank" rel="noopener" aria-label="Pray First Diva on Instagram">@prayfirstdiva ↗</a></div></article>
-      <article class="card card--revealed"><div class="card__img"><img decoding="async" src="/asmbly/img/alex-mcleod-s.webp?v=2" alt="Alex McLeod" loading="lazy" /></div><div class="card__body"><div class="card__name">Alex McLeod</div><div class="card__role mono">Exhibiting artist</div><a class="card__ig mono" href="https://www.instagram.com/alex_mcleod_/" target="_blank" rel="noopener" aria-label="Alex McLeod on Instagram">@alex_mcleod_ ↗</a></div></article>
-      <article class="card card--revealed"><div class="card__img"><img decoding="async" src="/asmbly/img/enna-kim-s.webp" alt="Enna Kim" loading="lazy" /></div><div class="card__body"><div class="card__name">Enna Kim</div><div class="card__role mono">Exhibiting artist</div><a class="card__ig mono" href="https://www.instagram.com/fongkikid/" target="_blank" rel="noopener" aria-label="Enna Kim on Instagram">@fongkikid ↗</a></div></article>
+      <article class="card card--revealed" data-decrypt="/asmbly/img/decrypt-pfd.webp"><div class="card__img"><img decoding="async" src="/asmbly/img/pfd-s.webp" alt="Pray First Diva" loading="lazy" /></div><div class="card__body"><div class="card__name">Pray First Diva</div><div class="card__role mono">Exhibiting artist</div><a class="card__ig mono" href="https://www.instagram.com/prayfirstdiva/" target="_blank" rel="noopener" aria-label="Pray First Diva on Instagram">@prayfirstdiva ↗</a></div></article>
+      <article class="card card--revealed" data-decrypt="/asmbly/img/decrypt-alex-mcleod.webp"><div class="card__img"><img decoding="async" src="/asmbly/img/alex-mcleod-s.webp?v=2" alt="Alex McLeod" loading="lazy" /></div><div class="card__body"><div class="card__name">Alex McLeod</div><div class="card__role mono">Exhibiting artist</div><a class="card__ig mono" href="https://www.instagram.com/alex_mcleod_/" target="_blank" rel="noopener" aria-label="Alex McLeod on Instagram">@alex_mcleod_ ↗</a></div></article>
+      <article class="card card--revealed" data-decrypt="/asmbly/img/decrypt-enna-kim.webp"><div class="card__img"><img decoding="async" src="/asmbly/img/enna-kim-s.webp" alt="Enna Kim" loading="lazy" /></div><div class="card__body"><div class="card__name">Enna Kim</div><div class="card__role mono">Exhibiting artist</div><a class="card__ig mono" href="https://www.instagram.com/fongkikid/" target="_blank" rel="noopener" aria-label="Enna Kim on Instagram">@fongkikid ↗</a></div></article>
       <article class="card"><div class="card__img"><img decoding="async" src="/asmbly/img/dr-curtain-s.webp" alt="" loading="lazy" /><span class="card__q">?</span></div><div class="card__body"><div class="card__name" data-scramble="AV ACT">AV ACT</div><div class="card__role mono">Live audiovisual set</div></div></article>
       <article class="card"><div class="card__img"><img decoding="async" src="/asmbly/img/art-flower-s.webp" alt="" loading="lazy" /><span class="card__q">?</span></div><div class="card__body"><div class="card__name" data-scramble="INSTALLATION">INSTALLATION</div><div class="card__role mono">Curated by Sky Fine Foods</div></div></article>
       <article class="card"><div class="card__img"><img decoding="async" src="/asmbly/img/dr-dj-s.webp" alt="" loading="lazy" /><span class="card__q">?</span></div><div class="card__body"><div class="card__name" data-scramble="MUSIC">MUSIC</div><div class="card__role mono">Exhibit open</div></div></article>
@@ -1126,6 +1131,85 @@
       const el = names[(Math.random() * names.length) | 0];
       if (!el.closest('.card').matches(':hover')) scramble(el, el.dataset.scramble, 800);
     }, 1400);
+  }
+
+  /* Decrypt: revealed cards flick through 8 pixel tiles of the artist's work (one sprite each),
+     then re-pixelate the portrait from coarse to sharp. Hover on desktop; once on scroll-in for touch */
+  const decryptCards = [...document.querySelectorAll('.card[data-decrypt]')];
+  if (!reduce && decryptCards.length) {
+    const TILE_W = 240, TILE_H = 302, TILES = 8;
+    const sprites = {};
+    const loadSprite = src => sprites[src] || (sprites[src] = new Promise(res => {
+      const im = new Image(); im.onload = () => res(im); im.onerror = () => res(null); im.src = src;
+    }));
+    const small = document.createElement('canvas');
+    const sctx = small.getContext('2d');
+    // Draw a source rect into a tiny buffer, then blow it up with smoothing off: crisp square pixels
+    const pixelate = (ctx, w, h, src, sx, sy, sw, sh, cols) => {
+      const rows = Math.max(1, Math.round(cols * h / w));
+      small.width = cols; small.height = rows;
+      sctx.drawImage(src, sx, sy, sw, sh, 0, 0, cols, rows);
+      ctx.imageSmoothingEnabled = false;
+      ctx.drawImage(small, 0, 0, cols, rows, 0, 0, w, h);
+    };
+    const run = async card => {
+      if (card._decrypting) return;
+      const sprite = await loadSprite(card.dataset.decrypt);
+      const photo = card.querySelector('.card__img img');
+      if (!sprite || !photo.complete) return;
+      card._decrypting = true;
+      const box = card.querySelector('.card__img');
+      let cv = box.querySelector('.card__decrypt'), tag = box.querySelector('.card__tag');
+      if (!cv) {
+        cv = document.createElement('canvas'); cv.className = 'card__decrypt'; cv.setAttribute('aria-hidden', 'true');
+        tag = document.createElement('span'); tag.className = 'card__tag'; tag.setAttribute('aria-hidden', 'true');
+        box.append(cv, tag);
+      }
+      const w = cv.width = Math.round(box.clientWidth * Math.min(devicePixelRatio, 2));
+      const h = cv.height = Math.round(box.clientHeight * Math.min(devicePixelRatio, 2));
+      const ctx = cv.getContext('2d');
+      // Portrait source rect matching object-fit: cover
+      const pr = photo.naturalWidth / photo.naturalHeight, br = w / h;
+      const pw = pr > br ? photo.naturalHeight * br : photo.naturalWidth;
+      const ph = pr > br ? photo.naturalHeight : photo.naturalWidth / br;
+      const px = (photo.naturalWidth - pw) / 2, py = (photo.naturalHeight - ph) / 2;
+      const order = [...Array(TILES).keys()].sort(() => Math.random() - .5);
+      const frames = [
+        ...order.map(i => () => pixelate(ctx, w, h, sprite, i * TILE_W, 0, TILE_W, TILE_H, 10 + ((Math.random() * 3) | 0) * 2)),
+        ...[8, 16, 32, 64].map(cols => () => pixelate(ctx, w, h, photo, px, py, pw, ph, cols))
+      ];
+      cv.classList.add('on'); tag.classList.add('on');
+      let k = 0;
+      const tick = () => {
+        if (k < frames.length) {
+          frames[k]();
+          tag.textContent = k < TILES ? `Decrypting ${String(k + 1).padStart(2, '0')}/${TILES}` : 'Decrypted';
+          k++; setTimeout(tick, k <= TILES ? 85 : 70);
+        } else {
+          cv.classList.remove('on'); tag.classList.remove('on'); card._decrypting = false;
+        }
+      };
+      tick();
+    };
+    const canHover = matchMedia('(hover: hover)').matches;
+    decryptCards.forEach(card => {
+      if (canHover) {
+        card.addEventListener('mouseenter', () => run(card));
+        card.addEventListener('focusin', () => run(card));
+      }
+    });
+    // Warm the sprite cache just before a card scrolls in; on touch, play once when it's mostly in view
+    const warm = new IntersectionObserver(entries => entries.forEach(({ target, isIntersecting }) => {
+      if (isIntersecting) { loadSprite(target.dataset.decrypt); warm.unobserve(target); }
+    }), { rootMargin: '0px 0px 300px 0px' });
+    decryptCards.forEach(c => warm.observe(c));
+    if (!canHover) {
+      const play = new IntersectionObserver(entries => entries.forEach(({ target, isIntersecting }) => {
+        // Wait for the card's fade-up to mostly finish before decrypting
+        if (isIntersecting) { setTimeout(() => run(target), 500); play.unobserve(target); }
+      }), { threshold: .6 });
+      decryptCards.forEach(c => play.observe(c));
+    }
   }
 
   /* Film player: loads the video only when opened, pauses the hero reel and page scroll while it plays */
