@@ -159,8 +159,8 @@
   .partners__link:hover { opacity: .7; }
   .partners__link:focus-visible { outline: 1px solid currentColor; outline-offset: 6px; }
   .partners i { font-style: normal; font-family: var(--body); font-size: clamp(14px, 1.5vw, 26px); opacity: .55; line-height: 1; }
-  /* Partner lockup: logo heights are multiples of --u so the rows scale together (u = 12.2px at 1440) */
-  .lockup { --u: clamp(8px, .85vw, 16px); display: flex; flex-direction: column; align-items: center; gap: calc(var(--u) * 2.4); }
+  /* Partner lockup: logo heights are multiples of --u so the rows scale together (u = 10.4px at 1440) */
+  .lockup { --u: clamp(7px, .72vw, 14px); display: flex; flex-direction: column; align-items: center; gap: calc(var(--u) * 2.4); }
   .lockup__row, .lockup__group { display: flex; align-items: center; gap: calc(var(--u) * 1.25); }
   .lockup i { font-style: normal; font-family: var(--body); font-size: calc(var(--u) * 1.1); opacity: .55; line-height: 1; }
   .lockup img { width: auto; display: block; }
@@ -515,7 +515,7 @@
     .partners img.p-sff { height: 13px; }
       .partners i { font-size: 10px; }
     /* Lockup: presenting row splits into two lines (no joining ×), supporting row below */
-    .lockup { --u: 6.6px; gap: 16px; }
+    .lockup { --u: 5.8px; gap: 14px; }
     .lockup__row:first-child { flex-direction: column; gap: 12px; }
     .lockup__join { display: none; }
     .hero__inner { min-height: 90svh; }
@@ -1030,7 +1030,9 @@
           x: () => fs * rnd(.3, .6), y: () => fs * rnd(.25, .55), rotation: () => rnd(-24, 24),
           opacity: 0, duration: .6, ease: 'power3.out', stagger: .12
         })
-        .to(chars, { y: i => (i % 2 ? off : -off), duration: .55, ease: 'power3.inOut', stagger: .03 }, '+=.35');
+        .to(chars, { y: i => (i % 2 ? off : -off), duration: .55, ease: 'power3.inOut', stagger: .03 }, '+=.35')
+        // Partner lockup fades up row by row once the wordmark has settled
+        .from('.hero .lockup__row', { y: 20, opacity: 0, duration: .9, ease: 'power3.out', stagger: .15 }, '-=.1');
     } else {
       chars.forEach(c => c.classList.add('off'));
       [...chars].sort(() => Math.random() - .5).forEach((c, i) =>
@@ -1201,7 +1203,6 @@
   }
 
   /* Hero intro */
-  gsap.from('.hero .partners', { y: 20, opacity: 0, duration: .9, ease: 'power3.out', delay: .25 });
   gsap.from('.hero__kind', { y: 20, opacity: 0, duration: .9, ease: 'power3.out', delay: .5 });
   gsap.from('.film-btn', { y: 20, opacity: 0, duration: .9, ease: 'power3.out', delay: .6 });
   gsap.from('.hero__top > *, .hero__bottom > *', { y: 24, opacity: 0, duration: 0.9, stagger: 0.08, ease: 'power3.out', delay: 0.6 });
