@@ -159,6 +159,28 @@
   .partners__link:hover { opacity: .7; }
   .partners__link:focus-visible { outline: 1px solid currentColor; outline-offset: 6px; }
   .partners i { font-style: normal; font-family: var(--body); font-size: clamp(14px, 1.5vw, 26px); opacity: .55; line-height: 1; }
+  /* Partner lockup: logo heights are multiples of --u so the rows scale together (u = 10.4px at 1440) */
+  .lockup { --u: clamp(7px, .72vw, 14px); display: flex; flex-direction: column; align-items: center; gap: calc(var(--u) * 2.4); }
+  .lockup__row, .lockup__group { display: flex; align-items: center; gap: calc(var(--u) * 1.25); }
+  .lockup i { font-style: normal; font-family: var(--body); font-size: calc(var(--u) * 1.1); opacity: .55; line-height: 1; }
+  .lockup img { width: auto; display: block; }
+  .lockup .l-cs { height: calc(var(--u) * 2.3); }
+  .lockup .l-dr { height: calc(var(--u) * 1.5); }
+  .lockup .l-sff { height: calc(var(--u) * 1.45); }
+  .lockup .l-mc { height: calc(var(--u) * 2.3); }
+  .lockup .l-nl { height: calc(var(--u) * 2.5); }
+  .lockup__row--support { gap: calc(var(--u) * 1.6); }
+  .lockup__row--support b { width: 1px; height: calc(var(--u) * 2); background: currentColor; opacity: .3; }
+  .lockup .l-inv { height: calc(var(--u) * 1.95); }
+  .lockup .l-dh { height: calc(var(--u) * 3.4); }
+  .lockup .l-q { height: calc(var(--u) * 1.45); }
+  /* Lockup sits centered under the wordmark, as on the poster */
+  .hero__center { display: flex; flex-direction: column; }
+  .hero__center .asmbly-wrap { order: 1; margin-top: 0; }
+  .hero__center .lockup { order: 2; margin-top: clamp(36px, 4vw, 76px); }
+  .hero__center .hero__lede { order: 3; }
+  @media (min-width: 761px) { .hero__center .hero__kind { margin-top: clamp(28px, 3vw, 60px); } }
+  @media (min-width: 1100px) { .hero__center { padding-top: clamp(40px, 6vh, 90px); } }
   .asmbly-wrap { position: relative; margin-top: clamp(22px, 3vw, 52px); }
   .asmbly { font-size: min(calc((100vw - 2 * var(--gutter)) / 4.4), 400px); }
   /* Letters flicker like a failing sign: JS drops single letters to low opacity for a few frames */
@@ -492,6 +514,10 @@
     .partners img.p-dr { height: 10.5px; }
     .partners img.p-sff { height: 13px; }
       .partners i { font-size: 10px; }
+    /* Lockup: presenting row splits into two lines (no joining ×), supporting row below */
+    .lockup { --u: 5.8px; gap: 14px; }
+    .lockup__row:first-child { flex-direction: column; gap: 12px; }
+    .lockup__join { display: none; }
     .hero__inner { min-height: 90svh; }
     .hero { min-height: 90svh; }
     .hero__center { padding: 48px 0; }
@@ -603,18 +629,36 @@
       <span class="bit">Toronto</span>
     </div>
     <div class="hero__center">
-      <div class="partners" aria-label="CTRL+SHIFT × Demo Room × Sky Fine Foods">
-        <a class="partners__link" href="/"><img decoding="async" class="p-cs" src="/asmbly/img/cs-white.png" alt="CTRL+SHIFT" width="594" height="120" /></a>
-        <i aria-hidden="true">×</i>
-        <a class="partners__link" href="https://www.demo-room.com/" target="_blank" rel="noopener"><img decoding="async" class="p-dr" src="/asmbly/img/demoroom-logo.png?v=3" alt="Demo Room" width="1000" height="129" /></a>
-        <i aria-hidden="true">×</i>
-        <a class="partners__link" href="https://skyfinefoods.com/" target="_blank" rel="noopener"><img decoding="async" class="p-sff" src="/asmbly/img/sff-white.png" alt="Sky Fine Foods" width="428" height="64" /></a>
+      <!-- Partner lockup: presenting partners on the first row, supporting partners under them -->
+      <div class="lockup" aria-label="CTRL+SHIFT × Demo Room × Sky Fine Foods × Machine Cinema × New Limit Labs, with Invisible, Dark Half and Quiver">
+        <div class="lockup__row">
+          <div class="lockup__group">
+            <a class="partners__link" href="/"><img decoding="async" class="l-cs" src="/asmbly/img/cs-white.png" alt="CTRL+SHIFT" width="594" height="120" /></a>
+            <i aria-hidden="true">×</i>
+            <a class="partners__link" href="https://www.demo-room.com/" target="_blank" rel="noopener"><img decoding="async" class="l-dr" src="/asmbly/img/demoroom-logo.png?v=3" alt="Demo Room" width="1000" height="129" /></a>
+            <i aria-hidden="true">×</i>
+            <a class="partners__link" href="https://skyfinefoods.com/" target="_blank" rel="noopener"><img decoding="async" class="l-sff" src="/asmbly/img/sff-white.png" alt="Sky Fine Foods" width="428" height="64" /></a>
+          </div>
+          <i class="lockup__join" aria-hidden="true">×</i>
+          <div class="lockup__group">
+            <img decoding="async" class="l-mc" src="/asmbly/img/p-machine-cinema.png" alt="Machine Cinema" width="536" height="132" />
+            <i aria-hidden="true">×</i>
+            <img decoding="async" class="l-nl" src="/asmbly/img/p-new-limit.png" alt="New Limit Labs" width="480" height="148" />
+          </div>
+        </div>
+        <div class="lockup__row lockup__row--support">
+          <img decoding="async" class="l-inv" src="/asmbly/img/p-invisible.png" alt="Invisible" width="580" height="112" />
+          <b aria-hidden="true"></b>
+          <img decoding="async" class="l-dh" src="/asmbly/img/p-dark-half.png" alt="Dark Half" width="324" height="196" />
+          <b aria-hidden="true"></b>
+          <img decoding="async" class="l-q" src="/asmbly/img/p-quiver.png" alt="Quiver" width="404" height="84" />
+        </div>
       </div>
       <div class="asmbly-wrap" id="heroFlicker">
         <h1 class="asmbly asm" aria-label="ASMBLY"><span>A</span><span>S</span><span>M</span><span>B</span><span>L</span><span>Y</span></h1>
       </div>
       <div class="hero__lede">
-      <p class="hero__kind">A gathering for new ideas,<br>technology, and art.</p>
+      <p class="hero__kind">A gathering for new ideas, <br>technology, and art.</p>
       <button class="film-btn" type="button" id="filmOpen" aria-haspopup="dialog">
         <span class="film-btn__icon" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M2 1l13 7-13 7z"/></svg></span>
         <span>Watch teaser <small>0:35</small></span>
@@ -986,7 +1030,9 @@
           x: () => fs * rnd(.3, .6), y: () => fs * rnd(.25, .55), rotation: () => rnd(-24, 24),
           opacity: 0, duration: .6, ease: 'power3.out', stagger: .12
         })
-        .to(chars, { y: i => (i % 2 ? off : -off), duration: .55, ease: 'power3.inOut', stagger: .03 }, '+=.35');
+        .to(chars, { y: i => (i % 2 ? off : -off), duration: .55, ease: 'power3.inOut', stagger: .03 }, '+=.35')
+        // Partner lockup fades up row by row once the wordmark has settled
+        .from('.hero .lockup__row', { y: 20, opacity: 0, duration: .9, ease: 'power3.out', stagger: .15 }, '-=.1');
     } else {
       chars.forEach(c => c.classList.add('off'));
       [...chars].sort(() => Math.random() - .5).forEach((c, i) =>
@@ -1157,7 +1203,6 @@
   }
 
   /* Hero intro */
-  gsap.from('.hero .partners', { y: 20, opacity: 0, duration: .9, ease: 'power3.out', delay: .25 });
   gsap.from('.hero__kind', { y: 20, opacity: 0, duration: .9, ease: 'power3.out', delay: .5 });
   gsap.from('.film-btn', { y: 20, opacity: 0, duration: .9, ease: 'power3.out', delay: .6 });
   gsap.from('.hero__top > *, .hero__bottom > *', { y: 24, opacity: 0, duration: 0.9, stagger: 0.08, ease: 'power3.out', delay: 0.6 });
