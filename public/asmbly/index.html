@@ -159,28 +159,28 @@
   .partners__link:hover { opacity: .7; }
   .partners__link:focus-visible { outline: 1px solid currentColor; outline-offset: 6px; }
   .partners i { font-style: normal; font-family: var(--body); font-size: clamp(14px, 1.5vw, 26px); opacity: .55; line-height: 1; }
-  /* Partner lockup: logo heights are multiples of --u so the rows scale together (u = 10.4px at 1440) */
-  .lockup { --u: clamp(7px, .72vw, 14px); display: flex; flex-direction: column; align-items: center; gap: calc(var(--u) * 2.4); }
+  /* Partner lockup: logo heights are multiples of --u so the rows scale together (u = 8.6px at 1440) */
+  .lockup { --u: clamp(6px, .6vw, 12px); display: flex; flex-direction: column; align-items: center; gap: calc(var(--u) * 2.4); }
   .lockup__row, .lockup__group { display: flex; align-items: center; gap: calc(var(--u) * 1.25); }
   .lockup i { font-style: normal; font-family: var(--body); font-size: calc(var(--u) * 1.1); opacity: .55; line-height: 1; }
   .lockup img { width: auto; display: block; }
-  .lockup .l-cs { height: calc(var(--u) * 2.3); }
-  .lockup .l-dr { height: calc(var(--u) * 1.5); }
-  .lockup .l-sff { height: calc(var(--u) * 1.45); }
-  .lockup .l-mc { height: calc(var(--u) * 2.3); }
-  .lockup .l-nl { height: calc(var(--u) * 2.5); }
+  :is(.lockup, .sponsors) .l-cs { height: calc(var(--u) * 2.3); }
+  :is(.lockup, .sponsors) .l-dr { height: calc(var(--u) * 1.5); }
+  :is(.lockup, .sponsors) .l-sff { height: calc(var(--u) * 1.45); }
+  :is(.lockup, .sponsors) .l-mc { height: calc(var(--u) * 2.3); }
+  :is(.lockup, .sponsors) .l-nl { height: calc(var(--u) * 2.5); }
   .lockup__row--support { gap: calc(var(--u) * 1.6); }
   .lockup__row--support b { width: 1px; height: calc(var(--u) * 2); background: currentColor; opacity: .3; }
-  .lockup .l-inv { height: calc(var(--u) * 1.95); }
-  .lockup .l-dh { height: calc(var(--u) * 3.4); }
-  .lockup .l-q { height: calc(var(--u) * 1.45); }
-  /* Lockup sits centered under the wordmark, as on the poster */
+  :is(.lockup, .sponsors) .l-inv { height: calc(var(--u) * 1.95); }
+  :is(.lockup, .sponsors) .l-dh { height: calc(var(--u) * 3.4); }
+  :is(.lockup, .sponsors) .l-q { height: calc(var(--u) * 1.45); }
+  /* Hero stack: wordmark, tagline, centered partner lockup, teaser */
   .hero__center { display: flex; flex-direction: column; }
-  .hero__center .asmbly-wrap { order: 1; margin-top: 0; }
-  .hero__center .lockup { order: 2; margin-top: clamp(36px, 4vw, 76px); }
-  .hero__center .hero__lede { order: 3; }
-  @media (min-width: 761px) { .hero__center .hero__kind { margin-top: clamp(28px, 3vw, 60px); } }
-  @media (min-width: 1100px) { .hero__center { padding-top: clamp(40px, 6vh, 90px); } }
+  .hero__center .asmbly-wrap { margin-top: 0; }
+  .hero__center .lockup { margin-top: clamp(28px, 3vw, 56px); }
+  .hero__center .film-btn { align-self: flex-start; margin-top: clamp(24px, 2.4vw, 46px); }
+  @media (min-width: 761px) { .hero__center .hero__kind { margin-top: clamp(20px, 2vw, 40px); } }
+  @media (min-width: 1100px) { .hero__center { padding-top: clamp(24px, 4vh, 70px); padding-bottom: 20px; } }
   .asmbly-wrap { position: relative; margin-top: clamp(22px, 3vw, 52px); }
   .asmbly { font-size: min(calc((100vw - 2 * var(--gutter)) / 4.4), 400px); }
   /* Letters flicker like a failing sign: JS drops single letters to low opacity for a few frames */
@@ -386,6 +386,16 @@
   .partner p { margin-top: 24px; color: #c9c9c9; font-size: 18px; max-width: 46ch; }
   @media (max-width: 860px) { .partner { grid-template-columns: 1fr; } .partner__art { order: 2; } }
 
+  /* Presenters & sponsors: every partner logo in a ruled grid; a short last row stays centered */
+  .sponsors { --u: clamp(10px, 1.3vw, 20px); display: flex; flex-wrap: wrap; justify-content: center; padding: 0 1px 1px 0; }
+  .sponsor { flex: 0 0 25%; height: clamp(120px, 12vw, 200px); display: flex; align-items: center; justify-content: center; padding: 20px; border: 1px solid var(--line); margin: 0 -1px -1px 0; }
+  .sponsor img { width: auto; max-width: 100%; display: block; }
+  .sponsor a { display: flex; transition: opacity .25s; }
+  .sponsor a:hover { opacity: .7; }
+  /* Wordmark stand-in until the partner's logo file arrives */
+  .sponsor__name { font-family: var(--body); font-weight: 600; font-size: calc(var(--u) * 1.6); letter-spacing: -.01em; }
+  @media (max-width: 760px) { .sponsors { --u: 8.5px; } .sponsor { flex-basis: 50%; height: 104px; padding: 14px; } }
+
   /* Pillars */
   .pillars { display: grid; grid-template-columns: repeat(4, 1fr); }
   .pillar + .pillar { border-left: 1px solid var(--line-strong); }
@@ -477,7 +487,6 @@
 
 
   /* Film: play button in the hero, full-screen player on click */
-  .hero__lede { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; }
   .film-btn { display: inline-flex; align-items: center; gap: 14px; flex-shrink: 0; font-family: var(--body); font-weight: 500; font-size: 14px; letter-spacing: .1em; text-transform: uppercase; color: var(--white); background: none; border: 0; padding: 0; cursor: pointer; }
   .film-btn__icon { display: grid; place-items: center; width: 52px; height: 52px; border-radius: 50%; border: 1px solid var(--signal); background: var(--signal); color: var(--ink); transition: background .3s, color .3s, transform .3s; }
   .film-btn__icon svg { width: 16px; height: 16px; margin-left: 3px; fill: currentColor; }
@@ -490,7 +499,7 @@
   .film video { width: min(92vw, calc(84vh * 4 / 3)); aspect-ratio: 4 / 3; background: #000; }
   .film__close { position: absolute; top: 18px; right: 18px; font-family: var(--body); font-weight: 500; font-size: 14px; letter-spacing: .1em; text-transform: uppercase; color: var(--white); background: none; border: 1px solid var(--line-strong); padding: 10px 14px; cursor: pointer; }
   .film__close:hover { border-color: var(--white); }
-  @media (max-width: 760px) { .hero__lede { flex-direction: column; align-items: flex-start; gap: 18px; } .film-btn__icon { width: 44px; height: 44px; } .film-btn { font-size: 12px; } }
+  @media (max-width: 760px) { .hero__center .film-btn { margin-top: 32px; } .film-btn__icon { width: 44px; height: 44px; } .film-btn { font-size: 12px; } }
 
   /* Hero ticket CTA */
   .btn--xl { font-size: 14px; padding: 16px 24px; font-weight: 500; box-shadow: 0 0 44px rgba(var(--signal-rgb), .35); }
@@ -515,7 +524,7 @@
     .partners img.p-sff { height: 13px; }
       .partners i { font-size: 10px; }
     /* Lockup: presenting row splits into two lines (no joining ×), supporting row below */
-    .lockup { --u: 5.8px; gap: 14px; }
+    .lockup { --u: 5px; gap: 12px; }
     .lockup__row:first-child { flex-direction: column; gap: 12px; }
     .lockup__join { display: none; }
     .hero__inner { min-height: 90svh; }
@@ -629,6 +638,10 @@
       <span class="bit">Toronto</span>
     </div>
     <div class="hero__center">
+      <div class="asmbly-wrap" id="heroFlicker">
+        <h1 class="asmbly asm" aria-label="ASMBLY"><span>A</span><span>S</span><span>M</span><span>B</span><span>L</span><span>Y</span></h1>
+      </div>
+      <p class="hero__kind">A gathering for new ideas,<br>technology, and art.</p>
       <!-- Partner lockup: presenting partners on the first row, supporting partners under them -->
       <div class="lockup" aria-label="CTRL+SHIFT × Demo Room × Sky Fine Foods × Machine Cinema × New Limit Labs, with Invisible, Dark Half and Quiver">
         <div class="lockup__row">
@@ -654,16 +667,10 @@
           <img decoding="async" class="l-q" src="/asmbly/img/p-quiver.png" alt="Quiver" width="404" height="84" />
         </div>
       </div>
-      <div class="asmbly-wrap" id="heroFlicker">
-        <h1 class="asmbly asm" aria-label="ASMBLY"><span>A</span><span>S</span><span>M</span><span>B</span><span>L</span><span>Y</span></h1>
-      </div>
-      <div class="hero__lede">
-      <p class="hero__kind">A gathering for new ideas, <br>technology, and art.</p>
       <button class="film-btn" type="button" id="filmOpen" aria-haspopup="dialog">
         <span class="film-btn__icon" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M2 1l13 7-13 7z"/></svg></span>
         <span>Watch teaser <small>0:35</small></span>
       </button>
-      </div>
     </div>
     <div class="hero__bottom">
       <span class="bit">Talks &nbsp;·&nbsp; Art &nbsp;·&nbsp; Performance</span>
@@ -931,6 +938,26 @@
       <a class="btn btn--signal" href="https://dice.fm/event/2wng77-asmbly-a-gathering-for-new-ideas-tech-and-art-19th-nov-demo-room-toronto-tickets" target="_blank" rel="noopener">Get tickets on DICE <span class="arr">→</span></a>
       <a class="btn" href="https://www.instagram.com/ctrlshift.to/" target="_blank" rel="noopener">@ctrlshift.to <span class="arr">↗</span></a>
       <a class="btn" href="https://www.instagram.com/demoroom" target="_blank" rel="noopener">@demoroom <span class="arr">↗</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRESENTERS & SPONSORS ============ -->
+<section class="sec" id="partners" style="padding-bottom:0">
+  <div class="wrap">
+    <div class="sec__head"><h2 class="display" style="font-size:clamp(40px,5vw,80px)">Presenters &amp; sponsors</h2><span class="eyebrow">ASMBLY · 19 Nov 2026</span></div>
+    <div class="sponsors">
+      <div class="sponsor"><a href="/"><img decoding="async" class="l-cs" src="/asmbly/img/cs-white.png" alt="CTRL+SHIFT" width="594" height="120" loading="lazy" /></a></div>
+      <div class="sponsor"><a href="https://www.demo-room.com/" target="_blank" rel="noopener"><img decoding="async" class="l-dr" src="/asmbly/img/demoroom-logo.png?v=3" alt="Demo Room" width="1000" height="129" loading="lazy" /></a></div>
+      <div class="sponsor"><a href="https://skyfinefoods.com/" target="_blank" rel="noopener"><img decoding="async" class="l-sff" src="/asmbly/img/sff-white.png" alt="Sky Fine Foods" width="428" height="64" loading="lazy" /></a></div>
+      <div class="sponsor"><img decoding="async" class="l-mc" src="/asmbly/img/p-machine-cinema.png" alt="Machine Cinema" width="536" height="132" loading="lazy" /></div>
+      <div class="sponsor"><img decoding="async" class="l-nl" src="/asmbly/img/p-new-limit.png" alt="New Limit Labs" width="480" height="148" loading="lazy" /></div>
+      <div class="sponsor"><img decoding="async" class="l-inv" src="/asmbly/img/p-invisible.png" alt="Invisible" width="580" height="112" loading="lazy" /></div>
+      <div class="sponsor"><img decoding="async" class="l-dh" src="/asmbly/img/p-dark-half.png" alt="Dark Half" width="324" height="196" loading="lazy" /></div>
+      <div class="sponsor"><img decoding="async" class="l-q" src="/asmbly/img/p-quiver.png" alt="Quiver" width="404" height="84" loading="lazy" /></div>
+      <div class="sponsor"><span class="sponsor__name">Flojo</span></div>
+      <div class="sponsor"><span class="sponsor__name">Adobe</span></div>
+      <div class="sponsor"><span class="sponsor__name">Wakewater</span></div>
     </div>
   </div>
 </section>
@@ -1217,7 +1244,7 @@
     '.manifesto__grid > div', '.sec__head', '.concept .display', '.concept__item', '.marquee--signal',
     '.row', '.tix', '.strobe__txt > *', '.card', '.lineup-note', '.venue__intro > *', '.venue__end > *',
     '.partner__art', '.partner > div:last-child > *', '.pillar', '.community__media', '.community > div:last-child > *',
-    '.stat', '.mosaic figure', '.signal__inner > *', '.build > div', '.build + div', '.foot > *'
+    '.stat', '.sponsor', '.mosaic figure', '.signal__inner > *', '.build > div', '.build + div', '.foot > *'
   ].join(', ');
   const toReveal = gsap.utils.toArray(revealTargets).filter(el => !el.closest('.hero'));
   gsap.set(toReveal, { y: 56, opacity: 0 });
