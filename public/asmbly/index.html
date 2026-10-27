@@ -289,6 +289,14 @@
   .row__title { font-family: var(--display); font-weight: 900; text-transform: uppercase; font-size: clamp(24px, 2.8vw, 42px); line-height: .9;  letter-spacing: -0.015em; }
   .row__title--light { font-family: var(--body); font-weight: 500; text-transform: none; font-size: 22px; }
   .row__desc { color: #c9c9c9; }
+  /* Partner presenting a slot: mono label + white logo, inverted to ink when the row flips pink on hover */
+  .row__by { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+  .row__by small { font-family: var(--mono); font-weight: 600; font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: var(--grey); }
+  .row__by img { width: auto; display: block; transition: filter .3s; }
+  .row__by .by-mc { height: 22px; }
+  .row__by .by-nl { height: 26px; }
+  .row:hover .row__by small { color: var(--ink); }
+  .row:hover .row__by img { filter: invert(1); }
   .row__dur { justify-self: end; font-family: var(--mono); font-weight: 600; font-size: 14px; letter-spacing: .15em; border: 1px solid var(--line-strong); padding: 6px 10px; white-space: nowrap; }
   .row--closer { background: var(--white); color: var(--bg); }
   .row--closer > * { color: var(--bg) !important; }
@@ -757,8 +765,8 @@
     </div>
     <div class="program">
       <div class="row"><span class="row__n">—</span><span class="row__kind">Before</span><span class="row__title row__title--light">Doors open</span><span class="row__desc">Browse the installations as guests arrive.</span><span></span></div>
-      <div class="row"><span class="row__n">01</span><span class="row__kind">Talk</span><span class="row__title">Talk 01: Sophie Hospes</span><span class="row__desc">The future of creative work: how new technology changes the way we make, see and think.</span><span class="row__dur">20 MIN</span></div>
-      <div class="row"><span class="row__n">02</span><span class="row__kind">Panel</span><span class="row__title">Panel: The future of entertainment</span><span class="row__desc">A panel on where entertainment goes when the tools change.</span><span></span></div>
+      <div class="row"><span class="row__n">01</span><span class="row__kind">Talk</span><span class="row__title">Talk 01: Sophie Hospes</span><span class="row__desc"><span class="row__by"><small>Presented with</small><img decoding="async" class="by-nl" src="/asmbly/img/p-new-limit.png" alt="New Limit Labs" width="480" height="148" loading="lazy" /></span>The future of creative work: how new technology changes the way we make, see and think.</span><span class="row__dur">20 MIN</span></div>
+      <div class="row"><span class="row__n">02</span><span class="row__kind">Panel</span><span class="row__title">Panel: The future of entertainment</span><span class="row__desc"><span class="row__by"><small>Presented with</small><img decoding="async" class="by-mc" src="/asmbly/img/p-machine-cinema.png" alt="Machine Cinema" width="536" height="132" loading="lazy" /></span>A panel on where entertainment goes when the tools change.</span><span></span></div>
       <div class="row row--break"><span class="row__n">—</span><span class="row__kind">Break</span><span class="row__title row__title--light">Break</span><span class="row__desc">Drinks and time with the installations.</span><span></span></div>
       <div class="row"><span class="row__n">03</span><span class="row__kind">Talk</span><span class="row__title">Talk 02: TBD</span><span class="row__desc">Modern entrepreneurship: building companies and careers with the new tools.</span><span class="row__dur">20 MIN</span></div>
       <div class="row"><span class="row__n">04</span><span class="row__kind">Talk</span><span class="row__title">Talk 03: TBD</span><span class="row__desc">Artist talk: an artist on their practice and the work in the room.</span><span class="row__dur">20 MIN</span></div>
