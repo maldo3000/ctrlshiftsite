@@ -159,8 +159,8 @@
   .partners__link:hover { opacity: .7; }
   .partners__link:focus-visible { outline: 1px solid currentColor; outline-offset: 6px; }
   .partners i { font-style: normal; font-family: var(--body); font-size: clamp(14px, 1.5vw, 26px); opacity: .55; line-height: 1; }
-  /* Partner lockup: logo heights are multiples of --u so the rows scale together (u = 8.6px at 1440) */
-  .lockup { --u: clamp(6px, .6vw, 12px); display: flex; flex-direction: column; align-items: center; gap: calc(var(--u) * 2.4); }
+  /* Partner lockup: logo heights are multiples of --u so the rows scale together (u = 9.5px at 1440) */
+  .lockup { --u: clamp(6.6px, .66vw, 13.2px); display: flex; flex-direction: column; align-items: center; gap: calc(var(--u) * 2.4); }
   .lockup__row, .lockup__group { display: flex; align-items: center; gap: calc(var(--u) * 1.25); }
   .lockup i { font-style: normal; font-family: var(--body); font-size: calc(var(--u) * 1.1); opacity: .55; line-height: 1; }
   .lockup img { width: auto; display: block; }
@@ -525,7 +525,7 @@
     .partners img.p-sff { height: 13px; }
       .partners i { font-size: 10px; }
     /* Lockup: presenting row splits into two lines (no joining ×), supporting row below */
-    .lockup { --u: 5px; gap: 12px; }
+    .lockup { --u: 5.5px; gap: 12px; }
     .lockup__row:first-child { flex-direction: column; gap: 12px; }
     .lockup__join { display: none; }
     .hero__inner { min-height: 90svh; }
