@@ -615,6 +615,24 @@
     .grain, .marquee__track, .orbit__spin, .orbit__node img, .orbit__pulse, .scroll-cue i { animation: none !important; }
   }
 </style>
+<!-- Meta pixel (CTRLSHIFTEVENTS dataset). Tickets sell on DICE, so the deepest event this page can send
+     is InitiateCheckout when someone clicks through to DICE; the tickets open in a new tab, so it fires
+     before they leave. -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1245389640322018');
+fbq('track', 'PageView');
+fbq('track', 'ViewContent', { content_name: 'ASMBLY', content_category: 'event' });
+document.addEventListener('click', (e) => {
+  const a = e.target.closest('a[href*="dice.fm/event/"]');
+  if (a) fbq('track', 'InitiateCheckout', { content_name: 'ASMBLY', currency: 'CAD' });
+});
+</script>
+<noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=1245389640322018&ev=PageView&noscript=1" /></noscript>
 </head>
 <body>
 <div class="grain" aria-hidden="true"></div>
