@@ -360,16 +360,20 @@
   .card__img::after { content: ""; position: absolute; inset: 0; background: repeating-linear-gradient(0deg, rgba(0,0,0,.4) 0 2px, transparent 2px 4px); mix-blend-mode: multiply; }
   .card__q { position: absolute; inset: 0; display: grid; place-items: center; font-family: var(--mono); font-weight: 600; font-size: clamp(80px, 10vw, 150px); color: rgba(242,242,242,.9); z-index: 2; transition: opacity .5s; }
   .card:hover .card__q { opacity: 0; }
-  .card--revealed .card__img img, .card--revealed:hover .card__img img { filter: none; transform: scale(1.02); }
+  .card--revealed .card__img img, .card--revealed:hover .card__img img { filter: none; transform: scale(1.02); transition: filter .45s ease, transform 1.2s ease; }
   .card--revealed:hover .card__img img { transform: scale(1.06); }
   .card--revealed .card__img::after { opacity: .35; }
   /* Revealed artists: the whole card opens their Instagram (the link stretches over the card) */
   .card--revealed { position: relative; cursor: pointer; }
   /* Decrypt on hover: a canvas over the portrait flicks through the artist's work as pixel tiles, then resolves back */
-  .card__decrypt { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; image-rendering: pixelated; opacity: 0; pointer-events: none; }
-  .card__decrypt.on { opacity: 1; }
-  .card__tag { position: absolute; top: 12px; left: 12px; z-index: 2; font-family: var(--mono); font-weight: 600; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; background: var(--signal); color: var(--ink); padding: 4px 7px; opacity: 0; pointer-events: none; }
-  .card__tag.on { opacity: 1; }
+  /* Bio overlay: on hover (or when centred on touch screens) the portrait drops to a signal-pink duotone and a short bio rises in */
+  .card--revealed .card__img::before { content: ""; position: absolute; inset: 0; z-index: 1; background: var(--signal); mix-blend-mode: multiply; opacity: 0; transition: opacity .45s ease; pointer-events: none; }
+  .card__bio { position: absolute; inset: 0; z-index: 2; display: flex; flex-direction: column; justify-content: flex-end; gap: 10px; padding: 22px 20px; color: var(--white); background: linear-gradient(to top, rgba(5,5,5,.88) 0%, rgba(5,5,5,.55) 45%, rgba(5,5,5,0) 75%); opacity: 0; transform: translateY(14px); transition: opacity .4s ease, transform .5s cubic-bezier(.2,.7,.2,1); pointer-events: none; }
+  .card__bio span { font-size: 11px; letter-spacing: .18em; color: var(--signal); }
+  .card__bio p { font-family: var(--body); font-weight: 500; font-size: 15px; line-height: 1.4; }
+  .card--revealed:is(:hover, :focus-within, .is-active) .card__img::before { opacity: .78; }
+  .card--revealed:is(:hover, :focus-within, .is-active) .card__img img { filter: grayscale(1) contrast(1.25) brightness(1.4); }
+  .card--revealed:is(:hover, :focus-within, .is-active) .card__bio { opacity: 1; transform: none; }
   .card__ig { display: inline-block; max-width: 100%; overflow-wrap: anywhere; margin-top: 8px; color: var(--white); text-transform: none; transition: color .25s; }
   .card__ig::after { content: ""; position: absolute; inset: 0; z-index: 3; }
   .card--revealed:hover .card__ig, .card__ig:focus-visible { color: var(--signal); }
@@ -378,7 +382,7 @@
   .card__role { margin-top: 10px; color: var(--grey); }
   .lineup-note { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; margin-top: 28px; }
   @media (max-width: 1000px) { .lineup { grid-template-columns: repeat(2, 1fr); } }
-  @media (max-width: 480px) { .card__name { font-size: 18px; } .card__body { padding: 14px; } .card__ig { font-size: 11px; letter-spacing: .04em; } }
+  @media (max-width: 480px) { .card__name { font-size: 18px; } .card__body { padding: 14px; } .card__ig { font-size: 11px; letter-spacing: .04em; } .card__bio { padding: 14px 12px; gap: 6px; } .card__bio p { font-size: 12px; line-height: 1.35; } .card__bio span { font-size: 9px; } }
 
   /* Venue horizontal scroll */
   .venue { overflow: hidden; }
@@ -851,19 +855,19 @@ document.addEventListener('click', (e) => {
       <span class="eyebrow">Decrypting soon</span>
     </div>
     <div class="lineup">
-      <article class="card card--revealed" data-decrypt="/asmbly/img/decrypt-sophie-hospes.webp"><div class="card__img"><img decoding="async" src="/asmbly/img/sophie-hospes-s.webp" alt="Sophie Hospes" loading="lazy" /></div><div class="card__body"><div class="card__name">Sophie Hospes</div><div class="card__role mono">Speaker · The future of creative work</div><a class="card__ig mono" href="https://www.instagram.com/studiosophiehospes/" target="_blank" rel="noopener" aria-label="Sophie Hospes on Instagram">@studiosophiehospes ↗</a></div></article>
-      <article class="card card--revealed" data-decrypt="/asmbly/img/decrypt-sehun-choi.webp"><div class="card__img"><img decoding="async" src="/asmbly/img/sehun-choi-s.webp" alt="Sehun Choi" loading="lazy" /></div><div class="card__body"><div class="card__name">Sehun Choi</div><div class="card__role mono">Speaker · Artist talk</div><a class="card__ig mono" href="https://www.instagram.com/se.hunchoi/" target="_blank" rel="noopener" aria-label="Sehun Choi: @se.hunchoi">@se.hunchoi ↗</a></div></article>
-      <article class="card card--revealed" data-decrypt="/asmbly/img/decrypt-wilfred-lee.webp"><div class="card__img"><img decoding="async" src="/asmbly/img/wilfred-lee-s.webp" alt="Wilfred Lee" loading="lazy" /></div><div class="card__body"><div class="card__name">Wilfred Lee</div><div class="card__role mono">Panelist · The future of entertainment</div><a class="card__ig mono" href="https://www.instagram.com/theartistsjourney/" target="_blank" rel="noopener" aria-label="Wilfred Lee on Instagram">@theartistsjourney ↗</a></div></article>
-      <article class="card card--revealed" data-decrypt="/asmbly/img/decrypt-andrew-macdonald.webp"><div class="card__img"><img decoding="async" src="/asmbly/img/andrew-macdonald-s.webp" alt="Andrew MacDonald" loading="lazy" /></div><div class="card__body"><div class="card__name">Andrew MacDonald</div><div class="card__role mono">Panelist · Dark Half</div><a class="card__ig mono" href="https://darkhalf.ai/" target="_blank" rel="noopener" aria-label="Andrew MacDonald: darkhalf.ai">darkhalf.ai ↗</a></div></article>
-      <article class="card card--revealed"><div class="card__img"><img decoding="async" src="/asmbly/img/robleh-jama-s.webp" alt="Robleh Jama" loading="lazy" /></div><div class="card__body"><div class="card__name">Robleh Jama</div><div class="card__role mono">Panelist · The Builder's Playbook</div></div></article>
-      <article class="card card--revealed"><div class="card__img"><img decoding="async" src="/asmbly/img/amir-mxt-s.webp" alt="Amir MXT" loading="lazy" /></div><div class="card__body"><div class="card__name">Amir MXT</div><div class="card__role mono">Panelist · The Builder's Playbook</div></div></article>
-      <article class="card card--revealed" data-decrypt="/asmbly/img/decrypt-ali-phi.webp"><div class="card__img"><img decoding="async" src="/asmbly/img/ali-phi-s.webp" alt="Ali Phi" loading="lazy" /></div><div class="card__body"><div class="card__name">Ali Phi</div><div class="card__role mono">Closing AV performance</div><a class="card__ig mono" href="https://www.instagram.com/ali_phi/" target="_blank" rel="noopener" aria-label="Ali Phi on Instagram">@ali_phi ↗</a></div></article>
-      <article class="card card--revealed" data-decrypt="/asmbly/img/decrypt-enna-kim.webp"><div class="card__img"><img decoding="async" src="/asmbly/img/enna-kim-s.webp" alt="Enna Kim" loading="lazy" /></div><div class="card__body"><div class="card__name">Enna Kim</div><div class="card__role mono">Exhibiting artist</div><a class="card__ig mono" href="https://www.instagram.com/fongkikid/" target="_blank" rel="noopener" aria-label="Enna Kim on Instagram">@fongkikid ↗</a></div></article>
-      <article class="card card--revealed" data-decrypt="/asmbly/img/decrypt-pursuit-grooves.webp"><div class="card__img"><img decoding="async" src="/asmbly/img/pursuit-grooves-s.webp" alt="Pursuit Grooves" loading="lazy" /></div><div class="card__body"><div class="card__name">Pursuit Grooves</div><div class="card__role mono">Opening performance</div></div></article>
-      <article class="card card--revealed" data-decrypt="/asmbly/img/decrypt-pfd.webp"><div class="card__img"><img decoding="async" src="/asmbly/img/pfd-s.webp" alt="Pray First Diva" loading="lazy" /></div><div class="card__body"><div class="card__name">Pray First Diva</div><div class="card__role mono">Exhibiting artist</div><a class="card__ig mono" href="https://www.instagram.com/prayfirstdiva/" target="_blank" rel="noopener" aria-label="Pray First Diva on Instagram">@prayfirstdiva ↗</a></div></article>
-      <article class="card card--revealed" data-decrypt="/asmbly/img/decrypt-alex-mcleod.webp"><div class="card__img"><img decoding="async" src="/asmbly/img/alex-mcleod-s.webp?v=2" alt="Alex McLeod" loading="lazy" /></div><div class="card__body"><div class="card__name">Alex McLeod</div><div class="card__role mono">Exhibiting artist</div><a class="card__ig mono" href="https://www.instagram.com/alex_mcleod_/" target="_blank" rel="noopener" aria-label="Alex McLeod on Instagram">@alex_mcleod_ ↗</a></div></article>
-      <article class="card card--revealed" data-decrypt="/asmbly/img/decrypt-geoffrey-pugen.webp"><div class="card__img"><img decoding="async" src="/asmbly/img/geoffrey-pugen-s.webp" alt="Geoffrey Pugen" loading="lazy" /></div><div class="card__body"><div class="card__name">Geoffrey Pugen</div><div class="card__role mono">Exhibiting artist</div><a class="card__ig mono" href="https://www.instagram.com/geoffreypugen/" target="_blank" rel="noopener" aria-label="Geoffrey Pugen on Instagram">@geoffreypugen ↗</a></div></article>
-      <article class="card card--revealed" data-decrypt="/asmbly/img/decrypt-robbot.webp"><div class="card__img"><img decoding="async" src="/asmbly/img/robbot-s.webp" alt="ROBBOT" loading="lazy" /></div><div class="card__body"><div class="card__name">ROBBOT</div><div class="card__role mono">Interactive installation</div><a class="card__ig mono" href="https://www.instagram.com/robbot.5000/" target="_blank" rel="noopener" aria-label="ROBBOT: @robbot.5000">@robbot.5000 ↗</a></div></article>
+      <article class="card card--revealed"><div class="card__img"><img decoding="async" src="/asmbly/img/sophie-hospes-s.webp" alt="Sophie Hospes" loading="lazy" /><div class="card__bio" aria-hidden="true"><span class="mono">About</span><p>Creative director based in Malmö. Through Studio Sophie Hospes and as Creative Director at New Limit Labs, she builds brand worlds across campaigns, product design and AI-powered creative systems.</p></div></div><div class="card__body"><div class="card__name">Sophie Hospes</div><div class="card__role mono">Speaker · The future of creative work</div><a class="card__ig mono" href="https://www.instagram.com/studiosophiehospes/" target="_blank" rel="noopener" aria-label="Sophie Hospes on Instagram">@studiosophiehospes ↗</a></div></article>
+      <article class="card card--revealed"><div class="card__img"><img decoding="async" src="/asmbly/img/sehun-choi-s.webp" alt="Sehun Choi" loading="lazy" /><div class="card__bio" aria-hidden="true"><span class="mono">About</span><p>Seoul-based artist working with generative AI across image, film and large-scale installation, with work for brands including OpenAI, Samsung and LG Electronics.</p></div></div><div class="card__body"><div class="card__name">Sehun Choi</div><div class="card__role mono">Speaker · Artist talk</div><a class="card__ig mono" href="https://www.instagram.com/se.hunchoi/" target="_blank" rel="noopener" aria-label="Sehun Choi: @se.hunchoi">@se.hunchoi ↗</a></div></article>
+      <article class="card card--revealed"><div class="card__img"><img decoding="async" src="/asmbly/img/wilfred-lee-s.webp" alt="Wilfred Lee" loading="lazy" /><div class="card__bio" aria-hidden="true"><span class="mono">About</span><p>Toronto AI filmmaker, worldbuilder and educator. Founder of Artist's Journey and GenTO, he brings storytelling, generative tools and community together into finished work.</p></div></div><div class="card__body"><div class="card__name">Wilfred Lee</div><div class="card__role mono">Panelist · The future of entertainment</div><a class="card__ig mono" href="https://www.instagram.com/theartistsjourney/" target="_blank" rel="noopener" aria-label="Wilfred Lee on Instagram">@theartistsjourney ↗</a></div></article>
+      <article class="card card--revealed"><div class="card__img"><img decoding="async" src="/asmbly/img/andrew-macdonald-s.webp" alt="Andrew MacDonald" loading="lazy" /><div class="card__bio" aria-hidden="true"><span class="mono">About</span><p>Filmmaker and creative-innovation leader at Cream Productions. As executive creative producer at Dark Half, he leads AI-enabled production and VFX workflows for film and television.</p></div></div><div class="card__body"><div class="card__name">Andrew MacDonald</div><div class="card__role mono">Panelist · Dark Half</div><a class="card__ig mono" href="https://darkhalf.ai/" target="_blank" rel="noopener" aria-label="Andrew MacDonald: darkhalf.ai">darkhalf.ai ↗</a></div></article>
+      <article class="card card--revealed"><div class="card__img"><img decoding="async" src="/asmbly/img/robleh-jama-s.webp" alt="Robleh Jama" loading="lazy" /><div class="card__bio" aria-hidden="true"><span class="mono">About</span><p>Toronto product builder and founder of Tomorrow. A Shopify alum, he co-founded Boom, the camera app for video calls, and founded the app studio Tiny Hearts.</p></div></div><div class="card__body"><div class="card__name">Robleh Jama</div><div class="card__role mono">Panelist · The Builder's Playbook</div><a class="card__ig mono" href="https://x.com/robjama" target="_blank" rel="noopener" aria-label="Robleh Jama: @robjama">@robjama ↗</a></div></article>
+      <article class="card card--revealed"><div class="card__img"><img decoding="async" src="/asmbly/img/amir-mxt-s.webp" alt="Amir MXT" loading="lazy" /><div class="card__bio" aria-hidden="true"><span class="mono">About</span><p>Founder of Humblytics, the simple analytics and A/B testing platform for websites. A product builder focused on shipping fast with small teams and new tools.</p></div></div><div class="card__body"><div class="card__name">Amir MXT</div><div class="card__role mono">Panelist · The Builder's Playbook</div><a class="card__ig mono" href="https://x.com/amirmxt" target="_blank" rel="noopener" aria-label="Amir MXT: @amirmxt">@amirmxt ↗</a></div></article>
+      <article class="card card--revealed"><div class="card__img"><img decoding="async" src="/asmbly/img/ali-phi-s.webp" alt="Ali Phi" loading="lazy" /><div class="card__bio" aria-hidden="true"><span class="mono">About</span><p>Tehran-born, Toronto-based computer artist and creative technologist. His live audiovisual sets fuse generative visuals, sound and data, with performances at MUTEK Montréal.</p></div></div><div class="card__body"><div class="card__name">Ali Phi</div><div class="card__role mono">Closing AV performance</div><a class="card__ig mono" href="https://www.instagram.com/ali_phi/" target="_blank" rel="noopener" aria-label="Ali Phi on Instagram">@ali_phi ↗</a></div></article>
+      <article class="card card--revealed"><div class="card__img"><img decoding="async" src="/asmbly/img/enna-kim-s.webp" alt="Enna Kim" loading="lazy" /><div class="card__bio" aria-hidden="true"><span class="mono">About</span><p>Korean-Canadian new media artist and VJ working with projection mapping, murals, interactive installation and live performance, from the AGO to MUTEK and Venus Fest.</p></div></div><div class="card__body"><div class="card__name">Enna Kim</div><div class="card__role mono">Exhibiting artist</div><a class="card__ig mono" href="https://www.instagram.com/fongkikid/" target="_blank" rel="noopener" aria-label="Enna Kim on Instagram">@fongkikid ↗</a></div></article>
+      <article class="card card--revealed"><div class="card__img"><img decoding="async" src="/asmbly/img/pursuit-grooves-s.webp" alt="Pursuit Grooves" loading="lazy" /><div class="card__bio" aria-hidden="true"><span class="mono">About</span><p>Toronto producer, vocalist and visual artist Vanese Smith. 16+ albums and EPs on labels like Tectonic and Deepblak, MUTEK stages, and a 2025 Johanna Metcalf Prize finalist.</p></div></div><div class="card__body"><div class="card__name">Pursuit Grooves</div><div class="card__role mono">Opening performance</div><a class="card__ig mono" href="https://www.instagram.com/pursuitgrooves/" target="_blank" rel="noopener" aria-label="Pursuit Grooves: @pursuitgrooves">@pursuitgrooves ↗</a></div></article>
+      <article class="card card--revealed"><div class="card__img"><img decoding="async" src="/asmbly/img/pfd-s.webp" alt="Pray First Diva" loading="lazy" /><div class="card__bio" aria-hidden="true"><span class="mono">About</span><p>Toronto digital artist working across visuals, technology and interaction, shown at Intel's Encore AI and InterAccess' flashDRIVE. At ASMBLY: a new interactive sculptural installation.</p></div></div><div class="card__body"><div class="card__name">Pray First Diva</div><div class="card__role mono">Exhibiting artist</div><a class="card__ig mono" href="https://www.instagram.com/prayfirstdiva/" target="_blank" rel="noopener" aria-label="Pray First Diva on Instagram">@prayfirstdiva ↗</a></div></article>
+      <article class="card card--revealed"><div class="card__img"><img decoding="async" src="/asmbly/img/alex-mcleod-s.webp?v=2" alt="Alex McLeod" loading="lazy" /><div class="card__bio" aria-hidden="true"><span class="mono">About</span><p>Toronto artist building digital worlds and playable spaces. At ASMBLY he brings Miros Mirror, a playable installation you can step up to and try for yourself.</p></div></div><div class="card__body"><div class="card__name">Alex McLeod</div><div class="card__role mono">Exhibiting artist</div><a class="card__ig mono" href="https://www.instagram.com/alex_mcleod_/" target="_blank" rel="noopener" aria-label="Alex McLeod on Instagram">@alex_mcleod_ ↗</a></div></article>
+      <article class="card card--revealed"><div class="card__img"><img decoding="async" src="/asmbly/img/geoffrey-pugen-s.webp" alt="Geoffrey Pugen" loading="lazy" /><div class="card__bio" aria-hidden="true"><span class="mono">About</span><p>Toronto video artist whose screen sculptures fold LED screens into architectural forms. A K.M. Hunter Award recipient with work in the BMO and TD collections.</p></div></div><div class="card__body"><div class="card__name">Geoffrey Pugen</div><div class="card__role mono">Exhibiting artist</div><a class="card__ig mono" href="https://www.instagram.com/geoffreypugen/" target="_blank" rel="noopener" aria-label="Geoffrey Pugen on Instagram">@geoffreypugen ↗</a></div></article>
+      <article class="card card--revealed"><div class="card__img"><img decoding="async" src="/asmbly/img/robbot-s.webp" alt="ROBBOT" loading="lazy" /><div class="card__bio" aria-hidden="true"><span class="mono">About</span><p>Toronto artist Robert Rigo, making interactive installations and live visuals. At ASMBLY, ROBBOT brings an interactive artwork to the exhibition floor.</p></div></div><div class="card__body"><div class="card__name">ROBBOT</div><div class="card__role mono">Interactive installation</div><a class="card__ig mono" href="https://www.instagram.com/robbot.5000/" target="_blank" rel="noopener" aria-label="ROBBOT: @robbot.5000">@robbot.5000 ↗</a></div></article>
       <article class="card"><div class="card__img"><img decoding="async" src="/asmbly/img/dr-curtain-s.webp" alt="" loading="lazy" /><span class="card__q">?</span></div><div class="card__body"><div class="card__name" data-scramble="PANELIST">PANELIST</div><div class="card__role mono">The future of entertainment</div></div></article>
       <article class="card"><div class="card__img"><img decoding="async" src="/asmbly/img/art-flower-s.webp" alt="" loading="lazy" /><span class="card__q">?</span></div><div class="card__body"><div class="card__name" data-scramble="PANELIST">PANELIST</div><div class="card__role mono">The future of entertainment</div></div></article>
       <article class="card"><div class="card__img"><img decoding="async" src="/asmbly/img/dr-dj-s.webp" alt="" loading="lazy" /><span class="card__q">?</span></div><div class="card__body"><div class="card__name" data-scramble="MODERATOR">MODERATOR</div><div class="card__role mono">Machine Cinema</div></div></article>
@@ -1195,117 +1199,11 @@ document.addEventListener('click', (e) => {
     }, 1400);
   }
 
-  /* Decrypt: revealed cards glitch through 8 pixel tiles of the artist's work (one sprite each) as
-     signal-pink duotones with slice shifts, then resolve the portrait from coarse pink to clean.
-     Cards without a sprite run just the portrait resolve. Hover on desktop; once on scroll-in for touch */
-  const decryptCards = [...document.querySelectorAll('.card--revealed')];
-  if (!reduce && decryptCards.length) {
-    const TILE_W = 240, TILE_H = 302, TILES = 8;
-    const sprites = {};
-    const loadSprite = src => !src ? Promise.resolve(null) : sprites[src] || (sprites[src] = new Promise(res => {
-      const im = new Image(); im.onload = () => res(im); im.onerror = () => res(null); im.src = src;
-    }));
-    const small = document.createElement('canvas');
-    const sctx = small.getContext('2d');
-    // Draw a source rect into a tiny buffer, then blow it up with smoothing off: crisp square pixels
-    const pixelate = (ctx, w, h, src, sx, sy, sw, sh, cols) => {
-      const rows = Math.max(1, Math.round(cols * h / w));
-      small.width = cols; small.height = rows;
-      sctx.drawImage(src, sx, sy, sw, sh, 0, 0, cols, rows);
-      ctx.imageSmoothingEnabled = false;
-      ctx.drawImage(small, 0, 0, cols, rows, 0, 0, w, h);
-    };
-    const SIGNAL = getComputedStyle(document.documentElement).getPropertyValue('--signal').trim() || '#fe2e89';
-    const rnd = (a, b) => a + Math.random() * (b - a);
-    // Grayscale tile to a two-tone in the site palette: ink-to-pink, or pink-to-white
-    const duotone = (ctx, w, h, variant) => {
-      ctx.globalCompositeOperation = variant ? 'screen' : 'multiply';
-      ctx.fillStyle = SIGNAL; ctx.fillRect(0, 0, w, h);
-      ctx.globalCompositeOperation = 'source-over';
-    };
-    const wash = (ctx, w, h, alpha) => {
-      ctx.globalCompositeOperation = 'color'; ctx.globalAlpha = alpha;
-      ctx.fillStyle = SIGNAL; ctx.fillRect(0, 0, w, h);
-      ctx.globalCompositeOperation = 'source-over'; ctx.globalAlpha = 1;
-    };
-    // Shove a few horizontal bands sideways and drop a pink scan bar
-    const glitch = (ctx, w, h, bands, amp) => {
-      for (let i = 0; i < bands; i++) {
-        const y = rnd(0, h), bh = Math.max(2, rnd(.01, .08) * h), dx = rnd(-amp, amp) * w;
-        ctx.drawImage(ctx.canvas, 0, y, w, bh, dx, y, w, bh);
-      }
-      if (Math.random() < .7) { ctx.fillStyle = SIGNAL; ctx.fillRect(0, rnd(0, h), w, Math.max(2, h * rnd(.006, .02))); }
-    };
-    const run = async card => {
-      if (card._decrypting) return;
-      const sprite = await loadSprite(card.dataset.decrypt);
-      const photo = card.querySelector('.card__img img');
-      if (!photo.complete) return;
-      card._decrypting = true;
-      const box = card.querySelector('.card__img');
-      let cv = box.querySelector('.card__decrypt'), tag = box.querySelector('.card__tag');
-      if (!cv) {
-        cv = document.createElement('canvas'); cv.className = 'card__decrypt'; cv.setAttribute('aria-hidden', 'true');
-        tag = document.createElement('span'); tag.className = 'card__tag'; tag.setAttribute('aria-hidden', 'true');
-        box.append(cv, tag);
-      }
-      const w = cv.width = Math.round(box.clientWidth * Math.min(devicePixelRatio, 2));
-      const h = cv.height = Math.round(box.clientHeight * Math.min(devicePixelRatio, 2));
-      const ctx = cv.getContext('2d');
-      // Portrait source rect matching object-fit: cover
-      const pr = photo.naturalWidth / photo.naturalHeight, br = w / h;
-      const pw = pr > br ? photo.naturalHeight * br : photo.naturalWidth;
-      const ph = pr > br ? photo.naturalHeight : photo.naturalWidth / br;
-      const px = (photo.naturalWidth - pw) / 2, py = (photo.naturalHeight - ph) / 2;
-      const tiles = sprite ? TILES : 0;
-      const order = [...Array(tiles).keys()].sort(() => Math.random() - .5);
-      const portrait = (cols, pink, bands) => () => {
-        pixelate(ctx, w, h, photo, px, py, pw, ph, cols);
-        if (pink) wash(ctx, w, h, pink);
-        if (bands) glitch(ctx, w, h, bands, .06);
-      };
-      const frames = [
-        ...order.map((i, n) => () => {
-          pixelate(ctx, w, h, sprite, i * TILE_W, 0, TILE_W, TILE_H, 10 + ((Math.random() * 3) | 0) * 2);
-          duotone(ctx, w, h, n % 2);
-          glitch(ctx, w, h, 3, .12);
-        }),
-        // Without work tiles, open on a hard pink scramble of the portrait itself
-        ...(tiles ? [] : [portrait(5, 1, 5), portrait(7, 1, 4), portrait(5, 1, 5), portrait(9, 1, 4), portrait(12, .9, 3)]),
-        portrait(8, .85, 3), portrait(16, .5, 2), portrait(32, .2, 1), portrait(64, 0, 0)
-      ];
-      cv.classList.add('on'); tag.classList.add('on');
-      let k = 0;
-      const tick = () => {
-        if (k < frames.length) {
-          frames[k]();
-          tag.textContent = k < tiles ? `Decrypting ${String(k + 1).padStart(2, '0')}/${tiles}` : k < frames.length - 1 ? 'Decrypting' : 'Decrypted';
-          k++; setTimeout(tick, k <= tiles ? 85 : 70);
-        } else {
-          cv.classList.remove('on'); tag.classList.remove('on'); card._decrypting = false;
-        }
-      };
-      tick();
-    };
-    const canHover = matchMedia('(hover: hover)').matches;
-    decryptCards.forEach(card => {
-      if (canHover) {
-        card.addEventListener('mouseenter', () => run(card));
-        card.addEventListener('focusin', () => run(card));
-      }
-    });
-    // Warm the sprite cache just before a card scrolls in; on touch, play once when it's mostly in view
-    const warm = new IntersectionObserver(entries => entries.forEach(({ target, isIntersecting }) => {
-      if (isIntersecting) { loadSprite(target.dataset.decrypt); warm.unobserve(target); }
-    }), { rootMargin: '0px 0px 300px 0px' });
-    decryptCards.forEach(c => warm.observe(c));
-    if (!canHover) {
-      const play = new IntersectionObserver(entries => entries.forEach(({ target, isIntersecting }) => {
-        // Wait for the card's fade-up to mostly finish before decrypting
-        if (isIntersecting) { setTimeout(() => run(target), 500); play.unobserve(target); }
-      }), { threshold: .6 });
-      decryptCards.forEach(c => play.observe(c));
-    }
+  /* Bio overlay on touch screens: no hover, so cards in the middle band of the viewport show their bio */
+  if (!matchMedia('(hover: hover)').matches) {
+    const bioIO = new IntersectionObserver(entries => entries.forEach(({ target, isIntersecting }) =>
+      target.classList.toggle('is-active', isIntersecting)), { rootMargin: '-38% 0px -38% 0px' });
+    document.querySelectorAll('.card--revealed').forEach(c => bioIO.observe(c));
   }
 
   /* Film player: loads the video only when opened, pauses the hero reel and page scroll while it plays */
