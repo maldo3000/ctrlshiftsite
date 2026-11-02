@@ -313,7 +313,8 @@
   .row--after .row__dur { background: var(--signal); color: var(--bg); border-color: var(--signal); }
   .row--after::before { background: var(--signal); }
   @media (max-width: 860px) {
-    .row { grid-template-columns: 32px minmax(0, 1fr); gap: 10px 12px; padding: 22px 10px; }
+    .row { grid-template-columns: 46px minmax(0, 1fr); gap: 10px 12px; padding: 22px 10px; }
+    .row__n { letter-spacing: .04em; }
     .row__dur { grid-column: 2; grid-row: 3; justify-self: start; }
     .row > span:empty { display: none; }
     .row__title { font-size: clamp(20px, 6vw, 28px); overflow-wrap: anywhere; }
@@ -784,17 +785,18 @@ document.addEventListener('click', (e) => {
   <div class="wrap">
     <div class="sec__head">
       <h2 class="display sec__title">Program</h2>
-      <span class="eyebrow">2 talks · 2 panels · 1 performance · exhibit</span>
+      <span class="eyebrow">Doors 6 PM · Talks 7 PM · Close 11 PM</span>
     </div>
     <div class="program">
-      <div class="row"><span class="row__n">—</span><span class="row__kind">Before</span><span class="row__title row__title--light">Doors open</span><span class="row__desc">Browse the installations as guests arrive.</span><span></span></div>
-      <div class="row"><span class="row__n">01</span><span class="row__kind">Talk</span><span class="row__title">Talk 01: Sophie Hospes</span><span class="row__desc"><span class="row__by"><small>Presented with</small><img decoding="async" class="by-nl" src="/asmbly/img/p-new-limit.png" alt="New Limit Labs" width="480" height="148" loading="lazy" /></span>The future of creative work: how new technology changes the way we make, see and think.</span><span class="row__dur">20 MIN</span></div>
-      <div class="row"><span class="row__n">02</span><span class="row__kind">Panel</span><span class="row__title">Panel: The future of entertainment</span><span class="row__desc"><span class="row__by"><small>Presented with</small><img decoding="async" class="by-mc" src="/asmbly/img/p-machine-cinema.png" alt="Machine Cinema" width="536" height="132" loading="lazy" /></span>A panel on where entertainment goes when the tools change.</span><span></span></div>
-      <div class="row row--break"><span class="row__n">—</span><span class="row__kind">Break</span><span class="row__title row__title--light">Break</span><span class="row__desc">Drinks and time with the installations.</span><span></span></div>
-      <div class="row"><span class="row__n">03</span><span class="row__kind">Panel</span><span class="row__title">Panel: The Builder's Playbook</span><span class="row__desc">Builders on differentiation, distribution and economics when anyone can ship. With Robleh Jama and Amir MXT.</span><span class="row__dur">35 MIN</span></div>
-      <div class="row"><span class="row__n">04</span><span class="row__kind">Talk</span><span class="row__title">Talk 02: Sehun Choi</span><span class="row__desc">Artist talk: Sehun on his practice across AI-generated images, films and installations.</span><span class="row__dur">20 MIN</span></div>
-      <div class="row row--closer"><span class="row__n">05</span><span class="row__kind">Closer</span><span class="row__title">AV performance</span><span class="row__desc">A live audiovisual set to close the program.</span><span class="row__dur">60 MIN</span></div>
-      <div class="row row--after"><span class="row__n">—</span><span class="row__kind">After</span><span class="row__title">Exhibit open</span><span class="row__desc">Music, open networking and installations into the night.</span><span class="row__dur">60 MIN</span></div>
+      <div class="row"><span class="row__n">6:00</span><span class="row__kind">Doors</span><span class="row__title row__title--light">Doors + opening performance</span><span class="row__desc">Enna Kim / fongkikid and Pursuit Grooves open the night as the installations come to life.</span><span class="row__dur">30 MIN</span></div>
+      <div class="row"><span class="row__n">6:35</span><span class="row__kind">Welcome</span><span class="row__title row__title--light">Welcome</span><span class="row__desc">Opening remarks from CTRL+SHIFT, Demo Room and the exhibition curators.</span><span class="row__dur">25 MIN</span></div>
+      <div class="row"><span class="row__n">7:00</span><span class="row__kind">Talk</span><span class="row__title">Talk 01: Sophie Hospes</span><span class="row__desc"><span class="row__by"><small>Presented with</small><img decoding="async" class="by-nl" src="/asmbly/img/p-new-limit.png" alt="New Limit Labs" width="480" height="148" loading="lazy" /></span>The Future of Brand Worlds and Creative Work: a visionary talk on the new rules of creativity.</span><span class="row__dur">20 MIN</span></div>
+      <div class="row"><span class="row__n">7:25</span><span class="row__kind">Panel</span><span class="row__title">Panel: The Builder's Playbook</span><span class="row__desc">The new rules of building products and companies in the agentic era. With Amir MXT and Robleh Jama, moderated by Josh Maldonado.</span><span class="row__dur">25 MIN</span></div>
+      <div class="row row--break"><span class="row__n">7:50</span><span class="row__kind">Break</span><span class="row__title row__title--light">Intermission</span><span class="row__desc">Drinks and time with the installations.</span><span class="row__dur">20 MIN</span></div>
+      <div class="row"><span class="row__n">8:10</span><span class="row__kind">Panel</span><span class="row__title">Panel: The Future of Entertainment</span><span class="row__desc"><span class="row__by"><small>Presented with</small><img decoding="async" class="by-mc" src="/asmbly/img/p-machine-cinema.png" alt="Machine Cinema" width="536" height="132" loading="lazy" /></span>Where entertainment goes when the tools change. With Wilfred Lee, Andrew MacDonald and more panelists to be announced.</span><span class="row__dur">30 MIN</span></div>
+      <div class="row"><span class="row__n">8:45</span><span class="row__kind">Talk</span><span class="row__title">Talk 02: Sehun Choi</span><span class="row__desc">Artist talk / international perspective: Sehun on his practice across AI-generated images, films and installations.</span><span class="row__dur">20 MIN</span></div>
+      <div class="row row--closer"><span class="row__n">9:10</span><span class="row__kind">Closer</span><span class="row__title">AV performance: Ali Phi</span><span class="row__desc">A live audiovisual set to close the program.</span><span class="row__dur">35 MIN</span></div>
+      <div class="row row--after"><span class="row__n">9:45</span><span class="row__kind">After</span><span class="row__title">Exhibit open</span><span class="row__desc">Exhibition and final conversations until 11 PM.</span><span class="row__dur">75 MIN</span></div>
     </div>
     <div class="tix">
       <div>
