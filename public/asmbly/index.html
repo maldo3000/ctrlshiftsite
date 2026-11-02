@@ -347,7 +347,7 @@
   /* Decrypt on hover: a canvas over the portrait flicks through the artist's work as pixel tiles, then resolves back */
   .card__decrypt { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; image-rendering: pixelated; opacity: 0; pointer-events: none; }
   .card__decrypt.on { opacity: 1; }
-  .card__tag { position: absolute; top: 12px; left: 12px; z-index: 2; font-family: var(--mono); font-weight: 600; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; background: var(--white); color: #050505; padding: 4px 7px; opacity: 0; pointer-events: none; }
+  .card__tag { position: absolute; top: 12px; left: 12px; z-index: 2; font-family: var(--mono); font-weight: 600; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; background: var(--signal); color: var(--ink); padding: 4px 7px; opacity: 0; pointer-events: none; }
   .card__tag.on { opacity: 1; }
   .card__ig { display: inline-block; max-width: 100%; overflow-wrap: anywhere; margin-top: 8px; color: var(--white); text-transform: none; transition: color .25s; }
   .card__ig::after { content: ""; position: absolute; inset: 0; z-index: 3; }
@@ -829,8 +829,8 @@ document.addEventListener('click', (e) => {
       <article class="card card--revealed" data-decrypt="/asmbly/img/decrypt-sehun-choi.webp"><div class="card__img"><img decoding="async" src="/asmbly/img/sehun-choi-s.webp" alt="Sehun Choi" loading="lazy" /></div><div class="card__body"><div class="card__name">Sehun Choi</div><div class="card__role mono">Speaker · Artist talk</div><a class="card__ig mono" href="https://www.instagram.com/se.hunchoi/" target="_blank" rel="noopener" aria-label="Sehun Choi: @se.hunchoi">@se.hunchoi ↗</a></div></article>
       <article class="card card--revealed" data-decrypt="/asmbly/img/decrypt-wilfred-lee.webp"><div class="card__img"><img decoding="async" src="/asmbly/img/wilfred-lee-s.webp" alt="Wilfred Lee" loading="lazy" /></div><div class="card__body"><div class="card__name">Wilfred Lee</div><div class="card__role mono">Panelist · The future of entertainment</div><a class="card__ig mono" href="https://www.instagram.com/theartistsjourney/" target="_blank" rel="noopener" aria-label="Wilfred Lee on Instagram">@theartistsjourney ↗</a></div></article>
       <article class="card card--revealed" data-decrypt="/asmbly/img/decrypt-andrew-macdonald.webp"><div class="card__img"><img decoding="async" src="/asmbly/img/andrew-macdonald-s.webp" alt="Andrew MacDonald" loading="lazy" /></div><div class="card__body"><div class="card__name">Andrew MacDonald</div><div class="card__role mono">Panelist · Dark Half</div><a class="card__ig mono" href="https://darkhalf.ai/" target="_blank" rel="noopener" aria-label="Andrew MacDonald: darkhalf.ai">darkhalf.ai ↗</a></div></article>
-      <article class="card"><div class="card__img"><img decoding="async" src="/asmbly/img/art-bust-s.webp" alt="" loading="lazy" /></div><div class="card__body"><div class="card__name">Robleh Jama</div><div class="card__role mono">Panelist · The Builder's Playbook</div></div></article>
-      <article class="card"><div class="card__img"><img decoding="async" src="/asmbly/img/art-hand-s.webp" alt="" loading="lazy" /></div><div class="card__body"><div class="card__name">Amir MXT</div><div class="card__role mono">Panelist · The Builder's Playbook</div></div></article>
+      <article class="card card--revealed"><div class="card__img"><img decoding="async" src="/asmbly/img/robleh-jama-s.webp" alt="Robleh Jama" loading="lazy" /></div><div class="card__body"><div class="card__name">Robleh Jama</div><div class="card__role mono">Panelist · The Builder's Playbook</div></div></article>
+      <article class="card card--revealed"><div class="card__img"><img decoding="async" src="/asmbly/img/amir-mxt-s.webp" alt="Amir MXT" loading="lazy" /></div><div class="card__body"><div class="card__name">Amir MXT</div><div class="card__role mono">Panelist · The Builder's Playbook</div></div></article>
       <article class="card card--revealed" data-decrypt="/asmbly/img/decrypt-ali-phi.webp"><div class="card__img"><img decoding="async" src="/asmbly/img/ali-phi-s.webp" alt="Ali Phi" loading="lazy" /></div><div class="card__body"><div class="card__name">Ali Phi</div><div class="card__role mono">Closing AV performance</div><a class="card__ig mono" href="https://www.instagram.com/ali_phi/" target="_blank" rel="noopener" aria-label="Ali Phi on Instagram">@ali_phi ↗</a></div></article>
       <article class="card card--revealed" data-decrypt="/asmbly/img/decrypt-enna-kim.webp"><div class="card__img"><img decoding="async" src="/asmbly/img/enna-kim-s.webp" alt="Enna Kim" loading="lazy" /></div><div class="card__body"><div class="card__name">Enna Kim</div><div class="card__role mono">Exhibiting artist</div><a class="card__ig mono" href="https://www.instagram.com/fongkikid/" target="_blank" rel="noopener" aria-label="Enna Kim on Instagram">@fongkikid ↗</a></div></article>
       <article class="card card--revealed" data-decrypt="/asmbly/img/decrypt-pursuit-grooves.webp"><div class="card__img"><img decoding="async" src="/asmbly/img/pursuit-grooves-s.webp" alt="Pursuit Grooves" loading="lazy" /></div><div class="card__body"><div class="card__name">Pursuit Grooves</div><div class="card__role mono">Opening performance</div></div></article>
@@ -1169,13 +1169,14 @@ document.addEventListener('click', (e) => {
     }, 1400);
   }
 
-  /* Decrypt: revealed cards flick through 8 pixel tiles of the artist's work (one sprite each),
-     then re-pixelate the portrait from coarse to sharp. Hover on desktop; once on scroll-in for touch */
-  const decryptCards = [...document.querySelectorAll('.card[data-decrypt]')];
+  /* Decrypt: revealed cards glitch through 8 pixel tiles of the artist's work (one sprite each) as
+     signal-pink duotones with slice shifts, then resolve the portrait from coarse pink to clean.
+     Cards without a sprite run just the portrait resolve. Hover on desktop; once on scroll-in for touch */
+  const decryptCards = [...document.querySelectorAll('.card--revealed')];
   if (!reduce && decryptCards.length) {
     const TILE_W = 240, TILE_H = 302, TILES = 8;
     const sprites = {};
-    const loadSprite = src => sprites[src] || (sprites[src] = new Promise(res => {
+    const loadSprite = src => !src ? Promise.resolve(null) : sprites[src] || (sprites[src] = new Promise(res => {
       const im = new Image(); im.onload = () => res(im); im.onerror = () => res(null); im.src = src;
     }));
     const small = document.createElement('canvas');
@@ -1188,11 +1189,32 @@ document.addEventListener('click', (e) => {
       ctx.imageSmoothingEnabled = false;
       ctx.drawImage(small, 0, 0, cols, rows, 0, 0, w, h);
     };
+    const SIGNAL = getComputedStyle(document.documentElement).getPropertyValue('--signal').trim() || '#fe2e89';
+    const rnd = (a, b) => a + Math.random() * (b - a);
+    // Grayscale tile to a two-tone in the site palette: ink-to-pink, or pink-to-white
+    const duotone = (ctx, w, h, variant) => {
+      ctx.globalCompositeOperation = variant ? 'screen' : 'multiply';
+      ctx.fillStyle = SIGNAL; ctx.fillRect(0, 0, w, h);
+      ctx.globalCompositeOperation = 'source-over';
+    };
+    const wash = (ctx, w, h, alpha) => {
+      ctx.globalCompositeOperation = 'color'; ctx.globalAlpha = alpha;
+      ctx.fillStyle = SIGNAL; ctx.fillRect(0, 0, w, h);
+      ctx.globalCompositeOperation = 'source-over'; ctx.globalAlpha = 1;
+    };
+    // Shove a few horizontal bands sideways and drop a pink scan bar
+    const glitch = (ctx, w, h, bands, amp) => {
+      for (let i = 0; i < bands; i++) {
+        const y = rnd(0, h), bh = Math.max(2, rnd(.01, .08) * h), dx = rnd(-amp, amp) * w;
+        ctx.drawImage(ctx.canvas, 0, y, w, bh, dx, y, w, bh);
+      }
+      if (Math.random() < .7) { ctx.fillStyle = SIGNAL; ctx.fillRect(0, rnd(0, h), w, Math.max(2, h * rnd(.006, .02))); }
+    };
     const run = async card => {
       if (card._decrypting) return;
       const sprite = await loadSprite(card.dataset.decrypt);
       const photo = card.querySelector('.card__img img');
-      if (!sprite || !photo.complete) return;
+      if (!photo.complete) return;
       card._decrypting = true;
       const box = card.querySelector('.card__img');
       let cv = box.querySelector('.card__decrypt'), tag = box.querySelector('.card__tag');
@@ -1209,18 +1231,30 @@ document.addEventListener('click', (e) => {
       const pw = pr > br ? photo.naturalHeight * br : photo.naturalWidth;
       const ph = pr > br ? photo.naturalHeight : photo.naturalWidth / br;
       const px = (photo.naturalWidth - pw) / 2, py = (photo.naturalHeight - ph) / 2;
-      const order = [...Array(TILES).keys()].sort(() => Math.random() - .5);
+      const tiles = sprite ? TILES : 0;
+      const order = [...Array(tiles).keys()].sort(() => Math.random() - .5);
+      const portrait = (cols, pink, bands) => () => {
+        pixelate(ctx, w, h, photo, px, py, pw, ph, cols);
+        if (pink) wash(ctx, w, h, pink);
+        if (bands) glitch(ctx, w, h, bands, .06);
+      };
       const frames = [
-        ...order.map(i => () => pixelate(ctx, w, h, sprite, i * TILE_W, 0, TILE_W, TILE_H, 10 + ((Math.random() * 3) | 0) * 2)),
-        ...[8, 16, 32, 64].map(cols => () => pixelate(ctx, w, h, photo, px, py, pw, ph, cols))
+        ...order.map((i, n) => () => {
+          pixelate(ctx, w, h, sprite, i * TILE_W, 0, TILE_W, TILE_H, 10 + ((Math.random() * 3) | 0) * 2);
+          duotone(ctx, w, h, n % 2);
+          glitch(ctx, w, h, 3, .12);
+        }),
+        // Without work tiles, open on a hard pink scramble of the portrait itself
+        ...(tiles ? [] : [portrait(5, 1, 5), portrait(7, 1, 4), portrait(5, 1, 5), portrait(9, 1, 4), portrait(12, .9, 3)]),
+        portrait(8, .85, 3), portrait(16, .5, 2), portrait(32, .2, 1), portrait(64, 0, 0)
       ];
       cv.classList.add('on'); tag.classList.add('on');
       let k = 0;
       const tick = () => {
         if (k < frames.length) {
           frames[k]();
-          tag.textContent = k < TILES ? `Decrypting ${String(k + 1).padStart(2, '0')}/${TILES}` : 'Decrypted';
-          k++; setTimeout(tick, k <= TILES ? 85 : 70);
+          tag.textContent = k < tiles ? `Decrypting ${String(k + 1).padStart(2, '0')}/${tiles}` : k < frames.length - 1 ? 'Decrypting' : 'Decrypted';
+          k++; setTimeout(tick, k <= tiles ? 85 : 70);
         } else {
           cv.classList.remove('on'); tag.classList.remove('on'); card._decrypting = false;
         }
