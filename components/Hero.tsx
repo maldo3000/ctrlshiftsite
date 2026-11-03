@@ -125,7 +125,7 @@ const Hero: React.FC = () => {
                rel="noopener noreferrer"
                className="inline-flex w-full sm:w-auto items-center justify-center px-8 py-4 text-lg font-syne font-bold text-white transition-all duration-300 ease-out bg-purple-600 rounded-full shadow-[0_0_15px_rgba(147,51,234,0.3)] hover:bg-purple-500 hover:scale-105 hover:shadow-[0_0_25px_rgba(147,51,234,0.5)] gap-2 group"
              >
-                Upcoming Events
+                Community Calendar
                 <ArrowUpRight className="w-5 h-5 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform duration-300" />
              </a>
           </motion.div>

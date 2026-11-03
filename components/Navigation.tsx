@@ -101,7 +101,7 @@ const Navigation: React.FC = () => {
             rel="noopener noreferrer"
             className="hidden lg:flex items-center gap-1 text-purple-400 hover:text-white transition-colors"
           >
-            Upcoming Events <ArrowUpRight size={14} />
+            Community Calendar <ArrowUpRight size={14} />
           </a>
 
           <a href="/volunteer" className="text-purple-300 hover:text-white transition-colors">
@@ -133,7 +133,7 @@ const Navigation: React.FC = () => {
               rel="noopener noreferrer"
               className="mt-2 w-full rounded-lg bg-purple-600 px-4 py-3 text-base font-semibold text-white flex items-center justify-center gap-2"
             >
-              Upcoming Events <ArrowUpRight size={16} />
+              Community Calendar <ArrowUpRight size={16} />
             </a>
             <a
               href="/asmbly"
