@@ -61,16 +61,30 @@ const CtrlshiftCon: React.FC = () => {
                 </motion.p>
             </div>
 
-            <motion.a
-                href="/asmbly"
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.2 }}
-                className="inline-flex shrink-0 items-center gap-2 px-8 py-4 text-lg font-syne font-bold bg-white text-black rounded-full transition-all duration-300 ease-out hover:bg-zinc-200 hover:scale-105 group"
-            >
-                Explore ASMBLY
-                <ArrowUpRight className="w-5 h-5 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform duration-300" />
-            </motion.a>
+            <div className="flex flex-wrap shrink-0 items-center gap-3">
+                <motion.a
+                    href="https://dice.fm/event/2wng77-asmbly-a-gathering-for-new-ideas-tech-and-art-19th-nov-demo-room-toronto-tickets"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    initial={{ opacity: 0, x: 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.2 }}
+                    className="inline-flex shrink-0 items-center gap-2 px-8 py-4 text-lg font-syne font-bold bg-[#fe2e89] text-black rounded-full shadow-[0_0_40px_rgba(254,46,137,0.35)] transition-all duration-300 ease-out hover:bg-white hover:scale-105 group"
+                >
+                    Get tickets
+                    <ArrowUpRight className="w-5 h-5 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform duration-300" />
+                </motion.a>
+                <motion.a
+                    href="/asmbly"
+                    initial={{ opacity: 0, x: 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.25 }}
+                    className="inline-flex shrink-0 items-center gap-2 px-8 py-4 text-lg font-syne font-bold bg-white text-black rounded-full transition-all duration-300 ease-out hover:bg-zinc-200 hover:scale-105 group"
+                >
+                    Explore ASMBLY
+                    <ArrowUpRight className="w-5 h-5 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform duration-300" />
+                </motion.a>
+            </div>
         </div>
 
         <div className="grid grid-cols-2 lg:grid-cols-3 lg:grid-rows-2 gap-4">

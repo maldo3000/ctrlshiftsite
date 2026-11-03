@@ -178,7 +178,9 @@
   .hero__center { display: flex; flex-direction: column; }
   .hero__center .asmbly-wrap { margin-top: 0; }
   .hero__center .lockup { margin-top: clamp(28px, 3vw, 56px); }
-  .hero__center .film-btn { align-self: flex-start; margin-top: clamp(24px, 2.4vw, 46px); }
+  /* Hero actions: the ticket button is the primary call to action, the teaser sits beside it */
+  .hero__actions { display: flex; align-items: center; flex-wrap: wrap; gap: clamp(20px, 2.4vw, 40px); margin-top: clamp(18px, 1.8vw, 36px); }
+  .btn.hero__tix { font-size: clamp(15px, 1.15vw, 19px); font-weight: 500; padding: clamp(18px, 1.5vw, 24px) clamp(28px, 2.4vw, 42px); box-shadow: 0 0 44px rgba(var(--signal-rgb), .45); }
   @media (min-width: 761px) { .hero__center .hero__kind { margin-top: clamp(20px, 2vw, 40px); } }
   @media (min-width: 1100px) { .hero__center { padding-top: clamp(24px, 4vh, 70px); padding-bottom: 20px; } }
   .asmbly-wrap { position: relative; margin-top: clamp(22px, 3vw, 52px); }
@@ -539,7 +541,7 @@
   .film video { width: min(92vw, calc(84vh * 4 / 3)); aspect-ratio: 4 / 3; background: #000; }
   .film__close { position: absolute; top: 18px; right: 18px; font-family: var(--body); font-weight: 500; font-size: 14px; letter-spacing: .1em; text-transform: uppercase; color: var(--white); background: none; border: 1px solid var(--line-strong); padding: 10px 14px; cursor: pointer; }
   .film__close:hover { border-color: var(--white); }
-  @media (max-width: 760px) { .hero__center .film-btn { margin-top: 32px; } .film-btn__icon { width: 44px; height: 44px; } .film-btn { font-size: 12px; } }
+  @media (max-width: 760px) { .hero__actions { flex-direction: column; align-items: stretch; gap: 22px; margin-top: 30px; } .btn.hero__tix { justify-content: center; font-size: 16px; padding: 18px 24px; } .hero__actions .film-btn { align-self: flex-start; } .film-btn__icon { width: 44px; height: 44px; } .film-btn { font-size: 12px; } }
 
   /* Hero ticket CTA */
   .btn--xl { font-size: 14px; padding: 16px 24px; font-weight: 500; box-shadow: 0 0 44px rgba(var(--signal-rgb), .35); }
@@ -725,10 +727,13 @@ document.addEventListener('click', (e) => {
           <img decoding="async" class="l-q" src="/asmbly/img/p-quiver.png" alt="Quiver" width="404" height="84" />
         </div>
       </div>
-      <button class="film-btn" type="button" id="filmOpen" aria-haspopup="dialog">
-        <span class="film-btn__icon" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M2 1l13 7-13 7z"/></svg></span>
-        <span>Watch teaser <small>0:35</small></span>
-      </button>
+      <div class="hero__actions">
+        <a class="btn btn--signal hero__tix" href="https://dice.fm/event/2wng77-asmbly-a-gathering-for-new-ideas-tech-and-art-19th-nov-demo-room-toronto-tickets" target="_blank" rel="noopener">Get tickets <span class="arr">→</span></a>
+        <button class="film-btn" type="button" id="filmOpen" aria-haspopup="dialog">
+          <span class="film-btn__icon" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M2 1l13 7-13 7z"/></svg></span>
+          <span>Watch teaser <small>0:35</small></span>
+        </button>
+      </div>
     </div>
     <div class="hero__bottom">
       <span class="bit">Talks &nbsp;·&nbsp; Art &nbsp;·&nbsp; Performance</span>
@@ -1308,7 +1313,7 @@ document.addEventListener('click', (e) => {
 
   /* Hero intro */
   gsap.from('.hero__kind', { y: 20, opacity: 0, duration: .9, ease: 'power3.out', delay: .5 });
-  gsap.from('.film-btn', { y: 20, opacity: 0, duration: .9, ease: 'power3.out', delay: .6 });
+  gsap.from('.hero__actions > *', { y: 20, opacity: 0, duration: .9, stagger: .08, ease: 'power3.out', delay: .6 });
   gsap.from('.hero__top > *, .hero__bottom > *', { y: 24, opacity: 0, duration: 0.9, stagger: 0.08, ease: 'power3.out', delay: 0.6 });
 
   /* Manifesto word-by-word light-up */
