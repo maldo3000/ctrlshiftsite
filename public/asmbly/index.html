@@ -374,9 +374,18 @@
   .card__bio { position: absolute; inset: 0; z-index: 2; display: flex; flex-direction: column; justify-content: flex-end; gap: 10px; padding: 22px 20px; color: var(--white); background: linear-gradient(to top, rgba(5,5,5,.88) 0%, rgba(5,5,5,.55) 45%, rgba(5,5,5,0) 75%); opacity: 0; transform: translateY(14px); transition: opacity .4s ease, transform .5s cubic-bezier(.2,.7,.2,1); pointer-events: none; }
   .card__bio span { font-size: 11px; letter-spacing: .18em; color: var(--signal); }
   .card__bio p { font-family: var(--body); font-weight: 500; font-size: 15px; line-height: 1.4; }
-  .card--revealed:is(:hover, :focus-within, .is-active) .card__img::before { opacity: .78; }
-  .card--revealed:is(:hover, :focus-within, .is-active) .card__img img { filter: grayscale(1) contrast(1.25) brightness(1.4); }
-  .card--revealed:is(:hover, :focus-within, .is-active) .card__bio { opacity: 1; transform: none; }
+  .card--revealed:is(.is-active, :has(:focus-visible)) .card__img::before { opacity: .78; }
+  .card--revealed:is(.is-active, :has(:focus-visible)) .card__img img { filter: grayscale(1) contrast(1.25) brightness(1.4); }
+  .card--revealed:is(.is-active, :has(:focus-visible)) .card__bio { opacity: 1; transform: none; }
+  @media (hover: hover) {
+    .card--revealed:hover .card__img::before { opacity: .78; }
+    .card--revealed:hover .card__img img { filter: grayscale(1) contrast(1.25) brightness(1.4); }
+    .card--revealed:hover .card__bio { opacity: 1; transform: none; }
+  }
+  /* Touch: a corner badge says the card opens; tap shows the bio, the handle below opens their page */
+  .card__tap { position: absolute; top: 10px; right: 10px; z-index: 4; width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; background: rgba(5,5,5,.6); border: 1px solid rgba(242,242,242,.35); color: var(--white); font: 500 18px/1 var(--body); transition: transform .35s ease, background .35s ease, color .35s ease; pointer-events: none; }
+  @media (hover: none) { .card__ig::after { display: none; } }
+  .card--revealed.is-active .card__tap { transform: rotate(45deg); background: var(--white); color: #050505; }
   .card__ig { display: inline-block; max-width: 100%; overflow-wrap: anywhere; margin-top: 8px; color: var(--white); text-transform: none; transition: color .25s; }
   .card__ig::after { content: ""; position: absolute; inset: 0; z-index: 3; }
   .card--revealed:hover .card__ig, .card__ig:focus-visible { color: var(--signal); }
@@ -1208,11 +1217,22 @@ document.addEventListener('click', (e) => {
     }, 1400);
   }
 
-  /* Bio overlay on touch screens: no hover, so cards in the middle band of the viewport show their bio */
+  /* Bio overlay on touch screens: tap a portrait to show the bio, tap again (or elsewhere) to close; the handle link opens their page */
   if (!matchMedia('(hover: hover)').matches) {
-    const bioIO = new IntersectionObserver(entries => entries.forEach(({ target, isIntersecting }) =>
-      target.classList.toggle('is-active', isIntersecting)), { rootMargin: '-38% 0px -38% 0px' });
-    document.querySelectorAll('.card--revealed').forEach(c => bioIO.observe(c));
+    const bioCards = [...document.querySelectorAll('.card--revealed')];
+    bioCards.forEach(card => {
+      card.querySelector('.card__img').insertAdjacentHTML('beforeend', '<span class="card__tap" aria-hidden="true">+</span>');
+      card.addEventListener('click', e => {
+        if (e.target.closest('.card__ig')) return;
+        e.preventDefault();
+        const open = !card.classList.contains('is-active');
+        bioCards.forEach(c => c.classList.remove('is-active'));
+        card.classList.toggle('is-active', open);
+      });
+    });
+    document.addEventListener('click', e => {
+      if (!e.target.closest('.card--revealed')) bioCards.forEach(c => c.classList.remove('is-active'));
+    });
   }
 
   /* Film player: loads the video only when opened, pauses the hero reel and page scroll while it plays */
