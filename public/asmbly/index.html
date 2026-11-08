@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>ASMBLY | A gathering for new ideas, technology, and art · 19 Nov 2026, Toronto</title>
-<meta name="description" content="ASMBLY by CTRL+SHIFT, Demo Room and Sky Fine Foods. Talks, art and performance: a night of conversation, interactive installations, a live AV set and the exhibit open into the night. 19 November 2026 at Demo Room, Toronto." />
+<meta name="description" content="ASMBLY by CTRL+SHIFT, Demo Room and Sky Fine Foods. Talks, art and performance: a night of conversation, interactive installations, a live AV set and the exhibit open into the night. 19 November 2026 at Demo Room, Toronto. Doors 5 PM, performances 6 PM, close midnight." />
 <link rel="canonical" href="https://www.ctrlshift.community/asmbly" />
 <meta property="og:title" content="ASMBLY · A gathering for new ideas, technology, and art · 19.11.2026 · Toronto" />
 <meta property="og:description" content="A gathering for new ideas, technology, and art by CTRL+SHIFT and Demo Room. Talks, art and performance, with art curated by Sky Fine Foods. Demo Room, 307 Lake Shore Blvd E, Toronto." />
@@ -704,7 +704,7 @@ document.addEventListener('click', (e) => {
   <div class="hero__wash" aria-hidden="true"></div>
   <div class="hero__inner">
     <div class="hero__top">
-      <span class="bit">19 Nov 2026</span>
+      <span class="bit">19 Nov 2026 · Doors 5 PM · Performances 6 PM · Midnight close</span>
       <span class="bit">Toronto</span>
     </div>
     <div class="hero__center">
@@ -827,11 +827,12 @@ document.addEventListener('click', (e) => {
   <div class="wrap">
     <div class="sec__head">
       <h2 class="display sec__title">Program</h2>
-      <span class="eyebrow">Doors 6 PM · Talks 7 PM · Close 11 PM</span>
+      <span class="eyebrow">Doors 5 PM · Performances 6 PM · Talks 7 PM · Close midnight</span>
     </div>
     <div class="program">
-      <div class="prog-head"><i>01</i><b>Doors</b><span>6:00–6:35 PM</span></div>
-      <div class="row"><span class="row__n"><b>6:00</b><small>6:30</small></span><span class="row__kind">Doors</span><span class="row__title row__title--light">Doors + opening performance</span><span class="row__desc">The room opens with a live audiovisual set as the installations come to life.<span class="row__who"><em>Performance</em><span>fongkikid + Pursuit Grooves</span></span></span><span class="row__dur">30 MIN</span></div>
+      <div class="prog-head"><i>01</i><b>Doors &amp; opening</b><span>5:00–6:35 PM</span></div>
+      <div class="row"><span class="row__n"><b>5:00</b><small>6:00</small></span><span class="row__kind">Doors</span><span class="row__title row__title--light">Doors open</span><span class="row__desc">Arrive early to explore the installations and meet the people in the room.</span><span class="row__dur">60 MIN</span></div>
+      <div class="row"><span class="row__n"><b>6:00</b><small>6:30</small></span><span class="row__kind">Performance</span><span class="row__title row__title--light">Opening performance</span><span class="row__desc">A live audiovisual set brings the room to life.<span class="row__who"><em>Performance</em><span>fongkikid + Pursuit Grooves</span></span></span><span class="row__dur">30 MIN</span></div>
       <div class="prog-head"><i>02</i><b>Welcome</b><span>6:35–7:00 PM</span></div>
       <div class="row"><span class="row__n"><b>6:35</b><small>7:00</small></span><span class="row__kind">Welcome</span><span class="row__title row__title--light">Welcome</span><span class="row__desc">Opening remarks from CTRL+SHIFT, Demo Room and the exhibition curators.<span class="row__who"><em>Hosts</em><span>CTRL+SHIFT · Demo Room · Sky Fine Foods</span></span></span><span class="row__dur">25 MIN</span></div>
       <div class="prog-head"><i>03</i><b>Talks: Part one</b><span>7:00–8:10 PM</span></div>
@@ -843,7 +844,7 @@ document.addEventListener('click', (e) => {
       <div class="row"><span class="row__n"><b>8:45</b><small>9:05</small></span><span class="row__kind">Talk</span><span class="row__title">Talk 02: Sehun Choi</span><span class="row__desc">International artist talk on his practice across generative image, film and large-scale installation, including work for brands like OpenAI, Samsung and LG Electronics.<span class="row__who"><em>Speaker</em><span>Sehun Choi · Seoul</span></span></span><span class="row__dur">20 MIN</span></div>
       <div class="prog-head"><i>05</i><b>Close</b><span>9:10–11:00 PM</span></div>
       <div class="row row--closer"><span class="row__n"><b>9:10</b><small>9:45</small></span><span class="row__kind">Closer</span><span class="row__title">AV performance: Ali Phi</span><span class="row__desc">A live audiovisual performance, real-time sound and visuals, to close the program.<span class="row__who"><em>Performance</em><span>Ali Phi</span></span></span><span class="row__dur">35 MIN</span></div>
-      <div class="row row--after"><span class="row__n"><b>9:45</b><small>11:00</small></span><span class="row__kind">After</span><span class="row__title">Exhibit open</span><span class="row__desc">Exhibition, music and final conversations until 11 PM.</span><span class="row__dur">75 MIN</span></div>
+      <div class="row row--after"><span class="row__n"><b>9:45</b><small>12:00 AM</small></span><span class="row__kind">After</span><span class="row__title">Exhibit open</span><span class="row__desc">Exhibition, music and final conversations until midnight.</span><span class="row__dur">135 MIN</span></div>
     </div>
     <div class="tix">
       <div>
@@ -1092,7 +1093,7 @@ document.addEventListener('click', (e) => {
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* Countdown to doors, 19 Nov 2026 (Toronto, EST) */
-  const target = new Date('2026-11-19T18:00:00-05:00').getTime();
+  const target = new Date('2026-11-19T17:00:00-05:00').getTime();
   const cd = document.getElementById('countdown');
   const pad = n => String(n).padStart(2, '0');
   const tick = () => {
