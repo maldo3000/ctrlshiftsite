@@ -453,17 +453,25 @@
   /* Presenters & sponsors: every partner logo in a ruled grid; a short last row stays centered */
   .sponsors { --u: clamp(10px, 1.3vw, 20px); display: flex; flex-wrap: wrap; justify-content: center; padding: 0 1px 1px 0; }
   .sponsor { flex: 0 0 calc(100% / 7); height: clamp(120px, 12vw, 200px); display: flex; align-items: center; justify-content: center; padding: 20px; border: 1px solid var(--line); margin: 0 -1px -1px 0; }
-  .sponsor img { width: auto; max-width: 100%; display: block; }
+  .sponsor img { width: auto; max-width: 100%; display: block; object-fit: contain; }
   .sponsor .l-adobe { height: calc(var(--u) * 1.7); }
   .sponsor .l-ww { height: calc(var(--u) * 1.3); }
   .sponsor .l-flojo { height: calc(var(--u) * 1.9); }
   .sponsor .l-kz { height: calc(var(--u) * 1.75); }
   .sponsor .l-fo { height: calc(var(--u) * 3.3); }
-  .sponsor a { display: flex; transition: opacity .25s; }
-  .sponsor a:hover { opacity: .7; }
+  .sponsor a { display: flex; max-width: 100%; }
+  .sponsor { position: relative; overflow: hidden; }
+  .sponsor > a, .sponsor > img { transition: opacity .35s ease, transform .5s ease; }
+  /* Who they are: on hover (or tap on touch screens) the logo steps back and a short line rises in */
+  .sponsor__info { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; gap: 6px; padding: 14px 16px; background: linear-gradient(160deg, rgba(254,46,137,.24), rgba(5,5,5,.94) 70%); color: var(--white); font-family: var(--body); font-weight: 500; font-size: 13px; line-height: 1.35; opacity: 0; transform: translateY(8px); transition: opacity .3s ease, transform .4s cubic-bezier(.2,.7,.2,1); pointer-events: none; }
+  .sponsor__info b { font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--signal); font-weight: 600; }
+  .sponsor.is-active .sponsor__info { opacity: 1; transform: none; }
+  .sponsor.is-active > a, .sponsor.is-active > img { opacity: .08; transform: scale(.94); }
+  @media (hover: hover) { .sponsor:hover .sponsor__info, .sponsor:focus-within .sponsor__info { opacity: 1; transform: none; } .sponsor:hover > a, .sponsor:hover > img, .sponsor:focus-within > a { opacity: .08; transform: scale(.94); } }
+  @media (min-width: 1024px) and (max-width: 1279px) { .sponsor__info { font-size: 11.5px; padding: 10px 12px; gap: 4px; } .sponsor__info b { font-size: 9px; } }
   @media (max-width: 1199px) { .sponsors { --u: clamp(9px, 1.15vw, 13px); } }
-  @media (max-width: 899px) { .sponsor { flex-basis: 50%; } }
-  @media (max-width: 760px) { .sponsors { --u: 8.5px; } .sponsor { flex-basis: 50%; height: 104px; padding: 14px; } }
+  @media (max-width: 1023px) { .sponsor { flex-basis: 50%; } }
+  @media (max-width: 760px) { .sponsors { --u: 8.5px; } .sponsor { flex-basis: 50%; height: 120px; padding: 14px; } .sponsor__info { font-size: 11.5px; padding: 10px 12px; gap: 4px; } .sponsor__info b { font-size: 9px; } }
 
   /* Pillars */
   .pillars { display: grid; grid-template-columns: repeat(4, 1fr); }
@@ -1058,20 +1066,20 @@ document.addEventListener('click', (e) => {
   <div class="wrap">
     <div class="sec__head"><h2 class="display" style="font-size:clamp(40px,5vw,80px)">Partners</h2><span class="eyebrow">ASMBLY · 19 Nov 2026</span></div>
     <div class="sponsors">
-      <div class="sponsor"><a href="/"><img decoding="async" class="l-cs" src="/asmbly/img/cs-white.png" alt="CTRL+SHIFT" width="594" height="120" loading="lazy" /></a></div>
-      <div class="sponsor"><a href="https://www.demo-room.com/" target="_blank" rel="noopener"><img decoding="async" class="l-dr" src="/asmbly/img/demoroom-logo.png?v=3" alt="Demo Room" width="1000" height="129" loading="lazy" /></a></div>
-      <div class="sponsor"><a href="https://skyfinefoods.com/" target="_blank" rel="noopener"><img decoding="async" class="l-sff" src="/asmbly/img/sff-white.png" alt="Sky Fine Foods" width="428" height="64" loading="lazy" /></a></div>
-      <div class="sponsor"><a href="https://www.instagram.com/machinecinema/" target="_blank" rel="noopener"><img decoding="async" class="l-mc" src="/asmbly/img/p-machine-cinema.png" alt="Machine Cinema" width="536" height="132" loading="lazy" /></a></div>
-      <div class="sponsor"><a href="https://www.instagram.com/newlimit.labs/" target="_blank" rel="noopener"><img decoding="async" class="l-nl" src="/asmbly/img/p-new-limit.png" alt="New Limit Labs" width="480" height="148" loading="lazy" /></a></div>
-      <div class="sponsor"><a href="https://www.invisiblevfx.com/" target="_blank" rel="noopener"><img decoding="async" class="l-inv" src="/asmbly/img/p-invisible.png" alt="Invisible" width="580" height="112" loading="lazy" /></a></div>
-      <div class="sponsor"><a href="https://darkhalf.ai/" target="_blank" rel="noopener"><img decoding="async" class="l-dh" src="/asmbly/img/p-dark-half.png" alt="Dark Half" width="324" height="196" loading="lazy" /></a></div>
-      <div class="sponsor"><a href="https://www.instagram.com/quiver.tv/" target="_blank" rel="noopener"><img decoding="async" class="l-q" src="/asmbly/img/p-quiver.png" alt="Quiver" width="404" height="84" loading="lazy" /></a></div>
-      <div class="sponsor"><img decoding="async" class="l-flojo" src="/asmbly/img/p-flojo.png" alt="Flojo" width="380" height="120" loading="lazy" /></div>
-      <div class="sponsor"><a href="https://www.instagram.com/adobe/" target="_blank" rel="noopener"><img decoding="async" class="l-adobe" src="/asmbly/img/p-adobe.svg" alt="Adobe" width="512" height="134" loading="lazy" /></a></div>
-      <div class="sponsor"><a href="https://www.instagram.com/wakewaterca/" target="_blank" rel="noopener"><img decoding="async" class="l-ww" src="/asmbly/img/p-wakewater.png" alt="Wakewater" width="290" height="32" loading="lazy" /></a></div>
-      <div class="sponsor"><a href="https://www.instagram.com/theyouthfulvengeance/" target="_blank" rel="noopener"><img decoding="async" class="l-yv" src="/asmbly/img/p-youthful-vengeance.png" alt="Youthful Vengeance" width="589" height="339" loading="lazy" /></a></div>
-      <div class="sponsor"><a href="https://kizenworlds.com/" target="_blank" rel="noopener"><img decoding="async" class="l-kz" src="/asmbly/img/p-kizen.png" alt="Kizen" width="600" height="186" loading="lazy" /></a></div>
-      <div class="sponsor"><a href="https://foundersoriginal.com/" target="_blank" rel="noopener"><img decoding="async" class="l-fo" src="/asmbly/img/p-founders-original.png" alt="Founder's Original" width="460" height="344" loading="lazy" /></a></div>
+      <div class="sponsor"><a href="/"><img decoding="async" class="l-cs" src="/asmbly/img/cs-white.png" alt="CTRL+SHIFT" width="594" height="120" loading="lazy" /></a><span class="sponsor__info" aria-hidden="true"><b class="mono">Host</b>Toronto community of artists, designers, founders and developers exploring AI and creative technology.</span></div>
+      <div class="sponsor"><a href="https://www.demo-room.com/" target="_blank" rel="noopener"><img decoding="async" class="l-dr" src="/asmbly/img/demoroom-logo.png?v=3" alt="Demo Room" width="1000" height="129" loading="lazy" /></a><span class="sponsor__info" aria-hidden="true"><b class="mono">Venue + co-presenter</b>Toronto's 16,000 sq ft waterfront creative compound, with VOID sound and in-house AV.</span></div>
+      <div class="sponsor"><a href="https://skyfinefoods.com/" target="_blank" rel="noopener"><img decoding="async" class="l-sff" src="/asmbly/img/sff-white.png" alt="Sky Fine Foods" width="428" height="64" loading="lazy" /></a><span class="sponsor__info" aria-hidden="true"><b class="mono">Co-presenter + curator</b>Experimental project space for new media artists, run by curator Miriam Arbus. Curates the ASMBLY exhibition.</span></div>
+      <div class="sponsor"><a href="https://www.instagram.com/machinecinema/" target="_blank" rel="noopener"><img decoding="async" class="l-mc" src="/asmbly/img/p-machine-cinema.png" alt="Machine Cinema" width="536" height="132" loading="lazy" /></a><span class="sponsor__info" aria-hidden="true"><b class="mono">Panel partner</b>Global AI creative community of 20,000+ members in 60+ countries, and originator of the GenJam format.</span></div>
+      <div class="sponsor"><a href="https://www.instagram.com/newlimit.labs/" target="_blank" rel="noopener"><img decoding="async" class="l-nl" src="/asmbly/img/p-new-limit.png" alt="New Limit Labs" width="480" height="148" loading="lazy" /></a><span class="sponsor__info" aria-hidden="true"><b class="mono">Presenting partner</b>AI studio making films, worlds and brand systems, creative first. Led by Corey Way and Sophie Hospes.</span></div>
+      <div class="sponsor"><a href="https://www.invisiblevfx.com/" target="_blank" rel="noopener"><img decoding="async" class="l-inv" src="/asmbly/img/p-invisible.png" alt="Invisible" width="580" height="112" loading="lazy" /></a><span class="sponsor__info" aria-hidden="true"><b class="mono">Lead sponsor</b>Toronto VFX studio for film, TV and advertising: artist-led, AI-accelerated. An Invalid Symbol company.</span></div>
+      <div class="sponsor"><a href="https://darkhalf.ai/" target="_blank" rel="noopener"><img decoding="async" class="l-dh" src="/asmbly/img/p-dark-half.png" alt="Dark Half" width="324" height="196" loading="lazy" /></a><span class="sponsor__info" aria-hidden="true"><b class="mono">Sponsor</b>AI-assisted VFX for broadcast and cinema, backed by 25 years as an award-winning production company.</span></div>
+      <div class="sponsor"><a href="https://www.instagram.com/quiver.tv/" target="_blank" rel="noopener"><img decoding="async" class="l-q" src="/asmbly/img/p-quiver.png" alt="Quiver" width="404" height="84" loading="lazy" /></a><span class="sponsor__info" aria-hidden="true"><b class="mono">Sponsor</b>Integrated production experts in mixed-medium storytelling for entertainment and advertising.</span></div>
+      <div class="sponsor"><img decoding="async" class="l-flojo" src="/asmbly/img/p-flojo.png" alt="Flojo" width="380" height="120" loading="lazy" /><span class="sponsor__info" aria-hidden="true"><b class="mono">Drinks partner</b>Canadian sparkling energy with yerba mate, reishi and lion's mane. Low caffeine, no added sugar. Find their table.</span></div>
+      <div class="sponsor"><a href="https://www.instagram.com/adobe/" target="_blank" rel="noopener"><img decoding="async" class="l-adobe" src="/asmbly/img/p-adobe.svg" alt="Adobe" width="512" height="134" loading="lazy" /></a><span class="sponsor__info" aria-hidden="true"><b class="mono">Creative partner</b>Maker of Photoshop, Premiere Pro, After Effects and Firefly, the tools behind much of today's creative work.</span></div>
+      <div class="sponsor"><a href="https://www.instagram.com/wakewaterca/" target="_blank" rel="noopener"><img decoding="async" class="l-ww" src="/asmbly/img/p-wakewater.png" alt="Wakewater" width="290" height="32" loading="lazy" /></a><span class="sponsor__info" aria-hidden="true"><b class="mono">Drinks partner</b>Canadian caffeinated sparkling water: 85mg of green tea caffeine, no sugar and no sweeteners.</span></div>
+      <div class="sponsor"><a href="https://www.instagram.com/theyouthfulvengeance/" target="_blank" rel="noopener"><img decoding="async" class="l-yv" src="/asmbly/img/p-youthful-vengeance.png" alt="Youthful Vengeance" width="589" height="339" loading="lazy" /></a><span class="sponsor__info" aria-hidden="true"><b class="mono">Community partner</b>Toronto arts space and the for-profit arm of Vengeance Foundation; its profits fund the Foundation's programs.</span></div>
+      <div class="sponsor"><a href="https://kizenworlds.com/" target="_blank" rel="noopener"><img decoding="async" class="l-kz" src="/asmbly/img/p-kizen.png" alt="Kizen" width="600" height="186" loading="lazy" /></a><span class="sponsor__info" aria-hidden="true"><b class="mono">Sponsor</b>Toronto storytelling platform that turns creators into micro studios, now funding 20 through Kizen Originals.</span></div>
+      <div class="sponsor"><a href="https://foundersoriginal.com/" target="_blank" rel="noopener"><img decoding="async" class="l-fo" src="/asmbly/img/p-founders-original.png" alt="Founder's Original" width="460" height="344" loading="lazy" /></a><span class="sponsor__info" aria-hidden="true"><b class="mono">Drinks partner</b>Oakville producers of bar-quality, ready-to-drink cocktails.</span></div>
     </div>
   </div>
 </section>
@@ -1239,6 +1247,18 @@ document.addEventListener('click', (e) => {
       const el = names[(Math.random() * names.length) | 0];
       if (!el.closest('.card').matches(':hover')) scramble(el, el.dataset.scramble, 800);
     }, 1400);
+  }
+
+  /* Partner overlays on touch screens: first tap shows who they are, a second tap opens their link */
+  if (!matchMedia('(hover: hover)').matches) {
+    const partners = [...document.querySelectorAll('.sponsor')];
+    partners.forEach(cell => cell.addEventListener('click', e => {
+      if (cell.classList.contains('is-active')) return;
+      e.preventDefault();
+      partners.forEach(c => c.classList.remove('is-active'));
+      cell.classList.add('is-active');
+    }));
+    document.addEventListener('click', e => { if (!e.target.closest('.sponsor')) partners.forEach(c => c.classList.remove('is-active')); });
   }
 
   /* Bio overlay on touch screens: tap a portrait to show the bio, tap again (or elsewhere) to close; the handle link opens their page */
