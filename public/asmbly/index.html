@@ -453,7 +453,7 @@
 
   /* Presenters & sponsors: every partner logo in a ruled grid; a short last row stays centered */
   .sponsors { --u: clamp(10px, 1.3vw, 20px); display: flex; flex-wrap: wrap; justify-content: center; padding: 0 1px 1px 0; }
-  .sponsor { flex: 0 0 20%; height: clamp(120px, 12vw, 200px); display: flex; align-items: center; justify-content: center; padding: 20px; border: 1px solid var(--line); margin: 0 -1px -1px 0; }
+  .sponsor { flex: 0 0 25%; height: clamp(120px, 12vw, 200px); display: flex; align-items: center; justify-content: center; padding: 20px; border: 1px solid var(--line); margin: 0 -1px -1px 0; }
   .sponsor img { width: auto; max-width: 100%; display: block; object-fit: contain; }
   .sponsor .l-adobe { height: calc(var(--u) * 1.7); }
   .sponsor .l-ww { height: calc(var(--u) * 1.3); }
@@ -461,6 +461,7 @@
   .sponsor .l-kz { height: calc(var(--u) * 1.75); }
   .sponsor .l-fo { height: calc(var(--u) * 3.3); }
   .sponsor .l-num { height: calc(var(--u) * 2.9); }
+  .sponsor .l-fb { height: calc(var(--u) * 1.55); }
   .sponsor a { display: flex; max-width: 100%; }
   .sponsor { position: relative; overflow: hidden; }
   .sponsor > a, .sponsor > img { transition: opacity .35s ease, transform .5s ease; }
@@ -472,7 +473,7 @@
   @media (hover: hover) { .sponsor:hover .sponsor__info, .sponsor:focus-within .sponsor__info { opacity: 1; transform: none; } .sponsor:hover > a, .sponsor:hover > img, .sponsor:focus-within > a { opacity: .08; transform: scale(.94); } }
   @media (min-width: 761px) and (max-width: 1279px) { .sponsor__info { font-size: 11.5px; padding: 10px 12px; gap: 4px; } .sponsor__info b { font-size: 9px; } }
   @media (max-width: 1199px) { .sponsors { --u: clamp(9px, 1.15vw, 13px); } }
-  @media (max-width: 1023px) { .sponsor { flex-basis: calc(100% / 3); } }
+  @media (max-width: 1023px) { .sponsor { flex-basis: 25%; } }
   @media (max-width: 760px) { .sponsors { --u: 8.5px; } .sponsor { flex-basis: 50%; height: 120px; padding: 14px; } .sponsor__info { font-size: 11.5px; padding: 10px 12px; gap: 4px; } .sponsor__info b { font-size: 9px; } }
 
   /* Pillars */
@@ -1085,6 +1086,7 @@ document.addEventListener('click', (e) => {
       <div class="sponsor"><a href="https://kizenworlds.com/" target="_blank" rel="noopener"><img decoding="async" class="l-kz" src="/asmbly/img/p-kizen.png" alt="Kizen" width="600" height="186" loading="lazy" /></a><span class="sponsor__info" aria-hidden="true"><b class="mono">Sponsor</b>Toronto storytelling platform that turns creators into micro studios, now funding 20 through Kizen Originals.</span></div>
       <div class="sponsor"><a href="https://foundersoriginal.com/" target="_blank" rel="noopener"><img decoding="async" class="l-fo" src="/asmbly/img/p-founders-original.png" alt="Founder's Original" width="460" height="344" loading="lazy" /></a><span class="sponsor__info" aria-hidden="true"><b class="mono">Drinks partner</b>Oakville producers of bar-quality, ready-to-drink cocktails.</span></div>
       <div class="sponsor"><a href="https://www.thenumberco.com/" target="_blank" rel="noopener"><img decoding="async" class="l-num" src="/asmbly/img/p-number-company.png" alt="The Number Company" width="848" height="406" loading="lazy" /></a><span class="sponsor__info" aria-hidden="true"><b class="mono">Marketing partner</b>Performance marketing agency: full-funnel paid media, retention and Shopify growth, ROI-first.</span></div>
+      <div class="sponsor"><a href="https://www.formbadger.com/" target="_blank" rel="noopener"><img decoding="async" class="l-fb" src="/asmbly/img/p-formbadger.png" alt="FormBadger" width="1001" height="164" loading="lazy" /></a><span class="sponsor__info" aria-hidden="true"><b class="mono">Community partner</b>Turns form submissions into personalized name badges, printed on the spot for community events.</span></div>
     </div>
   </div>
 </section>
