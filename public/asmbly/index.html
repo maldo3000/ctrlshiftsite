@@ -176,6 +176,7 @@
   :is(.lockup, .sponsors) .l-q { height: calc(var(--u) * 1.45); }
   :is(.lockup, .sponsors) .l-yv { height: calc(var(--u) * 3.6); }
   .lockup .l-kz { height: calc(var(--u) * 1.6); }
+  .lockup .l-num { height: calc(var(--u) * 2.4); }
   /* Hero stack: wordmark, tagline, centered partner lockup, teaser */
   .hero__center { display: flex; flex-direction: column; }
   .hero__center .asmbly-wrap { margin-top: 0; }
@@ -452,13 +453,14 @@
 
   /* Presenters & sponsors: every partner logo in a ruled grid; a short last row stays centered */
   .sponsors { --u: clamp(10px, 1.3vw, 20px); display: flex; flex-wrap: wrap; justify-content: center; padding: 0 1px 1px 0; }
-  .sponsor { flex: 0 0 calc(100% / 7); height: clamp(120px, 12vw, 200px); display: flex; align-items: center; justify-content: center; padding: 20px; border: 1px solid var(--line); margin: 0 -1px -1px 0; }
+  .sponsor { flex: 0 0 20%; height: clamp(120px, 12vw, 200px); display: flex; align-items: center; justify-content: center; padding: 20px; border: 1px solid var(--line); margin: 0 -1px -1px 0; }
   .sponsor img { width: auto; max-width: 100%; display: block; object-fit: contain; }
   .sponsor .l-adobe { height: calc(var(--u) * 1.7); }
   .sponsor .l-ww { height: calc(var(--u) * 1.3); }
   .sponsor .l-flojo { height: calc(var(--u) * 1.9); }
   .sponsor .l-kz { height: calc(var(--u) * 1.75); }
   .sponsor .l-fo { height: calc(var(--u) * 3.3); }
+  .sponsor .l-num { height: calc(var(--u) * 2.9); }
   .sponsor a { display: flex; max-width: 100%; }
   .sponsor { position: relative; overflow: hidden; }
   .sponsor > a, .sponsor > img { transition: opacity .35s ease, transform .5s ease; }
@@ -468,9 +470,9 @@
   .sponsor.is-active .sponsor__info { opacity: 1; transform: none; }
   .sponsor.is-active > a, .sponsor.is-active > img { opacity: .08; transform: scale(.94); }
   @media (hover: hover) { .sponsor:hover .sponsor__info, .sponsor:focus-within .sponsor__info { opacity: 1; transform: none; } .sponsor:hover > a, .sponsor:hover > img, .sponsor:focus-within > a { opacity: .08; transform: scale(.94); } }
-  @media (min-width: 1024px) and (max-width: 1279px) { .sponsor__info { font-size: 11.5px; padding: 10px 12px; gap: 4px; } .sponsor__info b { font-size: 9px; } }
+  @media (min-width: 761px) and (max-width: 1279px) { .sponsor__info { font-size: 11.5px; padding: 10px 12px; gap: 4px; } .sponsor__info b { font-size: 9px; } }
   @media (max-width: 1199px) { .sponsors { --u: clamp(9px, 1.15vw, 13px); } }
-  @media (max-width: 1023px) { .sponsor { flex-basis: 50%; } }
+  @media (max-width: 1023px) { .sponsor { flex-basis: calc(100% / 3); } }
   @media (max-width: 760px) { .sponsors { --u: 8.5px; } .sponsor { flex-basis: 50%; height: 120px; padding: 14px; } .sponsor__info { font-size: 11.5px; padding: 10px 12px; gap: 4px; } .sponsor__info b { font-size: 9px; } }
 
   /* Pillars */
@@ -739,7 +741,7 @@ document.addEventListener('click', (e) => {
       </div>
       <p class="hero__kind">A gathering for new ideas,<br>technology, and art.</p>
       <!-- Partner lockup: presenting partners on the first row, supporting partners under them -->
-      <div class="lockup" aria-label="CTRL+SHIFT × Demo Room × Sky Fine Foods × Machine Cinema × New Limit Labs, with Invisible, Dark Half, Quiver, Youthful Vengeance and Kizen">
+      <div class="lockup" aria-label="CTRL+SHIFT × Demo Room × Sky Fine Foods × Machine Cinema × New Limit Labs, with Invisible, Dark Half, Quiver, Youthful Vengeance, Kizen and The Number Company">
         <div class="lockup__row">
           <div class="lockup__group">
             <a class="partners__link" href="/"><img decoding="async" class="l-cs" src="/asmbly/img/cs-white.png" alt="CTRL+SHIFT" width="594" height="120" /></a>
@@ -765,6 +767,8 @@ document.addEventListener('click', (e) => {
           <a class="partners__link" href="https://www.instagram.com/theyouthfulvengeance/" target="_blank" rel="noopener"><img decoding="async" class="l-yv" src="/asmbly/img/p-youthful-vengeance.png" alt="Youthful Vengeance" width="589" height="339" /></a>
           <b aria-hidden="true"></b>
           <a class="partners__link" href="https://kizenworlds.com/" target="_blank" rel="noopener"><img decoding="async" class="l-kz" src="/asmbly/img/p-kizen.png" alt="Kizen" width="600" height="186" /></a>
+          <b aria-hidden="true"></b>
+          <a class="partners__link" href="https://www.thenumberco.com/" target="_blank" rel="noopener"><img decoding="async" class="l-num" src="/asmbly/img/p-number-company.png" alt="The Number Company" width="848" height="406" /></a>
         </div>
       </div>
       <div class="hero__actions">
@@ -1080,6 +1084,7 @@ document.addEventListener('click', (e) => {
       <div class="sponsor"><a href="https://www.instagram.com/theyouthfulvengeance/" target="_blank" rel="noopener"><img decoding="async" class="l-yv" src="/asmbly/img/p-youthful-vengeance.png" alt="Youthful Vengeance" width="589" height="339" loading="lazy" /></a><span class="sponsor__info" aria-hidden="true"><b class="mono">Community partner</b>Toronto arts space and the for-profit arm of Vengeance Foundation; its profits fund the Foundation's programs.</span></div>
       <div class="sponsor"><a href="https://kizenworlds.com/" target="_blank" rel="noopener"><img decoding="async" class="l-kz" src="/asmbly/img/p-kizen.png" alt="Kizen" width="600" height="186" loading="lazy" /></a><span class="sponsor__info" aria-hidden="true"><b class="mono">Sponsor</b>Toronto storytelling platform that turns creators into micro studios, now funding 20 through Kizen Originals.</span></div>
       <div class="sponsor"><a href="https://foundersoriginal.com/" target="_blank" rel="noopener"><img decoding="async" class="l-fo" src="/asmbly/img/p-founders-original.png" alt="Founder's Original" width="460" height="344" loading="lazy" /></a><span class="sponsor__info" aria-hidden="true"><b class="mono">Drinks partner</b>Oakville producers of bar-quality, ready-to-drink cocktails.</span></div>
+      <div class="sponsor"><a href="https://www.thenumberco.com/" target="_blank" rel="noopener"><img decoding="async" class="l-num" src="/asmbly/img/p-number-company.png" alt="The Number Company" width="848" height="406" loading="lazy" /></a><span class="sponsor__info" aria-hidden="true"><b class="mono">Marketing partner</b>Performance marketing agency: full-funnel paid media, retention and Shopify growth, ROI-first.</span></div>
     </div>
   </div>
 </section>
