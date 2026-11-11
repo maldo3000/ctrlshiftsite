@@ -122,7 +122,17 @@
     padding: 10px 16px; background: var(--signal); color: var(--ink); border: 1px solid var(--signal); transition: background .35s, color .35s, border-color .35s;
   }
   .nav--dark .nav__cta { background: var(--signal); color: var(--ink); border-color: var(--signal); }
-  @media (max-width: 860px) { .nav__links { display: none; } }
+  .nav__links a[aria-current="true"] { color: var(--signal); }
+  .nav__links a[aria-current="true"]::after { transform: scaleX(1); }
+  /* Phones and small tablets: the section links drop to a second row under the logo, Tickets stays top right */
+  @media (max-width: 860px) {
+    .nav { flex-wrap: wrap; row-gap: 0; padding-bottom: 0; }
+    .nav__links { order: 3; flex: 0 0 100%; display: flex; justify-content: space-between; gap: 8px; margin-top: 10px; padding: 6px 0 7px; border-top: 1px solid rgba(242,242,242,.14); }
+    .nav__links a { font-size: 12px; letter-spacing: .14em; padding: 4px 0; }
+    .nav__links a::after { bottom: -2px; }
+    .nav__links a[href="#about"] { display: none; }
+    .nav--dark .nav__links { border-top-color: var(--line); }
+  }
 
   /* ASMBLY wordmark: Clash Display Bold; odd letters (A, M, L) up, even (S, B, Y) down by 0.087em */
   .asm { display: flex; align-items: flex-start; font-family: var(--wordmark) !important; font-weight: 700 !important; text-transform: uppercase; letter-spacing: -0.035em !important; line-height: .8 !important; }
@@ -595,12 +605,12 @@
 
   /* ---------- MOBILE PASS ---------- */
   @media (max-width: 760px) {
-    .nav { padding: 12px 16px; }
+    .nav { padding: 12px 16px 0; }
     .nav__brand { font-size: 24px; height: 26px; }
     .nav__cta { padding: 8px 12px; font-size: 13px; }
 
     /* Hero poster: date/location at top, partners + ASMBLY centered, tagline + countdown at the bottom */
-    .hero__inner { padding: 78px 16px 24px; }
+    .hero__inner { padding: 122px 16px 24px; }
     .hero .bit { font-size: 13px; letter-spacing: .14em; }
     .partners { gap: 7px; flex-wrap: nowrap; }
     .partners img { height: 15px; }
@@ -1208,7 +1218,9 @@ document.addEventListener('click', (e) => {
   document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', e => {
     const t = document.querySelector(a.getAttribute('href'));
     if (!t) return; e.preventDefault();
-    if (lenis) lenis.scrollTo(t); else t.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' });
+    const off = t.id === 'top' ? 0 : document.getElementById('nav').offsetHeight - 1;
+    if (lenis) lenis.scrollTo(t, { offset: -off });
+    else window.scrollTo({ top: t.getBoundingClientRect().top + window.scrollY - off, behavior: reduce ? 'auto' : 'smooth' });
   }));
 
   /* Videos only decode while visible */
@@ -1221,6 +1233,15 @@ document.addEventListener('click', (e) => {
   /* Nav: ink on the pink poster, dark bar once the poster has scrolled under it */
   const nav = document.getElementById('nav');
   new IntersectionObserver(([e]) => nav.classList.toggle('nav--dark', !e.isIntersecting), { rootMargin: '-64px 0px 0px 0px' })
+    .observe(document.querySelector('.hero__inner'));
+  const navLinks = [...nav.querySelectorAll('.nav__links a')];
+  const spy = new IntersectionObserver(entries => entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    navLinks.forEach(a => a.toggleAttribute('aria-current', a.getAttribute('href') === '#' + e.target.id));
+    navLinks.forEach(a => { if (a.hasAttribute('aria-current')) a.setAttribute('aria-current', 'true'); });
+  }), { rootMargin: '-40% 0px -55% 0px' });
+  navLinks.forEach(a => { const t = document.querySelector(a.getAttribute('href')); if (t) spy.observe(t); });
+  new IntersectionObserver(([e]) => { if (e.isIntersecting) navLinks.forEach(a => a.removeAttribute('aria-current')); }, { rootMargin: '-40% 0px -55% 0px' })
     .observe(document.querySelector('.hero__inner'));
 
   /* Orbit: installation tiles on the outer ring */
