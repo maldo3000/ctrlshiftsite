@@ -177,6 +177,7 @@
   :is(.lockup, .sponsors) .l-yv { height: calc(var(--u) * 3.6); }
   .lockup .l-kz { height: calc(var(--u) * 1.6); }
   .lockup .l-num { height: calc(var(--u) * 2.4); }
+  .lockup .l-aos { height: calc(var(--u) * 2.3); }
   /* Hero stack: wordmark, tagline, centered partner lockup, teaser */
   .hero__center { display: flex; flex-direction: column; }
   .hero__center .asmbly-wrap { margin-top: 0; }
@@ -462,6 +463,7 @@
   .sponsor .l-fo { height: calc(var(--u) * 3.3); }
   .sponsor .l-num { height: calc(var(--u) * 2.9); }
   .sponsor .l-fb { height: calc(var(--u) * 1.55); }
+  .sponsor .l-aos { height: calc(var(--u) * 5); }
   .sponsor a { display: flex; max-width: 100%; }
   .sponsor { position: relative; overflow: hidden; }
   .sponsor > a, .sponsor > img { transition: opacity .35s ease, transform .5s ease; }
@@ -473,8 +475,10 @@
   @media (hover: hover) { .sponsor:hover .sponsor__info, .sponsor:focus-within .sponsor__info { opacity: 1; transform: none; } .sponsor:hover > a, .sponsor:hover > img, .sponsor:focus-within > a { opacity: .08; transform: scale(.94); } }
   @media (min-width: 761px) and (max-width: 1279px) { .sponsor__info { font-size: 11.5px; padding: 10px 12px; gap: 4px; } .sponsor__info b { font-size: 9px; } }
   @media (max-width: 1199px) { .sponsors { --u: clamp(9px, 1.15vw, 13px); } }
-  @media (max-width: 1023px) { .sponsor { flex-basis: 25%; } }
-  @media (max-width: 760px) { .sponsors { --u: 8.5px; } .sponsor { flex-basis: 50%; height: 120px; padding: 14px; } .sponsor__info { font-size: 11.5px; padding: 10px 12px; gap: 4px; } .sponsor__info b { font-size: 9px; } }
+  /* 17 partners: 6/6/5 on desktop; below that the host takes a full row so the rest pair off evenly */
+  @media (min-width: 1280px) { .sponsor { flex-basis: calc(100% / 6); } .sponsor__info { font-size: 12px; padding: 12px 14px; } }
+  @media (max-width: 1279px) { .sponsor:first-child { flex-basis: 100%; } }
+  @media (max-width: 760px) { .sponsors { --u: 8.5px; } .sponsor { flex-basis: 50%; height: 120px; padding: 14px; } .sponsor .l-aos { height: 72px; } .sponsor__info { font-size: 11.5px; padding: 10px 12px; gap: 4px; } .sponsor__info b { font-size: 9px; } }
 
   /* Pillars */
   .pillars { display: grid; grid-template-columns: repeat(4, 1fr); }
@@ -607,6 +611,8 @@
     .lockup { --u: 5.5px; gap: 12px; }
     .lockup__row:first-child { flex-direction: column; gap: 12px; }
     .lockup__join { display: none; }
+    .lockup__row--support { flex-wrap: wrap; justify-content: center; gap: 12px 20px; --u: 6.5px; max-width: 340px; }
+    .lockup__row--support b { display: none; }
     .hero__inner { min-height: 90svh; }
     .hero { min-height: 90svh; }
     .hero__center { padding: 48px 0; }
@@ -742,7 +748,7 @@ document.addEventListener('click', (e) => {
       </div>
       <p class="hero__kind">A gathering for new ideas,<br>technology, and art.</p>
       <!-- Partner lockup: presenting partners on the first row, supporting partners under them -->
-      <div class="lockup" aria-label="CTRL+SHIFT × Demo Room × Sky Fine Foods × Machine Cinema × New Limit Labs, with Invisible, Dark Half, Quiver, Youthful Vengeance, Kizen and The Number Company">
+      <div class="lockup" aria-label="CTRL+SHIFT × Demo Room × Sky Fine Foods × Machine Cinema × New Limit Labs, with Invisible, Dark Half, Quiver, Youthful Vengeance, Kizen, The Number Company and Array of Stars">
         <div class="lockup__row">
           <div class="lockup__group">
             <a class="partners__link" href="/"><img decoding="async" class="l-cs" src="/asmbly/img/cs-white.png" alt="CTRL+SHIFT" width="594" height="120" /></a>
@@ -770,6 +776,8 @@ document.addEventListener('click', (e) => {
           <a class="partners__link" href="https://kizenworlds.com/" target="_blank" rel="noopener"><img decoding="async" class="l-kz" src="/asmbly/img/p-kizen.png" alt="Kizen" width="600" height="186" /></a>
           <b aria-hidden="true"></b>
           <a class="partners__link" href="https://www.thenumberco.com/" target="_blank" rel="noopener"><img decoding="async" class="l-num" src="/asmbly/img/p-number-company.png" alt="The Number Company" width="848" height="406" /></a>
+          <b aria-hidden="true"></b>
+          <a class="partners__link" href="https://www.arrayofstars.com/" target="_blank" rel="noopener"><img decoding="async" class="l-aos" src="/asmbly/img/p-array-of-stars-h.svg" alt="Array of Stars" width="232" height="44" /></a>
         </div>
       </div>
       <div class="hero__actions">
@@ -1087,6 +1095,7 @@ document.addEventListener('click', (e) => {
       <div class="sponsor"><a href="https://foundersoriginal.com/" target="_blank" rel="noopener"><img decoding="async" class="l-fo" src="/asmbly/img/p-founders-original.png" alt="Founder's Original" width="460" height="344" loading="lazy" /></a><span class="sponsor__info" aria-hidden="true"><b class="mono">Drinks partner</b>Oakville producers of bar-quality, ready-to-drink cocktails.</span></div>
       <div class="sponsor"><a href="https://www.thenumberco.com/" target="_blank" rel="noopener"><img decoding="async" class="l-num" src="/asmbly/img/p-number-company.png" alt="The Number Company" width="848" height="406" loading="lazy" /></a><span class="sponsor__info" aria-hidden="true"><b class="mono">Marketing partner</b>Performance marketing agency: full-funnel paid media, retention and Shopify growth, ROI-first.</span></div>
       <div class="sponsor"><a href="https://www.formbadger.com/" target="_blank" rel="noopener"><img decoding="async" class="l-fb" src="/asmbly/img/p-formbadger.png" alt="FormBadger" width="1001" height="164" loading="lazy" /></a><span class="sponsor__info" aria-hidden="true"><b class="mono">Community partner</b>Turns form submissions into personalized name badges, printed on the spot for community events.</span></div>
+      <div class="sponsor"><a href="https://www.arrayofstars.com/" target="_blank" rel="noopener"><img decoding="async" class="l-aos" src="/asmbly/img/p-array-of-stars.svg" alt="Array of Stars" width="174" height="149" loading="lazy" /></a><span class="sponsor__info" aria-hidden="true"><b class="mono">Partner</b>Toronto creative and technology practice building experiences across IRL, URL and XRL. 1,200+ projects since 2013.</span></div>
     </div>
   </div>
 </section>
