@@ -182,6 +182,7 @@
   :is(.lockup, .sponsors) .l-mc { height: calc(var(--u) * 2.3); }
   :is(.lockup, .sponsors) .l-nl { height: calc(var(--u) * 2.5); }
   :is(.lockup, .sponsors) .l-cc { height: calc(var(--u) * 2.5); }
+  :is(.lockup, .sponsors) .l-mag { height: calc(var(--u) * 1.6); }
   .lockup__row--support { gap: calc(var(--u) * 1.6); }
   .lockup__row--support b { width: 1px; height: calc(var(--u) * 2); background: currentColor; opacity: .3; }
   :is(.lockup, .sponsors) .l-inv { height: calc(var(--u) * 1.95); }
@@ -488,9 +489,11 @@
   @media (hover: hover) { .sponsor:hover .sponsor__info, .sponsor:focus-within .sponsor__info { opacity: 1; transform: none; } .sponsor:hover > a, .sponsor:hover > img, .sponsor:focus-within > a { opacity: .08; transform: scale(.94); } }
   @media (min-width: 761px) and (max-width: 1279px) { .sponsor__info { font-size: 11.5px; padding: 10px 12px; gap: 4px; } .sponsor__info b { font-size: 9px; } }
   @media (max-width: 1199px) { .sponsors { --u: clamp(9px, 1.15vw, 13px); } }
-  /* 17 partners: 6/6/5 on desktop; below that the host takes a full row so the rest pair off evenly */
-  @media (min-width: 1280px) { .sponsor { flex-basis: calc(100% / 6); } .sponsor__info { font-size: 12px; padding: 12px 14px; } }
+  /* 19 partners. Desktop: the top row holds the seven main partners (as in the hero), then two rows of six.
+     Tablet and phone: the host takes a full row and the other 18 sit 3 or 2 across. */
+  @media (min-width: 1280px) { .sponsor { flex-basis: calc(100% / 6); } .sponsor:nth-child(-n+7) { flex-basis: calc(100% / 7); } .sponsor__info { font-size: 12px; padding: 12px 14px; } }
   @media (max-width: 1279px) { .sponsor:first-child { flex-basis: 100%; } }
+  @media (min-width: 761px) and (max-width: 1279px) { .sponsor { flex-basis: calc(100% / 3); } }
   @media (max-width: 760px) { .sponsors { --u: 8.5px; } .sponsor { flex-basis: 50%; height: 120px; padding: 14px; } .sponsor .l-aos { height: 72px; } .sponsor__info { font-size: 11.5px; padding: 10px 12px; gap: 4px; } .sponsor__info b { font-size: 9px; } }
 
   /* Pillars */
@@ -761,7 +764,7 @@ document.addEventListener('click', (e) => {
       </div>
       <p class="hero__kind">A gathering for new ideas,<br>technology, and art.</p>
       <!-- Partner lockup: presenting partners on the first row, supporting partners under them -->
-      <div class="lockup" aria-label="CTRL+SHIFT × Demo Room × Sky Fine Foods × Machine Cinema × New Limit Labs × Cultivate Collective, with Invisible, Dark Half, Quiver, Youthful Vengeance, Kizen, The Number Company and Array of Stars">
+      <div class="lockup" aria-label="CTRL+SHIFT × Demo Room × Sky Fine Foods × Machine Cinema × New Limit Labs × Cultivate Collective × Magnific, with Invisible, Dark Half, Quiver, Youthful Vengeance, Kizen, The Number Company and Array of Stars">
         <div class="lockup__row">
           <div class="lockup__group">
             <a class="partners__link" href="/"><img decoding="async" class="l-cs" src="/asmbly/img/cs-white.png" alt="CTRL+SHIFT" width="594" height="120" /></a>
@@ -777,6 +780,8 @@ document.addEventListener('click', (e) => {
             <a class="partners__link" href="https://www.newlimitlabs.com/" target="_blank" rel="noopener"><img decoding="async" class="l-nl" src="/asmbly/img/p-new-limit.png" alt="New Limit Labs" width="480" height="148" /></a>
             <i aria-hidden="true">×</i>
             <a class="partners__link" href="https://www.8kollective.com/" target="_blank" rel="noopener"><img decoding="async" class="l-cc" src="/asmbly/img/p-cultivate.png" alt="Cultivate Collective" width="500" height="183" /></a>
+            <i aria-hidden="true">×</i>
+            <a class="partners__link" href="https://www.magnific.com/" target="_blank" rel="noopener"><img decoding="async" class="l-mag" src="/asmbly/img/p-magnific.png" alt="Magnific" width="1000" height="164" /></a>
           </div>
         </div>
         <div class="lockup__row lockup__row--support">
@@ -1100,6 +1105,7 @@ document.addEventListener('click', (e) => {
       <div class="sponsor"><a href="https://www.instagram.com/machinecinema/" target="_blank" rel="noopener"><img decoding="async" class="l-mc" src="/asmbly/img/p-machine-cinema.png" alt="Machine Cinema" width="536" height="132" loading="lazy" /></a><span class="sponsor__info" aria-hidden="true"><b class="mono">Panel partner</b>Global AI creative community of 20,000+ members in 60+ countries, and originator of the GenJam format.</span></div>
       <div class="sponsor"><a href="https://www.newlimitlabs.com/" target="_blank" rel="noopener"><img decoding="async" class="l-nl" src="/asmbly/img/p-new-limit.png" alt="New Limit Labs" width="480" height="148" loading="lazy" /></a><span class="sponsor__info" aria-hidden="true"><b class="mono">Presenting partner</b>AI studio making films, worlds and brand systems, creative first. Led by Corey Way and Sophie Hospes.</span></div>
       <div class="sponsor"><a href="https://www.8kollective.com/" target="_blank" rel="noopener"><img decoding="async" class="l-cc" src="/asmbly/img/p-cultivate.png" alt="Cultivate Collective" width="500" height="183" loading="lazy" /></a><span class="sponsor__info" aria-hidden="true"><b class="mono">Production partner</b>Toronto technical production and lighting studio that builds and runs the show systems behind ASMBLY.</span></div>
+      <div class="sponsor"><a href="https://www.magnific.com/" target="_blank" rel="noopener"><img decoding="async" class="l-mag" src="/asmbly/img/p-magnific.png" alt="Magnific" width="1000" height="164" loading="lazy" /></a><span class="sponsor__info" aria-hidden="true"><b class="mono">Sponsor</b>AI creative platform for image, video, audio and 3D, formerly Freepik. Named after the upscaler it acquired in 2024.</span></div>
       <div class="sponsor"><a href="https://www.invisiblevfx.com/" target="_blank" rel="noopener"><img decoding="async" class="l-inv" src="/asmbly/img/p-invisible.png" alt="Invisible" width="580" height="112" loading="lazy" /></a><span class="sponsor__info" aria-hidden="true"><b class="mono">Lead sponsor</b>Toronto VFX studio for film, TV and advertising: artist-led, AI-accelerated. An Invalid Symbol company.</span></div>
       <div class="sponsor"><a href="https://darkhalf.ai/" target="_blank" rel="noopener"><img decoding="async" class="l-dh" src="/asmbly/img/p-dark-half.png" alt="Dark Half" width="324" height="196" loading="lazy" /></a><span class="sponsor__info" aria-hidden="true"><b class="mono">Sponsor</b>AI-assisted VFX for broadcast and cinema, backed by 25 years as an award-winning production company.</span></div>
       <div class="sponsor"><a href="https://www.instagram.com/quiver.tv/" target="_blank" rel="noopener"><img decoding="async" class="l-q" src="/asmbly/img/p-quiver.png" alt="Quiver" width="404" height="84" loading="lazy" /></a><span class="sponsor__info" aria-hidden="true"><b class="mono">Sponsor</b>Integrated production experts in mixed-medium storytelling for entertainment and advertising.</span></div>
