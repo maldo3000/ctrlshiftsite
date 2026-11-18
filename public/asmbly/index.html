@@ -332,6 +332,7 @@
   .row__by img { width: auto; display: block; transition: filter .3s; }
   .row__by .by-mc { height: 22px; }
   .row__by .by-nl { height: 26px; }
+  .row__by .by-aos { height: 26px; }
   .row:hover .row__by small { color: var(--ink); }
   .row:hover .row__by img { filter: invert(1); }
   .row__dur { justify-self: end; font-family: var(--mono); font-weight: 600; font-size: 14px; letter-spacing: .15em; border: 1px solid var(--line-strong); padding: 6px 10px; white-space: nowrap; }
@@ -345,6 +346,13 @@
   .row--break .row__kind, .row--break .row__n { color: var(--white); }
   .row--break .row__desc { color: var(--white); }
   .row--break:hover > * { color: var(--ink); }
+  /* Surprise: the final act, flipped to signal pink with ink type; hover flips it to white */
+  .row--surprise { background: var(--signal); }
+  .row--surprise > *, .row--surprise .row__n b, .row--surprise .row__who, .row--surprise .row__who em, .row--surprise .row__by small { color: var(--ink) !important; }
+  .row--surprise::before { background: var(--white); }
+  .row--surprise .row__by img { filter: invert(1); }
+  .row--surprise .row__dur { background: var(--ink); border-color: var(--ink); color: var(--signal) !important; }
+  .row__flag { display: block; font-family: var(--mono); font-weight: 600; font-size: 12px; letter-spacing: .18em; line-height: 1; margin-bottom: 10px; }
   .row--after { border: 1px solid var(--signal); margin-top: 14px; }
   .row--after > * { color: var(--signal); }
   .row--after .row__dur { background: var(--signal); color: var(--bg); border-color: var(--signal); }
@@ -904,7 +912,8 @@ document.addEventListener('click', (e) => {
       <div class="row"><span class="row__n"><b>8:25</b><small>9:05</small></span><span class="row__kind">Panel</span><span class="row__title">Panel: The Future of Entertainment</span><span class="row__desc"><span class="row__by"><small>Presented with</small><img decoding="async" class="by-mc" src="/asmbly/img/p-machine-cinema.png" alt="Machine Cinema" width="536" height="132" loading="lazy" /></span>A panel on where entertainment goes when the tools change, featuring VFX and film industry veterans.<span class="row__who"><em>Moderator</em><span>Meg Button · Fantastic Day</span></span><span class="row__who"><em>Panelists</em><span>Wilfred Lee</span>, <span>J. Lee Williams · Invisible VFX</span>, <span>Andrew MacDonald · Dark Half</span>, <span>Lisa Sepp-Wilson</span></span></span><span class="row__dur">40 MIN</span></div>
       <div class="row"><span class="row__n"><b>9:10</b><small>9:30</small></span><span class="row__kind">Talk</span><span class="row__title">Talk 02: Sehun Choi</span><span class="row__desc">International artist talk on his practice across generative image, film and large-scale installation, including work for brands like OpenAI, Samsung and LG Electronics.<span class="row__who"><em>Speaker</em><span>Sehun Choi · Seoul</span></span></span><span class="row__dur">20 MIN</span></div>
       <div class="prog-head"><i>05</i><b>Close</b><span>9:35 PM–11 PM</span></div>
-      <div class="row row--closer"><span class="row__n"><b>9:35</b><small>10:10</small></span><span class="row__kind">Closer</span><span class="row__title">AV performance: Ali Phi</span><span class="row__desc">A live audiovisual performance, real-time sound and visuals, to close the program.<span class="row__who"><em>Performance</em><span>Ali Phi</span></span></span><span class="row__dur">35 MIN</span></div>
+      <div class="row row--closer"><span class="row__n"><b>9:35</b><small>10:10</small></span><span class="row__kind">Performance</span><span class="row__title">AV performance: Ali Phi</span><span class="row__desc">A live audiovisual performance: real-time sound and visuals.<span class="row__who"><em>Performance</em><span>Ali Phi</span></span></span><span class="row__dur">35 MIN</span></div>
+      <div class="row row--surprise"><span class="row__n"><b>10:10</b></span><span class="row__kind">Surprise</span><span class="row__title"><small class="row__flag">Surprise performance</small>Threshold</span><span class="row__desc"><span class="row__by"><small>By</small><a class="row__by-link" href="https://www.arrayofstars.com/" target="_blank" rel="noopener"><img decoding="async" class="by-aos" src="/asmbly/img/p-array-of-stars-h.svg" alt="Array of Stars" width="232" height="44" loading="lazy" /></a></span>A final audiovisual performance to end the night.<span class="row__who"><em>Audio</em><span>memorecks</span></span></span><span class="row__dur">FINAL</span></div>
       <div class="row row--after"><span class="row__n"><b>10:10</b><small>11:00</small></span><span class="row__kind">After</span><span class="row__title">Exhibit open</span><span class="row__desc">Exhibition, music and final conversations until 11 PM.</span><span class="row__dur">50 MIN</span></div>
     </div>
     <div class="tix">
