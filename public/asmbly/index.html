@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>ASMBLY | A gathering for new ideas, technology, and art · 19 Nov 2026, Toronto</title>
-<meta name="description" content="ASMBLY by CTRL+SHIFT, Demo Room and Sky Fine Foods. Talks, art and performance: a night of conversation, interactive installations, a live AV set and the exhibit open into the night. 19 November 2026 at Demo Room, Toronto. Doors 5 PM, performances 6 PM, close 11 PM." />
+<title>ASMBLY | November 19, 2026 · Recap coming soon</title>
+<meta name="description" content="Thank you for being part of ASMBLY at Demo Room, Toronto on November 19, 2026. Explore the program, lineup and partners. Photos and recap coming soon." />
 <link rel="canonical" href="https://www.ctrlshift.community/asmbly" />
-<meta property="og:title" content="ASMBLY · A gathering for new ideas, technology, and art · 19.11.2026 · Toronto" />
-<meta property="og:description" content="A gathering for new ideas, technology, and art by CTRL+SHIFT and Demo Room. Talks, art and performance, with art curated by Sky Fine Foods. Demo Room, 307 Lake Shore Blvd E, Toronto." />
+<meta property="og:title" content="ASMBLY · November 19, 2026 · Recap coming soon" />
+<meta property="og:description" content="Thank you for being part of ASMBLY at Demo Room, Toronto on November 19, 2026. Explore the program, lineup and partners. Photos and recap coming soon." />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="CTRL+SHIFT" />
 <meta property="og:url" content="https://www.ctrlshift.community/asmbly" />
@@ -18,8 +18,8 @@
 <meta property="og:image:height" content="1260" />
 <meta property="og:image:alt" content="ASMBLY: a gathering for new ideas, technology, and art. 19 Nov 2026, Toronto. CTRL+SHIFT × Demo Room × Sky Fine Foods." />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="ASMBLY · A gathering for new ideas, technology, and art · 19.11.2026 · Toronto" />
-<meta name="twitter:description" content="A gathering for new ideas, technology, and art. CTRL+SHIFT × Demo Room × Sky Fine Foods, Toronto." />
+<meta name="twitter:title" content="ASMBLY · November 19, 2026 · Recap coming soon" />
+<meta name="twitter:description" content="Thank you for being part of ASMBLY at Demo Room, Toronto on November 19, 2026. Explore the program, lineup and partners. Photos and recap coming soon." />
 <meta name="twitter:image" content="https://www.ctrlshift.community/asmbly/og.jpg?v=9" />
 <meta name="theme-color" content="#fe2e89" />
 <link rel="icon" href="/favicon.png" />
@@ -711,9 +711,7 @@
     .grain, .marquee__track, .orbit__spin, .orbit__node img, .orbit__pulse, .scroll-cue i { animation: none !important; }
   }
 </style>
-<!-- Meta pixel (CTRLSHIFTEVENTS dataset). Tickets sell on DICE, so the deepest event this page can send
-     is InitiateCheckout when someone clicks through to DICE; the tickets open in a new tab, so it fires
-     before they leave. -->
+<!-- Meta pixel (CTRLSHIFTEVENTS dataset): post-event page views. -->
 <script>
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
 n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
@@ -723,10 +721,6 @@ document,'script','https://connect.facebook.net/en_US/fbevents.js');
 fbq('init', '1245389640322018');
 fbq('track', 'PageView');
 fbq('track', 'ViewContent', { content_name: 'ASMBLY', content_category: 'event' });
-document.addEventListener('click', (e) => {
-  const a = e.target.closest('a[href*="dice.fm/event/"]');
-  if (a) fbq('track', 'InitiateCheckout', { content_name: 'ASMBLY', currency: 'CAD' });
-});
 </script>
 <noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=1245389640322018&ev=PageView&noscript=1" /></noscript>
 </head>
@@ -742,8 +736,8 @@ document.addEventListener('click', (e) => {
     <a href="#venue">Venue</a>
     <a href="#partners">Partners</a>
   </div>
-  <!-- Ticket CTAs (nav, program, signup) link straight to the DICE event page (general admission, from Oct 22) -->
-  <a class="nav__cta" href="https://dice.fm/event/2wng77-asmbly-a-gathering-for-new-ideas-tech-and-art-19th-nov-demo-room-toronto-tickets" target="_blank" rel="noopener">Tickets</a>
+  <!-- Post-event navigation -->
+  <a class="nav__cta" href="#recap">Recap</a>
 </nav>
 
 <!-- ============ HERO: ASMBLY poster ============ -->
@@ -809,7 +803,7 @@ document.addEventListener('click', (e) => {
         </div>
       </div>
       <div class="hero__actions">
-        <a class="btn btn--signal hero__tix" href="https://dice.fm/event/2wng77-asmbly-a-gathering-for-new-ideas-tech-and-art-19th-nov-demo-room-toronto-tickets" target="_blank" rel="noopener">Get tickets <span class="arr">→</span></a>
+        <a class="btn btn--signal hero__tix" href="#recap">Recap coming soon <span class="arr">→</span></a>
         <button class="film-btn" type="button" id="filmOpen" aria-haspopup="dialog">
           <span class="film-btn__icon" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M2 1l13 7-13 7z"/></svg></span>
           <span>Watch teaser <small>0:35</small></span>
@@ -818,12 +812,7 @@ document.addEventListener('click', (e) => {
     </div>
     <div class="hero__bottom">
       <span class="bit">Talks &nbsp;·&nbsp; Art &nbsp;·&nbsp; Performance</span>
-      <div class="countdown" id="countdown" aria-label="Countdown to doors">
-        <span><b data-u="d">--</b><small>DAYS</small></span>
-        <span><b data-u="h">--</b><small>HRS</small></span>
-        <span><b data-u="m">--</b><small>MIN</small></span>
-        <span><b data-u="s">--</b><small>SEC</small></span>
-      </div>
+      <span class="bit">Thank you, Toronto · Recap coming soon</span>
     </div>
   </div>
 </header>
@@ -886,8 +875,8 @@ document.addEventListener('click', (e) => {
 
 <div class="marquee marquee--signal" aria-hidden="true">
   <div class="marquee__track">
-    <span>19.11.2026</span><span>Demo Room</span><span>Toronto</span><span>Speakers TBA</span><span>Artists TBA</span>
-    <span>19.11.2026</span><span>Demo Room</span><span>Toronto</span><span>Speakers TBA</span><span>Artists TBA</span>
+    <span>19.11.2026</span><span>Demo Room</span><span>Toronto</span><span>Talks &amp; panels</span><span>Art &amp; performance</span>
+    <span>19.11.2026</span><span>Demo Room</span><span>Toronto</span><span>Talks &amp; panels</span><span>Art &amp; performance</span>
   </div>
 </div>
 
@@ -919,9 +908,9 @@ document.addEventListener('click', (e) => {
     <div class="tix">
       <div>
         <span class="eyebrow">19 Nov 2026 · Demo Room Toronto</span>
-        <p class="tix__line">Tickets on DICE</p>
+        <p class="tix__line">Thank you for joining us</p>
       </div>
-      <a class="btn btn--signal btn--xl" href="https://dice.fm/event/2wng77-asmbly-a-gathering-for-new-ideas-tech-and-art-19th-nov-demo-room-toronto-tickets" target="_blank" rel="noopener">Get tickets on DICE <span class="arr">→</span></a>
+      <a class="btn btn--signal btn--xl" href="https://luma.com/ctrlshift?k=c" target="_blank" rel="noopener">Community calendar <span class="arr">→</span></a>
     </div>
   </div>
 </section>
@@ -940,7 +929,7 @@ document.addEventListener('click', (e) => {
   <div class="wrap">
     <div class="sec__head">
       <h2 class="display sec__title">Lineup</h2>
-      <span class="eyebrow">Decrypting soon</span>
+      <span class="eyebrow">The 2026 lineup</span>
     </div>
     <div class="lineup">
       <article class="card card--revealed"><div class="card__img"><img decoding="async" src="/asmbly/img/sophie-hospes-s.webp?v=5" alt="Sophie Hospes" loading="lazy" /><div class="card__bio" aria-hidden="true"><span class="mono">About</span><p>Creative director based in Malmö. Through Studio Sophie Hospes and as Creative Director at New Limit Labs, she builds brand worlds across campaigns, product design and AI-powered creative systems.</p></div></div><div class="card__body"><div class="card__name">Sophie Hospes</div><div class="card__role mono">Speaker · The future of creative work</div><a class="card__ig mono" href="https://www.instagram.com/studiosophiehospes/" target="_blank" rel="noopener" aria-label="Sophie Hospes on Instagram">@studiosophiehospes ↗</a></div></article>
@@ -963,8 +952,8 @@ document.addEventListener('click', (e) => {
       <article class="card card--revealed"><div class="card__img"><img decoding="async" src="/asmbly/img/robbot-s.webp" alt="ROBBOT" loading="lazy" /><div class="card__bio" aria-hidden="true"><span class="mono">About</span><p>Toronto artist Robert Rigo, making interactive installations and live visuals. At ASMBLY, ROBBOT brings an interactive artwork to the exhibition floor.</p></div></div><div class="card__body"><div class="card__name">ROBBOT</div><div class="card__role mono">Interactive installation</div><a class="card__ig mono" href="https://www.instagram.com/robbot.5000/" target="_blank" rel="noopener" aria-label="ROBBOT: @robbot.5000">@robbot.5000 ↗</a></div></article>
     </div>
     <div class="lineup-note">
-      <span class="eyebrow">Speakers &amp; artists to be announced</span>
-      <a class="btn" href="#signal">Be first to know <span class="arr">→</span></a>
+      <span class="eyebrow">Thank you to our speakers, artists and performers</span>
+      <a class="btn" href="#signal">Stay connected <span class="arr">→</span></a>
     </div>
   </div>
 </section>
@@ -1059,7 +1048,7 @@ document.addEventListener('click', (e) => {
       </div>
       <div>
         <h2 class="display" style="font-size:clamp(44px,5.6vw,92px)">A monthly room, scaled up</h2>
-        <p style="margin:24px 0 32px;color:#c9c9c9;font-size:18px;max-width:46ch">CTRL+SHIFT is a monthly creative-tech series exploring how technology is changing what it means to create. ASMBLY is every edition at once, in one room, for one night.</p>
+        <p style="margin:24px 0 32px;color:#c9c9c9;font-size:18px;max-width:46ch">CTRL+SHIFT is a monthly creative-tech series exploring how technology is changing what it means to create. ASMBLY brought every edition together, in one room, for one night.</p>
         <div class="stats">
           <div class="stat"><b data-count="14">0</b><span class="mono">Sold-out events</span></div>
           <div class="stat"><b data-count="40" data-suffix="+">0</b><span class="mono">Speakers</span></div>
@@ -1089,15 +1078,25 @@ document.addEventListener('click', (e) => {
   </div>
 </section>
 
+<!-- ============ RECAP ============ -->
+<section class="sec" id="recap">
+  <div class="wrap">
+    <div class="sec__head"><span class="eyebrow">ASMBLY · 19 November 2026</span><span class="eyebrow">Demo Room · Toronto</span></div>
+    <h2 class="display sec__title">Thank you for<br/>being part of it.</h2>
+    <p class="lede" style="margin-top:24px;max-width:48ch">A night of talks, art and performance, made by everyone in the room. Photos, highlights and the full recap are coming soon.</p>
+    <p style="margin-top:20px;color:var(--grey)">Until then, explore the program, meet the lineup and discover the partners who helped make ASMBLY happen.</p>
+  </div>
+</section>
+
 <!-- ============ SIGNAL CTA ============ -->
 <section class="signal" id="signal">
   <canvas id="dots" aria-hidden="true"></canvas>
   <div class="wrap signal__inner">
     <span class="eyebrow">19 November 2026 · Demo Room, Toronto</span>
     <h2 class="display" style="margin-top:18px">Stay in<br/>the <em>signal</em></h2>
-    <p class="lede">Tickets, speakers and artists drop to the list first. Every CTRL+SHIFT edition has sold out within days.</p>
+    <p class="lede">Follow CTRL+SHIFT for the ASMBLY recap and future gatherings. Stay connected with the community.</p>
     <div class="signal__row">
-      <a class="btn btn--signal" href="https://dice.fm/event/2wng77-asmbly-a-gathering-for-new-ideas-tech-and-art-19th-nov-demo-room-toronto-tickets" target="_blank" rel="noopener">Get tickets on DICE <span class="arr">→</span></a>
+      <a class="btn btn--signal" href="https://luma.com/ctrlshift?k=c" target="_blank" rel="noopener">Community calendar <span class="arr">→</span></a>
       <a class="btn" href="https://www.instagram.com/ctrlshift.to/" target="_blank" rel="noopener">@ctrlshift.to <span class="arr">↗</span></a>
       <a class="btn" href="https://www.instagram.com/demoroom" target="_blank" rel="noopener">@demoroom <span class="arr">↗</span></a>
     </div>
@@ -1135,9 +1134,9 @@ document.addEventListener('click', (e) => {
 <!-- ============ BUILD WITH US ============ -->
 <section class="sec" style="padding-top:clamp(64px,8vw,120px)">
   <div class="wrap">
-    <div class="sec__head"><h2 class="display" style="font-size:clamp(40px,5vw,80px)">Help us build it</h2><span class="eyebrow">Partners · Artists · Hosts</span></div>
+    <div class="sec__head"><h2 class="display" style="font-size:clamp(40px,5vw,80px)">Build what comes next</h2><span class="eyebrow">Partners · Artists · Hosts</span></div>
     <div class="build">
-      <div><h4><small>01</small>Partner</h4><p>Put your name on the day, alongside Sky Fine Foods and Demo Room.</p></div>
+      <div><h4><small>01</small>Partner</h4><p>Partner with CTRL+SHIFT on a future gathering.</p></div>
       <div><h4><small>02</small>Commission</h4><p>Fund an installation and give an artist the room to build it.</p></div>
       <div><h4><small>03</small>Host</h4><p>Take a talk, workshop or lounge and bring your own voice to the program.</p></div>
       <div><h4><small>04</small>Equip</h4><p>Supply the tools, product or hospitality that make the day run.</p></div>
@@ -1171,21 +1170,6 @@ document.addEventListener('click', (e) => {
 (() => {
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* Countdown to doors, 19 Nov 2026 (Toronto, EST) */
-  const target = new Date('2026-11-19T17:00:00-05:00').getTime();
-  const cd = document.getElementById('countdown');
-  const pad = n => String(n).padStart(2, '0');
-  const tick = () => {
-    let s = Math.max(0, Math.floor((target - Date.now()) / 1000));
-    const d = Math.floor(s / 86400); s -= d * 86400;
-    const h = Math.floor(s / 3600); s -= h * 3600;
-    const m = Math.floor(s / 60); s -= m * 60;
-    cd.querySelector('[data-u=d]').textContent = pad(d);
-    cd.querySelector('[data-u=h]').textContent = pad(h);
-    cd.querySelector('[data-u=m]').textContent = pad(m);
-    cd.querySelector('[data-u=s]').textContent = pad(s);
-  };
-  tick(); setInterval(tick, 1000);
 
   /* ASMBLY wordmark: letters fly in and assemble flat, shift into the offset lockup (as in the promo film),
      then keep blipping and stuttering */
