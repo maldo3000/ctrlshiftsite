@@ -47,8 +47,8 @@ const WhoWeAre: React.FC = () => {
             >
                 <RevealImage
                   src={ASSETS.whoWeAre.hero}
-                  alt="Event crowd watching projection"
-                  className="w-full h-[500px] group-hover:scale-[1.03] transition-transform duration-700"
+                  alt="A speaker on the ASMBLY stage in front of an LED wall of AI art"
+                  className="w-full h-[420px] sm:h-[520px] lg:h-[600px] group-hover:scale-[1.03] transition-transform duration-700"
                 />
                 {/* Decorative overlay for extra texture */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-60 pointer-events-none"></div>
@@ -89,19 +89,19 @@ const WhoWeAre: React.FC = () => {
         
         {/* Additional images row */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16">
-             {ASSETS.whoWeAre.grid.map((src, i) => (
+             {ASSETS.whoWeAre.grid.map(({ src, alt }, i) => (
                  <motion.div 
                     key={i}
                     initial={{ opacity: 0, y: 20 }}
                     animate={inView ? { opacity: 1, y: 0 } : {}}
                     transition={{ delay: 0.5 + (i * 0.1), duration: 0.6 }}
                     whileHover={{ scale: 1.05, y: -5 }}
-                    className="overflow-hidden rounded border border-white/5 relative group h-64"
+                    className="overflow-hidden rounded border border-white/5 relative group h-64 md:h-72 lg:h-80"
                  >
                      <div className="absolute inset-0 bg-blue-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 mix-blend-overlay"></div>
                      <RevealImage 
                         src={src} 
-                        alt="Event atmosphere" 
+                        alt={alt} 
                         className="w-full h-full transition-all duration-700 group-hover:scale-110 group-hover:contrast-110"
                      />
                  </motion.div>
