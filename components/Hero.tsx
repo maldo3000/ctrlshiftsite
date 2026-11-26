@@ -2,6 +2,7 @@
 import React from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
+import TubesBackground from './TubesBackground';
 
 const Hero: React.FC = () => {
   const { scrollY } = useScroll();
@@ -10,37 +11,43 @@ const Hero: React.FC = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center pt-24 sm:pt-20 pb-10 overflow-hidden bg-black">
-      {/* Full-bleed hero photo (ASMBLY, Demo Room): fills the viewport, eases in, drifts on scroll */}
-      <motion.div style={{ y: y1 }} className="absolute inset-0 z-0 pointer-events-none">
-        <motion.div
-          initial={{ opacity: 0, scale: 1.08 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 2.2, ease: [0.2, 0.7, 0.2, 1] }}
-          className="absolute inset-0"
-        >
-          <picture>
-            <source srcSet="/assets/images/asmbly-hero.webp" type="image/webp" />
-            <img
-              src="/assets/images/asmbly-hero.jpg"
-              alt="A packed room at ASMBLY, watching the stage beside a glowing LED installation"
-              loading="eager"
-              fetchPriority="high"
-              decoding="async"
-              width={2000}
-              height={1334}
-              className="w-full h-full object-cover object-[60%_40%]"
-            />
-          </picture>
-        </motion.div>
-        {/* Legibility: dark on the text side, a top band for the nav and a long fade into the page */}
-        <div className="absolute inset-0 bg-black/55 lg:bg-transparent lg:bg-gradient-to-r lg:from-black/90 lg:via-black/45 lg:to-black/5"></div>
-        <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-black/70 to-transparent"></div>
-        <div className="absolute inset-x-0 bottom-0 h-64 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+      {/* Background Interactive Tubes */}
+      <div className="absolute inset-0 z-0 opacity-80">
+        <TubesBackground />
+      </div>
+
+      {/* Full-bleed hero photo: spans to the right viewport edge and dissolves toward the text */}
+      <motion.div
+        style={{ y: y1 }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.5, ease: "easeOut" }}
+        className="absolute inset-y-0 right-0 w-full lg:w-[72%] opacity-50 sm:opacity-60 lg:opacity-100 z-[5] pointer-events-none"
+      >
+        <picture>
+          <source srcSet="/assets/images/hero-image.webp" type="image/webp" />
+          <img
+            src="/assets/images/hero-image.jpg"
+            alt="Crowd at a CTRL+SHIFT event under a disco ball"
+            loading="eager"
+            decoding="async"
+            className="w-full h-full object-cover opacity-90"
+            style={{
+              maskImage:
+                'linear-gradient(to right, transparent 0%, rgba(0,0,0,0.5) 30%, black 65%)',
+              WebkitMaskImage:
+                'linear-gradient(to right, transparent 0%, rgba(0,0,0,0.5) 30%, black 65%)',
+            }}
+          />
+        </picture>
+        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-black to-transparent"></div>
+        {/* Legibility tint: only below lg, where the photo sits behind the text */}
+        <div className="absolute inset-0 bg-black/45 lg:hidden"></div>
       </motion.div>
 
-      <div className="container mx-auto px-5 sm:px-6 relative z-10 pointer-events-none">
+      <div className="container mx-auto px-5 sm:px-6 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 xl:gap-20 items-center relative z-10 pointer-events-none">
 
-        <div className="pointer-events-auto max-w-3xl">
+        <div className="pointer-events-auto">
           {/* ASMBLY announcement */}
           <motion.a
             href="/asmbly"
@@ -66,7 +73,7 @@ const Hero: React.FC = () => {
               <img
                 src="/assets/images/logo-wordmark.png"
                 alt="CTRL + SHIFT"
-                className="w-full max-w-xl lg:max-w-2xl h-auto drop-shadow-[0_0_25px_rgba(255,255,255,0.3)]"
+                className="w-full max-w-xl h-auto drop-shadow-[0_0_25px_rgba(255,255,255,0.3)]"
               />
             </h1>
           </motion.div>
@@ -82,7 +89,7 @@ const Hero: React.FC = () => {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.8, duration: 0.8 }}
-            className="text-[2.6rem] sm:text-6xl xl:text-7xl font-sans font-semibold leading-[1.05] tracking-tight mb-6 sm:mb-8 text-zinc-100"
+            className="text-[2.45rem] sm:text-5xl font-sans font-semibold leading-tight mb-6 sm:mb-8 text-zinc-100"
           >
             Signals for <br/>
             <span className="font-bold text-white">creative intelligence.</span>
@@ -92,7 +99,7 @@ const Hero: React.FC = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.2, duration: 0.8 }}
-            className="text-zinc-300 max-w-xl text-base sm:text-xl leading-relaxed mb-8 sm:mb-10"
+            className="text-zinc-400 max-w-lg text-base sm:text-lg leading-relaxed mb-8 sm:mb-10"
           >
             Calling all creatives, creators, entrepreneurs, founders, artists, and designers who see technology as a tool for building what's next, without losing the human touch.
           </motion.p>
