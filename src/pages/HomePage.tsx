@@ -6,6 +6,7 @@ import Hero from '../../components/Hero';
 import FluidBackground from '../../components/FluidBackground';
 
 const RetroDesktop = lazy(() => import('../../components/RetroDesktop'));
+const StageBand = lazy(() => import('../../components/StageBand'));
 const WhoWeAre = lazy(() => import('../../components/WhoWeAre'));
 const Audience = lazy(() => import('../../components/Audience'));
 const EventFormat = lazy(() => import('../../components/EventFormat'));
@@ -79,6 +80,7 @@ function HomePage({ startAtDesktop = false }: { startAtDesktop?: boolean }) {
       <main className="relative z-10">
         <Hero />
         <Suspense fallback={null}>
+          <StageBand />
           <WhoWeAre />
           <Audience />
           <EventFormat />
