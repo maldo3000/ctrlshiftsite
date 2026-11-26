@@ -50,10 +50,10 @@ const Collaboration: React.FC = () => {
             >
                 <div className="absolute inset-0 bg-gradient-to-t from-blue-900/30 to-transparent mix-blend-overlay z-10"></div>
                 <picture>
-                  <source srcSet="/assets/images/asmbly-foe.webp" type="image/webp" />
+                  <source srcSet="/assets/images/collaboration.webp" type="image/webp" />
                   <img 
-                      src="/assets/images/asmbly-foe.jpg" 
-                      alt="The Future of Entertainment panel, presented with Machine Cinema, in front of a full room at ASMBLY"
+                      src="/assets/images/collaboration.jpg" 
+                      alt="CTRL+SHIFT event presentation"
                       loading="lazy"
                       decoding="async"
                       className="w-full h-full object-cover hover:scale-105 transition-transform duration-1000"
